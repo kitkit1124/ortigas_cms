@@ -1,0 +1,67 @@
+#estate_active_photo, #estate_active_thumb {
+	border-radius: 4px;
+	max-width: 400px;
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+ #estate_active_thumb {
+ 	max-width: 200px;
+ }
+
+#upload_button, #upload_button_thumb{
+ 	padding: 0px;
+ }
+
+#estate_text{
+	min-height: 350px;
+}
+
+p.note{ 
+	font-size: 11px;
+    background-color: #f4bd00;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}
+
+.hide{
+	display: none;
+}
+
+#pac-input {
+    margin-top: 10px;
+    padding: 6px;
+    width: 60%;
+}
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .col-sm-9 {
+	    -ms-flex: 0 0 100%;
+	    flex: 0 0 100%;
+	    max-width: 100%;
+	}
+
+	.col-sm-3 {
+		-ms-flex: 0 0 100%;
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+    #pac-input{
+    	left: 10px !important;
+    	margin-top: 53px;
+    	width: 92%;
+    }
+}

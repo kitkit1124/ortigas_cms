@@ -1,0 +1,19 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Aldrin Magno <aldrin.magno@digify.com.ph>
+ * @copyright 	Copyright (c) 2016, Digify, Inc.
+ * @link		http://www.digify.com.ph
+ */
+
+.dataTables_wrapper .row:last-child {
+    border:0;
+    background-color: transparent;
+}
+.thumbnail {
+    position: relative;
+    /*width: 200px;*/
+    height: 175px;
+    overflow: hidden;
+    padding: 0;
+}

@@ -1,0 +1,14 @@
+.dropzone {
+	margin: 0;
+	padding: 5px;
+	border: 2px dashed rgba(0, 0, 0, 0.3);
+/*	margin-bottom: 20px;
+	width: 155px;
+	min-height: 155px;*/
+	margin: 0 auto;
+}
+
+.dz-message span { display: none; }
+.dz-message:after { content: 'Drag the file here or click to upload'; }
+/*.dz-preview, .dz-complete { margin: 0 !important; padding: 0 !important; }*/
+/*.dz-image { border-radius: 0 !important; }*/

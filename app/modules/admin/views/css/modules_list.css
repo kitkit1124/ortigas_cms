@@ -1,0 +1,38 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Randy Nivales <randynivales@gmail.com>
+ * @copyright 	Copyright (c) 2014-2015, Randy Nivales
+ * @link		randynivales@gmail.com
+ */
+
+#datatables ul {
+	list-style: none;
+}
+
+	#datatables ul li {
+		margin-left: -30px;
+	}
+
+.btn-install {
+	padding-left: 16px;
+	padding-right: 16px;
+}
+
+.btn-delete {
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* fixes the height of input-sm */
+.input-sm {
+	height: 33px !important;
+}
+
+.badge {
+	margin-bottom: 3px;
+}
+
+.custom-select {
+	height: calc(1.8125rem + 2px);
+}

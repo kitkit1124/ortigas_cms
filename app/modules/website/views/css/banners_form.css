@@ -1,0 +1,43 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Randy Nivales <randy.nivales@digify.com.ph>
+ * @copyright 	Copyright (c) 2016, Digify, Inc.
+ * @link		http://www.digify.com.ph
+ */
+
+
+#dt-images_wrapper .row:first-child {
+	display: none;
+}
+
+#dt-images_wrapper .row:last-child {
+	background-color: #FFF;
+	border: none;
+}
+
+
+#image_sizes .thumbnail, #thumbnails .thumbnail {
+	position: relative;
+	height: 130px;
+	overflow: hidden;
+	padding: 0;
+	/*background-color: #DDD;*/
+}
+.popover {
+	z-index: 99999;
+}
+
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(0, 0, 0, 0.75);
+    width:100%;
+    height:100%;
+    padding:1%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}

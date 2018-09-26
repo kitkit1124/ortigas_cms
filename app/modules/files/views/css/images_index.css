@@ -1,0 +1,78 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Randy Nivales <randy.nivales@digify.com.ph>
+ * @copyright 	Copyright (c) 2016, Digify, Inc.
+ * @link		http://www.digify.com.ph
+ */
+
+ #dropzone {
+	/*height: 50px !important;*/
+	padding: 0;
+	margin: 0;
+	border: 1px dashed #CCC;
+	width: 100% !important;
+	height: 10px;
+	overflow: hidden;
+}
+
+/* .dz-message {
+	margin: 0;
+	padding: 0;*/
+	/*padding: 20px;
+}
+
+.dz-image img {
+	width: 155px;
+	height: 155px;
+} */
+
+.dz-message span {
+	display: none;
+}
+
+/*.dz-message:after {
+	content: 'Drop files here or click to upload';
+}*/
+
+
+#thumbnails .close {
+	position: absolute;
+	right: 5px;
+	top: 0;
+}
+
+.center-cropped {
+  width: 150px;
+  height: 150px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.thumbnail {
+  position: relative;
+  /*width: 200px;*/
+  height: 200px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid;
+}
+/*.thumbnail img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+.thumbnail img.portrait {
+  width: 100%;
+  height: auto;
+}*/
+
+#datatables_wrapper .row:last-child {
+  background-color: #FFF;
+  border-bottom: 0;
+}

@@ -1,0 +1,42 @@
+
+
+#dt-images_wrapper .row:first-child {
+	display: none;
+}
+
+#tab_1 .thumbnail, #tab_2 .thumbnail {
+	position: relative;
+	height: 100px;
+	overflow: hidden;
+	padding: 0;
+	/*background-color: #DDD;*/
+}
+.dataTables_info {
+	font-size: .8em;
+}
+.popover {
+	z-index: 99999;
+}
+
+#tab_1 .caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(0, 0, 0, 0.75);
+    width:100%;
+    height:100%;
+    padding:1%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+
+#tab_2 .thumbnail {
+	margin-bottom: 0;
+}
+
+.btn-image {
+	font-size: .8em;
+	padding: 1px;
+}

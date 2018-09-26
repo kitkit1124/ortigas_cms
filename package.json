@@ -1,0 +1,39 @@
+{
+  "name": "CodifireCMSv.5.0",
+  "version": "2.0.0",
+  "description": "INSTALLATION",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Digify, Inc.",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.3",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^2.2.1",
+    "grunt-contrib-uglify": "^2.3.0",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "dependencies": {
+    "@frontwise/grid-editor": "^1.0.0",
+    "alertify": "^0.3.0",
+    "blockui-npm": "^1.0.0",
+    "bootstrap": "^4.1.1",
+    "datatables.net": "^1.10.19",
+    "datatables.net-responsive-bs4": "^2.2.3",
+    "datetimepicker": "^0.1.38",
+    "dropzone": "^5.5.1",
+    "font-awesome": "^4.7.0",
+    "fontawesome-iconpicker": "^3.1.0",
+    "jquery": "^3.3.1",
+    "jquery-number": "^2.1.6",
+    "jquery-ui": "^1.12.1",
+    "jquery.cookie": "^1.4.1",
+    "nestable2": "^1.6.0",
+    "popper.js": "^1.14.3",
+    "select2": "^4.0.6-rc.1",
+    "tinymce": "^4.8.2"
+  }
+}

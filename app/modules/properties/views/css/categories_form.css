@@ -1,0 +1,32 @@
+#floor_active_image{
+	border-radius: 4px;
+	margin-bottom: 10px;
+	max-width: 300px;
+
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.modal-body {
+    max-height: 555px;
+}
+
+#category_active_image{
+	cursor: pointer;
+}
+
+p.note{ 
+	font-size: 11px;
+    background-color: #f4bd00;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}
+
+.hide{
+	display: none;
+}

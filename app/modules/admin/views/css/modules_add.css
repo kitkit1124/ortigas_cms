@@ -1,0 +1,118 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		Randy Nivales <randynivales@gmail.com>
+  * @author 		Virgem Gatchalian <densetsu.ghem@gmail.com>
+ * @copyright 	Copyright (c) 2014-2015, Randy Nivales
+ * @link		randynivales@gmail.com
+ */
+
+.checkbox label {
+	padding-right: 10px;
+}
+/*
+.table_column {
+	border-bottom: 1px solid #F4F4F4;
+	margin-bottom: 12px;
+}
+
+.form-group {
+	margin-bottom: 5px;
+}*/
+
+select.form-control {
+	padding: .25rem .5rem;
+	margin-top: 10px;
+}
+
+.column_name {
+	width: 150px !important;
+}
+
+.column_length {
+	width: 80px;
+}
+
+
+input.ng-invalid.ng-touched {
+	background-color: red;
+}
+
+input.ng-valid.ng-touched {
+	background-color: transparent;
+}
+
+ .add_table{
+ 	background-color: #eeeeee;
+ }
+
+tr { line-height: 2.5em;}
+
+input.ace.ace-switch.ace-switch-4[type="checkbox"] + .lbl::before, input.ace.ace-switch.ace-switch-5[type="checkbox"] + .lbl::before
+{
+	content:"YES\a0\a0\a0\a0\a0\a0\a0\a0\a0NO";
+}
+
+.primary_error, .primary_error:focus{border:2px solid red;}
+
+
+
+/* buttons */
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+  }
+.switch input {display:none;}
+.slider_btn {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+  
+.slider_btn:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+/* Rounded slider_btns */
+.slider_btn.round {
+border-radius: 34px;
+}
+
+.slider_btn.round:before {
+border-radius: 50%;
+}
+
+input:checked + .slider_btn {
+background-color: #379392;
+}
+
+input:focus + .slider_btn {
+box-shadow: 0 0 1px #379392;
+}
+
+input:checked + .slider_btn:before {
+-webkit-transform: translateX(26px);
+-ms-transform: translateX(26px);
+transform: translateX(26px);
+}
+
+
+/* .label, .table_column {
+	border: 1px solid;
+} */

@@ -1,0 +1,83 @@
+/* LAYOUTS */
+section {
+	padding: 30px 0;
+}
+
+.card-buttons {
+	margin-top: -5px;
+}
+
+.modal-body {
+	max-height: 420px;
+	overflow-x: auto;
+}
+
+nav.side-navbar.shrinked .fa-fw {
+	width: 100%;
+}
+
+nav.side-navbar ul li a {
+	font-weight: 400;
+}
+
+.card .card-header .nav-tabs .nav-item {
+	margin-bottom: -4px !important;
+}
+
+/*.nav-tabs .nav-link:hover {
+	border-bottom: 1px solid transparent;
+	background-color: #FFF;
+}*/
+
+/* FORM */
+
+.login-page .form-holder .form .form-group {
+	margin-bottom: 15px;
+}
+
+
+
+/* SELECT2 */
+
+.select2 {
+	width: 100% !important;
+}
+.select2-container--default .select2-selection--multiple,
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+	border: 1px solid #DDE1E6 !important;
+	width: 100% !important;
+}
+
+
+
+
+/* DATATABLES */
+
+
+div.dataTables_wrapper div.dataTables_info {
+	white-space: initial !important;
+}
+
+table.dataTable th, table.dataTable>tbody>tr.child span.dtr-title {
+	font-weight: 400;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+	vertical-align: middle !important;
+}
+
+/*table.dataTable.table-sm .sorting:before, table.dataTable.table-sm .sorting_asc:before, table.dataTable.table-sm .sorting_desc:before,
+table.dataTable.table-sm .sorting:after, table.dataTable.table-sm .sorting_asc:after, table.dataTable.table-sm .sorting_desc:after {
+	top: 15px;
+}*/
+
+table.dataTable {
+	border-collapse: collapse !important;
+}
+
+table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr[role="row"]>th:first-child:before {
+	line-height: 16px;
+	top: 15px;
+	height: 16px !important;
+	width: 16px !important;
+}

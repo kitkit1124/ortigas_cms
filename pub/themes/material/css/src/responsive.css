@@ -1,0 +1,52 @@
+/*
+####################################################
+M E D I A  Q U E R I E S
+####################################################
+*/
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Bootstrap 4 breakpoints
+*/
+
+/* 
+Extra small devices (portrait phones, less than 544px) 
+No media query since this is the default in Bootstrap because it is "mobile first"
+*/
+
+
+/* Small devices (landscape phones, 544px and down) */
+@media (max-width: 543px) {  
+
+}
+
+/* Medium devices (tablets, 768px and down) The navbar toggle appears at this breakpoint */
+@media (max-width: 767px) {  
+	div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+		justify-content: center;
+	}
+}
+
+/* Large devices (desktops, 992px and down) */
+@media (max-width: 991px) { 
+	div.dataTables_wrapper div.dataTables_filter input {
+		width: 180px;
+	}
+}
+
+/* Extra large devices (large desktops, 1200px and down) */
+@media (max-width: 1119px) {  
+    
+}
+
+
+
+/*
+::::::::::::::::::::::::::::::::::::::::::::::::::::
+Custom media queries
+*/
+
+/* Set width to make card deck cards 100% width */
+@media (max-width: 950px) { 
+
+}

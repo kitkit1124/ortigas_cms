@@ -1,0 +1,37 @@
+#unit_active_image{
+	border-radius: 4px;
+	margin-bottom: 10px;
+	max-width: 300px;
+
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#upload_button{
+    width: 100%;
+}
+
+#clear_photo_button{
+	position: absolute;
+    right: 90px;
+    opacity: 1;
+    background-color: transparent;
+    border: 0;
+    margin-top: 3px;
+}
+
+p.note{ 
+	font-size: 11px;
+    background-color: #f4bd00;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}
+
+.hide{
+	display: none;
+}

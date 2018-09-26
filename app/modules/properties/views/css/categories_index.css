@@ -1,0 +1,4 @@
+table tr:first-child .btn-danger{
+	pointer-events: none;
+	opacity: 0;
+}

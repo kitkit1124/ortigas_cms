@@ -1,0 +1,1 @@
+This forlder is for 3rd party JS and CSS libraries that are not in NPM

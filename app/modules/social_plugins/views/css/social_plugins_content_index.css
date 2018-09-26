@@ -1,0 +1,41 @@
+/**
+ * @package		Codifire
+ * @version		1.0
+ * @author 		JP Llapitan <john.llapitan@digify.com.ph>
+ * @copyright 	Copyright (c) 2016, Digify, Inc.
+ * @link		http://www.digify.com.ph
+ */
+
+#page-header {
+	position: relative;
+	float: none;
+	clear: both;
+}
+
+.table {
+	table-layout:fixed;
+}
+
+.table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
+
+#report_line_chart {
+	min-height: 240px;
+}
+
+div.dataTables_wrapper div.dataTables_info {
+	white-space: normal;
+}
+
+.daterange {
+	background: #fff; 
+	cursor: pointer; 
+	padding: 5px 10px; 
+	border: 1px solid #ccc;
+	font-weight: bold;
+	color: #333;
+}

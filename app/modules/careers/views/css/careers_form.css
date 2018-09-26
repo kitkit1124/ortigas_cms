@@ -1,0 +1,28 @@
+#pac-input {
+    margin-top: 10px;
+    padding: 6px;
+    width: 60%;
+}
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .media1024 {
+	    -ms-flex: 0 0 100% !important;
+	    flex: 0 0 100% !important;
+	    max-width: 100% !important;
+	}
+
+}
+
+@media only screen and (max-width: 768px) {
+    .media768 {
+	    -ms-flex: 0 0 100% !important;
+	    flex: 0 0 100% !important;
+	    max-width: 100% !important;
+	}
+
+}
