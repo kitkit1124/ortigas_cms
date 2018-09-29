@@ -36,6 +36,10 @@
  * @filesource
  */
 
+require_once '../app/third_party/vendors/autoload.php';
+            
+$dotenv = new Dotenv\Dotenv('../');
+$dotenv->load();
 
 /**
 |---------------------------------------------------------------

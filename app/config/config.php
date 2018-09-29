@@ -45,7 +45,7 @@ $config['cache_drivers'] = array('adapter' => 'redis', 'backup' => 'file', 'key_
 
 // NOTE: Do not change this unless it's a new project. 
 //       Please configure your web server to use this path
-$config['base_url'] = 'http://oclpcms.tgobeyondtheclouds.com';
+$config['base_url'] = 'http://ortigas.cms.local';
 
 /*
 |--------------------------------------------------------------------------
