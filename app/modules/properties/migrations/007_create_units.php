@@ -27,7 +27,7 @@ class Migration_Create_units extends CI_Migration {
 			'menu_text' 		=> 'Units',    
 			'menu_link' 		=> 'properties/units', 
 			'menu_perm' 		=> 'properties.units.link', 
-			'menu_icon' 		=> 'fa fa-cube', 
+			'menu_icon' 		=> 'fa fa-cubes', 
 			'menu_order' 		=> 7, 
 			'menu_active' 		=> 1
 		),

@@ -15,7 +15,7 @@ $lang['crumb_module']				= 'Job Applications';
 // Labels
 $lang['job_id']						= 'ID';
 $lang['job_career_id']				= 'Career';
-$lang['job_application_name']		= 'Application Name';
+$lang['job_application_name']		= 'Applicant Name';
 $lang['job_email']					= 'Email';
 $lang['job_mobile']					= 'Mobile';
 $lang['job_document']				= 'Document';
@@ -29,11 +29,11 @@ $lang['button_edit_this']			= 'Edit This';
 
 
 // Index Function
-$lang['index_heading']				= 'Job Applications';
+$lang['index_heading']				= 'Job Applicants';
 $lang['index_subhead']				= 'List of all Job Applications';
 $lang['index_id']					= 'ID';
 $lang['index_career_id']			= 'Career';
-$lang['index_application_name']		= 'Application Name';
+$lang['index_application_name']		= 'Applicant Name';
 $lang['index_email']				= 'Email';
 $lang['index_mobile']				= 'Mobile';
 $lang['index_document']				= 'Document';
@@ -54,7 +54,7 @@ $lang['add_success']				= 'Job has been successfully added';
 
 // Edit Function
 $lang['edit_heading']				= 'Edit Job';
-$lang['edit_success']				= 'Job has been successfully updated';
+$lang['edit_success']				= 'Job  has been successfully updated';
 
 // Delete Function
 $lang['delete_heading']				= 'Delete Job';

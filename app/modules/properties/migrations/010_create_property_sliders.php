@@ -44,16 +44,16 @@ class Migration_Create_property_sliders extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'property_slider_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
-			'property_slider_property_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
-			'property_slider_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
-			'property_slider_title'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
-			'property_slider_title_size'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => TRUE),
+			'property_slider_id'			=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'property_slider_property_id'	=> array('type' => 'SMALLINT', 'constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
+			'property_slider_image'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'property_slider_title'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'property_slider_title_size'	=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => TRUE),
 			'property_slider_title_pos'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'property_slider_caption'		=> array('type' => 'TEXT', 'null' => TRUE),
-			'property_slider_caption_size'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => TRUE),
-			'property_slider_caption_pos'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
-			'property_slider_order'		=> array('type' => 'TINYINT', 'constraint' => 3, 'null' => FALSE),
+			'property_slider_caption_size'	=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => TRUE),
+			'property_slider_caption_pos'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'property_slider_order'			=> array('type' => 'TINYINT', 'constraint' => 3, 'null' => FALSE),
 			'property_slider_status'		=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 
 			'property_slider_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),

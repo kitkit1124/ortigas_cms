@@ -43,7 +43,7 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [26],
+				"aTargets": [27],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
 					html = '<a href="properties/form/view/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';

@@ -120,6 +120,7 @@ class Properties extends MX_Controller {
 					'property_estate_id'		=> form_error('property_estate_id'),
 					'property_category_id'		=> form_error('property_category_id'),
 					'property_location_id'		=> form_error('property_location_id'),
+					'property_price_range_id'	=> form_error('property_price_range_id'),
 					'property_name'				=> form_error('property_name'),
 					'property_slug'				=> form_error('property_slug'),
 					'property_overview'			=> form_error('property_overview'),
@@ -166,6 +167,9 @@ class Properties extends MX_Controller {
 
 		$this->load->model('locations_model');
 		$data['locations'] = $this->locations_model->get_active_locations();
+
+		$this->load->model('price_range_model');
+		$data['price_range'] = $this->price_range_model->get_active_price_range();
 		
 		if ($action == 'view')
 		{
@@ -177,6 +181,9 @@ class Properties extends MX_Controller {
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
 
 		$this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
+
+		$this->template->add_js('npm/tagsinput/tagsinput.js');
+		$this->template->add_js('npm/tagsinput/tagsinput.js');
 		
 		$this->template->add_css(module_css('properties', 'properties_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_form'), 'embed');
@@ -261,6 +268,7 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_estate_id', lang('property_estate_id'), 'required');
 		$this->form_validation->set_rules('property_category_id', lang('property_category_id'), 'required');
 		$this->form_validation->set_rules('property_location_id', lang('property_location_id'), 'required');
+		$this->form_validation->set_rules('property_price_range_id', lang('property_price_range_id'), 'required');
 		$this->form_validation->set_rules('property_name', lang('property_name'), 'required|max_length[255]');
 		$this->form_validation->set_rules('property_overview', lang('property_overview'), 'required');
 		$this->form_validation->set_rules('property_image', lang('property_image'), 'required');
@@ -308,6 +316,7 @@ class Properties extends MX_Controller {
 			'property_estate_id'		=> $this->input->post('property_estate_id'),
 			'property_category_id'		=> $this->input->post('property_category_id'),
 			'property_location_id'		=> $this->input->post('property_location_id'),
+			'property_price_range_id'	=> $this->input->post('property_price_range_id'),
 			'property_name'				=> $this->input->post('property_name'),
 			'property_overview'			=> $this->input->post('property_overview'),
 			'property_slug'				=> url_title($this->input->post('property_name'), '-', TRUE),

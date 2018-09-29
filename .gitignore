@@ -1,7 +1,7 @@
 app/logs/log-*.php
-app/config/config.php
-app/config/database.php
-app/config/redis.php
+!app/config/config.php
+!app/config/database.php
+!app/config/redis.php
 !app/logs/index.html
 !app/cache/index.html
 !app/cache/.htaccess
@@ -9,7 +9,7 @@ app/config/redis.php
 !pub/data/photos/index.html
 app/cache/*
 pub/data/uploads/*
-pub/data/photos/*
+!pub/data/photos/*
 pub/npm/*
 .idea/*
 .idea/scopes/*

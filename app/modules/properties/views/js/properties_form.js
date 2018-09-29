@@ -1,14 +1,6 @@
 $(function() {
 	
-	$('#test').tagsinput({
-	  tagClass: 'big'
-	});
-
-	$('#property_tags').tagsinput({
-		  tagClass: function(item) {
-		    return (item.length > 10 ? 'big' : 'small');
-		  }
-		});
+	
 	// handles the submit action
 	$('#post').click(function(e){
 		// change the button to loading state
@@ -30,6 +22,7 @@ $(function() {
 			property_location_id: $('#property_location_id').val(),
 			property_name: $('#property_name').val(),
 			property_slug: $('#property_name').val(),
+			property_price_range_id: $('#property_price_range_id').val(),
 			property_overview: tinyMCE.get('property_overview').getContent(),
 			property_image: $('#property_image').val(),
 			property_website: $('#property_website').val(), 

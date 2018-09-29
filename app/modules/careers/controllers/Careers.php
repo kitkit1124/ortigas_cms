@@ -23,6 +23,7 @@ class Careers extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('careers_model');
 		$this->load->language('careers');
+		$this->load->model('department_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -139,6 +140,8 @@ class Careers extends MX_Controller {
 		{
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
 		}
+
+		$data['dept'] = $this->department_model->get_active_dept();
 
 		// render the page
 		$this->template->add_js('npm/tinymce/tinymce.min.js');

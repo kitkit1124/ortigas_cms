@@ -55,4 +55,13 @@ class Price_range_model extends BF_Model {
 					->join('users as modifier', 'modifier.id = price_range_modified_by', 'LEFT')
 					->datatables($fields);
 	}
+
+	public function get_active_price_range(){
+		$query = $this->where('price_range_status', 'Active')
+				->where('price_range_deleted', 0)
+				->order_by('price_range_label', 'ASC')
+				->format_dropdown('price_range_id', 'price_range_label', TRUE);
+
+		return $query;		
+	}
 }

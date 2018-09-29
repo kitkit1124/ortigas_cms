@@ -24,7 +24,7 @@
 				
 						<div class="form-group">
 							<label for="career_dept"><?php echo lang('career_dept')?>:</label>			
-							<?php echo form_input(array('id'=>'career_dept', 'name'=>'career_dept', 'value'=>set_value('career_dept', isset($record->career_dept) ? $record->career_dept : ''), 'class'=>'form-control'));?>
+							<?php echo form_dropdown('career_dept', $dept, set_value('career_dept', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept" class="form-control"'); ?>
 							<div id="error-career_dept"></div>			
 						</div>
 				

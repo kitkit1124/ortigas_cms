@@ -24,7 +24,7 @@ class Migration_Create_jobs extends CI_Migration {
 	private $_menus = array(
 		array(
 			'menu_parent'		=> 'careers',
-			'menu_text' 		=> 'Jobs',    
+			'menu_text' 		=> 'Job Applicants',    
 			'menu_link' 		=> 'careers/jobs', 
 			'menu_perm' 		=> 'careers.jobs.link', 
 			'menu_icon' 		=> 'fa fa-handshake-o', 

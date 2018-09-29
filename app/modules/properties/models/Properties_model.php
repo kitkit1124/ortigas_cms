@@ -45,6 +45,7 @@ class Properties_model extends BF_Model {
 			'category_name',
 			'location_name',
 			'property_slug',
+			'property_price_range_id',
 			'property_overview',
 			'property_image',
 			'property_website',

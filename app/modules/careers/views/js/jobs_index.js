@@ -23,7 +23,7 @@ $(function() {
 			{
 				"aTargets": [1],
 				"mRender": function (data, type, full) {
-					return '<a href="jobs/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+					return '<a href="jobs/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="View">' + data + '</a>';
 				},
 			},
 			// {

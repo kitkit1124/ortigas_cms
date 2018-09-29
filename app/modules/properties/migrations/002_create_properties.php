@@ -57,6 +57,7 @@ class Migration_Create_properties extends CI_Migration {
 			'property_estate_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'property_category_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'property_location_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
+			'property_price_range_id'	=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'property_name'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'property_slug'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'property_overview'			=> array('type' => 'TEXT', 'null' => FALSE),

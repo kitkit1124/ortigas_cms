@@ -17,10 +17,11 @@
 						<tr>
 							<th class="all"><?php echo lang('index_id'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_name'); ?></th>
-							<th class="all"><?php echo lang('index_estate_id'); ?></th>
-							<th class="min-desktop"><?php echo lang('index_category_id'); ?></th>
-							<th class="min-desktop"><?php echo lang('index_location_id'); ?></th>
+							<th class="none"><?php echo lang('index_estate_id'); ?></th>
+							<th class="none"><?php echo lang('index_category_id'); ?></th>
+							<th class="none"><?php echo lang('index_location_id'); ?></th>
 							<th class="none"><?php echo lang('index_slug'); ?></th>
+							<th class="none"><?php echo lang('index_price_range_id'); ?></th>
 							<th class="none"><?php echo lang('index_overview'); ?></th>
 							<th class="none"><?php echo lang('index_image'); ?></th>
 							<th class="none"><?php echo lang('index_website'); ?></th>

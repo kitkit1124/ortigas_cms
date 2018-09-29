@@ -41,7 +41,7 @@ class Careers_model extends BF_Model {
 		$fields = array(
 			'career_id',
 			'career_position_title',
-			'career_dept',
+			'dept_name',
 			'career_req',
 			'career_res',
 			'career_location',
@@ -52,11 +52,13 @@ class Careers_model extends BF_Model {
 			'career_created_on', 
 			'concat(creator.first_name, " ", creator.last_name)', 
 			'career_modified_on', 
-			'concat(modifier.first_name, " ", modifier.last_name)'
+			'concat(modifier.first_name, " ", modifier.last_name)',
+			'career_dept'
 		);
 
 		return $this->join('users as creator', 'creator.id = career_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = career_modified_by', 'LEFT')
+					->join('career_department', 'career_department.dept_id = career_dept', 'LEFT')
 					->datatables($fields);
 	}
 

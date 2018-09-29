@@ -24,34 +24,49 @@
 							<?php echo form_input(array('id'=>'property_name', 'name'=>'property_name', 'value'=>set_value('property_name', isset($record->property_name) ? $record->property_name : ''), 'class'=>'form-control form-control-lg'));?>
 							<div id="error-property_name"></div>			
 						</div>
+
 						<div class="row">
-							<div class="col-sm-4 property_vital_details">
+							<div class="col-sm-6 property_vital_details">
 								<div class="form-group"><span style="color: red">*</span> 
 									<label for="property_estate_id"><?php echo lang('property_estate_id')?>:</label>
 									<?php echo form_dropdown('property_estate_id', $estates, set_value('property_estate_id', (isset($record->property_estate_id)) ? $record->property_estate_id : ''), 'id="property_estate_id" class="form-control"'); ?>
 									<div id="error-property_estate_id"></div>
 								</div>
-
+							</div>
+							<div class="col-sm-6 property_vital_details">
 								<div class="form-group"><span style="color: red">*</span>
 									<label for="property_category_id"><?php echo lang('property_category_id')?>:</label>
 									<?php echo form_dropdown('property_category_id', $categories, set_value('property_category_id', (isset($record->property_category_id)) ? $record->property_category_id : ''), 'id="property_category_id" class="form-control"'); ?>
 									<div id="error-property_category_id"></div>
 								</div>
+							</div>
+						</div>
 
+						<div class="row">
+							<div class="col-sm-6 property_vital_details">
 								<div class="form-group"><span style="color: red">*</span>
 									<label for="property_location_id"><?php echo lang('property_location_id')?>:</label>
 									<?php echo form_dropdown('property_location_id', $locations, set_value('property_location_id', (isset($record->property_location_id)) ? $record->property_location_id : ''), 'id="property_location_id" class="form-control"'); ?>
 									<div id="error-property_location_id"></div>
 								</div>
 							</div>
-							<div class="col-sm-8 property_overview">
+							<div class="col-sm-6 property_vital_details">
 								<div class="form-group"><span style="color: red">*</span>
-									<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
-									<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?>
-									<div id="error-property_overview"></div>			
+									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label>
+									<?php echo form_dropdown('property_price_range_id', $price_range, set_value('property_price_range_id', (isset($record->property_price_range_id)) ? $record->property_price_range_id : ''), 'id="property_price_range_id" class="form-control"'); ?>
+									<div id="error-property_price_range_id"></div>
 								</div>
 							</div>
 						</div>
+
+						<div class="property_overview">
+							<div class="form-group"><span style="color: red">*</span>
+								<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
+								<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?>
+								<div id="error-property_overview"></div>			
+							</div>
+						</div>
+					
 
 						<div id="accordion">
 
@@ -211,12 +226,9 @@
 							</div>		
 						</div>
 
-						<input type="text" value="İstanbul, Adıyaman, Adana, Urfa" data-role="tagsinput" class="form-control" />
-
 						<div class="form-group">
-						
 							<label for="property_tags"><?php echo lang('property_tags')?>:</label>			
-							<?php echo form_input(array('id'=>'property_tags', 'name'=>'property_tags', 'value'=>set_value('property_tags', isset($record->property_tags) ? $record->property_tags : ''), 'class'=>'form-control'));?>
+							<?php echo form_input(array('id'=>'property_tags', 'name'=>'property_tags', 'value'=>set_value('property_tags', isset($record->property_tags) ? $record->property_tags : ''), 'class'=>'form-control',  'data-role'=>'tagsinput'));?>
 							<div id="error-property_tags"></div>			
 						</div>
 

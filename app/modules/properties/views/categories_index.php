@@ -3,9 +3,9 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
-					<?php if ($this->acl->restrict('properties.categories.add', 'return')): ?>
+					<?php /*if ($this->acl->restrict('properties.categories.add', 'return')): ?>
 						<a href="<?php echo site_url('properties/categories/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo lang('button_add')?></a>
-					<?php endif; ?>
+					<?php endif;*/ ?>
 				</div>
 			</div>
 			<div class="card-header d-flex align-items-center">

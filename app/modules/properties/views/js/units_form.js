@@ -118,14 +118,14 @@ $(function() {
 				$('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal').modal('hide'); 
+				$('#modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 
 
 				// shows the success message
 				alertify.success(o.message); 
-				$('.modal-footer button').trigger('click'); 
+				//$('.modal-footer button').trigger('click'); 
 
 			}
 		}).fail(function() {

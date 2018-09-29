@@ -38,6 +38,8 @@ $lang['property_map_location']		= 'Map Location';
 $lang['property_nearby_facilities']	= 'Nearby Facilities';
 $lang['property_social_page']		= 'Social Page';
 $lang['property_slider']			= 'Slider';
+$lang['property_price_range_id']	= 'Price Range';
+
 
 // Buttons
 $lang['button_add']					= 'Add Property';
@@ -73,6 +75,7 @@ $lang['index_nearby_hospitals']		= 'Nearby Hospitals';
 $lang['index_nearby_schools']		= 'Nearby Schools';
 $lang['index_tags']					= 'Tags';
 $lang['index_status']				= 'Status';
+$lang['index_price_range_id']		= 'Price Range';
 
 $lang['index_created_on']			= 'Created On';
 $lang['index_created_by']			= 'Created By';
