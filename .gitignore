@@ -7,7 +7,6 @@ app/config/redis.php
 !app/cache/.htaccess
 !pub/data/uploads/index.html
 !pub/data/photos/index.html
-app/modules/properties/migrations/*
 app/cache/*
 pub/data/uploads/*
 pub/data/photos/*
