@@ -31,8 +31,10 @@ class Posts extends MX_Controller
 
 		$this->load->config('config');
 		$this->load->model('post_categories_model');
+		$this->load->model('post_properties_model');
 		$this->load->model('categories_model');
 		$this->load->model('posts_model');
+		$this->load->model('properties/properties_model');
 		// $this->load->model('sidebars_model');
 		$this->load->language('posts');
 	}
@@ -134,7 +136,9 @@ class Posts extends MX_Controller
 				$response['errors'] = array(
 					'post_title'		=> form_error('post_title'),
 					'post_content'		=> form_error('post_content'),
+					'post_image'		=> form_error('post_image'),
 					'post_categories'	=> form_error('post_categories[]'),
+					'post_properties'	=> form_error('post_properties[]'),
 					'post_posted_on'	=> form_error('post_posted_on'),
 					'post_layout'		=> form_error('post_layout'),
 					// 'post_sidebar_id'	=> form_error('post_sidebar_id'),
@@ -151,12 +155,21 @@ class Posts extends MX_Controller
 		// 	->order_by('sidebar_name', 'asc')
 		// 	->format_dropdown('sidebar_id', 'sidebar_name', TRUE);
 
+	
+		$properties = $this->properties_model->get_active_properties();
+		unset($properties['']);
+		$data['properties']  = $properties;
+
 		$current_categories = array();
+		$current_properties= array();
 		if ($action != 'add') 
 		{
 			$data['record'] = $this->posts_model->find($id);
 			$current_categories = $this->post_categories_model->get_current_categories($id);
+			$current_properties = $this->post_properties_model->get_current_properties($id);
 		}
+
+
 
 		// all categories
 		// $data['categories'] = $this->categories_model
@@ -167,6 +180,8 @@ class Posts extends MX_Controller
 		$data['categories'] = $this->categories_model->get_category_checkboxes();
 		// pr($data['categories']); exit;
 		$data['current_categories'] = array_keys($current_categories);
+		$data['current_properties'] = array_keys($current_properties);
+
 
 		// render the page
 		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
@@ -179,6 +194,9 @@ class Posts extends MX_Controller
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_css('npm/datetimepicker/DateTimePicker.min.css');
 		$this->template->add_js('npm/datetimepicker/DateTimePicker.min.js');
+
+		$this->template->add_css('npm/select2/css/select2.min.css');
+		$this->template->add_js('npm/select2/js/select2.min.js');
 		
 		if ($action == 'view')
 		{
@@ -187,6 +205,39 @@ class Posts extends MX_Controller
 		$this->template->add_css(module_css('website', 'posts_form'), 'embed');
 		$this->template->add_js(module_js('website', 'posts_form'), 'embed');
 		$this->template->write_view('content', 'posts_form', $data);
+		$this->template->render();
+	}
+
+
+	function form_upload($action = 'add', $id = FALSE)
+	{
+		// $this->acl->restrict('properties.properties.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($post_id = $this->_save($action, $id))
+			{
+
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $post_id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('website', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('website', 'form_upload'), 'embed');
+		$this->template->write_view('content', 'form_upload', $data);
 		$this->template->render();
 	}
 
@@ -235,6 +286,7 @@ class Posts extends MX_Controller
 		$this->form_validation->set_rules('post_title', lang('post_title'), 'required');
 		$this->form_validation->set_rules('post_content', lang('post_content'), 'required');
 		$this->form_validation->set_rules('post_categories[]', lang('post_categories'), 'required');
+		$this->form_validation->set_rules('post_image', lang('post_image'), 'required');
 		$this->form_validation->set_rules('post_posted_on', lang('post_posted_on'), 'required');
 		$this->form_validation->set_rules('post_layout', lang('post_layout'), 'required');
 		$this->form_validation->set_rules('post_status', lang('post_status'), 'required');
@@ -255,6 +307,7 @@ class Posts extends MX_Controller
 			'post_title'		=> $this->input->post('post_title'),
 			'post_slug'			=> url_title($this->input->post('post_title'), '-', TRUE),
 			'post_content'		=> $this->input->post('post_content'),
+			'post_image'		=> $this->input->post('post_image'),
 			'post_posted_on'	=> $this->input->post('post_posted_on'),
 			'post_layout'		=> $this->input->post('post_layout'),
 			// 'post_sidebar_id'	=> $this->input->post('post_sidebar_id'),
@@ -296,7 +349,23 @@ class Posts extends MX_Controller
 			}
 		}
 
+		$properties = $this->input->post('post_properties');
 
+		$delete_where_id = array( 'post_properties_post_id' => $id);
+		$this->post_properties_model->delete_where($delete_where_id);
+
+		if ($properties)
+		{
+			foreach ($properties as $property)
+			{	
+				$data = array(
+					'post_properties_post_id' => $id,
+					'post_properties_property_id' => $property
+				);
+
+				$this->post_properties_model->insert($data);
+			}
+		}
 
 		return $return;
 

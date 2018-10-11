@@ -41,7 +41,7 @@ class Careers_model extends BF_Model {
 		$fields = array(
 			'career_id',
 			'career_position_title',
-			'dept_name',
+			'department_name',
 			'career_req',
 			'career_res',
 			'career_location',
@@ -52,19 +52,18 @@ class Careers_model extends BF_Model {
 			'career_created_on', 
 			'concat(creator.first_name, " ", creator.last_name)', 
 			'career_modified_on', 
-			'concat(modifier.first_name, " ", modifier.last_name)',
-			'career_dept'
+			'concat(modifier.first_name, " ", modifier.last_name)'
 		);
 
 		return $this->join('users as creator', 'creator.id = career_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = career_modified_by', 'LEFT')
-					->join('career_department', 'career_department.dept_id = career_dept', 'LEFT')
+					->join('career_departments', 'career_departments.department_id = career_dept', 'LEFT')
+					->join('career_divisions', 'career_divisions.division_id = career_div', 'LEFT')
 					->datatables($fields);
 	}
 
-	public function get_active_careers(){
-	$query = $this->careers_model
-			->where('career_status', 'Active')
+	public function get_select_careers(){
+	$query = $this->where('career_status', 'Active')
 			->where('career_deleted', 0)
 			->order_by('career_position_title', 'ASC')
 			->format_dropdown('career_id', 'career_position_title', TRUE);

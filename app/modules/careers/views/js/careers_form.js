@@ -1,6 +1,26 @@
 $(function() {
 	
-	
+	var dept_id = $('#career_dept').val();
+	if(dept_id){}
+	else{ $('#career_div').prop( "disabled", true ).css('color','#999'); }
+	$('#career_dept').change(function() {
+		$('#career_div').prop( "disabled", false ).css('color','#495057');
+		var id = $(this).val();
+		$('#career_div').html(' ').append('<option value=""> </option>');
+
+		if(id){
+			$.ajax({method: "GET",url: site_url+"careers/careers/get_divisions",data: { department_id : id } })
+			.done(function( data ) {
+				d = jQuery.parseJSON(data);
+				$.each(d, function( index, value ) {
+					$('#career_div').append('<option value="' + value.division_id + '">' + value.division_name + '</option>');
+				});
+			});
+		}
+		else{
+			$('#career_div').prop( "disabled", true ).css('color','#999').html('<option value="">Please select Property first</option>');
+		}
+    });	
 	
 	// handles the submit action
 	$('#post').click(function(e){
@@ -18,7 +38,12 @@ $(function() {
 		// submits the data to the backend
 		$.post(post_url, {
 			career_position_title: $('#career_position_title').val(),
+			career_position_title_original: $('#career_position_title_original').val(),
 			career_dept: $('#career_dept').val(),
+			career_dept_original: $('#career_dept_original').val(),
+			career_div: $('#career_div').val(),
+			career_div_original: $('#career_div_original').val(),
+			career_image: $('#career_image').val(),
 			career_req: tinyMCE.get('career_req').getContent(), 
 			career_res: tinyMCE.get('career_res').getContent(), 
 			career_location: $('#career_location').val(),

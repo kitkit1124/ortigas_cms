@@ -52,17 +52,39 @@
 							</div>
 							<div class="col-sm-6 property_vital_details">
 								<div class="form-group"><span style="color: red">*</span>
+									<label for="property_prop_type_id"><?php echo lang('property_prop_type_id')?>:</label>
+									<?php echo form_dropdown('property_prop_type_id', $property_types, set_value('property_prop_type_id', (isset($record->property_prop_type_id)) ? $record->property_prop_type_id : ''), 'id="property_prop_type_id" class="form-control"'); ?>
+									<div id="error-property_prop_type_id"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-sm-6 property_vital_details">
+								<div class="form-group"><span style="color: red">*</span>
 									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label>
 									<?php echo form_dropdown('property_price_range_id', $price_range, set_value('property_price_range_id', (isset($record->property_price_range_id)) ? $record->property_price_range_id : ''), 'id="property_price_range_id" class="form-control"'); ?>
 									<div id="error-property_price_range_id"></div>
 								</div>
 							</div>
+
+							<div class="col-sm-6 property_vital_details">
+								<div class="form-group">
+									<label for="property_featured" class="property_featured_label"><?php echo lang('property_featured')?>?</label>
+									<div>
+										<?php echo form_radio('property_featured', 1, set_value('property_featured', (isset($record->property_is_featured) && $record->property_is_featured) ? TRUE: FALSE), 'id="property_featured1"'); ?><label for="property_featured1" class="pointer pointer1">Yes</label>
+										<?php echo form_radio('property_featured', 0, set_value('property_featured', (isset($record->property_is_featured) && $record->property_is_featured) ? FALSE : TRUE), 'id="property_featured2"'); ?><label for="property_featured2" class="pointer">No</label>
+									</div>
+									<div id="error-property_featured"></div>
+								</div>
+							</div>
+							
 						</div>
 
 						<div class="property_overview">
 							<div class="form-group"><span style="color: red">*</span>
 								<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
-								<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?>
+								<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
 								<div id="error-property_overview"></div>			
 							</div>
 						</div>
@@ -74,7 +96,7 @@
 							   <div class="card">
 							      <div class="card-header">
 							        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-							        	<?php echo lang('property_slider')?>		          
+							        	<label><?php echo lang('property_slider')?></label>		          
 							        </a>
 						        	<div class="button_add_slider">
 							        	<?php if ($this->acl->restrict('properties.property_sliders.add', 'return')): ?>
@@ -107,10 +129,46 @@
 							    </div>
 							<?php } ?>
 
+							
+						   <div class="card">
+						      <div class="card-header">
+						        <a class="card-link" data-toggle="collapse" href="#construction_update"><label><?php echo lang('property_construction')?></label></a>
+						      </div>
+						      <div id="construction_update" class="collapse" data-parent="#accordion">
+						        <div class="card-body">		
+									<div class="property_construction_update_container">
+										<input type="range" min="1" max="5" class="property_construction_update" id="property_construction_update" value = "<?php echo isset($record->property_construction_update) ? $record->property_construction_update : ''; ?>">
+									</div>
+									<div class="row year">
+									  	<div class="col-sm-4 ground">
+									  		<?php echo form_input(array('id'=>'property_ground', 'name'=>'property_ground', 'value'=>set_value('property_ground', isset($record->property_ground) ? $record->property_ground : ''), 'class'=>'form-control'));?>
+									  	</div>
+									  	<div class="col-sm-4 presell">
+									  		<center><?php echo form_input(array('id'=>'property_presell', 'name'=>'property_presell', 'value'=>set_value('property_presell', isset($record->property_presell) ? $record->property_presell : ''), 'class'=>'form-control'));?></center>
+									  	</div>
+									  	<div class="col-sm-4 turnover">
+									  		<?php echo form_input(array('id'=>'property_turnover', 'name'=>'property_turnover', 'value'=>set_value('property_turnover', isset($record->property_turnover) ? $record->property_turnover : ''), 'class'=>'form-control'));?>
+									  	</div>
+
+									  	<div class="col-sm-4 ground">
+									  		<label>Ground Breaking</label>
+									  	</div>
+									  	<div class="col-sm-4 presell">
+									  		<label>Preselling</label>
+									  	</div>
+									  	<div class="col-sm-4 turnover">
+									  		<label>Turnover</label>
+									  	</div>
+									</div>
+						        </div>
+						      </div>
+						    </div>
+						
+
 						    <div class="card">
 						      <div class="card-header">
 						        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
-						       <label for="property_map_location"><?php echo lang('property_map_location')?></label> & <label for="property_nearby_facilities"><?php echo lang('property_nearby_facilities')?></label>
+						       <label for="property_map_location"><?php echo lang('property_map_location')?> & </label><label for="property_nearby_facilities"><?php echo lang('property_nearby_facilities')?></label>
 						      </a>
 						      </div>
 						      <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -213,7 +271,7 @@
 
 					<div class="col-sm-3  prop_right_details">
 						<div class="form-group">
-							<!-- <label for="property_image"><?php echo lang('property_image')?>:</label>		 -->	
+							<label for="property_image"><?php echo lang('property_image')?>:</label>
 							<br>		
 							<a href="<?php echo site_url('properties/properties/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="property_active_image" src="<?php echo site_url(isset($record->property_image) ? $record->property_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
@@ -223,6 +281,20 @@
 
 							<div style="display: none">
 							<?php echo form_input(array('id'=>'property_image', 'name'=>'property_image', 'value'=>set_value('property_image', isset($record->property_image) ? $record->property_image : ''), 'class'=>'form-control'));?>
+							</div>		
+						</div>
+
+						<div class="form-group">
+							<label for="property_image"><?php echo lang('property_logo')?>:</label>
+							<br>		
+							<a href="<?php echo site_url('properties/properties/form_upload_logo/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
+								<img id="property_active_logo" src="<?php echo site_url(isset($record->property_logo) ? $record->property_logo : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+							</a>
+							<br>
+							<div id="error-property_logo"></div>	
+
+							<div style="display: none">
+							<?php echo form_input(array('id'=>'property_logo', 'name'=>'property_logo', 'value'=>set_value('property_logo', isset($record->property_logo) ? $record->property_logo : ''), 'class'=>'form-control'));?>
 							</div>		
 						</div>
 
@@ -257,4 +329,5 @@
 <script>
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
+var featured_numrows = '<?php echo $featured_numrows ?>';
 </script>

@@ -33,6 +33,9 @@ class Pages extends MX_Controller
 		$this->load->model('pages_model');
 		// $this->load->model('sidebars_model');
 		$this->load->language('pages');
+		$this->load->model('properties/properties_model');
+		$this->load->model('post_properties_model');
+		$this->load->model('posts_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -154,7 +157,28 @@ class Pages extends MX_Controller
 		// 	->order_by('sidebar_name', 'asc')
 		// 	->format_dropdown('sidebar_id', 'sidebar_name', TRUE);
 
-		if ($action != 'add') $data['record'] = $this->pages_model->find($id);
+		$properties = $this->properties_model->get_active_properties();
+		unset($properties['']);
+		$data['properties']  = $properties;
+
+		$fields = [ 'news' => 'News'];
+		$posts 	= $this->posts_model->get_posts($fields);
+		unset($posts['']);
+		$data['posts']  = $posts;
+
+	
+		$current_properties= array();
+		$current_posts= array();
+
+		if ($action != 'add') 
+		{		
+			$data['record'] = $this->pages_model->find($id);
+			$current_properties = $this->post_properties_model->get_current_properties($id);
+			// $current_posts = $this->post_properties_model->get_current_properties($id);
+		}
+
+
+		
 
 		// render the page
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
@@ -163,6 +187,8 @@ class Pages extends MX_Controller
 		// $this->template->add_js('npm/grid-editor/jquery.grideditor.min.js');		
 		// $this->template->add_js('npm/grid-editor/jquery.grideditor.tinymce.js');
 		// $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
+		$this->template->add_css('npm/select2/css/select2.min.css');
+		$this->template->add_js('npm/select2/js/select2.min.js');
 		
 
 		if ($action == 'view')

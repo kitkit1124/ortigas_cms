@@ -11,6 +11,9 @@ $(function() {
 	//grid_editor('#my-grid');
 
 	// handles the post action
+
+	$('#page_properties, #page_posts').select2();
+
 	$('#post').click(function(e){
 		// change the button to loading state
 		var $this = $(this);

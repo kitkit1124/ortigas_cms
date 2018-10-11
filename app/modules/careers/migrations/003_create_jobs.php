@@ -10,7 +10,7 @@
  */
 class Migration_Create_jobs extends CI_Migration {
 
-	private $_table = 'jobs';
+	private $_table = 'career_applicants';
 
 	private $_permissions = array(
 		array('Jobs Link', 'careers.jobs.link'),
@@ -24,11 +24,11 @@ class Migration_Create_jobs extends CI_Migration {
 	private $_menus = array(
 		array(
 			'menu_parent'		=> 'careers',
-			'menu_text' 		=> 'Job Applicants',    
+			'menu_text' 		=> 'Applicants',    
 			'menu_link' 		=> 'careers/jobs', 
 			'menu_perm' 		=> 'careers.jobs.link', 
-			'menu_icon' 		=> 'fa fa-handshake-o', 
-			'menu_order' 		=> 3, 
+			'menu_icon' 		=> 'fa fa-users', 
+			'menu_order' 		=> 4, 
 			'menu_active' 		=> 1
 		),
 	);
@@ -46,11 +46,12 @@ class Migration_Create_jobs extends CI_Migration {
 		$fields = array(
 			'job_id'				=> array('type' => 'INT', 'constraint' => 10, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
 			'job_career_id'			=> array('type' => 'SMALLINT', 'constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
-			'job_application_name'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'job_applicant_name'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'job_email'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
-			'job_mobile'			=> array('type' => 'VARCHAR', 'constraint' => 10, 'null' => FALSE),
-			'job_document'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
-			'job_pitch'				=> array('type' => 'TEXT', 'null' => FALSE),
+			'job_mobile'			=> array('type' => 'VARCHAR', 'constraint' => 10, 'null' => TRUE),
+			'job_document'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'job_referred'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'job_pitch'				=> array('type' => 'TEXT', 'null' => TRUE),
 
 			'job_created_by' 		=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 			'job_created_on' 		=> array('type' => 'DATETIME', 'null' => TRUE),
@@ -63,9 +64,8 @@ class Migration_Create_jobs extends CI_Migration {
 		$this->dbforge->add_field($fields);
 		$this->dbforge->add_key('job_id', TRUE);
 		$this->dbforge->add_key('job_career_id');
-		$this->dbforge->add_key('job_application_name');
+		$this->dbforge->add_key('job_applicant_name');
 		$this->dbforge->add_key('job_email');
-		$this->dbforge->add_key('job_mobile');
 
 		$this->dbforge->add_key('job_deleted');
 		$this->dbforge->create_table($this->_table, TRUE);

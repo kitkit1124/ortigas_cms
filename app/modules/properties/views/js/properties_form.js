@@ -23,8 +23,11 @@ $(function() {
 			property_name: $('#property_name').val(),
 			property_slug: $('#property_name').val(),
 			property_price_range_id: $('#property_price_range_id').val(),
+			property_prop_type_id: $('#property_prop_type_id').val(),
+			property_is_featured: $('input[name="property_featured"]:checked').val(),
 			property_overview: tinyMCE.get('property_overview').getContent(),
 			property_image: $('#property_image').val(),
+			property_logo: $('#property_logo').val(),
 			property_website: $('#property_website').val(), 
 			property_facebook: $('#property_facebook').val(),
 			property_twitter: $('#property_twitter').val(),
@@ -39,6 +42,10 @@ $(function() {
 			property_nearby_schools: tinyMCE.get('property_nearby_schools').getContent(),
 			property_tags: $('#property_tags').val(),
 			property_status: $('#property_status').val(),
+			property_construction_update: $('#property_construction_update').val(),
+			property_ground: $('#property_ground').val(),
+			property_presell: $('#property_presell').val(),
+			property_turnover: $('#property_turnover').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -134,6 +141,13 @@ $(function() {
 		}
 	});
     $( "#sortable" ).disableSelection();
+
+    if(featured_numrows == 1){
+	    $('#property_featured1').click(function(){
+	    	alertify.alert("Information: Latest 3 Featured Properties will be only shown.");
+	    	$('#alertify-ok').click(function(){ $(this).fadeOut(100); }); 
+	    });
+	}
 });
 
 

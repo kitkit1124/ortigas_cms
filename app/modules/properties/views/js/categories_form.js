@@ -49,6 +49,7 @@ $(function() {
 		$.post(ajax_url, {
 			category_name_original: $('#category_name_original').val(),
 			category_name: $('#category_name').val(),
+			category_description: tinyMCE.get('category_description').getContent(),
 			category_image: $('#category_image').val(),
 			category_status: $('#category_status').val(),
 
@@ -75,7 +76,7 @@ $(function() {
 				$('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal').modal('hide'); 
+				$('#modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 
@@ -98,5 +99,23 @@ $(function() {
 			event.preventDefault();
 			return false;
 		}
+	});
+
+	tinymce.init({
+		selector: "#category_description",
+		theme: "modern",
+		statusbar: true,
+		menubar: true,
+		relative_urls: false,
+		remove_script_host : false,
+		convert_urls : true,
+		plugins: [
+			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+			'searchreplace wordcount visualblocks visualchars code',
+			'insertdatetime media nonbreaking save table contextmenu directionality',
+			'emoticons template paste textcolor colorpicker textpattern'
+		],
+		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons mybutton documents videos',
+		image_advtab: true,
 	});
 });

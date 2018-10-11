@@ -16,6 +16,8 @@ $lang['crumb_module']				= 'Property Categories';
 $lang['category_name']				= 'Name';
 $lang['category_image']				= 'Banner Image';
 $lang['category_status']			= 'Status';
+$lang['category_description']		= 'Overview Description';
+
 
 // Buttons
 $lang['button_add']					= 'Add Category';

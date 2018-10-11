@@ -15,11 +15,12 @@ $lang['crumb_module']				= 'Job Applications';
 // Labels
 $lang['job_id']						= 'ID';
 $lang['job_career_id']				= 'Career';
-$lang['job_application_name']		= 'Applicant Name';
+$lang['job_applicant_name']			= 'Applicant Name';
 $lang['job_email']					= 'Email';
 $lang['job_mobile']					= 'Mobile';
 $lang['job_document']				= 'Document';
 $lang['job_pitch']					= 'Pitch';
+$lang['job_referred']				= 'Referred by';
 
 // Buttons
 $lang['button_add']					= 'Add Job';

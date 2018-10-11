@@ -19,7 +19,8 @@ $lang['property_location_id']		= 'Location';
 $lang['property_name']				= 'Name';
 $lang['property_slug']				= 'Slug';
 $lang['property_overview']			= 'Overview of the Property';
-$lang['property_image']				= 'Image';
+$lang['property_image']				= 'Banner Image';
+$lang['property_logo']				= 'Property Logo';
 $lang['property_website']			= 'Website';
 $lang['property_facebook']			= 'Facebook';
 $lang['property_twitter']			= 'Twitter';
@@ -39,6 +40,9 @@ $lang['property_nearby_facilities']	= 'Nearby Facilities';
 $lang['property_social_page']		= 'Social Page';
 $lang['property_slider']			= 'Slider';
 $lang['property_price_range_id']	= 'Price Range';
+$lang['property_prop_type_id']		= 'Development Type';
+$lang['property_featured']			= 'Set as featured';
+$lang['property_construction']		= 'Construction Update';
 
 
 // Buttons

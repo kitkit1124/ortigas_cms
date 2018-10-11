@@ -59,4 +59,19 @@ class Posts_model extends BF_Model
 					->join('users as modifier', 'modifier.id = post_modified_by', 'LEFT')
 					->datatables($fields);
 	}
+
+	public function get_posts($fields){
+		if(isset($fields['news']) && $fields['news']){
+			$this->where('category_name', $fields['news']);
+		}
+
+		$query = $this->where('post_status', 'Posted')
+				->where('post_deleted', 0)
+				->order_by('post_title', 'ASC')
+				->join('post_categories', 'post_categories.post_category_post_id = post_id' )
+				->join('categories', 'category_id = post_categories.post_category_category_id')
+				->format_dropdown('post_id', 'post_title', TRUE);
+
+		return $query;		
+	}
 }

@@ -27,11 +27,11 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col-sm-2">
-					<label for="job_application_name"><?php echo lang('job_application_name')?>:</label>
+					<label for="job_applicant_name"><?php echo lang('job_applicant_name')?>:</label>
 				</div>
 				<div class="col-sm-10">
-					<?php echo form_input(array('id'=>'job_application_name', 'name'=>'job_application_name', 'value'=>set_value('job_application_name', isset($record->job_application_name) ? $record->job_application_name : ''), 'class'=>'form-control'));?>
-					<div id="error-job_application_name"></div>			
+					<?php echo form_input(array('id'=>'job_applicant_name', 'name'=>'job_applicant_name', 'value'=>set_value('job_applicant_name', isset($record->job_applicant_name) ? $record->job_applicant_name : ''), 'class'=>'form-control'));?>
+					<div id="error-job_applicant_name"></div>			
 				</div>
 			</div>		
 		</div>
@@ -56,6 +56,18 @@
 				<div class="col-sm-10">
 					<?php echo form_input(array('id'=>'job_mobile', 'name'=>'job_mobile', 'value'=>set_value('job_mobile', isset($record->job_mobile) ? $record->job_mobile : ''), 'class'=>'form-control'));?>
 					<div id="error-job_mobile"></div>			
+				</div>
+			</div>		
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="job_referred"><?php echo lang('job_referred')?>:</label>
+				</div>
+				<div class="col-sm-10">
+					<?php echo form_input(array('id'=>'job_referred', 'name'=>'job_referred', 'value'=>set_value('job_referred', isset($record->job_referred) ? $record->job_referred : ''), 'class'=>'form-control'));?>
+					<div id="error-job_referred"></div>			
 				</div>
 			</div>		
 		</div>
@@ -106,7 +118,7 @@
 			</div>		
 		</div>
 
-		<div class="form-group">
+		<div class="form-group" style="display: none">
 			<div class="row">
 				<div class="col-sm-2">
 					<label for="job_pitch"><?php echo lang('job_pitch')?>:</label>

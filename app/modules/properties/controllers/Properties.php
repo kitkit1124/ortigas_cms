@@ -121,10 +121,13 @@ class Properties extends MX_Controller {
 					'property_category_id'		=> form_error('property_category_id'),
 					'property_location_id'		=> form_error('property_location_id'),
 					'property_price_range_id'	=> form_error('property_price_range_id'),
+					'property_prop_type_id'		=> form_error('property_prop_type_id'),
+					'property_is_featured'		=> form_error('property_is_featured'),
 					'property_name'				=> form_error('property_name'),
 					'property_slug'				=> form_error('property_slug'),
 					'property_overview'			=> form_error('property_overview'),
 					'property_image'			=> form_error('property_image'),
+					'property_logo'				=> form_error('property_logo'),
 					'property_website'			=> form_error('property_website'),
 					'property_facebook'			=> form_error('property_facebook'),
 					'property_twitter'			=> form_error('property_twitter'),
@@ -139,6 +142,10 @@ class Properties extends MX_Controller {
 					'property_nearby_schools'		=> form_error('property_nearby_schools'),
 					'property_tags'					=> form_error('property_tags'),
 					'property_status'				=> form_error('property_status'),
+					'property_construction_update'	=> form_error('property_construction_update'),
+					'property_ground'				=> form_error('property_ground'),
+					'property_presell'				=> form_error('property_presell'),
+					'property_turnover'				=> form_error('property_turnover'),
 				);
 				echo json_encode($response);
 				exit;
@@ -168,8 +175,13 @@ class Properties extends MX_Controller {
 		$this->load->model('locations_model');
 		$data['locations'] = $this->locations_model->get_active_locations();
 
+		$this->load->model('property_types_model');
+		$data['property_types'] = $this->property_types_model->get_active_property_types();
+
 		$this->load->model('price_range_model');
 		$data['price_range'] = $this->price_range_model->get_active_price_range();
+
+		$data['featured_numrows'] = $this->properties_model->count_by(array('property_status'=>'Active', 'property_deleted'=>0, 'property_is_featured'=>1));
 		
 		if ($action == 'view')
 		{
@@ -223,6 +235,39 @@ class Properties extends MX_Controller {
 		$this->template->render();
 	}
 
+	function form_upload_logo($action = 'add', $id = FALSE)
+	{
+		$this->acl->restrict('properties.properties.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($property_id = $this->_save($action, $id))
+			{
+
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $property_id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('properties', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('properties', 'properties_form_logo'), 'embed');
+		$this->template->write_view('content', 'form_upload', $data);
+		$this->template->render();
+	}
+
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -269,9 +314,11 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_category_id', lang('property_category_id'), 'required');
 		$this->form_validation->set_rules('property_location_id', lang('property_location_id'), 'required');
 		$this->form_validation->set_rules('property_price_range_id', lang('property_price_range_id'), 'required');
+		$this->form_validation->set_rules('property_prop_type_id', lang('property_prop_type_id'), 'required');
 		$this->form_validation->set_rules('property_name', lang('property_name'), 'required|max_length[255]');
 		$this->form_validation->set_rules('property_overview', lang('property_overview'), 'required');
 		$this->form_validation->set_rules('property_image', lang('property_image'), 'required');
+		$this->form_validation->set_rules('property_logo', lang('property_logo'), 'required');
 		// $this->form_validation->set_rules('property_website', lang('property_website'), 'required');
 		$this->form_validation->set_rules('property_facebook', lang('property_facebook'), 'max_length[255]');
 		$this->form_validation->set_rules('property_twitter', lang('property_twitter'), 'max_length[255]');
@@ -317,10 +364,13 @@ class Properties extends MX_Controller {
 			'property_category_id'		=> $this->input->post('property_category_id'),
 			'property_location_id'		=> $this->input->post('property_location_id'),
 			'property_price_range_id'	=> $this->input->post('property_price_range_id'),
+			'property_prop_type_id'		=> $this->input->post('property_prop_type_id'),
+			'property_is_featured'		=> $this->input->post('property_is_featured'),
 			'property_name'				=> $this->input->post('property_name'),
 			'property_overview'			=> $this->input->post('property_overview'),
 			'property_slug'				=> url_title($this->input->post('property_name'), '-', TRUE),
 			'property_image'			=> $this->input->post('property_image'),
+			'property_logo'				=> $this->input->post('property_logo'),
 			'property_website'			=> $this->input->post('property_website'),
 			'property_facebook'			=> $this->input->post('property_facebook'),
 			'property_twitter'			=> $this->input->post('property_twitter'),
@@ -333,8 +383,12 @@ class Properties extends MX_Controller {
 			'property_nearby_markets'	=> $this->input->post('property_nearby_markets'),
 			'property_nearby_hospitals'	=> $this->input->post('property_nearby_hospitals'),
 			'property_nearby_schools'	=> $this->input->post('property_nearby_schools'),
-			'property_tags'		=> $this->input->post('property_tags'),
-			'property_status'		=> $this->input->post('property_status'),
+			'property_tags'				=> $this->input->post('property_tags'),
+			'property_status'			=> $this->input->post('property_status'),
+			'property_construction_update'=> $this->input->post('property_construction_update'),
+			'property_ground'			=> $this->input->post('property_ground'),
+			'property_presell'			=> $this->input->post('property_presell'),
+			'property_turnover'			=> $this->input->post('property_turnover'),
 		);
 		
 

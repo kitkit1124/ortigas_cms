@@ -47,6 +47,7 @@ class Migration_Create_categories extends CI_Migration {
 			'category_id'			=> array('type' => 'TINYINT', 'constraint' => 3, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
 			'category_name'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'category_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'category_description'	=> array('type' => 'TEXT', 'null' => TRUE),
 			'category_status'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
 
 			'category_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),

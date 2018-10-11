@@ -16,12 +16,14 @@ $lang['crumb_module']				= 'Careers';
 $lang['career_id']					= 'ID';
 $lang['career_position_title']		= 'Position Title';
 $lang['career_dept']				= 'Department';
+$lang['career_div']					= 'Division';
 $lang['career_req']					= 'Requirement';
 $lang['career_res']					= 'Responsibilities';
 $lang['career_location']			= 'Location';
 $lang['career_latitude']			= 'Latitude';
 $lang['career_longitude']			= 'Longitude';
 $lang['career_status']				= 'Status';
+$lang['career_image']				= 'Image';
 
 // Buttons
 $lang['button_add']					= 'Add Career';

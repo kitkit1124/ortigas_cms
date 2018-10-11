@@ -22,6 +22,12 @@
 		</div>
 
 		<div class="form-group">
+			<label for="category_description"><?php echo lang('category_description')?>:</label>			
+			<?php echo form_textarea(array('id'=>'category_description', 'name'=>'category_description', 'rows'=>'6', 'value'=>set_value('category_description', isset($record->category_description) ? $record->category_description : '', false), 'class'=>'form-control')); ?>
+			<div id="error-category_description"></div>			
+		</div>
+
+		<div class="form-group">
 			<label for="category_image"><?php echo lang('category_image')?>:</label>
 			<?php if(isset($record->category_image)) { ?> <style type="text/css"> #dropzone{ display: none; } </style> <?php } 
 			else {  ?> <style type="text/css"> #image_container{ display: none; } </style> <?php } ?>

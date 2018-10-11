@@ -58,10 +58,13 @@ class Migration_Create_properties extends CI_Migration {
 			'property_category_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'property_location_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'property_price_range_id'	=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
+			'property_prop_type_id'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
+			'property_is_featured'		=> array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => TRUE),
 			'property_name'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'property_slug'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'property_overview'			=> array('type' => 'TEXT', 'null' => FALSE),
 			'property_image'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'property_logo'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'property_website'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'property_facebook'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'property_twitter'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
@@ -76,6 +79,10 @@ class Migration_Create_properties extends CI_Migration {
 			'property_nearby_schools'		=> array('type' => 'TEXT', 'null' => TRUE),
 			'property_tags'					=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'property_status'				=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
+			'property_construction_update'	=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => TRUE),
+			'property_ground'				=> array('type' => 'VARCHAR', 'constraint' => 4, 'null' => TRUE),
+			'property_presell'				=> array('type' => 'VARCHAR', 'constraint' => 4, 'null' => TRUE),
+			'property_turnover'				=> array('type' => 'VARCHAR', 'constraint' => 4, 'null' => TRUE),
 
 			'property_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 			'property_created_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
@@ -89,6 +96,7 @@ class Migration_Create_properties extends CI_Migration {
 		$this->dbforge->add_key('property_id', TRUE);
 		$this->dbforge->add_key('property_estate_id');
 		$this->dbforge->add_key('property_category_id');
+		$this->dbforge->add_key('property_prop_type_id');
 		$this->dbforge->add_key('property_location_id');
 		$this->dbforge->add_key('property_name');
 		$this->dbforge->add_key('property_slug');

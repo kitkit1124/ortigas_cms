@@ -14,3 +14,19 @@
 .checkbox {
  	margin-bottom: 5px;
 }
+
+.select2 .selection{ width: 100%; }
+
+#property_active_image{
+	border-radius: 4px;
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+#upload_button{
+ 	padding: 0px;
+ }

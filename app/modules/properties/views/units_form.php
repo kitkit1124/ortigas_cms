@@ -11,12 +11,18 @@
 
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
-
-
 		<div class="form-group">
-			<label for="unit_property_id"><?php echo lang('unit_property_id')?>:</label>
-			<?php echo form_dropdown('unit_property_id', $properties, set_value('unit_property_id', (isset($record->unit_property_id)) ? $record->unit_property_id : ''), 'id="unit_property_id" class="form-control"'); ?>
-			<div id="error-unit_property_id"></div>
+			<label for="unit_number"><?php echo lang('unit_number')?>:</label>			
+			<?php echo form_input(array('id'=>'unit_number', 'name'=>'unit_number', 'value'=>set_value('unit_number', isset($record->unit_number) ? $record->unit_number : ''), 'class'=>'form-control form-control-lg'));?>
+			<div id="error-unit_number"></div>			
+		</div>
+
+		<div class="row">
+			<div class="form-group col-sm-12">
+				<label for="unit_property_id"><?php echo lang('unit_property_id')?>:</label>
+				<?php echo form_dropdown('unit_property_id', $properties, set_value('unit_property_id', (isset($record->unit_property_id)) ? $record->unit_property_id : ''), 'id="unit_property_id" class="form-control"'); ?>
+				<div id="error-unit_property_id"></div>
+			</div>
 		</div>
 
 		<div class="row">
@@ -44,13 +50,14 @@
 			<?php echo form_input(array('id'=>'unit_number_original', 'name'=>'unit_number_original', 'value'=>set_value('unit_number_original', isset($record->unit_number) ? $record->unit_number : ''), 'class'=>'form-control'));?>
 		</div>
 
-		<div class="row">
-			<div class="form-group col-sm-6">
-				<label for="unit_number"><?php echo lang('unit_number')?>:</label>			
-				<?php echo form_input(array('id'=>'unit_number', 'name'=>'unit_number', 'value'=>set_value('unit_number', isset($record->unit_number) ? $record->unit_number : ''), 'class'=>'form-control'));?>
-				<div id="error-unit_number"></div>			
-			</div>
 
+
+		<div class="row">	
+			<div class="form-group col-sm-6">
+				<label for="unit_price"><?php echo lang('unit_price')?>:</label>			
+				<?php echo form_input(array('id'=>'unit_price', 'name'=>'unit_price', 'value'=>set_value('unit_price', isset($record->unit_price) ? $record->unit_price : ''), 'class'=>'form-control'));?>
+				<div id="error-unit_price"></div>			
+			</div>
 			<div class="form-group col-sm-6">
 				<label for="unit_size"><?php echo lang('unit_size')?>:</label>			
 				<?php echo form_input(array('id'=>'unit_size', 'name'=>'unit_size', 'value'=>set_value('unit_size', isset($record->unit_size) ? $record->unit_size : ''), 'class'=>'form-control'));?>
@@ -58,20 +65,12 @@
 			</div>
 		</div>
 
-		<div class="row" style="display: none;">
-			<div class="form-group col-sm-6">
-				<label for="unit_price"><?php echo lang('unit_price')?>:</label>			
-				<?php echo form_input(array('id'=>'unit_price', 'name'=>'unit_price', 'value'=>set_value('unit_price', isset($record->unit_price) ? $record->unit_price : ''), 'class'=>'form-control'));?>
-				<div id="error-unit_price"></div>			
-			</div>
 
-			<div class="form-group col-sm-6">
-				<label for="unit_downpayment"><?php echo lang('unit_downpayment')?>:</label>			
-				<?php echo form_input(array('id'=>'unit_downpayment', 'name'=>'unit_downpayment', 'value'=>set_value('unit_downpayment', isset($record->unit_downpayment) ? $record->unit_downpayment : ''), 'class'=>'form-control'));?>
-				<div id="error-unit_downpayment"></div>			
-			</div>
+		<div style="display: none;">
+			<label for="unit_downpayment"><?php echo lang('unit_downpayment')?>:</label>			
+			<?php echo form_input(array('id'=>'unit_downpayment', 'name'=>'unit_downpayment', 'value'=>set_value('unit_downpayment', isset($record->unit_downpayment) ? $record->unit_downpayment : ''), 'class'=>'form-control'));?>
+			<div id="error-unit_downpayment"></div>			
 		</div>
-
 		<div class="form-group">
 			<?php if(isset($record->unit_floor_id)) { ?> <style type="text/css"> #dropzone{ display: none; } </style> <?php } 
 			else {  ?> <style type="text/css"> #image_container{ display: none; } </style> <?php } ?>

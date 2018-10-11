@@ -23,7 +23,8 @@ class Careers extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('careers_model');
 		$this->load->language('careers');
-		$this->load->model('department_model');
+		$this->load->model('departments_model');
+		$this->load->model('divisions_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -120,6 +121,8 @@ class Careers extends MX_Controller {
 				$response['errors'] = array(					
 					'career_position_title'		=> form_error('career_position_title'),
 					'career_dept'				=> form_error('career_dept'),
+					'career_div'				=> form_error('career_div'),
+					'career_image'				=> form_error('career_image'),
 					'career_req'				=> form_error('career_req'),
 					'career_res'				=> form_error('career_res'),
 					'career_location'			=> form_error('career_location'),
@@ -141,8 +144,12 @@ class Careers extends MX_Controller {
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
 		}
 
-		$data['dept'] = $this->department_model->get_active_dept();
-
+		$data['departments'] = $this->departments_model->get_active_departments();
+		if($id) {		
+			$career =  $this->careers_model->find($id);		
+			
+			$data['divisions'] = $this->divisions_model->get_select_divisions($career->career_dept);
+		}
 		// render the page
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
@@ -150,6 +157,48 @@ class Careers extends MX_Controller {
 		$this->template->add_css(module_css('careers', 'careers_form'), 'embed');
 		$this->template->add_js(module_js('careers', 'careers_form'), 'embed');
 		$this->template->write_view('content', 'careers_form', $data);
+		$this->template->render();
+	}
+
+	public function get_divisions(){
+		if (!$this->input->is_ajax_request()) {	show_404();	}
+		$department_id = $_GET['department_id'];
+		if($department_id){
+			$this->load->model('divisions_model');
+			$divisions = $this->divisions_model->get_active_divisions($department_id);
+			echo json_encode($divisions);
+		}
+	}
+
+	function form_upload($action = 'add', $id = FALSE)
+	{
+		// $this->acl->restrict('properties.properties.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($post_id = $this->_save($action, $id))
+			{
+
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $post_id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('careers', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('careers', 'form_upload'), 'embed');
+		$this->template->write_view('content', 'form_upload', $data);
 		$this->template->render();
 	}
 
@@ -197,12 +246,43 @@ class Careers extends MX_Controller {
 		// validate inputs
 		$this->form_validation->set_rules('career_position_title', lang('career_position_title'), 'required');
 		$this->form_validation->set_rules('career_dept', lang('career_dept'), 'required');
+		$this->form_validation->set_rules('career_div', lang('career_div'), 'required');
+		$this->form_validation->set_rules('career_image', lang('career_image'), 'required');
 		$this->form_validation->set_rules('career_req', lang('career_req'), 'required');
 		$this->form_validation->set_rules('career_res', lang('career_res'), 'required');
 		$this->form_validation->set_rules('career_location', lang('career_location'), 'required');
 		$this->form_validation->set_rules('career_latitude', lang('career_latitude'), 'required');
 		$this->form_validation->set_rules('career_longitude', lang('career_longitude'), 'required');
 		$this->form_validation->set_rules('career_status', lang('career_status'), 'required');
+
+
+		$div =  $this->input->post('career_div');
+		$dept =  $this->input->post('career_dept');
+		$name =  $this->input->post('career_position_title');
+		$con_name =  $div.$dept.$name;
+		$orig_name = $this->input->post('career_div_original').$this->input->post('career_dept_original').$this->input->post('career_position_title_original');
+		$duplicate = $this->careers_model->find_by(
+			array(
+				'career_div' 	=>$div,
+				'career_dept' =>$dept,
+				'career_position_title'	=>$name
+			)
+		);
+			
+		if ($action == 'edit'){
+			if($orig_name == $con_name){}
+			else{
+				if($duplicate){
+				$this->form_validation->set_rules('career_position_title', lang('career_position_title'), 'required|is_unique["career_position_title"]');
+				}
+			}
+		}
+		if ($action == 'add'){
+			if($duplicate){
+			$this->form_validation->set_rules('career_position_title', lang('career_position_title'), 'required|is_unique["career_position_title"]');
+			}
+		}
+
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
@@ -213,7 +293,10 @@ class Careers extends MX_Controller {
 
 		$data = array(
 			'career_position_title'		=> $this->input->post('career_position_title'),
+			'career_slug'		=> url_title($this->input->post('career_position_title'), '-', TRUE),
 			'career_dept'		=> $this->input->post('career_dept'),
+			'career_div'		=> $this->input->post('career_div'),
+			'career_image'		=> $this->input->post('career_image'),
 			'career_req'		=> $this->input->post('career_req'),
 			'career_res'		=> $this->input->post('career_res'),
 			'career_location'		=> $this->input->post('career_location'),

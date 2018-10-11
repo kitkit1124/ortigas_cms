@@ -1,8 +1,8 @@
-#floor_active_image{
-	border-radius: 4px;
+#category_active_image{
 	margin-bottom: 10px;
-	max-width: 300px;
-
+	height: 150px;
+	object-fit: cover;
+	cursor: pointer;
 	user-drag: none; 
 	user-select: none;
 	-moz-user-select: none;
@@ -13,10 +13,6 @@
 
 .modal-body {
     max-height: 555px;
-}
-
-#category_active_image{
-	cursor: pointer;
 }
 
 p.note{ 

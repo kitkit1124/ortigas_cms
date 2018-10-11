@@ -10,7 +10,7 @@
  */
 class Jobs_model extends BF_Model {
 
-	protected $table_name			= 'jobs';
+	protected $table_name			= 'career_applicants';
 	protected $key					= 'job_id';
 	protected $date_format			= 'datetime';
 	protected $log_user				= TRUE;
@@ -41,11 +41,12 @@ class Jobs_model extends BF_Model {
 		$fields = array(
 			'job_id',
 			'career_position_title',
-			'job_application_name',
+			'job_applicant_name',
 			'job_email',
 			'job_mobile',
 			'job_document',
 			'job_pitch',
+			'job_referred',
 
 			'job_created_on', 
 			'concat(creator.first_name, " ", creator.last_name)', 

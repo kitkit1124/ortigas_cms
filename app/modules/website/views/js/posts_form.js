@@ -1,10 +1,14 @@
 $(function() {
 
-	// $('#my-grid').gridEditor({
-		// tinymce: {
-		// 	config: { paste_as_text: true }
-		// }
-	// });
+
+
+
+	$('#post_properties').select2();
+
+	$('#properties .clear').click(function(){
+		$('#post_properties').val('').trigger('change');
+
+	});
 
 	// handles the post action
 	$('#post').click(function(e){
@@ -24,11 +28,16 @@ $(function() {
 			return this.value;
 		}).get();
 
+		var properties = 0;
+		if($('#post_properties').val()) { var properties = $('#post_properties').val(); }
+
 		// submits the data to the backend
 		$.post(post_url, {
 			post_title: $('#post_title').val(),
 			post_content: tinyMCE.activeEditor.getContent(),
 			post_categories: checkedCategories,
+			post_properties: properties,
+			post_image: $('#post_image').val(),
 			post_posted_on: $('#post_posted_on').val(),
 			post_layout: $('#post_layout').val(),
 			post_status: $('.post_status:checked').val(),

@@ -19,13 +19,26 @@
 						<div class="form-group">
 							<label for="career_position_title"><?php echo lang('career_position_title')?>:</label>			
 							<?php echo form_input(array('id'=>'career_position_title', 'name'=>'career_position_title', 'value'=>set_value('career_position_title', isset($record->career_position_title) ? $record->career_position_title : ''), 'class'=>'form-control'));?>
+							<?php echo form_input(array('id'=>'career_position_title_original', 'name'=>'career_position_title_original', 'value'=>set_value('career_position_title_original', isset($record->career_position_title) ? $record->career_position_title : ''), 'style'=>'display:none;'));?>
 							<div id="error-career_position_title"></div>			
 						</div>
 				
 						<div class="form-group">
-							<label for="career_dept"><?php echo lang('career_dept')?>:</label>			
-							<?php echo form_dropdown('career_dept', $dept, set_value('career_dept', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept" class="form-control"'); ?>
-							<div id="error-career_dept"></div>			
+							<div class="row">
+								<div class="col-sm-6">
+									<label for="career_dept"><?php echo lang('career_dept')?>:</label>			
+									<?php echo form_dropdown('career_dept', $departments, set_value('career_dept', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept" class="form-control"'); ?>
+									<?php echo form_dropdown('career_dept_original', $departments, set_value('career_dept_original', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept_original" style="display:none;"'); ?>
+									<div id="error-career_dept"></div>
+								</div>
+								<div class="col-sm-6">
+									<label for="career_div"><?php echo lang('career_div')?>:</label>
+									<?php if(isset($record->career_div)) { $options = $divisions; } else { $options = array(null=>'Please select Department first'); }?>			
+									<?php echo form_dropdown('career_div', $options, set_value('career_div', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div" class="form-control"'); ?>
+									<?php echo form_dropdown('career_div_original', $options, set_value('career_div_original', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div_original" style="display:none;"'); ?>
+									<div id="error-career_div"></div>	
+								</div>	
+							</div>	
 						</div>
 				
 						<div class="row">
@@ -59,6 +72,17 @@
 						</div>
 					</div>
 					<div class="col-sm-3 media768">
+						<div class="form-group">
+							<a href="<?php echo site_url('careers/careers/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
+								<img id="career_active_image" src="<?php echo site_url(isset($record->career_image) ? $record->career_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+							</a>
+							<br>
+							<div id="error-career_image"></div>	
+
+							<div style="display: none">
+							<?php echo form_input(array('id'=>'career_image', 'name'=>'career_image', 'value'=>set_value('career_image', isset($record->career_image) ? $record->career_image : ''), 'class'=>'form-control'));?>
+							</div>		
+						</div>
 						<div class="form-group">
 							<label for="career_status"><?php echo lang('career_status')?>:</label>	
 							<?php $options = create_dropdown('array', 'Active,Disabled'); ?>		
@@ -94,6 +118,7 @@
 
 </section>
 <script>
+var site_url = '<?php echo site_url() ?>';
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 </script>

@@ -66,8 +66,32 @@
 							<label for="post_layout"><?php echo lang('post_layout')?>:</label>
 							<?php echo form_dropdown('post_layout', config_item('theme_layouts'), set_value('post_layout', (isset($record->post_layout)) ? $record->post_layout : ''), 'id="post_layout" class="form-control"'); ?>
 							<div id="error-post_layout"></div>
+						</div>		
+
+						<div class="form-group">
+							<a href="<?php echo site_url('website/posts/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
+								<img id="post_active_image" src="<?php echo site_url(isset($record->post_image) ? $record->post_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+							</a>
+							<br>
+							<div id="error-post_image"></div>	
+
+							<div style="display: none">
+							<?php echo form_input(array('id'=>'post_image', 'name'=>'post_image', 'value'=>set_value('post_image', isset($record->post_image) ? $record->post_image : ''), 'class'=>'form-control'));?>
+							</div>		
 						</div>
 
+						<div class="form-group">
+							<label for="post_properties"><?php echo lang('post_properties'); ?>:</label>
+							<div id="properties">
+								<select id="post_properties" class="post_properties form-control" multiple="multiple">
+									<?php foreach($properties as $key => $property) { 
+										if (in_array($key, $current_properties)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php echo $select; ?> > <?php echo $property; ?></option>
+								 	<?php }?>
+								</select>
+							</div>
+							<div id="error-post_properties"></div>
+						</div>
 
 						<div class="form-group">
 							<label for="post_categories"><?php echo lang('post_categories'); ?>:</label>
@@ -108,4 +132,5 @@
 <script>
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
+
 </script>

@@ -68,6 +68,32 @@
 							<div id="error-page_layout"></div>
 						</div>
 
+						<div class="form-group">
+							<label for="page_properties"><?php echo lang('page_properties'); ?>:</label>
+							<div id="properties">
+								<select id="page_properties" class="page_properties form-control" multiple="multiple">
+									<?php foreach($properties as $key => $property) { 
+										if (in_array($key, $current_properties)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php echo $select; ?> > <?php echo $property; ?></option>
+								 	<?php }?>
+								</select>
+							</div>
+							<div id="error-page_properties"></div>
+						</div>
+
+						<div class="form-group">
+							<label for="page_posts"><?php echo lang('page_posts'); ?>:</label>
+							<div id="posts">
+								<select id="page_posts" class="page_posts form-control" multiple="multiple">
+									<?php foreach($posts as $key => $post) { 
+										//if (in_array($key, $current_properties)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php //echo $select; ?> > <?php echo $post; ?></option>
+								 	<?php }?>
+								</select>
+							</div>
+							<div id="error-page_posts"></div>
+						</div>
+
 						<div class="top-margin5">
 							<?php if ($action == 'add'): ?>
 								<button id="post" class="btn btn-default btn-lg btn-block" type="submit" data-loading-text="<?php echo lang('processing')?>">

@@ -127,7 +127,7 @@ class Jobs extends MX_Controller {
 
 
 		$this->load->model('careers_model');
-		$careers = $this->careers_model->get_active_careers();
+		$careers = $this->careers_model->get_select_careers();
 		$data['careers'] = $careers;
 		
 

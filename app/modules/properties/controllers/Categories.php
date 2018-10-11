@@ -111,8 +111,9 @@ class Categories extends MX_Controller {
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
-					'category_name'		=> form_error('category_name'),
+					'category_name'			=> form_error('category_name'),
 					'category_image'		=> form_error('category_image'),
+					'category_description'	=> form_error('category_description'),
 					'category_status'		=> form_error('category_status'),
 				);
 				echo json_encode($response);
@@ -127,6 +128,10 @@ class Categories extends MX_Controller {
 
 		// render the page
 		$this->template->set_template('modal');
+
+		$this->template->add_js('npm/tinymce/tinymce.min.js');
+		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
+
 		$this->template->add_css('npm/dropzone/dropzone.min.css');
 		$this->template->add_js('npm/dropzone/dropzone.min.js');
 		$this->template->add_css(module_css('properties', 'categories_form'), 'embed');
@@ -179,6 +184,7 @@ class Categories extends MX_Controller {
 		// validate inputs
 		$this->form_validation->set_rules('category_name', lang('category_name'), 'required');
 		$this->form_validation->set_rules('category_image', lang('category_image'), 'required');
+		$this->form_validation->set_rules('category_description', lang('category_description'), 'required');
 		$this->form_validation->set_rules('category_status', lang('category_status'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -210,6 +216,7 @@ class Categories extends MX_Controller {
 		$data = array(
 			'category_name'			=> $this->input->post('category_name'),
 			'category_image'		=> $this->input->post('category_image'),
+			'category_description'	=> $this->input->post('category_description'),
 			'category_status'		=> $this->input->post('category_status'),
 		);
 		

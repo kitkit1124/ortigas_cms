@@ -49,6 +49,7 @@ class Migration_Create_posts extends CI_Migration
 			'post_content'		=> array('type' => 'TEXT', 'null' => FALSE),
 			'post_posted_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
 			'post_layout'		=> array('type' => 'VARCHAR', 'constraint' => 50, 'default' => 'right_sidebar'),
+			'post_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'post_status'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
 
 			'post_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),

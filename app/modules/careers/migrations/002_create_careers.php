@@ -27,7 +27,7 @@ class Migration_Create_careers extends CI_Migration {
 			'menu_text' 		=> 'Careers',    
 			'menu_link' 		=> 'careers', 
 			'menu_perm' 		=> 'careers.careers.link', 
-			'menu_icon' 		=> 'fa fa-newspaper-o', 
+			'menu_icon' 		=> 'fa fa-briefcase', 
 			'menu_order' 		=> 4, 
 			'menu_active' 		=> 1
 		),
@@ -36,8 +36,8 @@ class Migration_Create_careers extends CI_Migration {
 			'menu_text' 		=> 'Careers',    
 			'menu_link' 		=> 'careers/careers', 
 			'menu_perm' 		=> 'careers.careers.link', 
-			'menu_icon' 		=> 'fa fa-newspaper-o', 
-			'menu_order' 		=> 2, 
+			'menu_icon' 		=> 'fa fa-briefcase', 
+			'menu_order' 		=> 3, 
 			'menu_active' 		=> 1
 		),
 	);
@@ -55,12 +55,15 @@ class Migration_Create_careers extends CI_Migration {
 		$fields = array(
 			'career_id'					=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
 			'career_position_title'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
-			'career_dept'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'career_slug'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'career_dept'				=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
+			'career_div'				=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'career_req'				=> array('type' => 'TEXT', 'null' => FALSE),
 			'career_res'				=> array('type' => 'TEXT', 'null' => FALSE),
 			'career_location'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'career_latitude'			=> array('type' => 'FLOAT', 'null' => FALSE),
 			'career_longitude'			=> array('type' => 'FLOAT', 'null' => FALSE),
+			'career_image'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'career_status'				=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 
 			'career_created_by' 		=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
@@ -75,6 +78,7 @@ class Migration_Create_careers extends CI_Migration {
 		$this->dbforge->add_key('career_id', TRUE);
 		$this->dbforge->add_key('career_position_title');
 		$this->dbforge->add_key('career_dept');
+		$this->dbforge->add_key('career_div');
 		$this->dbforge->add_key('career_location');
 		$this->dbforge->add_key('career_status');
 

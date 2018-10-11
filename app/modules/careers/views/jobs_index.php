@@ -21,7 +21,7 @@
 							<th class="none"><?php echo lang('index_email'); ?></th>
 							<th class="none"><?php echo lang('index_mobile'); ?></th>
 							<th class="none"><?php echo lang('index_document'); ?></th>
-							<th class="min-desktop"><?php echo lang('index_pitch'); ?></th>
+							<th class="none"><?php echo lang('index_pitch'); ?></th>
 
 							<th class="none"><?php echo lang('index_created_on')?></th>
 							<th class="none"><?php echo lang('index_created_by')?></th>

@@ -20,7 +20,7 @@ $lang['estate_text']			= 'Overview of the Estate';
 $lang['estate_latitude']		= 'Latitude';
 $lang['estate_longtitude']		= 'Longitude';
 $lang['estate_image']			= 'Banner Image';
-$lang['estate_thumb']			= 'Thumbnail';
+$lang['estate_thumb']			= 'Estate Logo';
 $lang['estate_status']			= 'Status';
 $lang['estate_location']		= 'Location';
 

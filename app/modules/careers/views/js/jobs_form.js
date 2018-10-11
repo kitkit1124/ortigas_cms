@@ -18,7 +18,7 @@ $(function() {
 		// submits the data to the backend
 		$.post(ajax_url, {
 			job_career_id: $('#job_career_id').val(),
-			job_application_name: $('#job_application_name').val(),
+			job_applicant_name: $('#job_applicant_name').val(),
 			job_email: $('#job_email').val(),
 			job_mobile: $('#job_mobile').val(),
 			job_document: $('#job_document').val(),
