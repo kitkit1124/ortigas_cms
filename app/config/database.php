@@ -9,16 +9,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | For complete instructions please consult the 'Database Connection'
 | page of the User Guide.
 */
+	// 'hostname' => getenv('HOSTNAME'),
+	// 'username' => getenv('DBUSERNAME'),
+	// 'password' => getenv('DBPASSWORD'),
+	// 'database' => getenv('DATABASE'),
 
 $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => getenv('HOSTNAME'),
-	'username' => getenv('DBUSERNAME'),
-	'password' => getenv('DBPASSWORD'),
-	'database' => getenv('DATABASE'),
+	'hostname' => 'localhost',
+	'username' => 'ortigas_local',
+	'password' => 'ortigas_local',
+	'database' => 'ortigas_local',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
