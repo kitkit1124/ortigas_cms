@@ -1,6 +1,6 @@
 app/logs/log-*.php
-app/config/config.php
-app/config/database.php
+
+
 app/config/redis.php
 !app/logs/index.html
 !app/cache/index.html
