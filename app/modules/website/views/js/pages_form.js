@@ -26,6 +26,12 @@ $(function() {
 		// prevents a submit button from submitting a form
 		e.preventDefault();
 
+		var properties = 0;
+		if($('#page_properties').val()) { var properties = $('#page_properties').val(); }
+
+		var articles = 0;
+		if($('#page_posts').val()) { var articles = $('#page_posts').val(); }
+
 		// submits the data to the backend
 		$.post(post_url, {
 			page_parent_id: $('#page_parent_id').val(),
@@ -33,6 +39,9 @@ $(function() {
 			page_content: tinyMCE.activeEditor.getContent(),
 			page_layout: $('#page_layout').val(),
 			page_status: $('.page_status:checked').val(),
+			page_status: $('.page_status:checked').val(),
+			page_properties: properties,
+			page_tagposts: articles,
 			// page_sidebar_id: $('#page_sidebar_id').val(),
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},

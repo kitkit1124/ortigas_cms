@@ -23,6 +23,7 @@ $lang['post_layout']				= 'Page Layout';
 $lang['post_sidebar_id']			= 'Page Sidebar';
 $lang['post_status']				= 'Status';
 $lang['post_properties']			= 'Tag Properties';
+$lang['post_tags']					= 'Tags';
 $lang['post_image']					= 'Image';
 
 // Buttons

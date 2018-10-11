@@ -86,8 +86,8 @@
 							<div id="posts">
 								<select id="page_posts" class="page_posts form-control" multiple="multiple">
 									<?php foreach($posts as $key => $post) { 
-										//if (in_array($key, $current_properties)) { $select = 'selected'; }else {$select = ''; }?>
-										<option value="<?php echo $key; ?>"  <?php //echo $select; ?> > <?php echo $post; ?></option>
+										if (in_array($key, $current_posts)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php echo $select; ?> > <?php echo $post; ?></option>
 								 	<?php }?>
 								</select>
 							</div>

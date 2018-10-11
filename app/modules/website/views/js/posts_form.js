@@ -3,12 +3,7 @@ $(function() {
 
 
 
-	$('#post_properties').select2();
-
-	$('#properties .clear').click(function(){
-		$('#post_properties').val('').trigger('change');
-
-	});
+	$('#post_properties, #post_tags').select2();
 
 	// handles the post action
 	$('#post').click(function(e){
@@ -31,12 +26,16 @@ $(function() {
 		var properties = 0;
 		if($('#post_properties').val()) { var properties = $('#post_properties').val(); }
 
+		var tags = 0;
+		if($('#post_tags').val()) { var tags = $('#post_tags').val(); }
+
 		// submits the data to the backend
 		$.post(post_url, {
 			post_title: $('#post_title').val(),
 			post_content: tinyMCE.activeEditor.getContent(),
 			post_categories: checkedCategories,
 			post_properties: properties,
+			post_tags: tags,
 			post_image: $('#post_image').val(),
 			post_posted_on: $('#post_posted_on').val(),
 			post_layout: $('#post_layout').val(),
@@ -95,36 +94,6 @@ $(function() {
 		],
 		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons images documents videos',
 		image_advtab: true,
-		// setup: function (editor) {
-		// 	editor.addButton('images', {
-		// 		text: 'Image',
-		// 		icon: 'image',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/images/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// 	editor.addButton('documents', {
-		// 		text: 'Document',
-		// 		icon: 'newdocument',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/documents/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// 	editor.addButton('videos', {
-		// 		text: 'Video',
-		// 		icon: 'media',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/videos/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// },
-		// content_css: site_url + 'themes/aceadmin/css/tinymce.css'
 	});
 
 	$("#dtBox").DateTimePicker({

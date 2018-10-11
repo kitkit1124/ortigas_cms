@@ -94,6 +94,19 @@
 						</div>
 
 						<div class="form-group">
+							<label for="post_tags"><?php echo lang('post_tags'); ?>:</label>
+							<div id="tags">
+								<select id="post_tags" class="post_tags form-control" multiple="multiple">
+									<?php foreach($tags as $key => $tag) { 
+										///if (in_array($key, $current_tags)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php //echo $select; ?> > <?php echo $tag; ?></option>
+								 	<?php }?>
+								</select>
+							</div>
+							<div id="error-post_tags"></div>
+						</div>
+
+						<div class="form-group">
 							<label for="post_categories"><?php echo lang('post_categories'); ?>:</label>
 							<div id="categories">
 								<?php if ($categories): ?>

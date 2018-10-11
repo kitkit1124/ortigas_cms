@@ -35,6 +35,8 @@ class Posts extends MX_Controller
 		$this->load->model('categories_model');
 		$this->load->model('posts_model');
 		$this->load->model('properties/properties_model');
+		$this->load->model('news_tags_model');
+		$this->load->model('post_tags_model');
 		// $this->load->model('sidebars_model');
 		$this->load->language('posts');
 	}
@@ -139,6 +141,7 @@ class Posts extends MX_Controller
 					'post_image'		=> form_error('post_image'),
 					'post_categories'	=> form_error('post_categories[]'),
 					'post_properties'	=> form_error('post_properties[]'),
+					'post_tags'			=> form_error('post_tags[]'),
 					'post_posted_on'	=> form_error('post_posted_on'),
 					'post_layout'		=> form_error('post_layout'),
 					// 'post_sidebar_id'	=> form_error('post_sidebar_id'),
@@ -160,13 +163,19 @@ class Posts extends MX_Controller
 		unset($properties['']);
 		$data['properties']  = $properties;
 
+		$tags = $this->news_tags_model->get_active_tags();
+		unset($tags['']);
+		$data['tags']  = $tags;
+
 		$current_categories = array();
 		$current_properties= array();
+		$current_tags= array();
 		if ($action != 'add') 
 		{
 			$data['record'] = $this->posts_model->find($id);
 			$current_categories = $this->post_categories_model->get_current_categories($id);
 			$current_properties = $this->post_properties_model->get_current_properties($id);
+			$current_tags 		= $this->post_tags_model->get_current_tags($id);
 		}
 
 
@@ -178,9 +187,10 @@ class Posts extends MX_Controller
 		// 	->find_all();
 
 		$data['categories'] = $this->categories_model->get_category_checkboxes();
-		// pr($data['categories']); exit;
+	
 		$data['current_categories'] = array_keys($current_categories);
 		$data['current_properties'] = array_keys($current_properties);
+		$data['current_tags'] 		= array_keys($current_tags);
 
 
 		// render the page
@@ -364,6 +374,25 @@ class Posts extends MX_Controller
 				);
 
 				$this->post_properties_model->insert($data);
+			}
+		}
+
+
+		$tags = $this->input->post('post_tags');
+
+		$delete_where_id = array( 'post_tag_post_id' => $id);
+		$this->post_tags_model->delete_where($delete_where_id);
+
+		if ($tags)
+		{
+			foreach ($tags as $tag)
+			{	
+				$data = array(
+					'post_tag_post_id' => $id,
+					'post_tag_tag_id'  => $tag
+				);
+
+				$this->post_tags_model->insert($data);
 			}
 		}
 

@@ -35,6 +35,8 @@ class Pages extends MX_Controller
 		$this->load->language('pages');
 		$this->load->model('properties/properties_model');
 		$this->load->model('post_properties_model');
+		$this->load->model('page_properties_model');
+		$this->load->model('page_tagposts_model');
 		$this->load->model('posts_model');
 	}
 	
@@ -137,6 +139,8 @@ class Pages extends MX_Controller
 					'page_title'		=> form_error('page_title'),
 					'page_content'		=> form_error('page_content'),
 					'page_layout'		=> form_error('page_layout'),
+					'page_properties'	=> form_error('page_properties[]'),
+					'page_tagposts'		=> form_error('page_tagposts[]'),
 					// 'page_sidebar_id'	=> form_error('page_sidebar_id'),
 					'page_status'		=> form_error('page_status'),
 				);
@@ -173,10 +177,12 @@ class Pages extends MX_Controller
 		if ($action != 'add') 
 		{		
 			$data['record'] = $this->pages_model->find($id);
-			$current_properties = $this->post_properties_model->get_current_properties($id);
-			// $current_posts = $this->post_properties_model->get_current_properties($id);
+			$current_properties = $this->page_properties_model->get_current_properties($id);
+			$current_posts = $this->page_tagposts_model->get_current_posts($id);
 		}
 
+		$data['current_properties'] = array_keys($current_properties);
+		$data['current_posts'] = array_keys($current_posts);
 
 		
 
@@ -310,6 +316,42 @@ class Pages extends MX_Controller
 			$this->output->delete_cache('/' . $uri);
 
 			$return = $id;
+		}
+
+		$properties = $this->input->post('page_properties');
+
+		$delete_where_id = array( 'page_properties_page_id' => $id);
+		$this->page_properties_model->delete_where($delete_where_id);
+
+		if ($properties)
+		{
+			foreach ($properties as $property)
+			{	
+				$data = array(
+					'page_properties_page_id' => $id,
+					'page_properties_property_id' => $property
+				);
+
+				$this->page_properties_model->insert($data);
+			}
+		}
+
+		$articles = $this->input->post('page_tagposts');
+
+		$delete_where_id = array( 'page_tagposts_page_id' => $id);
+		$this->page_tagposts_model->delete_where($delete_where_id);
+
+		if ($articles)
+		{
+			foreach ($articles as $article)
+			{	
+				$data = array(
+					'page_tagposts_page_id' => $id,
+					'page_tagposts_post_id' => $article
+				);
+
+				$this->page_tagposts_model->insert($data);
+			}
 		}
 
 
