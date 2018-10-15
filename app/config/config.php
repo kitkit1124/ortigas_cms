@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-define('PREFIX', 'ortigascms_');
+define('PREFIX', 'oclpcms_');
 
 /*
 |--------------------------------------------------------------------------
