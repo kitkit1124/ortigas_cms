@@ -62,6 +62,13 @@ class Migration_Create_banner_groups extends CI_Migration {
 
 		$data = array(
 			array('banner_group_name'  => 'Main'),
+			array('banner_group_name'  => 'About'),
+			array('banner_group_name'  => 'Investors'),
+			array('banner_group_name'  => 'News'),
+			array('banner_group_name'  => 'Accreditation'),
+			array('banner_group_name'  => 'Data Privacy'),
+			array('banner_group_name'  => 'Career'),
+			array('banner_group_name'  => 'Contact')
 		);
 		$this->db->insert_batch($this->_table, $data);
 	}

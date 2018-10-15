@@ -14,7 +14,7 @@
 			<div class="card-body">
 				<div class="box">
 					<div class="box-body">					
-						<table class="table table-striped table-bordered table-hover dt-responsive" id="datatables_wrapper">
+						<table class="table table-striped table-bordered table-hover dt-responsive" id="datatables">
 							<thead>
 								<tr>
 									<th class="all"><?php echo lang('index_id')?></th>

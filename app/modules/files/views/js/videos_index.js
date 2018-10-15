@@ -22,22 +22,21 @@ $(function() {
 			}
 		},
 		"bAutoWidth": false,
-		"aaSorting": [[ 0, "desc" ]],
+		"aaSorting": [[ 5, "desc" ]],
 		"stateSave": true,
 		"aoColumnDefs":
 			[
 				{
 					"aTargets": [0],
 					"mRender": function (data, type, full) {
-				//		alert(full);
-						return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3"><div class="thumbnail"><a data-toggle="modal" data-target="#modal" class="close" href="videos/delete/' + full[0] + '">&times;</a><a data-toggle="modal" data-target="#modal" href="videos/view/' + full[0] + '"><div class="caption text-center"><strong>' + full[1] + '</strong></div><img src="' + full[4] + '" alt="' + full[1] + '" class="img-vid img-responsive" /></div></a></div>';
+						return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3"><div class="thumbnail"><a data-toggle="modal" data-target="#modal" class="close" href="videos/delete/' + full[0] + '">&times;</a><a data-toggle="modal" data-target="#modal" href="videos/view/' + full[0] + '"><div class="caption text-center"><strong>' + full[1] + '</strong><img src="' + full[4] + '" alt="' + full[1] + '" class="img-vid img-responsive" /></div></a><div></div>';
 					},
 				},
 
 				{
 					"aTargets": [0,1,2,3,4,6,7,8,9,10,11,12],
 					"mRender": function (data, type, full) {
-						return '<span class="hide">' + data + '</span>';
+						return '<span class="d-none">' + data + '</span>';
 					},
 				},
 			],

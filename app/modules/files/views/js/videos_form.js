@@ -28,6 +28,8 @@ $(function() {
 			video_link_id: $('#video_link_id').val(),
 			video_type: $('#video_type option:selected').val(),
 
+			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
+
 		},
 		function(data, status){
 			// handles the returned data

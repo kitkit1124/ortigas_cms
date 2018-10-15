@@ -98,8 +98,8 @@
 							<div id="tags">
 								<select id="post_tags" class="post_tags form-control" multiple="multiple">
 									<?php foreach($tags as $key => $tag) { 
-										///if (in_array($key, $current_tags)) { $select = 'selected'; }else {$select = ''; }?>
-										<option value="<?php echo $key; ?>"  <?php //echo $select; ?> > <?php echo $tag; ?></option>
+										if (in_array($key, $current_tags)) { $select = 'selected'; }else {$select = ''; }?>
+										<option value="<?php echo $key; ?>"  <?php echo $select; ?> > <?php echo $tag; ?></option>
 								 	<?php }?>
 								</select>
 							</div>

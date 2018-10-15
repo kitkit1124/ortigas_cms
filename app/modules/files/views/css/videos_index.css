@@ -1,19 +1,33 @@
 /**
  * @package		Codifire
  * @version		1.0
- * @author 		Aldrin Magno <aldrin.magno@digify.com.ph>
+ * @author 		Gutz Marzan <gutzby.marzan@digify.com.ph>
  * @copyright 	Copyright (c) 2016, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
 
+
+#thumbnails .close {
+	position: absolute;
+	right: 5px;
+	top: 0;
+}
+
+.thumbnail {
+  position: relative;
+  /*width: 200px;*/
+  height: 200px;
+  overflow: hidden;
+  padding: 0;
+  border: 1px solid;
+  margin-bottom: 20px;
+}
+
+.thumbnail strong{
+ display: block;
+}
+
 .dataTables_wrapper .row:last-child {
     border:0;
     background-color: transparent;
-}
-.thumbnail {
-    position: relative;
-    /*width: 200px;*/
-    height: 175px;
-    overflow: hidden;
-    padding: 0;
 }

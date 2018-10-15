@@ -23,6 +23,7 @@ class Banners extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('banners_model');
 		$this->load->model('banner_groups_model');
+		$this->load->model('files/video_uploads_model');
 		$this->load->language('banners');
 	}
 	
@@ -65,7 +66,8 @@ class Banners extends MX_Controller {
 			->find_all();
 
 		// get the banners
-			
+		$data['video'] = $this->video_uploads_model->find(1);
+
 		$data['banners'] = $this->banners_model
 			->where('banner_deleted', 0)
 			->where('banner_banner_group_id', $id)
@@ -159,6 +161,37 @@ class Banners extends MX_Controller {
 		$this->template->add_css(module_css('website', 'banners_form'), 'embed');
 		$this->template->add_js(module_js('website', 'banners_form'), 'embed');
 		$this->template->write_view('content', 'banners_form', $data);
+		$this->template->render();
+	}
+
+	function video_upload($action = 'add', $id = FALSE)
+	{
+		$this->acl->restrict('website.banners.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($id = $this->_save($action, $id))
+			{
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{	
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('files', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('files', 'videos_form_upload'), 'embed');
+		$this->template->write_view('content', 'files/videos_form_upload', $data);
 		$this->template->render();
 	}
 

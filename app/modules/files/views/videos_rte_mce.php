@@ -67,12 +67,12 @@
 							<label for="video_type"><?php echo lang('video_type')?>:</label>
 							<select name="video_type" id="video_type" class="form-control">
 								<option value="Youtube">Youtube</option>
-								<option value="Vimeo">Vimeo</option>
+								<!-- <option value="Vimeo">Vimeo</option> -->
 							</select>
 							<div id="error-video_type"></div>
 							<p class="help-block">
-								Instructions : <br /> youtube - https://www.youtube.com/watch?v=qZFLz1-23tk the ID is after v= which is <b>qZFLz1-23tk</b>. <br />
-								vimeo - https://vimeo.com/174304761 the ID is after domain name which is <b>174304761</b>.
+								Instructions : <br /> youtube - https://www.youtube.com/watch?v=qZFLz1-23tk the ID is after v= which is <b>qZFLz1-23tk</b>. <!-- <br />
+								vimeo - https://vimeo.com/174304761 the ID is after domain name which is <b>174304761</b>. -->
 							</p>
 						</div>
 						<div class="form-group">
@@ -189,9 +189,12 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(site_url + 'files/videos/form', {
-			video_name: $('#video_name').val(),
+			video_name: $('#page_title').val() + ' Video',
 			video_link_id: $('#video_link_id').val(),
 			video_type: $('#video_type').val(),
+
+			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
+
 		},
 		function(data, status){
 			// handles the returned data

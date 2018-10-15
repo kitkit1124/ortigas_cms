@@ -22,6 +22,7 @@ class Videos extends MX_Controller
 
 		$this->load->library('users/acl');
 		$this->load->model('videos_model');
+		$this->load->model('video_uploads_model');
 		$this->load->language('videos');
 	}
 	
@@ -204,6 +205,74 @@ class Videos extends MX_Controller
 	}
 
 
+	/**
+	 * upload
+	 *
+	 * @access	public
+	 * @param	
+	 * @author 	Aldrin Magno <aldrin.magno@digify.com.ph>
+	 */
+	public function upload()
+	{
+		$this->acl->restrict('files.images.add');
+
+		// get the current upload folder
+		$this->load->library('upload_folders');
+		$folder = $this->upload_folders->get();
+
+		// upload config
+		$config = array();
+		$config['upload_path'] = $folder;
+		$config['allowed_types'] = 'mp4|avi';
+		$config['max_size']	= 0;
+		$config['max_width']  = 0;
+		$config['max_height']  = 0;
+		// $config['encrypt_name'] = TRUE;
+
+		$this->load->library('upload', $config);
+
+		if ($this->security->xss_clean($_FILES['file'], TRUE) === FALSE)
+		{
+			$response = array(
+				'status'    => 'failed',
+				'error'     => 'Invalid file'
+			);
+			echo json_encode($response); exit;
+		}
+		elseif ( ! $this->upload->do_upload('file'))
+		{
+			$response = array(
+				'status'    => 'failed',
+				'error'     => $this->upload->display_errors()
+			);
+			echo json_encode($response); exit;
+		}
+		else
+		{
+			// upload the image
+			$video_data = $this->upload->data();
+
+			// add to db
+			$data = array(
+			    'video_location'     => $folder.'/'.$video_data['file_name']
+			);
+			$this->video_uploads_model->update(1, $data);
+
+			//$response = $this->_resize($image_data, $folder);
+			
+			$response = array(
+				'status'	=> 'success',
+				'message'	=> lang('add_success'),
+				'video_source'	=> $folder.'/'.$video_data['file_name'],
+			);
+
+			echo json_encode($response);
+			exit;
+		}
+	}
+
+
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -217,9 +286,9 @@ class Videos extends MX_Controller
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-	//	$this->form_validation->set_rules('video_name', lang('video_name'), 'required');
+		$this->form_validation->set_rules('video_name', lang('video_name'), 'required');
 		$this->form_validation->set_rules('video_link_id', lang('video_link_id'), 'required');
-	//	$this->form_validation->set_rules('video_type', lang('video_type'), 'required');
+		$this->form_validation->set_rules('video_type', lang('video_type'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
@@ -234,46 +303,46 @@ class Videos extends MX_Controller
 		$type = "";
 		$thumb = 'http://img.youtube.com/vi/' . $this->input->post('video_link_id') . '/default.jpg';
 
-		// check if youtube video id correct
-		if($this->input->post('video_type') == "Youtube")
-		if(@file_get_contents($link_youtube))
-		{
-			$youtube = file_get_contents($link_youtube);
-			$json1 = json_decode($youtube, true);
-		}
+		// // check if youtube video id correct
+		// if($this->input->post('video_type') == "Youtube")
+		// if(@file_get_contents($link_youtube))
+		// {
+		// 	$youtube = file_get_contents($link_youtube);
+		// 	$json1 = json_decode($youtube, true);
+		// }
 
-		// check if vimeo id is correct
-		if($this->input->post('video_type') == "Vimeo")
-		if(@file_get_contents($link_vimeo))
-		{
-			$vimeo = file_get_contents($link_vimeo);
-			$json2 = json_decode($vimeo, true);
-		}
+		// // check if vimeo id is correct
+		// if($this->input->post('video_type') == "Vimeo")
+		// if(@file_get_contents($link_vimeo))
+		// {
+		// 	$vimeo = file_get_contents($link_vimeo);
+		// 	$json2 = json_decode($vimeo, true);
+		// }
 
-		// get thumbnail and video name in youtube/vimeo
-		if (isset($json1['items']['0']['snippet']['thumbnails']['medium']['url']))
-		{
-			$type = 'Youtube';
+		// // get thumbnail and video name in youtube/vimeo
+		// if (isset($json1['items']['0']['snippet']['thumbnails']['medium']['url']))
+		// {
+		// 	$type = 'Youtube';
 
-			$thumb = $json1['items']['0']['snippet']['thumbnails']['medium']['url'];
-			$name = $json1['items']['0']['snippet']['title'];
-		}
-		elseif (isset($json2[0]['thumbnail_medium']))
-		{
-			$thumb = $json2[0]['thumbnail_medium'];
-			$name = $json2[0]['title'];
+		// 	$thumb = $json1['items']['0']['snippet']['thumbnails']['medium']['url'];
+		// 	$name = $json1['items']['0']['snippet']['title'];
+		// }
+		// elseif (isset($json2[0]['thumbnail_medium']))
+		// {
+		// 	$thumb = $json2[0]['thumbnail_medium'];
+		// 	$name = $json2[0]['title'];
 
-			$type = 'Vimeo';
-		}
-		else
-		{
-			return FALSE;
-		}
+		// 	$type = 'Vimeo';
+		// }
+		// else
+		// {
+		// 	return FALSE;
+		// }
 
 		$data = array(
-			'video_name'		=> $name,
+			'video_name'		=> $this->input->post('video_name'),
 			'video_link_id'		=> $this->input->post('video_link_id'),
-			'video_type'		=> $type,
+			'video_type'		=> $this->input->post('video_type'),
 			'video_thumb'		=> $thumb
 		);
 		if ($action == 'add')
