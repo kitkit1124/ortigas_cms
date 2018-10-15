@@ -19,10 +19,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'ortigas_local',
-	'password' => 'ortigas_local',
-	'database' => 'ortigas_local',
+	'hostname' => getenv('HOSTNAME'),
+	'username' => getenv('DBUSERNAME'),
+	'password' => getenv('DBPASSWORD'),
+	'database' => getenv('DATABASE'),
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
