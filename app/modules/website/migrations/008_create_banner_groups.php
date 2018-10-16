@@ -62,6 +62,7 @@ class Migration_Create_banner_groups extends CI_Migration {
 
 		$data = array(
 			array('banner_group_name'  => 'Main'),
+			array('banner_group_name'  => 'Projects'),
 			array('banner_group_name'  => 'About'),
 			array('banner_group_name'  => 'Investors'),
 			array('banner_group_name'  => 'News'),
