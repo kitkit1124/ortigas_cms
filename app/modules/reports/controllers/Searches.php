@@ -20,6 +20,11 @@ class Searches extends MX_Controller {
 	{
 		parent::__construct();
 
+		if (! $this->db->table_exists('property_locations'))
+		{
+			show_error('This page requires the Property module');
+		}
+
 		$this->load->library('users/acl');
 		$this->load->model('searches_model');
 		$this->load->language('searches');

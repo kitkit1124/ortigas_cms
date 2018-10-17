@@ -17,17 +17,23 @@
 						<table class="table table-striped table-bordered table-hover dt-responsive">
 							<th><?php echo lang('index_cat_id'); ?></th>
 							<th style="text-align: center; width: 50px;"><?php echo "Views"; ?></th>
-							<?php foreach ($searches_category as $key => $value) {
-								if($value->search_cat_id != '0'){ ?>
-								<tr>
-									<td>
-										<?php echo $value->category_name; ?>
-									</td>
-									<td style="text-align: center;">
-										<?php echo $value->numrows; ?>
-									</td>
-								</tr>
-							<?php } }?>
+							<?php 
+								if($searches_category){
+									foreach ($searches_category as $key => $value) {
+										if($value->search_cat_id != '0'){ ?>
+											<tr>
+												<td>
+													<?php echo $value->category_name; ?>
+												</td>
+												<td style="text-align: center;">
+													<?php echo $value->numrows; ?>
+												</td>
+											</tr>
+							<?php 
+										}//if $value 
+									}//foreach
+								}//if $searches_category
+							?>
 						</table>
 					</div>
 
@@ -35,17 +41,23 @@
 						<table class="table table-striped table-bordered table-hover dt-responsive">
 							<th><?php echo lang('index_loc_id'); ?></th>
 							<th style="text-align: center; width: 50px;"><?php echo "Views"; ?></th>
-							<?php foreach ($searches_location as $key => $value) {
-								if($value->search_loc_id != '0'){ ?>
-								<tr>
-									<td>
-										<?php echo $value->location_name; ?>
-									</td>
-									<td style="text-align: center;">
-										<?php echo $value->numrows; ?>
-									</td>
-								</tr>
-							<?php } }?>
+							<?php 
+								if($searches_location){
+									foreach ($searches_location as $key => $value) {
+										if($value->search_loc_id != '0'){ ?>
+										<tr>
+											<td>
+												<?php echo $value->location_name; ?>
+											</td>
+											<td style="text-align: center;">
+												<?php echo $value->numrows; ?>
+											</td>
+										</tr>
+							<?php 
+										}//if $value 
+									}//foreach
+								}//if $searches_category
+							?>
 						</table>
 					</div>
 
@@ -53,17 +65,23 @@
 						<table class="table table-striped table-bordered table-hover dt-responsive">
 							<th><?php echo lang('index_price_id'); ?></th>
 							<th style="text-align: center; width: 50px;"><?php echo "Views"; ?></th>
-							<?php foreach ($searches_price as $key => $value) {
-								if($value->search_price_id != '0'){ ?>
-								<tr>
-									<td>
-										<?php echo $value->price_range_label; ?>
-									</td>
-									<td style="text-align: center;">
-										<?php echo $value->numrows; ?>
-									</td>
-								</tr>
-							<?php } }?>
+							<?php 
+								if($searches_price){
+									foreach ($searches_price as $key => $value) {
+										if($value->search_price_id != '0'){ ?>
+										<tr>
+											<td>
+												<?php echo $value->price_range_label; ?>
+											</td>
+											<td style="text-align: center;">
+												<?php echo $value->numrows; ?>
+											</td>
+										</tr>
+							<?php 
+										}//if $value 
+									}//foreach
+								}//if $searches_category
+							?>
 						</table>
 					</div>
 
