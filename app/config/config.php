@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-define('PREFIX', 'ortigascms_');
+define('PREFIX', 'oclpcms_');
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ $config['cache_drivers'] = array('adapter' => 'apc', 'backup' => 'file', 'key_pr
 
 // NOTE: Do not change this unless it's a new project. 
 //       Please configure your web server to use this path
-$config['base_url'] = 'http://ortigas.cms.local/';
+$config['base_url'] = 'http://oclpcms.tgobeyondtheclouds.com/';
 
 /*
 |--------------------------------------------------------------------------
