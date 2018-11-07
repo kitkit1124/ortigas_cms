@@ -59,8 +59,8 @@
 						    </div>
 						    <div id="slider" class="tab-pane fade"><br>
 
-
-						    		<div class="text-right">
+<?php } ?>
+						    		<div class="text-right add_banner">
 										<a href="<?php echo site_url('website/banners/form/add/' . $banner_group_id); ?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-plus"></i>
 										<?php echo lang('button_add')?></a>
 										<?php if ($banner_group_id > 10){ ?>
@@ -69,7 +69,7 @@
 										<?php } ?>
 									</div>	    	
 
-					<?php } ?>
+					
 						     		<?php if ($banners): ?>
 										<div id="sortable" class="row">
 											<?php foreach ($banners as $banner): ?>

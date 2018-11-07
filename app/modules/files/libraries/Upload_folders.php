@@ -55,11 +55,6 @@ class Upload_folders {
 			mkdir($month_folder, 0777);
 		}
 
-		ini_set('display_errors', 1);
-		ini_set('display_startup_errors', 1);
-		error_reporting(E_ALL);
-
-
 		return $upload_path . $year . "/" . $month;
 	}
 }

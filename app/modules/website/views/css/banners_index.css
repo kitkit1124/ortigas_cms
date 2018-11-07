@@ -43,3 +43,8 @@ ol#instruction, ol#operations {
 }
 
 .pointer{ cursor: pointer; }
+
+.add_banner{ 
+	margin-bottom: 10px;
+    margin-right: 15px;
+}
