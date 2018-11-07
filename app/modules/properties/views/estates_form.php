@@ -25,16 +25,33 @@
 
 							<div class="form-group">
 								<label for="estate_text"><?php echo lang('estate_text')?>:</label>			
-								<?php echo form_textarea(array('id'=>'estate_text', 'name'=>'estate_text', 'rows'=>'3', 'value'=>set_value('estate_text', isset($record->estate_text) ? $record->estate_text : '', false), 'class'=>'form-control')); ?>
+								<?php echo form_textarea(array('id'=>'estate_text', 'name'=>'estate_text', 'rows'=>'5', 'value'=>set_value('estate_text', isset($record->estate_text) ? $record->estate_text : '', false), 'class'=>'form-control')); ?>
 								<div id="error-estate_text"></div>			
 							</div>
+
+							<?php
+								if(isset($record->estate_id) && $record->estate_id){
+									$data['section_type'] = 'estates';
+									$data['section_id'] = $record->estate_id;
+									
+									echo $this->load->view('image_sliders_index', $data); 
+								}
+							?>
+
+							<div class="form-group bottom_text">
+								<label for="estate_bottom_text"><?php echo lang('estate_bottom_text')?>:</label>			
+								<?php echo form_textarea(array('id'=>'estate_bottom_text', 'name'=>'estate_bottom_text', 'rows'=>'5', 'value'=>set_value('estate_bottom_text', isset($record->estate_bottom_text) ? $record->estate_bottom_text : '', false), 'class'=>'form-control')); ?>
+								<div id="error-estate_bottom_text"></div>			
+							</div>
+
 							<div class="form-group">
-								<label for="estate_text"><?php echo lang('estate_location')?>:</label>
-								<div id="error-estate_text"></div>			
+								<label for="estate_location"><?php echo lang('estate_location')?>:</label>
+											
 								
 								<input id="pac-input" type="text" placeholder="Search">
 								<div id="map"></div>
-												
+								<div id="error-estate_location"></div>
+
 								<div style="display: none">				
 									<?php echo form_input(array('id'=>'estate_latitude', 'name'=>'estate_latitude', 'value'=>set_value('estate_latitude', isset($record->estate_latitude) ? $record->estate_latitude : ''), 'class'=>'form-control'));?>
 						
@@ -42,6 +59,18 @@
 								</div>
 								 
 							</div>
+
+
+							<?php if(isset($record->estate_id) && $record->estate_id){ ?>
+
+								<div id="related_link">
+									<?php $data['section_id'] = $record->estate_id; ?>
+									<?php $data['section_type'] = 'estates'; ?>
+									<?php echo $this->load->view('properties/related_links_index', $data); ?>
+								</div>
+
+							<?php } ?>
+
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">

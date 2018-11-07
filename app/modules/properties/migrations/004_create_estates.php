@@ -48,6 +48,7 @@ class Migration_Create_estates extends CI_Migration {
 			'estate_name'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'estate_slug'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'estate_text'			=> array('type' => 'TEXT', 'null' => FALSE),
+			'estate_bottom_text'	=> array('type' => 'TEXT', 'null' => FALSE),
 			'estate_latitude'		=> array('type' => 'FLOAT', 'null' => TRUE),
 			'estate_longtitude'		=> array('type' => 'FLOAT', 'null' => TRUE),
 			'estate_image'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),

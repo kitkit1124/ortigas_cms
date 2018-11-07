@@ -26,6 +26,7 @@ $(function() {
 			property_prop_type_id: $('#property_prop_type_id').val(),
 			property_is_featured: $('input[name="property_featured"]:checked').val(),
 			property_overview: tinyMCE.get('property_overview').getContent(),
+			property_bottom_overview: tinyMCE.get('property_bottom_overview').getContent(),
 			property_image: $('#property_image').val(),
 			property_logo: $('#property_logo').val(),
 			property_website: $('#property_website').val(), 
@@ -92,7 +93,7 @@ $(function() {
 	});
 
 	tinymce.init({
-		selector: "#property_overview, #property_nearby_malls, #property_nearby_schools, #property_nearby_hospitals, #property_nearby_markets",
+		selector: "#property_overview, #property_bottom_overview, #property_nearby_malls, #property_nearby_schools, #property_nearby_hospitals, #property_nearby_markets",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,
@@ -108,39 +109,6 @@ $(function() {
 		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons mybutton documents videos',
 		image_advtab: true,
 	});
-
-	$( "#sortable" ).sortable({
-		update: function( event, ui ) {
-			var slider_ids = new Array();
-			$("#sortable li").each(function(key, val){
-				slider_ids.push($(this).attr('data-id'));
-			});
-			
-			// submit
-			$.post(site_url + 'properties/property_sliders/reorder', {
-				slider_ids: slider_ids,
-			},
-			function(data, status){
-				// handles the returned data
-				var o = jQuery.parseJSON(data);
-				if (o.success === false) {
-					// shows the error message
-					alertify.error(o.message);
-
-				} else {
-					// // shows the success message
-					// alertify.success(o.message); 
-				}
-			}).fail(function() {
-				// shows the error message
-				alertify.alert('Error', unknown_form_error);
-
-				// reset the button
-				btn.button('reset');
-			});
-		}
-	});
-    $( "#sortable" ).disableSelection();
 
     if(featured_numrows == 1){
 	    $('#property_featured1').click(function(){

@@ -156,12 +156,13 @@ class Properties extends MX_Controller {
 			$data['record'] = $this->properties_model->find($id);
 
 			// get the banners
-			$this->load->model('property_sliders_model');
-			$data['sliders'] = $this->property_sliders_model
-				->where('property_slider_deleted', 0)
-				->where('property_slider_property_id', $id)
-				->order_by('property_slider_order', 'asc')
-				->order_by('property_slider_id', 'desc')
+			$this->load->model('image_sliders_model');
+			$data['sliders'] = $this->image_sliders_model
+				->where('image_slider_deleted', 0)
+				->where('image_slider_section_id', $id)
+				->where('image_slider_section_type', 'properties')
+				->order_by('image_slider_order', 'asc')
+				->order_by('image_slider_id', 'desc')
 				->find_all();
 		}
 
@@ -197,6 +198,16 @@ class Properties extends MX_Controller {
 		$this->template->add_js('npm/tagsinput/tagsinput.js');
 		$this->template->add_js('npm/tagsinput/tagsinput.js');
 		
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
+		$this->template->add_css(module_css('properties', 'amenities_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'amenities_index'), 'embed');
+
 		$this->template->add_css(module_css('properties', 'properties_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_form'), 'embed');
 		$this->template->write_view('content', 'properties_form', $data);
@@ -368,6 +379,7 @@ class Properties extends MX_Controller {
 			'property_is_featured'		=> $this->input->post('property_is_featured'),
 			'property_name'				=> $this->input->post('property_name'),
 			'property_overview'			=> $this->input->post('property_overview'),
+			'property_bottom_overview'	=> $this->input->post('property_bottom_overview'),
 			'property_slug'				=> url_title($this->input->post('property_name'), '-', TRUE),
 			'property_image'			=> $this->input->post('property_image'),
 			'property_logo'				=> $this->input->post('property_logo'),

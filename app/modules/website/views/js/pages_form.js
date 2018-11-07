@@ -36,7 +36,8 @@ $(function() {
 		$.post(post_url, {
 			page_parent_id: $('#page_parent_id').val(),
 			page_title: $('#page_title').val(),
-			page_content: tinyMCE.activeEditor.getContent(),
+			page_content: tinyMCE.get('page_content').getContent(),
+			page_bottom_content: tinyMCE.get('page_bottom_content').getContent(),
 			page_layout: $('#page_layout').val(),
 			page_status: $('.page_status:checked').val(),
 			page_status: $('.page_status:checked').val(),
@@ -81,7 +82,7 @@ $(function() {
 
 	// initialize tinymce
 	tinymce.init({
-		selector: "#page_content",
+		selector: "#page_content, #page_bottom_content",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,

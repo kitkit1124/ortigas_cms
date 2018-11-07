@@ -293,16 +293,16 @@ class Careers extends MX_Controller {
 
 		$data = array(
 			'career_position_title'		=> $this->input->post('career_position_title'),
-			'career_slug'		=> url_title($this->input->post('career_position_title'), '-', TRUE),
-			'career_dept'		=> $this->input->post('career_dept'),
-			'career_div'		=> $this->input->post('career_div'),
-			'career_image'		=> $this->input->post('career_image'),
-			'career_req'		=> $this->input->post('career_req'),
-			'career_res'		=> $this->input->post('career_res'),
-			'career_location'		=> $this->input->post('career_location'),
-			'career_latitude'		=> $this->input->post('career_latitude'),
-			'career_longitude'		=> $this->input->post('career_longitude'),
-			'career_status'		=> $this->input->post('career_status'),
+			'career_slug'				=> url_title($this->input->post('career_position_title'), '-', TRUE),
+			'career_dept'				=> $this->input->post('career_dept'),
+			'career_div'				=> $this->input->post('career_div'),
+			'career_image'				=> $this->input->post('career_image'),
+			'career_req'				=> $this->input->post('career_req'),
+			'career_res'				=> $this->input->post('career_res'),
+			'career_location'			=> $this->input->post('career_location'),
+			'career_latitude'			=> $this->input->post('career_latitude'),
+			'career_longitude'			=> $this->input->post('career_longitude'),
+			'career_status'				=> $this->input->post('career_status'),
 		);
 		
 

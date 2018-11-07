@@ -35,9 +35,27 @@
 							<div id="my-grid" class="grid-editor">
 								<?php //echo isset($record->page_content) ? $record->page_content : ''; ?>
 							</div>										
-							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'15', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'10', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_content"></div>
 						</div>
+
+						
+						<div class="form-group <?php echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+							<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>									
+							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? $record->page_bottom_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<div id="error-page_bottom_content"></div>
+						</div>
+
+						<?php if(isset($record->page_id) && $record->page_id && $record->page_id == 2){ ?>
+
+							<div id="related_link <?php echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+								<?php $data['section_id'] = $record->page_id; ?>
+								<?php $data['section_type'] = 'pages'; ?>
+								<?php echo $this->load->view('properties/related_links_index', $data); ?>
+							</div>
+
+						<?php } ?>
+
 
 					</div>
 
@@ -68,7 +86,7 @@
 							<div id="error-page_layout"></div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group <?php echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_properties"><?php echo lang('page_properties'); ?>:</label>
 							<div id="properties">
 								<select id="page_properties" class="page_properties form-control" multiple="multiple">
@@ -81,7 +99,7 @@
 							<div id="error-page_properties"></div>
 						</div>
 
-						<div class="form-group">
+						<div class="form-group <?php echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_posts"><?php echo lang('page_posts'); ?>:</label>
 							<div id="posts">
 								<select id="page_posts" class="page_posts form-control" multiple="multiple">

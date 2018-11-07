@@ -18,7 +18,9 @@ $lang['property_category_id']		= 'Category';
 $lang['property_location_id']		= 'Location';
 $lang['property_name']				= 'Name';
 $lang['property_slug']				= 'Slug';
-$lang['property_overview']			= 'Overview of the Property';
+$lang['property_overview']			= 'Overview Description';
+$lang['property_description']		= 'Descriptions';
+$lang['property_bottom_overview']	= 'SEO Content';
 $lang['property_image']				= 'Banner Image';
 $lang['property_logo']				= 'Property Logo';
 $lang['property_website']			= 'Website';
@@ -38,11 +40,11 @@ $lang['property_status']			= 'Status';
 $lang['property_map_location']		= 'Map Location';
 $lang['property_nearby_facilities']	= 'Nearby Facilities';
 $lang['property_social_page']		= 'Social Page';
-$lang['property_slider']			= 'Slider';
 $lang['property_price_range_id']	= 'Price Range';
 $lang['property_prop_type_id']		= 'Development Type';
 $lang['property_featured']			= 'Set as featured';
 $lang['property_construction']		= 'Construction Update';
+$lang['property_amenities']			= 'Amenities';
 
 
 // Buttons
@@ -51,7 +53,8 @@ $lang['button_update']				= 'Update Property';
 $lang['button_delete']				= 'Delete Property';
 $lang['button_edit_this']			= 'Edit This';
 $lang['button_upload']				= 'Upload Image';
-$lang['button_add_slider']			= 'Add Property Slider';
+$lang['button_add_amenities']		= 'Add Amenities';
+
 
 
 // Index Function

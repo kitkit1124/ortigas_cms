@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-define('PREFIX', 'oclpcms_');
+define('PREFIX', getenv('PREFIX'));
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +18,7 @@ define('PREFIX', 'oclpcms_');
 |--------------------------------------------------------------------------
 */
 
-$config['cache_drivers'] = array('adapter' => 'apc', 'backup' => 'file', 'key_prefix' => PREFIX);
+$config['cache_drivers'] = array('adapter' => getenv('CACHE_ADAPTER'), 'backup' => 'file', 'key_prefix' => PREFIX);
 
 /*
 |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ $config['cache_drivers'] = array('adapter' => 'apc', 'backup' => 'file', 'key_pr
 
 // NOTE: Do not change this unless it's a new project. 
 //       Please configure your web server to use this path
-$config['base_url'] = 'http://oclpcms.tgobeyondtheclouds.com/';
+$config['base_url'] = getenv('BASE_URL');
 
 /*
 |--------------------------------------------------------------------------
@@ -468,7 +468,9 @@ $config['csrf_regenerate'] = FALSE;
 $config['csrf_exclude_uris'] = array(
 	'files/images/upload',
 	'website/banners/reorder',
-	'properties/property_sliders/reorder',
+	'website/banners/main_video_save',
+	'properties/image_sliders/reorder',
+	'properties/settings/reorder',
 	'users/roles/update_access', // TODO: implement csrf here
 	// 'website/navigations/save',
 );

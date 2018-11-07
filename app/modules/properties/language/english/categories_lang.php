@@ -17,6 +17,8 @@ $lang['category_name']				= 'Name';
 $lang['category_image']				= 'Banner Image';
 $lang['category_status']			= 'Status';
 $lang['category_description']		= 'Overview Description';
+$lang['category_bottom_description']	= 'SEO Content';
+
 
 
 // Buttons
@@ -24,6 +26,8 @@ $lang['button_add']					= 'Add Category';
 $lang['button_update']				= 'Update Category';
 $lang['button_delete']				= 'Delete Category';
 $lang['button_edit_this']			= 'Edit This';
+
+$lang['button_add_slider']			= 'Add Slider';
 
 
 // Index Function

@@ -19,6 +19,9 @@ $(function() {
 			$('#property_image').val(response.image);
 			$('#property_active_image').attr('src', site_url + response.image);
 
+			$('.selected_image').val(response.image);
+			$('.active_image_thumb').attr('src', site_url + response.image);
+
 			// restores the modal content to loading state
 			restore_modal(); 
 

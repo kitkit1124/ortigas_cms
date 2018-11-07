@@ -1,0 +1,47 @@
+.button_add_slider{
+    position: absolute;
+    top: 12px;
+    left: 80px;
+}
+
+.card-link label{
+	cursor: pointer;
+}
+
+.card{
+	margin-bottom: 3px;
+}
+
+.card-link{
+	display: block;
+	width: 100%;
+}
+
+.thumbnail_buttons{
+    float: right;
+    position: absolute;
+    right: 20px;
+    top: 4px;
+}
+
+#sortable { list-style-type: none; margin: 0; padding: 0; }
+#sortable li { cursor: move; }
+#sortable .btn-actions {
+	position: absolute;
+	right: 20px;
+	top: 5px;
+}
+
+.thumbnail {
+	height: 130px;
+	overflow: hidden;
+	padding: 0;
+	margin-bottom: 10px;
+}
+p.note{ 
+	font-size: 11px;
+    background-color: #f4bd00;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 5px;
+    text-align: center;
+}

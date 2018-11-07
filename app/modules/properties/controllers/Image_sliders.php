@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 /**
- * Property_sliders Class
+ * Image_sliders Class
  *
  * @package		Codifire
  * @version		1.0
@@ -8,7 +8,7 @@
  * @copyright 	Copyright (c) 2018, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
-class Property_sliders extends MX_Controller {
+class Image_sliders extends MX_Controller {
 	
 	/**
 	 * Constructor
@@ -21,8 +21,8 @@ class Property_sliders extends MX_Controller {
 		parent::__construct();
 
 		$this->load->library('users/acl');
-		$this->load->model('property_sliders_model');
-		$this->load->language('property_sliders');
+		$this->load->model('image_sliders_model');
+		$this->load->language('image_sliders');
 	}
 	
 	// --------------------------------------------------------------------
@@ -36,7 +36,7 @@ class Property_sliders extends MX_Controller {
 	 */
 	public function index()
 	{
-		$this->acl->restrict('properties.property_sliders.list');
+		$this->acl->restrict('properties.image_sliders.list');
 		
 		// page title
 		$data['page_heading'] = lang('index_heading');
@@ -44,7 +44,7 @@ class Property_sliders extends MX_Controller {
 		
 		// breadcrumbs
 		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
-		$this->breadcrumbs->push(lang('crumb_module'), site_url('property_sliders'));
+		$this->breadcrumbs->push(lang('crumb_module'), site_url('image_sliders'));
 		
 		// session breadcrumb
 		$this->session->set_userdata('redirect', current_url());
@@ -57,13 +57,10 @@ class Property_sliders extends MX_Controller {
 		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
 		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
 		
-		
-		
-		
 		// render the page
-		$this->template->add_css(module_css('properties', 'property_sliders_index'), 'embed');
-		$this->template->add_js(module_js('properties', 'property_sliders_index'), 'embed');
-		$this->template->write_view('content', 'property_sliders_index', $data);
+		$this->template->add_css(module_css('properties', 'image_sliders_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'image_sliders_index'), 'embed');
+		$this->template->write_view('content', 'image_sliders_index', $data);
 		$this->template->render();
 	}
 
@@ -78,9 +75,9 @@ class Property_sliders extends MX_Controller {
 	 */
 	public function datatables()
 	{
-		$this->acl->restrict('properties.property_sliders.list');
+		$this->acl->restrict('properties.image_sliders.list');
 
-		echo $this->property_sliders_model->get_datatables();
+		echo $this->image_sliders_model->get_datatables();
 	}
 
 	// --------------------------------------------------------------------
@@ -95,7 +92,7 @@ class Property_sliders extends MX_Controller {
 	 */
 	function form($action = 'add', $id = FALSE)
 	{
-		$this->acl->restrict('properties.property_sliders.' . $action, 'modal');
+		$this->acl->restrict('properties.image_sliders.' . $action, 'modal');
 
 		$data['page_heading'] = lang($action . '_heading');
 		$data['action'] = $action;
@@ -111,22 +108,23 @@ class Property_sliders extends MX_Controller {
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
-					'property_slider_property_id'		=> form_error('property_slider_property_id'),
-					'property_slider_image'				=> form_error('property_slider_image'),
-					'property_slider_title'				=> form_error('property_slider_title'),
-					'property_slider_title_size'		=> form_error('property_slider_title_size'),
-					'property_slider_title_pos'			=> form_error('property_slider_title_pos'),
-					'property_slider_caption'			=> form_error('property_slider_caption'),
-					'property_slider_caption_size'		=> form_error('property_slider_caption_size'),
-					'property_slider_caption_pos'		=> form_error('property_slider_caption_pos'),
-					'property_slider_status'			=> form_error('property_slider_status'),
+					'image_slider_section_type'		=> form_error('image_slider_section_type'),
+					'image_slider_section_id'		=> form_error('image_slider_section_id'),
+					'image_slider_image'		=> form_error('image_slider_image'),
+					'image_slider_title'		=> form_error('image_slider_title'),
+					'image_slider_title_size'		=> form_error('image_slider_title_size'),
+					'image_slider_title_pos'		=> form_error('image_slider_title_pos'),
+					'image_slider_caption'		=> form_error('image_slider_caption'),
+					'image_slider_caption_size'		=> form_error('image_slider_caption_size'),
+					'image_slider_caption_pos'		=> form_error('image_slider_caption_pos'),
+					'image_slider_status'		=> form_error('image_slider_status'),
 				);
 				echo json_encode($response);
 				exit;
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->property_sliders_model->find($id);
+		if ($action != 'add') $data['record'] = $this->image_sliders_model->find($id);
 
 
 		
@@ -134,8 +132,6 @@ class Property_sliders extends MX_Controller {
 		// render the page
 		$this->template->set_template('modal');
 
-
-		// add plugins
 		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
 		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
 		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
@@ -146,31 +142,30 @@ class Property_sliders extends MX_Controller {
 		$this->template->add_css('npm/dropzone/dropzone.min.css');
 		$this->template->add_js('npm/dropzone/dropzone.min.js');
 
-		$this->template->add_css(module_css('properties', 'property_sliders_form'), 'embed');
-		$this->template->add_js(module_js('properties', 'property_sliders_form'), 'embed');
-		$this->template->write_view('content', 'property_sliders_form', $data);
+		$this->template->add_css(module_css('properties', 'image_sliders_form'), 'embed');
+		$this->template->add_js(module_js('properties', 'image_sliders_form'), 'embed');
+		$this->template->write_view('content', 'image_sliders_form', $data);
 		$this->template->render();
 	}
 
 	// --------------------------------------------------------------------
-
 	/**
 	 * reorder
 	 *
 	 * @access	public
 	 * @param	array $this->input->post('banner_ids')
-	 * @author 	Randy Nivales <randy.nivales@digify.com.ph>
+	 * @author 	Gutz Marzan <gutzby.marzan@digify.com.ph>
 	 */
 	function reorder()
 	{
-		$this->acl->restrict('properties.property_sliders.edit', 'modal');
+		$this->acl->restrict('properties.image_sliders.edit', 'modal');
 
 		$slider_ids = $this->input->post('slider_ids');
 
 
 		// get the banners
-		$sliders = $this->property_sliders_model
-			->where_in('property_slider_id', $slider_ids)
+		$sliders = $this->image_sliders_model
+			->where_in('image_slider_id', $slider_ids)
 			->find_all();
 
 		if ($sliders)
@@ -178,14 +173,16 @@ class Property_sliders extends MX_Controller {
 			foreach ($sliders as $slider)
 			{
 				// update the banner
-				$this->property_sliders_model->update($slider->property_slider_id, array(
-					'property_slider_order' => array_search($slider->property_slider_id, $slider_ids)
+				$this->image_sliders_model->update($slider->image_slider_id, array(
+					'image_slider_order' => array_search($slider->image_slider_id, $slider_ids)
 				));
 			}
 		}
 
 		echo json_encode(array('success' => true, 'message' => lang('reorder_success'))); exit;
+	
 	}
+	// --------------------------------------------------------------------
 
 	/**
 	 * delete
@@ -196,23 +193,24 @@ class Property_sliders extends MX_Controller {
 	 */
 	function delete($id)
 	{
-		$this->acl->restrict('properties.property_sliders.delete', 'modal');
+		$this->acl->restrict('properties.image_sliders.delete', 'modal');
 
 		$data['page_heading'] = lang('delete_heading');
 		$data['page_confirm'] = lang('delete_confirm');
 		$data['page_button'] = lang('button_delete');
-		$data['datatables_id'] = '#datatables';
+		// $data['datatables_id'] = '#datatables';
 
 		if ($this->input->post())
 		{
-			$this->property_sliders_model->delete($id);
+			$this->image_sliders_model->delete($id);
 
+
+			$this->session->set_flashdata('flash_message', lang('delete_success'));
 			echo json_encode(array('success' => true, 'message' => lang('delete_success'))); exit;
 		}
 
 		$this->load->view('../../modules/core/views/confirm', $data);
 	}
-
 
 	// --------------------------------------------------------------------
 
@@ -227,15 +225,16 @@ class Property_sliders extends MX_Controller {
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('property_slider_property_id', lang('property_slider_property_id'), 'required');
-		$this->form_validation->set_rules('property_slider_image', lang('property_slider_image'), 'required');
-		// $this->form_validation->set_rules('property_slider_title', lang('property_slider_title'), 'required');
-		// $this->form_validation->set_rules('property_slider_title_size', lang('property_slider_title_size'), 'required');
-		// $this->form_validation->set_rules('property_slider_title_pos', lang('property_slider_title_pos'), 'required');
-		// $this->form_validation->set_rules('property_slider_caption', lang('property_slider_caption'), 'required');
-		// $this->form_validation->set_rules('property_slider_caption_size', lang('property_slider_caption_size'), 'required');
-		// $this->form_validation->set_rules('property_slider_caption_pos', lang('property_slider_caption_pos'), 'required');
-		$this->form_validation->set_rules('property_slider_status', lang('property_slider_status'), 'required');
+		$this->form_validation->set_rules('image_slider_section_type', lang('image_slider_section_type'), 'required');
+		$this->form_validation->set_rules('image_slider_section_id', lang('image_slider_section_id'), 'required');
+		$this->form_validation->set_rules('image_slider_image', lang('image_slider_image'), 'required');
+		// $this->form_validation->set_rules('image_slider_title', lang('image_slider_title'), 'required');
+		// $this->form_validation->set_rules('image_slider_title_size', lang('image_slider_title_size'), 'required');
+		// $this->form_validation->set_rules('image_slider_title_pos', lang('image_slider_title_pos'), 'required');
+		// $this->form_validation->set_rules('image_slider_caption', lang('image_slider_caption'), 'required');
+		// $this->form_validation->set_rules('image_slider_caption_size', lang('image_slider_caption_size'), 'required');
+		// $this->form_validation->set_rules('image_slider_caption_pos', lang('image_slider_caption_pos'), 'required');
+		$this->form_validation->set_rules('image_slider_status', lang('image_slider_status'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
@@ -245,26 +244,27 @@ class Property_sliders extends MX_Controller {
 		}
 
 		$data = array(
-			'property_slider_property_id'		=> $this->input->post('property_slider_property_id'),
-			'property_slider_image'				=> $this->input->post('property_slider_image'),
-			'property_slider_title'				=> $this->input->post('property_slider_title'),
-			'property_slider_title_size'		=> $this->input->post('property_slider_title_size'),
-			'property_slider_title_pos'			=> $this->input->post('property_slider_title_pos'),
-			'property_slider_caption'			=> $this->input->post('property_slider_caption'),
-			'property_slider_caption_size'		=> $this->input->post('property_slider_caption_size'),
-			'property_slider_caption_pos'		=> $this->input->post('property_slider_caption_pos'),
-			'property_slider_status'			=> $this->input->post('property_slider_status'),
+			'image_slider_section_type'		=> $this->input->post('image_slider_section_type'),
+			'image_slider_section_id'		=> $this->input->post('image_slider_section_id'),
+			'image_slider_image'		=> $this->input->post('image_slider_image'),
+			'image_slider_title'		=> $this->input->post('image_slider_title'),
+			'image_slider_title_size'		=> $this->input->post('image_slider_title_size'),
+			'image_slider_title_pos'		=> $this->input->post('image_slider_title_pos'),
+			'image_slider_caption'		=> $this->input->post('image_slider_caption'),
+			'image_slider_caption_size'		=> $this->input->post('image_slider_caption_size'),
+			'image_slider_caption_pos'		=> $this->input->post('image_slider_caption_pos'),
+			'image_slider_status'		=> $this->input->post('image_slider_status'),
 		);
 		
 
 		if ($action == 'add')
 		{
-			$insert_id = $this->property_sliders_model->insert($data);
+			$insert_id = $this->image_sliders_model->insert($data);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
 		}
 		else if ($action == 'edit')
 		{
-			$return = $this->property_sliders_model->update($id, $data);
+			$return = $this->image_sliders_model->update($id, $data);
 		}
 
 		return $return;
@@ -272,5 +272,5 @@ class Property_sliders extends MX_Controller {
 	}
 }
 
-/* End of file Property_sliders.php */
-/* Location: ./application/modules/properties/controllers/Property_sliders.php */
+/* End of file Image_sliders.php */
+/* Location: ./application/modules/properties/controllers/Image_sliders.php */

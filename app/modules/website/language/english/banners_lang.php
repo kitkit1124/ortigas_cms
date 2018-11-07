@@ -22,6 +22,7 @@ $lang['banner_link']				= 'Link';
 $lang['banner_target']				= 'Target';
 $lang['banner_order']				= 'Order';
 $lang['banner_status']				= 'Status';
+$lang['banner_display']				= 'What to display?';
 
 // Buttons
 $lang['button_add']					= 'Add Banner';

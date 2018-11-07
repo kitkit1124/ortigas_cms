@@ -1,10 +1,10 @@
 $(function() {
 	// renders the datatables (datatables.net)
-	var oTable = $('#datatables').dataTable({
+	var oTable = $('#datatables_links').dataTable({
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "property_sliders/datatables",
-		"lengthMenu": [[10, 20, 50, 100, 300, -1], [10, 20, 50, 100, 300, "All"]],
+		"sAjaxSource": site_url+ "properties/related_links/datatables?section_id="+section_id+"&section_type="+section_type,
+		"lengthMenu": [[5, 10, 20, 50, 100, -1], [5, 10, 20, 50, 100, "All"]],
 		"pagingType": "full_numbers",
 		"language": {
 			"paginate": {
@@ -23,7 +23,7 @@ $(function() {
 			{
 				"aTargets": [1],
 				"mRender": function (data, type, full) {
-					return '<a href="property_sliders/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+					return '<a href="'+site_url+'properties/related_links/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
 				},
 			},
 			// {
@@ -42,12 +42,12 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [15],
+				"aTargets": [8],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="property_sliders/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
-					html += '<a href="property_sliders/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
-					html += '<a href="property_sliders/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
+					html = '<a href="'+site_url+'properties/related_links/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
+					html += '<a href="'+site_url+'properties/related_links/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
+					html += '<a href="'+site_url+'properties/related_links/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
 
 					return html;
 				},

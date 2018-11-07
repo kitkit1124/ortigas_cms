@@ -33,6 +33,13 @@ class Migration_Create_post_tags extends CI_Migration
 		$this->dbforge->add_key('post_tag_tag_id');
 		$this->dbforge->create_table($this->_table, TRUE);
 
+
+		$data = array(
+			array('post_tag_post_id' => 1, 'post_tag_tag_id' => 1),
+			array('post_tag_post_id' => 2, 'post_tag_tag_id' => 1),
+			array('post_tag_post_id' => 3, 'post_tag_tag_id' => 1),
+		);
+		$this->db->insert_batch($this->_table, $data);
 	}
 
 	public function down()

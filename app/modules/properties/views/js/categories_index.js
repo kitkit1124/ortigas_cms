@@ -23,7 +23,7 @@ $(function() {
 			{
 				"aTargets": [1],
 				"mRender": function (data, type, full) {
-					return '<a href="categories/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+					return '<a href="categories/form/edit/'+full[0]+'" data-placement="top" title="Edit">' + data + '</a>';
 				},
 			},
 			// {
@@ -45,8 +45,8 @@ $(function() {
 				"aTargets": [8],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="categories/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
-					html += '<a href="categories/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
+					html = '<a href="categories/form/view/'+full[0]+'" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
+					html += '<a href="categories/form/edit/'+full[0]+'" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
 					//html += '<a href="categories/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
 
 					return html;

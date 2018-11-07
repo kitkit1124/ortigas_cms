@@ -187,6 +187,16 @@ class Pages extends MX_Controller
 		
 
 		// render the page
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
+		$this->template->add_css(module_css('properties', 'related_links_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
+
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
 		// $this->template->add_css('npm/grid-editor/grideditor.css');
@@ -284,14 +294,15 @@ class Pages extends MX_Controller
 		}
 
 		$data = array(
-			'page_parent_id'	=> $this->input->post('page_parent_id'),
-			'page_title'		=> $this->input->post('page_title'),
-			'page_slug'			=> url_title($this->input->post('page_title'), '-', TRUE),
-			'page_uri'			=> $uri,
-			'page_content'		=> $this->input->post('page_content'),
-			'page_layout'		=> $this->input->post('page_layout'),
+			'page_parent_id'		=> $this->input->post('page_parent_id'),
+			'page_title'			=> $this->input->post('page_title'),
+			'page_slug'				=> url_title($this->input->post('page_title'), '-', TRUE),
+			'page_uri'				=> $uri,
+			'page_content'			=> $this->input->post('page_content'),
+			'page_bottom_content'	=> $this->input->post('page_bottom_content'),
+			'page_layout'			=> $this->input->post('page_layout'),
 			// 'page_sidebar_id'	=> $this->input->post('page_sidebar_id'),
-			'page_status'		=> $this->input->post('page_status'),
+			'page_status'			=> $this->input->post('page_status'),
 		);
 		// $data = $this->security->xss_clean($data);
 		

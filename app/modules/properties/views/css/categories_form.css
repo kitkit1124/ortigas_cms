@@ -15,14 +15,18 @@
     max-height: 555px;
 }
 
+.hide{
+	display: none;
+}
+
+.bottom_description{
+	margin-top: 40px;
+}
+
 p.note{ 
 	font-size: 11px;
     background-color: #f4bd00;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius: 5px;
     text-align: center;
-}
-
-.hide{
-	display: none;
 }

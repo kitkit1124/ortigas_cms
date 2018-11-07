@@ -23,6 +23,7 @@ class Estates extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('estates_model');
 		$this->load->language('estates');
+		$this->load->model('related_links_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -122,6 +123,7 @@ class Estates extends MX_Controller {
 					'estate_name'			=> form_error('estate_name'),
 					'estate_slug'			=> form_error('estate_slug'),
 					'estate_text'			=> form_error('estate_text'),
+					'estate_bottom_text'			=> form_error('estate_bottom_text'),
 					'estate_latitude'		=> form_error('estate_latitude'),
 					'estate_longtitude'		=> form_error('estate_longtitude'),
 					'estate_image'			=> form_error('estate_image'),
@@ -133,7 +135,19 @@ class Estates extends MX_Controller {
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->estates_model->find($id);
+		if ($action != 'add') {
+			$data['record'] = $this->estates_model->find($id);
+
+			// get the banners
+			$this->load->model('image_sliders_model');
+			$data['sliders'] = $this->image_sliders_model
+				->where('image_slider_deleted', 0)
+				->where('image_slider_section_id', $id)
+				->where('image_slider_section_type', 'estates')
+				->order_by('image_slider_order', 'asc')
+				->order_by('image_slider_id', 'desc')
+				->find_all();
+		}
 
 
 		
@@ -142,8 +156,18 @@ class Estates extends MX_Controller {
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
 		}
 
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
+
+		$this->template->add_css(module_css('properties', 'related_links_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
 
 		// render the page
 		$this->template->add_css(module_css('properties', 'estates_form'), 'embed');
@@ -324,6 +348,7 @@ class Estates extends MX_Controller {
 			'estate_name'			=> $this->input->post('estate_name'),
 			'estate_slug'			=> url_title($this->input->post('estate_name'), '-', TRUE),
 			'estate_text'			=> $this->input->post('estate_text'),
+			'estate_bottom_text'			=> $this->input->post('estate_bottom_text'),
 			'estate_latitude'		=> $this->input->post('estate_latitude'),
 			'estate_longtitude'		=> $this->input->post('estate_longtitude'),
 			'estate_image'			=> $this->input->post('estate_image'),

@@ -195,6 +195,14 @@ class Banners extends MX_Controller {
 		$this->template->render();
 	}
 
+	function main_video_save(){
+		$id = $this->input->post('video_id');
+		$data = array(
+		    'video_status'     => $this->input->post('video_status'),
+		);
+		$this->video_uploads_model->update($id, $data);
+	}
+
 	// --------------------------------------------------------------------
 
 	/**

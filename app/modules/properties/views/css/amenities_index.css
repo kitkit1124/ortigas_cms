@@ -1,0 +1,19 @@
+.button_add_amenities{
+    position: absolute;
+    top: 12px;
+    left: 150px;
+}
+
+.card-link label{
+	cursor: pointer;
+	color: #000;
+}
+
+.card{
+	margin-bottom: 3px;
+}
+
+.card-link{
+	display: block;
+	width: 100%;
+}

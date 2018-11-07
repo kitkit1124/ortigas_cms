@@ -17,12 +17,13 @@ $lang['page_parent_id']				= 'Parent Page';
 $lang['page_title']					= 'Page Title';
 $lang['page_slug']					= 'Slug';
 $lang['page_content']				= 'Content';
+$lang['page_bottom_content']		= 'SEO Content';
 $lang['page_posted_on']				= 'Posted On';
 $lang['page_status']				= 'Status';
 $lang['page_layout']				= 'Page Layout';
 $lang['page_sidebar_id']			= 'Page Sidebar';
 $lang['page_properties']			= 'Tag Properties';
-$lang['page_posts']				= 'Tag Articles';
+$lang['page_posts']					= 'Tag Articles';
 
 // Buttons
 $lang['button_add']					= 'Add Page';

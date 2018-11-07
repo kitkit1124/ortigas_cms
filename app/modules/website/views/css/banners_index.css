@@ -41,3 +41,5 @@ ol#instruction, ol#operations {
     border-color:  #c5d0dc;
     border-top: 2px solid #379392;
 }
+
+.pointer{ cursor: pointer; }

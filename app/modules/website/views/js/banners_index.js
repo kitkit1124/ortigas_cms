@@ -1,4 +1,15 @@
 $(function() {
+
+	$('input[name="banner_display"]').change(function(){
+		
+		$.post(site_url + 'website/banners/main_video_save', {
+			video_id: 1,
+			video_status: $('input[name="banner_display"]:checked').val(),
+		});
+
+	});
+		
+
 	$( "#sortable" ).sortable({
 		update: function( event, ui ) {
 			var banner_ids = new Array();

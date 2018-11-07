@@ -1,39 +1,7 @@
-Dropzone.autoDiscover = false;
-
 $(function() {
-	
-	var myDropzone = new Dropzone("#dropzone");
-	
-	myDropzone.on("success", function(file, response) {
-		img = jQuery.parseJSON(response);
 
-		if (img.status == 'failed') {
-			$('.dz-image, .dz-preview').remove();
-			$('.dz-message').show();
-			alertify.error(img.error);
-		} else {
-
-			$('#category_image').val(img.image);
-			$('#category_active_image').attr('src', site_url + img.image);
-			$('.dz-image, .dz-preview').remove();
-			$('.dz-message').show();
-			
-			$('p.note').fadeOut(500);
-			$('#dropzone').hide();
-			$('#image_container').show();
-		}
-	});
-
-	
-	$("#category_active_image").click(function(){
-		$('#image_container').hide();
-		$('#dropzone').fadeIn(500);
-		$('p.note').fadeIn(500);
-
-	});
-	
 	// handles the submit action
-	$('#submit').click(function(e){
+	$('#post').click(function(e){
 		// change the button to loading state
 		var $this = $(this);
 		var loadingText = '<i class="fa fa-spinner fa-spin"></i> Loading...';
@@ -46,10 +14,11 @@ $(function() {
 		e.preventDefault();
 
 		// submits the data to the backend
-		$.post(ajax_url, {
+		$.post(post_url, {
 			category_name_original: $('#category_name_original').val(),
 			category_name: $('#category_name').val(),
 			category_description: tinyMCE.get('category_description').getContent(),
+			category_bottom_description: tinyMCE.get('category_bottom_description').getContent(),
 			category_image: $('#category_image').val(),
 			category_status: $('#category_status').val(),
 
@@ -59,9 +28,7 @@ $(function() {
 			// handles the returned data
 			var o = jQuery.parseJSON(data);
 			if (o.success === false) {
-				// reset the button
-				$this.html($this.data('original-text'));
-				
+
 				// shows the error message
 				alertify.error(o.message);
 
@@ -72,18 +39,16 @@ $(function() {
 					}
 				}
 			} else {
-				// refreshes the datatables
-				$('#datatables').dataTable().fnDraw();
-
-				// closes the modal
-				$('#modal-lg').modal('hide'); 
-
-				// restores the modal content to loading state
-				restore_modal(); 
-
-				// shows the success message
-				alertify.success(o.message); 
+				if (o.action == 'add') {
+					window.location.replace(site_url + 'properties/properties/form/edit/' + o.id);
+				} else {
+					// shows the success message
+					alertify.success(o.message); 
+				} 
 			}
+
+			$this.html($this.data('original-text'));
+			
 		}).fail(function() {
 			// shows the error message
 			alertify.alert('Error', unknown_form_error);
@@ -102,7 +67,7 @@ $(function() {
 	});
 
 	tinymce.init({
-		selector: "#category_description",
+		selector: "#category_description, #category_bottom_description", 
 		theme: "modern",
 		statusbar: true,
 		menubar: true,

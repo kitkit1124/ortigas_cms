@@ -1,0 +1,38 @@
+
+.division_container{
+    max-width: 500px;
+    border: 1px solid #c0c0c0;
+    border-radius: 10px;
+    border-top: none;
+}
+.heading_division{
+    padding: 10px;
+    text-align: center;
+    background-color: #3ea6a4;
+    color: #FFF;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#sortable{
+    padding: 20px;
+    width: auto;
+}
+
+#sortable li {
+	padding: 15px;
+    list-style-type: none;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: #f9f9f9;
+    border: 1px solid #e1e1e1;
+    box-shadow: 5px 4px 7px -2px #999;
+    cursor: pointer;
+    color: #666;
+}
+
+#sortable li .fa{
+	margin-right: 10px;
+	color: #000;
+	font-size: 20px;
+}

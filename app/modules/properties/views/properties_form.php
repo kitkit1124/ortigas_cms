@@ -80,56 +80,45 @@
 							</div>
 							
 						</div>
-
-						<div class="property_overview">
-							<div class="form-group"><span style="color: red">*</span>
-								<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
-								<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
-								<div id="error-property_overview"></div>			
-							</div>
-						</div>
-					
+						
+						<?php
+							if(isset($record->property_id) && $record->property_id){
+								$data['section_type'] = 'properties';
+								$data['section_id'] = $record->property_id;
+								
+								echo $this->load->view('image_sliders_index', $data); 
+							}
+						?>
 
 						<div id="accordion">
-
-							<?php if(isset($record->property_id)){ ?>
-							   <div class="card">
-							      <div class="card-header">
-							        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-							        	<label><?php echo lang('property_slider')?></label>		          
-							        </a>
-						        	<div class="button_add_slider">
-							        	<?php if ($this->acl->restrict('properties.property_sliders.add', 'return')): ?>
-											<a href="<?php echo site_url('properties/property_sliders/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo lang('button_add_slider')?></a>
-										<?php endif; ?>
+							<div class="card">
+						      <div class="card-header">
+						        <a class="card-link" data-toggle="collapse" href="#property_descriptions"><label><?php echo lang('property_description')?></label>
+						        	<div id="error-property_overview"></div>	
+									<div id="error-property_bottom_overview"></div>
+						        </a>
+						      </div>
+						      <div id="property_descriptions" class="collapse" data-parent="#accordion">
+						        <div class="card-body">		
+									<div class="property_overview">
+										<div class="form-group"><span style="color: red">*</span>
+											<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
+											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
+											<div id="error-property_overview"></div>			
+										</div>
 									</div>
-									<input type="hidden" id="property_id" data-id="<?php echo $record->property_id; ?>" />
-							      </div>
-							      <div id="collapseOne" class="collapse" data-parent="#accordion">
-							        <div class="card-body">
 
-							     		<?php if ($sliders): ?>
-											<div id="sortable" class="row">
-												<?php foreach ($sliders as $slider): ?>
-													<li class="ui-state-default col-sm-3" data-id="<?php echo $slider->property_slider_id; ?>">
-														<div class="thumbnail">
-															<div class="pull-right btn-actions">
-																<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-success" href="<?php echo site_url('properties/property_sliders/form/edit/' . $slider->property_slider_id); ?>"><div class="fa fa-pencil"></div></a>
-																<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-danger" href="<?php echo site_url('properties/property_sliders/delete/' . $slider->property_slider_id); ?>"><div class="fa fa-trash"></div></a>
-															</div>
-															<img src="<?php echo site_url($slider->property_slider_image); ?>" width="100%" />
-														</div>
-													</li>
-												<?php endforeach; ?>
-											</div>
-										<?php endif; ?>
-			
-							        </div>
-							      </div>
-							    </div>
-							<?php } ?>
-
-							
+									<div class="property_bottom_overview">
+										<div class="form-group">
+											<label for="property_bottom_overview"><?php echo lang('property_bottom_overview')?>:</label>			
+											<?php echo form_textarea(array('id'=>'property_bottom_overview', 'name'=>'property_bottom_overview', 'rows'=>'3', 'value'=>set_value('property_bottom_overview', isset($record->property_bottom_overview) ? $record->property_bottom_overview : '', false), 'class'=>'form-control')); ?> 
+											<div id="error-property_bottom_overview"></div>			
+										</div>
+									</div>
+						        </div>
+						      </div>
+						    </div>
+													
 						   <div class="card">
 						      <div class="card-header">
 						        <a class="card-link" data-toggle="collapse" href="#construction_update"><label><?php echo lang('property_construction')?></label></a>
@@ -164,11 +153,19 @@
 						      </div>
 						    </div>
 						
+							<?php if(isset($record->property_id) && $record->property_id){ ?>
+								<div id="amenities_container">
+									<?php $data['property_id'] = $record->property_id; ?>
+									<?php echo $this->load->view('properties/amenities_index', $data); ?>
+								</div>
+
+							<?php } ?>
 
 						    <div class="card">
 						      <div class="card-header">
 						        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">
 						       <label for="property_map_location"><?php echo lang('property_map_location')?> & </label><label for="property_nearby_facilities"><?php echo lang('property_nearby_facilities')?></label>
+						       <div id="error-property_latitude"></div><div id="error-property_longitude"></div>
 						      </a>
 						      </div>
 						      <div id="collapseTwo" class="collapse" data-parent="#accordion">
@@ -177,8 +174,6 @@
 													
 										<input id="pac-input" type="text" placeholder="Search">
 										<div id="map"></div>
-										<div id="error-property_latitude"></div><div id="error-property_longitude"></div>	
-
 										<div style="display: none;">
 											<?php echo form_input(array('id'=>'property_longitude', 'name'=>'property_longitude', 'value'=>set_value('property_longitude', isset($record->property_longitude) ? $record->property_longitude : ''), 'class'=>'form-control'));?>
 											<?php echo form_input(array('id'=>'property_latitude', 'name'=>'property_latitude', 'value'=>set_value('property_latitude', isset($record->property_latitude) ? $record->property_latitude : ''), 'class'=>'form-control'));?>
@@ -266,7 +261,6 @@
 						    </div><!-- /3rd card -->
 
 						</div>
-	
 					</div>
 
 					<div class="col-sm-3  prop_right_details">

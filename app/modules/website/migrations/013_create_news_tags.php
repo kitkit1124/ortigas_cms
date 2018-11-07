@@ -70,6 +70,11 @@ class Migration_Create_news_tags extends CI_Migration {
 
 		// add the module menu
 		$this->migrations_model->add_menus($this->_menus);
+
+		$data = array(
+			array('news_tag_name' => 'Tag', 'news_tag_status' => 'Active'),
+		);
+		$this->db->insert_batch($this->_table, $data);
 	}
 
 	public function down()

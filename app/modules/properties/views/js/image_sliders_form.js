@@ -1,7 +1,8 @@
 Dropzone.autoDiscover = false;
 
 $(function() {
-		var myDropzone = new Dropzone("#dropzone");
+	
+	var myDropzone = new Dropzone("#dropzone");
 	
 		myDropzone.on("success", function(file, response) {
 
@@ -97,8 +98,7 @@ $(function() {
 			$('#thumbnails').html(html);
 		}
 	});
-
-	$('#property_slider_property_id').val($('#property_id').attr('data-id'));
+	
 	// handles the submit action
 	$('#submit').click(function(e){
 		// change the button to loading state
@@ -114,15 +114,16 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(ajax_url, {
-			property_slider_property_id: $('#property_slider_property_id').val(),
-			property_slider_image: $('#property_slider_image').val(),
-			property_slider_title: $('#property_slider_title').val(),
-			property_slider_title_size: $('#property_slider_title_size').val(),
-			property_slider_title_pos: $('#property_slider_title_pos').val(),
-			property_slider_caption: $('#property_slider_caption').val(),
-			property_slider_caption_size: $('#property_slider_caption_size').val(),
-			property_slider_caption_pos: $('#property_slider_caption_pos').val(),
-			property_slider_status: $('#property_slider_status').val(),
+			image_slider_section_type: section_type,
+			image_slider_section_id: section_id,
+			image_slider_image: $('#image_slider_image').val(),
+			image_slider_title: $('#image_slider_title').val(),
+			image_slider_title_size: $('#image_slider_title_size').val(),
+			image_slider_title_pos: $('#image_slider_title_pos').val(),
+			image_slider_caption: $('#image_slider_caption').val(),
+			image_slider_caption_size: $('#image_slider_caption_size').val(),
+			image_slider_caption_pos: $('#image_slider_caption_pos').val(),
+			image_slider_status: $('#image_slider_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -143,21 +144,7 @@ $(function() {
 					}
 				}
 			} else {
-				// refreshes the datatables
-				//$('#datatables').dataTable().fnDraw();
-
-				// closes the modal
-				$('#modal').modal('hide'); 
-
-				// restores the modal content to loading state
-				restore_modal(); 
-
-				// shows the success message
-				alertify.success(o.message); 
-
-				setTimeout(function(){ 
-					window.location.reload(true); 
-				}, 1000)
+				window.location.reload(true);
 			}
 		}).fail(function() {
 			// shows the error message
@@ -175,31 +162,32 @@ $(function() {
 			return false;
 		}
 	});
-});
 
-$('#property_slider_image_link').click(function(){
-	$('#form').css('display','none');
-	$('#image').css('display', 'block');
-});
+	$('#image_slider_image_link').click(function(){
+		$('#form').css('display','none');
+		$('#image').css('display', 'block');
+	});
 
-$("#image_sizes, #thumbnails").on( "mouseenter", ".thumbnail", function( event ) {
-	$(this).find('.caption').slideDown(250);
-}).on( "mouseleave", ".thumbnail", function( event ) {
-	$(this).find('.caption').slideUp(250);
-});
+	$("#image_sizes, #thumbnails").on( "mouseenter", ".thumbnail", function( event ) {
+		$(this).find('.caption').slideDown(250);
+	}).on( "mouseleave", ".thumbnail", function( event ) {
+		$(this).find('.caption').slideUp(250);
+	});
 
-$('#image_sizes, #thumbnails').on("click", ".btn-image", function() {
-	// insert the image
-	var image = $(this).attr('data-image');
-	$('#property_slider_image').val(image);
-	$('#preview_image_thumb').attr('src', site_url + image);
+	$('#image_sizes, #thumbnails').on("click", ".btn-image", function() {
+		// insert the image
+		var image = $(this).attr('data-image');
+		$('#image_slider_image').val(image);
+		$('#image_slider_image_thumb').attr('src', site_url + image);
 
-	// show the form
-	$('#image').css('display','none');
-	$('#form').css('display', 'block');
-});
+		// show the form
+		$('#image').css('display','none');
+		$('#form').css('display', 'block');
+	});
 
-$('.go-back').click(function(){
-	$('#form').css('display','block');
-	$('#image').css('display', 'none');
+	$('.go-back').click(function(){
+		$('#form').css('display','block');
+		$('#image').css('display', 'none');
+	});
+
 });

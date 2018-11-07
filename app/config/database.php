@@ -14,6 +14,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	// 'password' => getenv('DBPASSWORD'),
 	// 'database' => getenv('DATABASE'),
 
+	// 'hostname' => 'localhost',
+	// 'username' => 'ortigas_local',
+	// 'password' => 'ortigas_local',
+	// 'database' => 'ortigas_local',
+
 $active_group = 'default';
 $query_builder = TRUE;
 

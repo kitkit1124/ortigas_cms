@@ -97,7 +97,9 @@ class Categories extends MX_Controller {
 	{
 		$this->acl->restrict('properties.categories.' . $action, 'modal');
 
+		// $data['page_heading'] = lang($action . '_heading');
 		$data['page_heading'] = lang($action . '_heading');
+		$data['page_subhead'] = lang($action . '_subhead');
 		$data['action'] = $action;
 
 		if ($this->input->post())
@@ -114,6 +116,7 @@ class Categories extends MX_Controller {
 					'category_name'			=> form_error('category_name'),
 					'category_image'		=> form_error('category_image'),
 					'category_description'	=> form_error('category_description'),
+					'category_bottom_description'	=> form_error('category_bottom_description'),
 					'category_status'		=> form_error('category_status'),
 				);
 				echo json_encode($response);
@@ -121,19 +124,26 @@ class Categories extends MX_Controller {
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->categories_model->find($id);
-
-
-		
+		if ($action != 'add') {
+			$data['record'] = $this->categories_model->find($id);
+		}
 
 		// render the page
-		$this->template->set_template('modal');
+		// $this->template->set_template('modal');
+
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
 
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
 
-		$this->template->add_css('npm/dropzone/dropzone.min.css');
-		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('properties', 'related_links_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
+
 		$this->template->add_css(module_css('properties', 'categories_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'categories_form'), 'embed');
 		$this->template->write_view('content', 'categories_form', $data);
@@ -217,6 +227,7 @@ class Categories extends MX_Controller {
 			'category_name'			=> $this->input->post('category_name'),
 			'category_image'		=> $this->input->post('category_image'),
 			'category_description'	=> $this->input->post('category_description'),
+			'category_bottom_description'	=> $this->input->post('category_bottom_description'),
 			'category_status'		=> $this->input->post('category_status'),
 		);
 		

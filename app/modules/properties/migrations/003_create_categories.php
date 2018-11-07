@@ -44,11 +44,12 @@ class Migration_Create_categories extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'category_id'			=> array('type' => 'TINYINT', 'constraint' => 3, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
-			'category_name'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
-			'category_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
-			'category_description'	=> array('type' => 'TEXT', 'null' => TRUE),
-			'category_status'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
+			'category_id'					=> array('type' => 'TINYINT', 'constraint' => 3, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'category_name'					=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'category_image'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'category_description'			=> array('type' => 'TEXT', 'null' => TRUE),
+			'category_bottom_description'	=> array('type' => 'TEXT', 'null' => TRUE),
+			'category_status'				=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
 
 			'category_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 			'category_created_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
@@ -73,10 +74,10 @@ class Migration_Create_categories extends CI_Migration {
 		$this->migrations_model->add_menus($this->_menus);
 
 		$data = array(
-			array('category_name'  => 'Estates', 'category_image' => 'data/photos/building.jpg', 'category_status'  => 'Active'),
-			array('category_name'  => 'Residences', 'category_image' => 'data/photos/building.jpg', 'category_status'  => 'Active'),
-			array('category_name'  => 'Malls', 'category_image' => 'data/photos/building.jpg', 'category_status'  => 'Active'),
-			array('category_name'  => 'Offices', 'category_image' => 'data/photos/building.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Estates', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Residences', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Malls', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Offices', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
 		);
 		$this->db->insert_batch($this->_table, $data);
 	}

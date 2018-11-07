@@ -1,6 +1,8 @@
 #estate_active_photo, #estate_active_thumb {
 	border-radius: 4px;
 	max-width: 400px;
+	height: 200px;
+	object-fit: cover;
 	user-drag: none; 
 	user-select: none;
 	-moz-user-select: none;
@@ -9,16 +11,13 @@
 	-ms-user-select: none;
 }
 
- #estate_active_thumb {
- 	max-width: 200px;
- }
 
 #upload_button, #upload_button_thumb{
  	padding: 0px;
  }
 
-#estate_text{
-	min-height: 350px;
+.bottom_text{
+	margin-top: 40px;
 }
 
 p.note{ 
