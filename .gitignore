@@ -12,10 +12,12 @@ pub/data*
 pub/data/uploads/*
 pub/data/photos/*
 pub/npm/*
+!pub/npm/jquery.nestable
+!pub/npm/tinymce
 .idea/*
 .idea/scopes/*
 node_modules/*
 vendor/*
 .vs
 .vscode
-.env
+!.env
