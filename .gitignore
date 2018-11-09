@@ -8,9 +8,8 @@ app/logs/log-*.php
 !pub/data/uploads/index.html
 !pub/data/photos/index.html
 app/cache/*
-pub/data*
 pub/data/uploads/*
-pub/data/photos/*
+!pub/data/photos/
 pub/npm/*
 !pub/npm/jquery.nestable
 !pub/npm/tinymce
