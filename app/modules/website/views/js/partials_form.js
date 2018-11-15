@@ -74,8 +74,10 @@ $(function() {
 			'insertdatetime media nonbreaking save table contextmenu directionality',
 			'emoticons template paste textcolor colorpicker textpattern fontawesome'
 		],
-		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons fontawesome',
+		toolbar1: 'undo redo | styleselect | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | link fontawesome',
 		image_advtab: true,
 
 	});
+
+	// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons fontawesome',
 });

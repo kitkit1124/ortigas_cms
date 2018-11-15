@@ -70,6 +70,7 @@ class Banners extends MX_Controller {
 
 		$data['banners'] = $this->banners_model
 			->where('banner_deleted', 0)
+			->where('banner_status', 'Active')
 			->where('banner_banner_group_id', $id)
 			->order_by('banner_order', 'asc')
 			->order_by('banner_id', 'desc')
