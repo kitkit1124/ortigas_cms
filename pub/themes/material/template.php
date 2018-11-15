@@ -48,7 +48,7 @@ $user = $this->ion_auth->user()->row();
 						<div class="navbar-header">
 							<!-- Navbar Brand -->
 							<a href="<?php echo site_url(''); ?>" class="navbar-brand d-none d-sm-inline-block">
-								<div class="brand-text d-none d-lg-inline-block"><img src="<?php echo base_url(); ?>data/photos/ortigaslogo_png.png" width="300px" style="margin-left: -30px;"></div>
+								<div class="brand-text d-none d-lg-inline-block"><img src="<?php echo base_url(); ?>data/photos/ortigaslogo_wfont.png" width="300px" style="margin-left: -30px;"></div>
 								<div class="brand-text d-none d-sm-inline-block d-lg-none"><?php echo implode('', array_map(function($v) { return $v[0]; }, explode(' ', config_item('app_name')))); ?></div>
 							</a>
 							
