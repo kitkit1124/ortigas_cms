@@ -75,6 +75,13 @@ class Migration_Create_partials extends CI_Migration
 			array('partial_title'  => 'Footer - Address and Contact', 'partial_content' => '<p>9th Floor, Ortigas Building<br />Ortigas Avenue,<br />Pasig City 1600 Philippines<br />Phone: (+632) 631 - 1231<br />Telefax: (+632) 631 - 6517</p>', 'partial_status' => 'Posted', 'partial_created_by' => 1),
 			array('partial_title'  => 'Footer - Subscription Text', 'partial_content' => '<table style="border-collapse: collapse;" border="0"><tbody><tr><td><h1>Stay Updated</h1></td></tr><tr><td><p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean eu leo quam.</p></td></tr><tr><td><p>{{subscribe}}</p></td></tr><tr><td><table style="border-collapse: collapse;" border="0"><tbody><tr><td style="text-align: center;"><a href="http://www.facebook.com"><span class="fa fa-facebook"></span>&nbsp;</a></td><td style="text-align: center;"><a href="http://www.twitter.com"><span class="fa fa-twitter"></span>&nbsp;</a></td><td style="text-align: center;"><a href="http://www.instagram.com"><span class="fa fa-instagram"></span>&nbsp;</a></td></tr></tbody></table></td></tr></tbody></table>', 'partial_status' => 'Posted', 'partial_created_by' => 1),
 			array('partial_title'  => 'Property Categories - Button Text', 'partial_content' => '<p>Inquire Now</p>', 'partial_status' => 'Posted', 'partial_created_by' => 1),
+			array('partial_title'  => 'Thank You - Career', 'partial_content' => '<h1>Thank you for your interest.</h1><p>Our Human Resouces personnel will be in touch with you soon.</p>', 'partial_status' => 'Posted', 'partial_created_by' => 1),
+			array('partial_title'  => 'Thank You - Inquire', 'partial_content' => '<h1>Thank you for your interest.</h1><p>Our Human Resouces personnel will be in touch with you soon.</p>', 'partial_status' => 'Posted', 'partial_created_by' => 1),
+
+
+
+
+			
 
 
 
