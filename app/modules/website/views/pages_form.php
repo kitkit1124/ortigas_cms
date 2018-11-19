@@ -25,6 +25,7 @@
 							<div id="error-page_title"></div>
 						</div>
 
+						<?php if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){} else{ ?>
 						<div class="form-group">
 							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>
 							<div class="pull-right" style="margin-top:-5px">
@@ -38,6 +39,7 @@
 							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'10', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_content"></div>
 						</div>
+						<?php } ?>
 
 						
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">

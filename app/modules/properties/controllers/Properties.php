@@ -339,8 +339,8 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_instagram', lang('property_instagram'), 'max_length[255]');
 		$this->form_validation->set_rules('property_linkedin', lang('property_linkedin'), 'max_length[255]');
 		$this->form_validation->set_rules('property_youtube', lang('property_youtube'), 'max_length[255]');
-		$this->form_validation->set_rules('property_latitude', lang('property_latitude'), 'required|max_length[255]');
-		$this->form_validation->set_rules('property_longitude', lang('property_longitude'), 'required|max_length[255]');
+		// $this->form_validation->set_rules('property_latitude', lang('property_latitude'), 'required|max_length[255]');
+		// $this->form_validation->set_rules('property_longitude', lang('property_longitude'), 'required|max_length[255]');
 		//$this->form_validation->set_rules('property_nearby_malls', lang('property_nearby_malls'), 'required');
 		//$this->form_validation->set_rules('property_nearby_markets', lang('property_nearby_markets'), 'required');
 		//$this->form_validation->set_rules('property_nearby_hospitals', lang('property_nearby_hospitals'), 'required');

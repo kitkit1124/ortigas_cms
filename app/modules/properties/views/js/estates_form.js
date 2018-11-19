@@ -87,7 +87,7 @@ $(function() {
 			'insertdatetime media nonbreaking save table contextmenu directionality',
 			'emoticons template paste textcolor colorpicker textpattern'
 		],
-		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons mybutton documents videos',
+		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link mybutton documents videos',
 		image_advtab: true,
 	});
 

@@ -79,5 +79,5 @@ $(function() {
 
 	});
 
-	// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link emoticons fontawesome',
+	// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link fontawesome',
 });

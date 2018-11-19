@@ -36,6 +36,11 @@ class Migration_Create_video_uploads extends CI_Migration
 			'video_name'		=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
 			'video_section'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'video_p_id'		=> array('type' => 'SMALLINT','constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
+
+			'video_title_caption'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_descp_caption'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_text_pos'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+
 			'video_location'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'video_status'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
 
