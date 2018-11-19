@@ -205,6 +205,9 @@ class Properties extends MX_Controller {
 		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
 		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
 
+		$this->template->add_css(module_css('properties', 'related_links_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
+
 		$this->template->add_css(module_css('properties', 'amenities_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'amenities_index'), 'embed');
 

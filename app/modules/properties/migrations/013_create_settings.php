@@ -72,7 +72,7 @@ class Migration_Create_settings extends CI_Migration {
 		$data = array(
 			array('setting_division'  => 'Overview Description', 
 				'setting_order'  => '0'),
-			array('setting_division'  => 'Ammenities',
+			array('setting_division'  => 'Amenities',
 				'setting_order'  => '1'),
 			array('setting_division'  => 'Slider',
 				'setting_order'  => '2'),

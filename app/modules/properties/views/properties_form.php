@@ -260,6 +260,16 @@
 						      </div>
 						    </div><!-- /3rd card -->
 
+						    <?php if(isset($record->property_id) && $record->property_id){ ?>
+
+								<div id="related_link">
+									<?php $data['section_id'] = $record->property_id; ?>
+									<?php $data['section_type'] = 'properties'; ?>
+									<?php echo $this->load->view('properties/related_links_index', $data); ?>
+								</div>
+
+							<?php } ?>
+
 						</div>
 					</div>
 
