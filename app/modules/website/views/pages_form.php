@@ -40,15 +40,16 @@
 						</div>
 
 						
-						<div class="form-group <?php echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
 							<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>									
 							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? $record->page_bottom_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_bottom_content"></div>
 						</div>
 
-						<?php if(isset($record->page_id) && $record->page_id && $record->page_id == 2){ ?>
+				
+						<?php if(isset($record->page_id) && $record->page_id && $record->page_id){ ?>
 
-							<div id="related_link <?php echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+							<div id="related_link <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
 								<?php $data['section_id'] = $record->page_id; ?>
 								<?php $data['section_type'] = 'pages'; ?>
 								<?php echo $this->load->view('properties/related_links_index', $data); ?>
