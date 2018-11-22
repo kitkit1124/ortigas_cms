@@ -74,7 +74,7 @@ $(function() {
 			'insertdatetime media nonbreaking save table contextmenu directionality',
 			'emoticons template paste textcolor colorpicker textpattern fontawesome'
 		],
-		toolbar1: 'undo redo | styleselect | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | link fontawesome',
+		toolbar1: 'undo redo | styleselect | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist | link fontawesome',
 		image_advtab: true,
 
 	});

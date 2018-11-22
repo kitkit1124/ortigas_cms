@@ -25,6 +25,12 @@
 							<div id="error-page_title"></div>
 						</div>
 
+						<div class="form-group <?php echo isset($record->page_id) && $record->page_id == 1 ? "" : "hide"; ?>">
+							<label class="control-label" for="page_heading_text"><?php echo lang('page_heading_text'); ?>:</label>	
+							<?php echo form_input(array('id'=>'page_heading_text', 'name'=>'page_heading_text', 'value'=>set_value('page_heading_text', isset($record->page_heading_text) ? $record->page_heading_text : ''), 'class'=>'form-control'));?>
+							<div id="error-page_heading_text"></div>
+						</div>
+
 						<?php if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){} else{ ?>
 						<div class="form-group">
 							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>
@@ -49,9 +55,9 @@
 						</div>
 
 				
-						<?php if(isset($record->page_id) && $record->page_id && $record->page_id){ ?>
+						<?php if(isset($record->page_id) && $record->page_id){ ?>
 
-							<div id="related_link <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+							<div id="related_link" class="<?php echo isset($record->page_id) && $record->page_uri == 'projects' ? "" : "hide"; ?>">
 								<?php $data['section_id'] = $record->page_id; ?>
 								<?php $data['section_type'] = 'pages'; ?>
 								<?php echo $this->load->view('properties/related_links_index', $data); ?>
@@ -89,7 +95,7 @@
 							<div id="error-page_layout"></div>
 						</div>
 
-						<div class="form-group <?php echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
+						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_properties"><?php echo lang('page_properties'); ?>:</label>
 							<div id="properties">
 								<select id="page_properties" class="page_properties form-control" multiple="multiple">
@@ -102,7 +108,7 @@
 							<div id="error-page_properties"></div>
 						</div>
 
-						<div class="form-group <?php echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
+						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_posts"><?php echo lang('page_posts'); ?>:</label>
 							<div id="posts">
 								<select id="page_posts" class="page_posts form-control" multiple="multiple">

@@ -80,19 +80,23 @@ $(function() {
 	// initialize tinymce
 	tinymce.init({
 		selector: "#post_content",
+		extended_valid_elements : "span[*],i[*]",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,
 		relative_urls: false,
 		remove_script_host : false,
 		convert_urls : true,
+		content_css: 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+   		noneditable_noneditable_class: 'fa',
 		plugins: [
 			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 			'searchreplace wordcount visualblocks visualchars code',
 			'insertdatetime media nonbreaking save table contextmenu directionality',
-			'emoticons template paste textcolor colorpicker textpattern'
+			'emoticons template paste textcolor colorpicker textpattern fontawesome'
 		],
-		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link images documents videos',
+		// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link images documents videos',
+		toolbar1: 'undo redo | styleselect | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist | link fontawesome',
 		image_advtab: true,
 	});
 

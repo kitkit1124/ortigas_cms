@@ -30,7 +30,7 @@
 							<div class="col-sm-4">
 
 								<div id="accordion">
-								    <div class="card">
+								    <?php /* <div class="card hidden">
 								      <div class="card-header">
 								        <a class="card-link" data-toggle="collapse" href="#collapseOne">
 								         Categories
@@ -50,7 +50,7 @@
 											<?php endif; ?>
 								        </div>
 								      </div>
-								    </div>
+								    </div> */?>
 								    <div class="card">
 								      <div class="card-header">
 								        <a class="collapsed card-link" data-toggle="collapse" href="#collapseTwo">

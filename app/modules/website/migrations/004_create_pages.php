@@ -46,6 +46,7 @@ class Migration_Create_pages extends CI_Migration
 			'page_id' 				=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'auto_increment' => TRUE, 'null' => FALSE),
 			'page_parent_id' 		=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'default' => 0),
 			'page_title'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'page_heading_text'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'page_slug'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'page_uri'				=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'page_content'			=> array('type' => 'TEXT', 'null' => FALSE),
@@ -65,6 +66,7 @@ class Migration_Create_pages extends CI_Migration
 		$this->dbforge->add_key('page_id', TRUE);
 		$this->dbforge->add_key('page_parent_id');
 		$this->dbforge->add_key('page_title');
+		$this->dbforge->add_key('page_heading_text');
 		$this->dbforge->add_key('page_slug');
 		$this->dbforge->add_key('page_uri');
 		$this->dbforge->add_key('page_layout');
@@ -81,17 +83,17 @@ class Migration_Create_pages extends CI_Migration
 
 		// add the initial values
 		$data = array(
-			array('page_title' => 'Home', 'page_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet turpis tincidunt, pretium turpis in, pharetra diam. Mauris nec felis sit amet felis facilisis scelerisque quis eget velit. Integer egestas laoreet elit id consequat. Proin nec luctus neque, eu elementum orci. Sed fermentum pretium nibh dictum tempus. Etiam eu egestas ipsum, pretium iaculis odio. Aliquam est orci, dignissim ut ullamcorper sed, feugiat lacinia sem. Aliquam viverra egestas mi in congue.</p><p>&nbsp;</p><h1>We Are Ortigas.</h1>', 'page_slug' => 'home', 'page_uri' => 'home', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'Home', 'page_content' => '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet turpis tincidunt, pretium turpis in, pharetra diam. Mauris nec felis sit amet felis facilisis scelerisque quis eget velit. Integer egestas laoreet elit id consequat. Proin nec luctus neque, eu elementum orci. Sed fermentum pretium nibh dictum tempus. Etiam eu egestas ipsum, pretium iaculis odio. Aliquam est orci, dignissim ut ullamcorper sed, feugiat lacinia sem. Aliquam viverra egestas mi in congue.</p>', 'page_slug' => 'home', 'page_uri' => 'home', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'Estates', 'page_content' => '<p>Estates</p>', 'page_slug' => 'estates', 'page_uri' => 'estates', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Projects', 'page_content' => '<h1>Lorem Ipsum dolor sit Amet</h1><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sit amet turpis tincidunt, pretium turpis in, pharetra diam. Mauris nec felis sit amet felis facilisis scelerisque quis eget velit. Integer egestas laoreet elit id consequat. Proin nec luctus neque, eu elementum orci. Sed fermentum pretium nibh dictum tempus. Etiam eu egestas ipsum, pretium iaculis odio. Aliquam est orci, dignissim ut ullamcorper sed, feugiat lacinia sem. Aliquam viverra egestas mi in congue.</p>', 'page_slug' => 'projects', 'page_uri' => 'projects', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'Estates', 'page_content' => 'Estates', 'page_slug' => 'estates', 'page_uri' => 'estates', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'News', 'page_content' => 'News', 'page_slug' => 'news', 'page_uri' => 'news', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'Careers', 'page_content' => 'Careers', 'page_slug' => 'careers', 'page_uri' => 'careers', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'Inquire', 'page_content' => 'Inquire', 'page_slug' => 'inquire', 'page_uri' => 'inquire', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'About Us', 'page_content' => 'About Us', 'page_slug' => 'about-us', 'page_uri' => 'about-us', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'News', 'page_content' => '<p>News</p>', 'page_slug' => 'news', 'page_uri' => 'news', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'Careers', 'page_content' => '<p>Careers</p>', 'page_slug' => 'careers', 'page_uri' => 'careers', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'Inquire', 'page_content' => '<p>Inquire</p>', 'page_slug' => 'inquire', 'page_uri' => 'inquire', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'About Us', 'page_content' => '<p>About Us</p>', 'page_slug' => 'about-us', 'page_uri' => 'about-us', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Established Communities', 'page_content' => 'Established Communities', 'page_slug' => 'established-communities', 'page_uri' => 'established-communities', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
-			array('page_title' => 'Data Privacy', 'page_content' => 'About', 'page_slug' => 'data-privacy', 'page_uri' => 'data-privacy', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Investor Relations', 'page_content' => 'investor-relations', 'page_slug' => 'investor-relations', 'page_uri' => 'investor-relations', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Supplier and Contractor Accreditation', 'page_content' => 'Supplier and Contractor Accreditation', 'page_slug' => 'supplier-and-contractor-accreditation', 'page_uri' => 'supplier-and-contractor-accreditation', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
+			array('page_title' => 'Data Privacy Policy', 'page_content' => 'Privacy Policy', 'page_slug' => 'privacy-policy', 'page_uri' => 'privacy-policy', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Search Properties', 'page_content' => 'Search Properties', 'page_slug' => 'property_search', 'page_uri' => 'property_search', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 			array('page_title' => 'Global Search', 'page_content' => 'Global Search', 'page_slug' => 'global_search', 'page_uri' => 'global_search', 'page_layout' => 'full_width', 'page_status' => 'Posted'),
 		);

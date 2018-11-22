@@ -137,6 +137,7 @@ class Pages extends MX_Controller
 				$response['errors'] = array(
 					'page_parent_id'	=> form_error('page_parent_id'),
 					'page_title'		=> form_error('page_title'),
+					'page_title'		=> form_error('page_title'),
 					'page_content'		=> form_error('page_content'),
 					'page_layout'		=> form_error('page_layout'),
 					'page_properties'	=> form_error('page_properties[]'),
@@ -263,8 +264,9 @@ class Pages extends MX_Controller
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('page_title', lang('page_title'), 'required');
+		$this->form_validation->set_rules('page_title', lang('page_title'), 'required|max_length[255]');
 		$this->form_validation->set_rules('page_content', lang('page_content'), 'required');
+		$this->form_validation->set_rules('page_heading_text', lang('page_heading_text'), 'max_length[255]');
 		$this->form_validation->set_rules('page_layout', lang('page_layout'), 'required');
 		$this->form_validation->set_rules('page_status', lang('page_status'), 'required');
 
@@ -296,6 +298,7 @@ class Pages extends MX_Controller
 		$data = array(
 			'page_parent_id'		=> $this->input->post('page_parent_id'),
 			'page_title'			=> $this->input->post('page_title'),
+			'page_heading_text'		=> $this->input->post('page_heading_text'),
 			'page_slug'				=> url_title($this->input->post('page_title'), '-', TRUE),
 			'page_uri'				=> $uri,
 			'page_content'			=> $this->input->post('page_content'),

@@ -15,6 +15,8 @@ $lang['crumb_module']				= 'Website';
 // Labels
 $lang['page_parent_id']				= 'Parent Page';
 $lang['page_title']					= 'Page Title';
+$lang['page_title']					= 'Page Title';
+$lang['page_heading_text']			= 'Page Header Text';
 $lang['page_slug']					= 'Slug';
 $lang['page_content']				= 'Content';
 $lang['page_bottom_content']		= 'SEO Content';
