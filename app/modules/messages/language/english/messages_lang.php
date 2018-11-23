@@ -14,8 +14,9 @@ $lang['crumb_module']				= 'Messages';
 
 // Labels
 $lang['message_id']					= 'ID';
-$lang['message_section']			= 'Section';
-$lang['message_section_id']			= 'Section Id';
+$lang['message_type']				= 'Form Source';
+$lang['message_section']			= 'Inquiry Type';
+$lang['message_section_id']			= 'Project';
 $lang['message_name']				= 'Name';
 $lang['message_email']				= 'Email';
 $lang['message_content']			= 'Content';

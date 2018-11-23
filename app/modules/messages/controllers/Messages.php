@@ -22,6 +22,7 @@ class Messages extends MX_Controller {
 
 		$this->load->library('users/acl');
 		$this->load->model('messages_model');
+		$this->load->model('properties/properties_model');
 		$this->load->language('messages');
 	}
 	
@@ -110,11 +111,14 @@ class Messages extends MX_Controller {
 			{	
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
-				$response['errors'] = array(					
+				$response['errors'] = array(		
+					'message_type'			=> form_error('message_type'),			
 					'message_section'		=> form_error('message_section'),
-					'message_section_id'		=> form_error('message_section_id'),
-					'message_name'		=> form_error('message_name'),
-					'message_email'		=> form_error('message_email'),
+					'message_section_id'	=> form_error('message_section_id'),
+					'message_name'			=> form_error('message_name'),
+					'message_email'			=> form_error('message_email'),
+					'message_mobile'		=> form_error('message_mobile'),
+					'message_location'		=> form_error('message_location'),
 					'message_content'		=> form_error('message_content'),
 					'message_status'		=> form_error('message_status'),
 				);
@@ -123,7 +127,9 @@ class Messages extends MX_Controller {
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->messages_model->find($id);
+		if ($action != 'add')
+		$data['record'] = $this->messages_model->find($id);
+		$data['property'] = $this->properties_model->find($data['record']->message_id);
 
 
 		
@@ -178,10 +184,13 @@ class Messages extends MX_Controller {
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
+		$this->form_validation->set_rules('message_type', lang('message_type'), 'required');
 		$this->form_validation->set_rules('message_section', lang('message_section'), 'required');
 		$this->form_validation->set_rules('message_section_id', lang('message_section_id'), 'required');
 		$this->form_validation->set_rules('message_name', lang('message_name'), 'required');
 		$this->form_validation->set_rules('message_email', lang('message_email'), 'required');
+		$this->form_validation->set_rules('message_mobile', lang('message_mobile'), 'required');
+		$this->form_validation->set_rules('message_location', lang('message_location'), 'required');
 		$this->form_validation->set_rules('message_content', lang('message_content'), 'required');
 		$this->form_validation->set_rules('message_status', lang('message_status'), 'required');
 
@@ -193,10 +202,13 @@ class Messages extends MX_Controller {
 		}
 
 		$data = array(
+			'message_type'			=> $this->input->post('message_type'),
 			'message_section'		=> $this->input->post('message_section'),
-			'message_section_id'		=> $this->input->post('message_section_id'),
-			'message_name'		=> $this->input->post('message_name'),
-			'message_email'		=> $this->input->post('message_email'),
+			'message_section_id'	=> $this->input->post('message_section_id'),
+			'message_name'			=> $this->input->post('message_name'),
+			'message_email'			=> $this->input->post('message_email'),
+			'message_mobile'		=> $this->input->post('message_mobile'),
+			'message_location'		=> $this->input->post('message_location'),
 			'message_content'		=> $this->input->post('message_content'),
 			'message_status'		=> $this->input->post('message_status'),
 		);

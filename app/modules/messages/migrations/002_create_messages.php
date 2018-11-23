@@ -24,7 +24,7 @@ class Migration_Create_messages extends CI_Migration {
 	private $_menus = array(
 		array(
 			'menu_parent'		=> 'none',
-			'menu_text' 		=> 'Messages',    
+			'menu_text' 		=> 'Mails',    
 			'menu_link' 		=> 'messages', 
 			'menu_perm' 		=> 'messages.messages.link', 
 			'menu_icon' 		=> 'fa fa-envelope', 
@@ -33,7 +33,7 @@ class Migration_Create_messages extends CI_Migration {
 		),
 		array(
 			'menu_parent'		=> 'messages',
-			'menu_text' 		=> 'Messages',    
+			'menu_text' 		=> 'Inbox',    
 			'menu_link' 		=> 'messages/messages', 
 			'menu_perm' 		=> 'messages.messages.link', 
 			'menu_icon' 		=> 'fa fa-envelope', 
@@ -54,10 +54,13 @@ class Migration_Create_messages extends CI_Migration {
 		// create the table
 		$fields = array(
 			'message_id'			=> array('type' => 'INT', 'constraint' => 10, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'message_type'			=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
 			'message_section'		=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
 			'message_section_id'	=> array('type' => 'INT', 'constraint' => 10, 'unsigned' => TRUE, 'null' => FALSE),
 			'message_name'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'message_email'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'message_mobile'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'message_location'		=> array('type' => 'VARCHAR', 'constraint' => 500, 'null' => TRUE),
 			'message_content'		=> array('type' => 'TEXT', 'null' => FALSE),
 			'message_status'		=> array('type' => 'SET("0","1")', 'null' => FALSE),
 

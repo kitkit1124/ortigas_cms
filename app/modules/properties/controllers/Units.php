@@ -112,14 +112,14 @@ class Units extends MX_Controller {
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
 					'unit_property_id'		=> form_error('unit_property_id'),
-					'unit_floor_id'		=> form_error('unit_floor_id'),
+					'unit_floor_id'			=> form_error('unit_floor_id'),
 					'unit_room_type_id'		=> form_error('unit_room_type_id'),
-					'unit_number'		=> form_error('unit_number'),
-					'unit_size'		=> form_error('unit_size'),
-					'unit_price'		=> form_error('unit_price'),
+					'unit_number'			=> form_error('unit_number'),
+					'unit_size'				=> form_error('unit_size'),
+					'unit_price'			=> form_error('unit_price'),
 					'unit_downpayment'		=> form_error('unit_downpayment'),
-					'unit_image'		=> form_error('unit_image'),
-					'unit_status'		=> form_error('unit_status'),
+					'unit_image'			=> form_error('unit_image'),
+					'unit_status'			=> form_error('unit_status'),
 				);
 				echo json_encode($response);
 				exit;

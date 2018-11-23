@@ -42,7 +42,7 @@ class Messages_model extends BF_Model {
 			'message_id',
 			'message_email',
 			'message_section',
-			'message_section_id',
+			'property_name',
 			'message_name',
 			'message_content',
 			'message_status',
@@ -55,6 +55,17 @@ class Messages_model extends BF_Model {
 
 		return $this->join('users as creator', 'creator.id = message_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = message_modified_by', 'LEFT')
+					->join('properties', 'properties.property_id = message_section_id', 'LEFT')
 					->datatables($fields);
+	}
+
+	public function get_mails()
+	{
+		
+
+		return $this
+				->join('properties', 'properties.property_id = message_section_id', 'LEFT')
+				->find();
+
 	}
 }

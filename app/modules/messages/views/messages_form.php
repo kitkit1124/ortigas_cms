@@ -11,47 +11,89 @@
 
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
-		<div class="form-group">
-			<label for="message_section"><?php echo lang('message_section')?>:</label>			
-			<?php echo form_input(array('id'=>'message_section', 'name'=>'message_section', 'value'=>set_value('message_section', isset($record->message_section) ? $record->message_section : ''), 'class'=>'form-control'));?>
-			<div id="error-message_section"></div>			
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_type"><?php echo lang('message_type')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">			
+					<?php echo form_input(array('id'=>'message_type', 'name'=>'message_type', 'value'=>set_value('message_type', isset($record->message_type) ? $record->message_type : ''), 'class'=>'form-control'));?>
+					<div id="error-message_type"></div>			
+				</div>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="message_section_id"><?php echo lang('message_section_id')?>:</label>			
-			<?php echo form_input(array('id'=>'message_section_id', 'name'=>'message_section_id', 'value'=>set_value('message_section_id', isset($record->message_section_id) ? $record->message_section_id : ''), 'class'=>'form-control'));?>
-			<div id="error-message_section_id"></div>			
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_section"><?php echo lang('message_section')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">		
+					<?php echo form_input(array('id'=>'message_section', 'name'=>'message_section', 'value'=>set_value('message_section', isset($record->message_section) ? $record->message_section : ''), 'class'=>'form-control'));?>
+					<div id="error-message_section"></div>			
+				</div>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="message_name"><?php echo lang('message_name')?>:</label>			
-			<?php echo form_input(array('id'=>'message_name', 'name'=>'message_name', 'value'=>set_value('message_name', isset($record->message_name) ? $record->message_name : ''), 'class'=>'form-control'));?>
-			<div id="error-message_name"></div>			
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_section_id"><?php echo lang('message_section_id')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">		
+					<?php echo form_input(array('id'=>'message_section_id', 'name'=>'message_section_id', 'value'=>set_value('message_section_id', isset($property->property_name) ? $property->property_name : ''), 'class'=>'form-control'));?>
+					<div id="error-message_section_id"></div>			
+				</div>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="message_email"><?php echo lang('message_email')?>:</label>			
-			<?php echo form_input(array('id'=>'message_email', 'name'=>'message_email', 'value'=>set_value('message_email', isset($record->message_email) ? $record->message_email : ''), 'class'=>'form-control'));?>
-			<div id="error-message_email"></div>			
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_name"><?php echo lang('message_name')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">
+					<?php echo form_input(array('id'=>'message_name', 'name'=>'message_name', 'value'=>set_value('message_name', isset($record->message_name) ? $record->message_name : ''), 'class'=>'form-control'));?>
+					<div id="error-message_name"></div>				
+				</div>
+			</div>
 		</div>
 
-		<div class="form-group">
-			<label for="message_content"><?php echo lang('message_content')?>:</label>			
-			<?php echo form_textarea(array('id'=>'message_content', 'name'=>'message_content', 'rows'=>'3', 'value'=>set_value('message_content', isset($record->message_content) ? $record->message_content : ''), 'class'=>'form-control')); ?>
-			<div id="error-message_content"></div>			
+
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_email"><?php echo lang('message_email')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">	
+					<?php echo form_input(array('id'=>'message_email', 'name'=>'message_email', 'value'=>set_value('message_email', isset($record->message_email) ? $record->message_email : ''), 'class'=>'form-control'));?>
+					<div id="error-message_email"></div>			
+				</div>
+			</div>
 		</div>
 
-		<div class="form-group">
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_content"><?php echo lang('message_content')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">
+					<?php echo form_textarea(array('id'=>'message_content', 'name'=>'message_content', 'rows'=>'3', 'value'=>set_value('message_content', isset($record->message_content) ? $record->message_content : ''), 'class'=>'form-control')); ?>
+					<div id="error-message_content"></div>			
+				</div>
+			</div>
+		</div>
+
+		<!-- <div class="form-group">
 			<label for="message_status"><?php echo lang('message_status')?>:</label>
 			<?php $options = create_dropdown('array', ',Active,Disabled'); ?>
 			<?php echo form_dropdown('message_status', $options, set_value('message_status', (isset($record->message_status)) ? $record->message_status : ''), 'id="message_status" class="form-control"'); ?>
 			<div id="error-message_status"></div>
-		</div>
+		</div> -->
 
 
 
 	</div>
-
 </div>
 
 <div class="modal-footer">
