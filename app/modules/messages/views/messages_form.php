@@ -74,6 +74,30 @@
 
 		<div class="row">
 			<div class="col-sm-3">
+				<label for="message_mobile"><?php echo lang('message_mobile')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">	
+					<?php echo form_input(array('id'=>'message_mobile', 'name'=>'message_mobile', 'value'=>set_value('message_mobile', isset($record->message_mobile) ? $record->message_mobile : ''), 'class'=>'form-control'));?>
+					<div id="error-message_mobile"></div>			
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
+				<label for="message_location"><?php echo lang('message_location')?>:</label>
+			</div>
+			<div class="col-sm-9">
+				<div class="form-group">	
+					<?php echo form_input(array('id'=>'message_location', 'name'=>'message_location', 'value'=>set_value('message_location', isset($record->message_location) ? $record->message_location : ''), 'class'=>'form-control'));?>
+					<div id="error-message_location"></div>			
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-3">
 				<label for="message_content"><?php echo lang('message_content')?>:</label>
 			</div>
 			<div class="col-sm-9">

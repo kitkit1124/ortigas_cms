@@ -19,6 +19,8 @@ $lang['message_section']			= 'Inquiry Type';
 $lang['message_section_id']			= 'Project';
 $lang['message_name']				= 'Name';
 $lang['message_email']				= 'Email';
+$lang['message_mobile']				= 'Mobile Number';
+$lang['message_location']			= 'Location';
 $lang['message_content']			= 'Content';
 $lang['message_status']				= 'Status';
 

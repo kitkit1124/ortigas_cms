@@ -58,7 +58,6 @@ class Categories_model extends BF_Model {
 	public function get_active_categories(){
 		$query = $this->categories_model
 				->where('category_status', 'Active')
-				->where_not_in('category_id',1)
 				->where('category_deleted', 0)
 				->order_by('category_id', 'asc')
 				->format_dropdown('category_id', 'category_name', TRUE);

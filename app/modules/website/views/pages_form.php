@@ -54,15 +54,15 @@
 							<div id="error-page_bottom_content"></div>
 						</div>
 
-				
+						
 						<?php if(isset($record->page_id) && $record->page_id){ ?>
-
-							<div id="related_link" class="<?php echo isset($record->page_id) && $record->page_uri == 'projects' ? "" : "hide"; ?>">
-								<?php $data['section_id'] = $record->page_id; ?>
-								<?php $data['section_type'] = 'pages'; ?>
-								<?php echo $this->load->view('properties/related_links_index', $data); ?>
-							</div>
-
+							<?php if($record->page_id == 1){} else{ ?>
+								<div id="related_link">
+									<?php $data['section_id'] = $record->page_id; ?>
+									<?php $data['section_type'] = 'pages'; ?>
+									<?php echo $this->load->view('properties/related_links_index', $data); ?>
+								</div>
+							<?php } ?>
 						<?php } ?>
 
 
@@ -95,6 +95,11 @@
 							<div id="error-page_layout"></div>
 						</div>
 
+						<?php if(isset($record->page_id) && $record->page_id && (
+							$record->page_id == 1 || 
+							$record->page_id == 2 
+							)):
+					 	?>
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_properties"><?php echo lang('page_properties'); ?>:</label>
 							<div id="properties">
@@ -107,6 +112,7 @@
 							</div>
 							<div id="error-page_properties"></div>
 						</div>
+						<?php endif; ?>
 
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id >2 ? "" : "hide"; ?>">
 							<label for="page_posts"><?php echo lang('page_posts'); ?>:</label>

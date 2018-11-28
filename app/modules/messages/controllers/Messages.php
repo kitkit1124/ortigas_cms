@@ -191,7 +191,6 @@ class Messages extends MX_Controller {
 		$this->form_validation->set_rules('message_email', lang('message_email'), 'required');
 		$this->form_validation->set_rules('message_mobile', lang('message_mobile'), 'required');
 		$this->form_validation->set_rules('message_location', lang('message_location'), 'required');
-		$this->form_validation->set_rules('message_content', lang('message_content'), 'required');
 		$this->form_validation->set_rules('message_status', lang('message_status'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
