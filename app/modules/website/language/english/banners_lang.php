@@ -23,6 +23,13 @@ $lang['banner_target']				= 'Target';
 $lang['banner_order']				= 'Order';
 $lang['banner_status']				= 'Status';
 $lang['banner_display']				= 'What to display?';
+$lang['video_title']				= 'Title';
+$lang['video_caption']				= 'Caption';
+$lang['video_text_position']		= 'Text Position';
+$lang['video_button_text']			= 'Button Text';
+$lang['video_link']					= 'Link';
+
+
 
 // Buttons
 $lang['button_add']					= 'Add Banner';

@@ -42,4 +42,35 @@ $(function() {
 		}
 	});
     $( "#sortable" ).disableSelection();
+
+    $('#post').click(function(){
+    	$.post(site_url + 'website/banners/video_form', {
+			video_id: 1,
+			video_title: $('#video_title').val(),
+			video_caption: $('#video_caption').val(),
+			video_text_pos: $('#video_text_pos').val(),
+			video_button_text: $('#video_button_text').val(),
+			video_link: $('#video_link').val(),
+
+			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
+		},
+		function(data, status){
+			// handles the returned data
+			var o = jQuery.parseJSON(data);
+			if (o.success === false) {
+				// shows the error message
+				alertify.error(o.message);
+
+				if (o.errors) {
+					for (var form_name in o.errors) {
+						$('#error-' + form_name).html(o.errors[form_name]);
+					}
+				}
+
+			} else {
+				// shows the success message
+				alertify.success(o.message); 
+			}
+		});
+    });
 });

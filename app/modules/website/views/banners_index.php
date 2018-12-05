@@ -27,6 +27,7 @@
 				 	<?php if ($banner_group_id == 1){ ?>	
 	 			   		<div class="form-group">
 	 			   			<input type="hidden" id='csrf' name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
 							<label class="banner_display_label"><h2><?php echo lang('banner_display')?></h2></label>
 							<?php echo form_radio('banner_display', 'Active', set_value('banner_display', (isset($record->banner_display) && $record->banner_display) ? TRUE: FALSE), 'id="banner_display1"'); ?><label for="banner_display1" class="pointer">Video</label>
 				 			<?php echo form_radio('banner_display', 'Inactive', set_value('banner_display', (isset($record->banner_display) && $record->banner_display) ? FALSE : TRUE), 'id="banner_display2"'); ?><label for="banner_display2" class="pointer">Slider</label> 
@@ -48,18 +49,88 @@
 						  <div class="tab-content">
 						    <div id="video" class="tab-pane active"><br>
 						 			<div id="video_upload">
-						 				<video width="400" controls>
-										  <source src="<?php echo site_url().$video->video_location; ?>" type="video/mp4">
-										  Your browser does not support HTML5 video.
-										</video><br>
-										<a href="<?php echo site_url('website/banners/video_upload/add')?>" data-toggle="modal" data-target="#modal" id="upload_button" class="btn btn-sm btn-primary" style="min-width: 400px">
-											<i class="fa fa-upload"></i>
-										</a>
+						 				<div class="row">
+						 					<div class="col-sm-4">
+								 				<video width="400" controls>
+												  <source src="<?php echo site_url().$video->video_location; ?>" type="video/mp4">
+												  Your browser does not support HTML5 video.
+												</video><br>
+												<a href="<?php echo site_url('website/banners/video_upload/add')?>" data-toggle="modal" data-target="#modal" id="upload_button" class="btn btn-sm btn-primary" style="min-width: 400px">
+													<i class="fa fa-upload"></i>
+												</a>
+						 					</div>
+						 					<div class="col-sm-6">
+						 						<h1>Video Details</h1>
+
+						 						<input type="hidden" id='csrf_video' value="<?php echo $this->security->get_csrf_hash(); ?>" />
+
+						 						<div class="form-group row">
+						 							<div class="col-sm-3">
+								 						<label class="col-form-label"><?php echo lang('video_title')?>:</label>
+									 				</div>
+									 				<div class="col-sm">
+									 					<?php echo form_input(array('id'=>'video_title', 'name'=>'video_title', 'value'=>set_value('video_title', isset($video->video_title) ? $video->video_title : ''), 'class'=>'form-control')); ?>
+									 					<div id="error-video_title"></div>
+									 				</div>
+									 			</div>
+
+									 			<div class="form-group row">
+						 							<div class="col-sm-3">
+									 					<label class="col-form-label"><?php echo lang('video_caption')?>:</label>	
+									 				</div>
+									 				<div class="col-sm">
+									 					<?php echo form_textarea(array('id'=>'video_caption', 'name'=>'video_caption', 'rows'=>'3', 'value'=>set_value('video_caption', isset($video->video_caption) ? $video->video_caption : ''), 'class'=>'form-control')); ?>
+									 					<div id="error-video_caption"></div>
+									 				</div>
+									 			</div>
+
+									 			<div class="form-group row">
+						 							<div class="col-sm-3">
+									 					<label class="col-form-label"><?php echo lang('video_text_position')?>:</label>
+									 				</div>
+									 				<div class="col-sm">
+									 					<?php $options = create_dropdown('array', 'Top,Bottom,Left,Center,Right'); ?>
+														<?php echo form_dropdown('video_text_pos', $options, set_value('video_text_pos', (isset($video->video_text_pos)) ? $video->video_text_pos : ''), 'id="video_text_pos" class="form-control"'); ?>
+														<div id="error-video_text_pos"></div>
+									 				</div>
+									 			</div>
+
+									 			<div class="form-group row">
+						 							<div class="col-sm-3">
+									 					<label class="col-form-label"><?php echo lang('video_button_text')?>:</label>
+									 				</div>
+									 				<div class="col-sm">
+									 					<?php echo form_input(array('id'=>'video_button_text', 'name'=>'video_button_text', 'value'=>set_value('video_button_text', isset($video->video_button_text) ? $video->video_button_text : ''), 'class'=>'form-control')); ?>
+									 					<div id="error-video_button_text"></div>
+									 				</div>
+									 			</div>
+
+									 			<div class="form-group row">
+						 							<div class="col-sm-3">
+									 					<label class="col-form-label"><?php echo lang('video_link')?>:</label>
+									 				</div>
+									 				<div class="col-sm">
+									 					<?php echo form_input(array('id'=>'video_link', 'name'=>'video_link', 'value'=>set_value('video_link', isset($video->video_link) ? $video->video_link : ''), 'class'=>'form-control')); ?>
+									 					<div id="error-video_link"></div>
+									 				</div>
+									 			</div>
+
+									 			<div class="form-group row">
+						 							<div class="col-sm-3"></div>
+									 				<div class="col-sm">
+									 					<button id="post" class="btn btn-success btn-lg btn-block" type="submit" data-loading-text="<?php echo lang('processing')?>">
+															<i class="fa fa-save"></i> <?php echo lang('button_update')?>
+														</button>
+									 				</div>
+									 			</div>													
+						 					</div>
+						 				</div>
+
 									</div>
 						    </div>
 						    <div id="slider" class="tab-pane fade"><br>
 
-<?php } ?>
+							<?php } ?>
 						    		<div class="text-right add_banner">
 										<a href="<?php echo site_url('website/banners/form/add/' . $banner_group_id); ?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-plus"></i>
 										<?php echo lang('button_add')?></a>
@@ -98,6 +169,9 @@
 		<p>Content: <code>##frontend_banners(<?php echo $banner_group_id; ?>)##</code></p> -->
 	</div>
 </section>
-<script type="text/javascript">
-var site_url = '<?php site_url(); ?>';
+
+<script>
+var site_url = '<?php echo site_url() ?>';
+var post_url = '<?php echo current_url() ?>';
+var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 </script>

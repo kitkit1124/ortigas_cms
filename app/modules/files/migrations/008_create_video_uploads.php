@@ -34,12 +34,14 @@ class Migration_Create_video_uploads extends CI_Migration
 		$fields = array(
 			'video_id' 			=> array('type' => 'INT', 'unsigned' => TRUE, 'auto_increment' => TRUE, 'null' => FALSE),
 			'video_name'		=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
-			'video_section'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
-			'video_p_id'		=> array('type' => 'SMALLINT','constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
+			'video_section'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
+			'video_section_id'	=> array('type' => 'SMALLINT','constraint' => 5, 'unsigned' => TRUE, 'null' => FALSE),
 
-			'video_title_caption'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
-			'video_descp_caption'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
-			'video_text_pos'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_title'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_caption'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_text_pos'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_button_text'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'video_link'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 
 			'video_location'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'video_status'		=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
@@ -64,7 +66,7 @@ class Migration_Create_video_uploads extends CI_Migration
 		$this->migrations_model->add_permissions($this->_permissions);
 
 		$data = array(
-			array('video_name'  => 'Main', 'video_section' => 1, 'video_p_id' => 1, 'video_location' => '', 'video_status'  => 'Active')
+			array('video_name'  => 'Main', 'video_section' => 1, 'video_section_id' => 1, 'video_location' => '', 'video_status'  => 'Active')
 		);
 		$this->db->insert_batch($this->_table, $data);
 	}
@@ -78,6 +80,6 @@ class Migration_Create_video_uploads extends CI_Migration
 		$this->migrations_model->delete_permissions($this->_permissions);
 
 		// delete the menu
-		$this->migrations_model->delete_menus($this->_menus);
+		// $this->migrations_model->delete_menus($this->_menus);
 	}
 }

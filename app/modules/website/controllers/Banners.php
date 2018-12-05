@@ -204,6 +204,71 @@ class Banners extends MX_Controller {
 		$this->video_uploads_model->update($id, $data);
 	}
 
+	function video_form(){
+		$id = $this->input->post('video_id');
+		$action = "edit";
+
+		if ($this->input->post())
+		{
+			if ($this->_save_video($id))
+			{
+				$this->session->set_flashdata('flash_message', lang($action . '_success'));
+				echo json_encode(array('success' => true, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{	
+				$response['success'] = FALSE;
+				$response['message'] = lang('validation_error');
+				$response['errors'] = array(					
+					'video_title'			=> form_error('video_title'),
+					'video_caption'			=> form_error('video_caption'),
+					'video_text_pos'		=> form_error('video_text_pos'),
+					'video_button_text'		=> form_error('video_button_text'),
+					'video_link'			=> form_error('video_link'),
+				);
+				echo json_encode($response);
+				exit;
+			}
+		}
+	}
+
+
+	private function _save_video($id = 0)
+	{
+		// validate inputs
+		
+		$this->form_validation->set_rules('video_title', lang('video_title'), 'required');
+		$this->form_validation->set_rules('video_caption', lang('video_caption'), 'required');
+		$this->form_validation->set_rules('video_text_pos', lang('video_text_pos'), 'required');
+		$this->form_validation->set_rules('video_button_text', lang('video_button_text'), 'required');
+		$this->form_validation->set_rules('video_link', lang('video_link'), 'required');
+	
+
+		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+		
+		if ($this->form_validation->run($this) == FALSE)
+		{
+			return FALSE;
+		}
+
+		$data = array(
+			'video_title'			=> $this->input->post('video_title'),
+			'video_caption'			=> $this->input->post('video_caption'),
+			'video_text_pos'		=> $this->input->post('video_text_pos'),
+			'video_button_text'		=> $this->input->post('video_button_text'),
+			'video_link'			=> $this->input->post('video_link'),
+		);
+		
+
+		$return = $this->video_uploads_model->update($id, $data);
+	
+
+		return $return;
+	}
+
+
+
+
 	// --------------------------------------------------------------------
 
 	/**
