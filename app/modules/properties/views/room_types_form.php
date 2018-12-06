@@ -8,60 +8,72 @@
 <div class="modal-body">
 
 	<div class="form">
+		<div class="row">
+			<div class="col-sm-5">
+				<div class="form-group">
 
-		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-		
-		<div class="form-group">
-			<label for="room_type_property_id"><?php echo lang('room_type_property_id')?>:</label>
-			<?php echo form_dropdown('room_type_property_id', $properties, set_value('room_type_property_id', (isset($record->room_type_property_id)) ? $record->room_type_property_id : ''), 'id="room_type_property_id" class="form-control"'); ?>
-			<div id="error-room_type_property_id"></div>
-		</div>
-		<div style="display: none;">
-			<?php echo form_dropdown('room_type_property_id_original', $properties, set_value('room_type_property_id_original', (isset($record->room_type_property_id)) ? $record->room_type_property_id : ''), 'id="room_type_property_id_original" class="form-control"'); ?>
-			<?php echo form_input(array('id'=>'room_type_name_original', 'name'=>'room_type_name_original', 'value'=>set_value('room_type_name_original', isset($record->room_type_name) ? $record->room_type_name : ''), 'class'=>'form-control'));?>
-		</div>
-
-		<div class="form-group">
-			<label for="room_type_name"><?php echo lang('room_type_name')?>:</label>			
-			<?php echo form_input(array('id'=>'room_type_name', 'name'=>'room_type_name', 'value'=>set_value('room_type_name', isset($record->room_type_name) ? $record->room_type_name : ''), 'class'=>'form-control'));?>
-			<div id="error-room_type_name"></div>			
-		</div>
-
-		<div class="form-group">
-			<?php if(isset($record->room_type_image)) { ?> <style type="text/css"> #dropzone{ display: none; } </style> <?php } 
-			else {  ?> <style type="text/css"> #image_container{ display: none; } </style> <?php } ?>
-			
-			<div class="form image_upload">
-				<?php echo form_open(site_url('files/images/upload'), array('class'=>'dropzone', 'id'=>'dropzone'));?>
-					<div class="fallback">
-						<input name="file" type="file"/>
+					<?php if(isset($record->room_type_image)) { ?> <style type="text/css"> #dropzone{ display: none; } </style> <?php } 
+					else {  ?> <style type="text/css"> #image_container{ display: none; } </style> <?php } ?>
+					
+					<div class="form image_upload">
+						<?php echo form_open(site_url('files/images/upload'), array('class'=>'dropzone', 'id'=>'dropzone'));?>
+							<div class="fallback">
+								<input name="file" type="file"/>
+							</div>
+						<?php echo form_close();?> 
 					</div>
-				<?php echo form_close();?> 
+					<div id="image_container">
+						<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
+						<center>
+							<img id="room_type_active_image" src="<?php echo site_url(isset($record->room_type_image) ? $record->room_type_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+						</center>
+
+					</div>
+					<p class="note <?php echo isset($record->room_type_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i>
+						<i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i>
+						<br>
+						<i style="float: left;margin-left: 6px;">Ideal image size: 1920 x 400</i>
+						<span style="clear: both;"></span>
+					</p>
+					<div id="error-room_type_image"></div>
+
+					<div style="display: none">
+					<?php echo form_input(array('id'=>'room_type_image', 'name'=>'room_type_image', 'value'=>set_value('room_type_image', isset($record->room_type_image) ? $record->room_type_image : ''), 'class'=>'form-control'));?>
+					</div>		
+
+					<?php echo form_textarea(array('id'=>'room_type_alt_image', 'name'=>'room_type_alt_image', 'rows'=>'2', 'value'=>set_value('room_type_alt_image', isset($record->room_type_alt_image) ? $record->room_type_alt_image : '', false), 'class'=>'form-control', 'placeholder'=> lang('room_type_alt_image'), 'title'=> lang('room_type_alt_image') )); ?>		
+				</div>
+				
 			</div>
-			<div id="image_container">
-				<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
-				<center>
-					<img id="room_type_active_image" src="<?php echo site_url(isset($record->room_type_image) ? $record->room_type_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
-				</center>
+
+			<div class="col-sm-7">
+				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
+				
+				<div class="form-group">
+					<label for="room_type_property_id"><?php echo lang('room_type_property_id')?>:</label>
+					<?php echo form_dropdown('room_type_property_id', $properties, set_value('room_type_property_id', (isset($record->room_type_property_id)) ? $record->room_type_property_id : ''), 'id="room_type_property_id" class="form-control"'); ?>
+					<div id="error-room_type_property_id"></div>
+				</div>
+				<div style="display: none;">
+					<?php echo form_dropdown('room_type_property_id_original', $properties, set_value('room_type_property_id_original', (isset($record->room_type_property_id)) ? $record->room_type_property_id : ''), 'id="room_type_property_id_original" class="form-control"'); ?>
+					<?php echo form_input(array('id'=>'room_type_name_original', 'name'=>'room_type_name_original', 'value'=>set_value('room_type_name_original', isset($record->room_type_name) ? $record->room_type_name : ''), 'class'=>'form-control'));?>
+				</div>
+
+				<div class="form-group">
+					<label for="room_type_name"><?php echo lang('room_type_name')?>:</label>			
+					<?php echo form_input(array('id'=>'room_type_name', 'name'=>'room_type_name', 'value'=>set_value('room_type_name', isset($record->room_type_name) ? $record->room_type_name : ''), 'class'=>'form-control'));?>
+					<div id="error-room_type_name"></div>			
+				</div>
+
+				<div class="form-group">
+					<label for="room_type_status"><?php echo lang('room_type_status')?>:</label>
+					<?php $options = create_dropdown('array', 'Active,Disabled'); ?>
+					<?php echo form_dropdown('room_type_status', $options, set_value('room_type_status', (isset($record->room_type_status)) ? $record->room_type_status : ''), 'id="room_type_status" class="form-control"'); ?>
+					<div id="error-room_type_status"></div>
+				</div>
 
 			</div>
-			<p class="note <?php echo isset($record->room_type_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i> <i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i><span style="clear: both;"></span></p>
-			<div id="error-room_type_image"></div>
-
-			<div style="display: none">
-			<?php echo form_input(array('id'=>'room_type_image', 'name'=>'room_type_image', 'value'=>set_value('room_type_image', isset($record->room_type_image) ? $record->room_type_image : ''), 'class'=>'form-control'));?>
-			</div>				
 		</div>
-
-		<div class="form-group">
-			<label for="room_type_status"><?php echo lang('room_type_status')?>:</label>
-			<?php $options = create_dropdown('array', 'Active,Disabled'); ?>
-			<?php echo form_dropdown('room_type_status', $options, set_value('room_type_status', (isset($record->room_type_status)) ? $record->room_type_status : ''), 'id="room_type_status" class="form-control"'); ?>
-			<div id="error-room_type_status"></div>
-		</div>
-
-
-
 	</div>
 
 </div>

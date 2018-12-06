@@ -13,10 +13,10 @@
 
 		<div class="form-group">
 			<div class="row">
-			    <div class="col-sm-2">
+			    <div class="col-sm-3">
 			     	<label for="banner_image"><?php echo lang('banner_image')?>:</label>
 			     </div>
-			    <div class="col-sm-10">
+			    <div class="col-sm-9">
 			        <a href="javascript:;" id="banner_image_link" class="banner_image" data-target="banner_thumb"><img id="preview_image_thumb" src="<?php echo (isset($record->banner_thumb) && $record->banner_thumb) ? site_url($record->banner_thumb) : site_url('ui/images/transparent.png'); ?>" height="140" /></a>
 			        <div id="error-banner_image"></div>
 			    </div>
@@ -31,6 +31,18 @@
 			<label for="banner_image"><?php echo lang('banner_image')?>:</label>			
 			<?php echo form_input(array('id'=>'banner_image', 'name'=>'banner_image', 'value'=>set_value('banner_image', isset($record->banner_image) ? $record->banner_image : ''), 'class'=>'form-control'));?>
 			<div id="error-banner_image"></div>				
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+			    <div class="col-sm-3">
+			     	<label for="banner_caption"><?php echo lang('banner_alt_image')?>:</label>
+			     </div>
+			    <div class="col-sm-9">
+			        <?php echo form_textarea(array('id'=>'banner_alt_image', 'name'=>'banner_alt_image', 'rows'=>'2', 'value'=>set_value('banner_alt_image', isset($record->banner_alt_image) ? $record->banner_alt_image : ''), 'class'=>'form-control', 'placeholder' => lang('banner_alt_image'), 'title'=> lang('banner_alt_image') )); ?>
+					<div id="error-banner_alt_image"></div>	
+			    </div>
+			</div>
 		</div>
 
 		<div class="form-group" style="display: none;">
@@ -64,7 +76,7 @@
 
 		<div class="form-group">
 			<div class="row">
-			    <div class="col-sm-2">
+			    <div class="col-sm-3">
 			     	<label  for="banner_status"><?php echo lang('banner_status')?>:</label>
 			     </div>
 			    <div class="col-sm-7">
@@ -91,7 +103,7 @@
 				<div class="tab-pane active" id="tab_1">
 					<div class="form">
 						<div class="row">
-							<div class="col-sm-4">
+							<div class="col-sm-6">
 
 								<div class="form-group">
 
@@ -101,6 +113,11 @@
 									</div>
 									<?php echo form_close();?>
 
+								</div>
+							
+								<div class="note_container <?php echo isset($record->image_slider_image) ? 'hide' : ''; ?>">
+									<p class="note" style="text-align: left; width: auto;">Note:</p><br><br>
+									<i>Recommended file type JPEG | PNG</i><br><i>Ideal image size: 1920 x 400</i><br><i> Max file size: 2.0 Mb</i>
 								</div>
 
 							</div>

@@ -17,6 +17,7 @@ $lang['banner_id']					= 'ID';
 $lang['banner_banner_group_id']		= 'Banner Group Id';
 $lang['banner_thumb']				= 'Thumb';
 $lang['banner_image']				= 'Image';
+$lang['banner_alt_image']			= 'Alternative Text';
 $lang['banner_caption']				= 'Caption';
 $lang['banner_link']				= 'Link';
 $lang['banner_target']				= 'Target';

@@ -50,6 +50,7 @@ $(function() {
 			career_latitude: $('#career_latitude').val(),
 			career_longitude: $('#career_longitude').val(),
 			career_status: $('#career_status').val(),
+			career_alt_image: $('#career_alt_image').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},

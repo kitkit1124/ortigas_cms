@@ -78,6 +78,7 @@
 								<a href="<?php echo site_url('properties/estates/form_upload/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 									<img id="estate_active_photo" src="<?php echo site_url(isset($record->estate_image) ? $record->estate_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
 								</a>
+								<?php echo form_textarea(array('id'=>'estate_alt_image', 'name'=>'estate_alt_image', 'rows'=>'2', 'value'=>set_value('estate_alt_image', isset($record->estate_alt_image) ? $record->estate_alt_image : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_image'), 'title' => lang('estate_alt_image') )); ?>
 								<br />
 
 								<div id="error-estate_image"></div>	
@@ -93,6 +94,7 @@
 								<a href="<?php echo site_url('properties/estates/form_upload_thumb/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
 									<img id="estate_active_thumb" src="<?php echo site_url(isset($record->estate_thumb) ? $record->estate_thumb : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
 								</a>
+								<?php echo form_textarea(array('id'=>'estate_alt_thumb', 'name'=>'estate_alt_thumb', 'rows'=>'2', 'value'=>set_value('estate_alt_thumb', isset($record->estate_alt_thumb) ? $record->estate_alt_thumb : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_thumb'), 'title' => lang('estate_alt_thumb') )); ?>
 								<br />
 
 								<div id="error-estate_thumb"></div>	
@@ -125,6 +127,7 @@
 	</div>
 </section>
 <script>
+var site_url = '<?php echo site_url() ?>';
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 </script>

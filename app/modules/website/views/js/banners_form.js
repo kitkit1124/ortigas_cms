@@ -124,6 +124,7 @@ $(function() {
 			banner_banner_group_id: $('#banner_banner_group_id').val(),
 			banner_thumb: $('#banner_thumb').val(),
 			banner_image: $('#banner_image').val(),
+			banner_alt_image: $('#banner_alt_image').val(),
 			banner_caption: $('#banner_caption').val(),
 			banner_link: $('#banner_link').val(),
 			banner_target: $('#banner_target').val(),

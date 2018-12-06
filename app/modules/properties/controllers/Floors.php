@@ -213,9 +213,10 @@ class Floors extends MX_Controller {
 
 		$data = array(
 			'floor_property_id'		=> $this->input->post('floor_property_id'),
-			'floor_level'		=> $this->input->post('floor_level'),
-			'floor_image'		=> $this->input->post('floor_image'),
-			'floor_status'		=> $this->input->post('floor_status'),
+			'floor_level'			=> $this->input->post('floor_level'),
+			'floor_image'			=> $this->input->post('floor_image'),
+			'floor_alt_image'		=> $this->input->post('floor_alt_image'),
+			'floor_status'			=> $this->input->post('floor_status'),
 		);
 		
 

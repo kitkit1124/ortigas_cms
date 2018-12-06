@@ -44,17 +44,18 @@ class Migration_Create_floors extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'floor_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
-			'floor_property_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'null' => FALSE),
+			'floor_id'			=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'floor_property_id'	=> array('type' => 'SMALLINT', 'constraint' => 5, 'null' => FALSE),
 			'floor_level'		=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
 			'floor_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'floor_alt_image'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'floor_status'		=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 
 			'floor_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 			'floor_created_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
-			'floor_modified_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
-			'floor_modified_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
-			'floor_deleted' 		=> array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => FALSE, 'default' => 0),
+			'floor_modified_by' => array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
+			'floor_modified_on' => array('type' => 'DATETIME', 'null' => TRUE),
+			'floor_deleted' 	=> array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => FALSE, 'default' => 0),
 			'floor_deleted_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 		);
 

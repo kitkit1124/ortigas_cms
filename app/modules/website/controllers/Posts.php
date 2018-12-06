@@ -315,6 +315,7 @@ class Posts extends MX_Controller
 
 		$data = array(
 			'post_title'		=> $this->input->post('post_title'),
+			'post_alt_image'		=> $this->input->post('post_alt_image'),
 			'post_slug'			=> url_title($this->input->post('post_title'), '-', TRUE),
 			'post_content'		=> $this->input->post('post_content'),
 			'post_image'		=> $this->input->post('post_image'),

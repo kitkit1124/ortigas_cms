@@ -82,7 +82,9 @@
 							<div style="display: none">
 							<?php echo form_input(array('id'=>'career_image', 'name'=>'career_image', 'value'=>set_value('career_image', isset($record->career_image) ? $record->career_image : ''), 'class'=>'form-control'));?>
 							</div>		
+							<?php echo form_textarea(array('id'=>'career_alt_image', 'name'=>'career_alt_image', 'rows'=>'2', 'value'=>set_value('career_alt_image', isset($record->career_alt_image) ? $record->career_alt_image : '', false), 'class'=>'form-control', 'placeholder' =>  lang('career_alt_image'), 'title' =>  lang('career_alt_image') )); ?>
 						</div>
+
 						<div class="form-group">
 							<label for="career_status"><?php echo lang('career_status')?>:</label>	
 							<?php $options = create_dropdown('array', 'Active,Disabled'); ?>		

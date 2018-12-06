@@ -52,7 +52,9 @@ class Migration_Create_estates extends CI_Migration {
 			'estate_latitude'		=> array('type' => 'FLOAT', 'null' => TRUE),
 			'estate_longtitude'		=> array('type' => 'FLOAT', 'null' => TRUE),
 			'estate_image'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'estate_alt_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'estate_thumb'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
+			'estate_alt_thumb'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'estate_status'			=> array('type' => 'VARCHAR', 'constraint' => 20, 'null' => FALSE),
 
 			'estate_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),

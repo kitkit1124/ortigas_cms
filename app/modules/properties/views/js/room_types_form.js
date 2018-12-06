@@ -51,6 +51,7 @@ $(function() {
 			room_type_property_id: $('#room_type_property_id').val(),
 			room_type_name: $('#room_type_name').val(),
 			room_type_image: $('#room_type_image').val(),
+			room_type_alt_image: $('#room_type_alt_image').val(),
 			room_type_status: $('#room_type_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
@@ -76,7 +77,7 @@ $(function() {
 				$('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal').modal('hide'); 
+				$('#modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 

@@ -13,7 +13,7 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 	        </a>
         	<div class="button_add_slider">
 	        	<?php if ($this->acl->restrict('properties.image_sliders.add', 'return')): ?>
-					<a href="<?php echo site_url('properties/image_sliders/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo 'Add Slider'?></a>
+					<a href="<?php echo site_url('properties/image_sliders/form/add')?>" data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo 'Add Slider'?></a>
 				<?php endif; ?>
 			</div>
 	      </div>
@@ -26,8 +26,8 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 							<li class="ui-state-default col-sm-3" data-id="<?php echo $slider->image_slider_id; ?>">
 								<div class="thumbnail">
 									<div class="pull-right thumbnail_buttons">
-										<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-success" href="<?php echo site_url('properties/image_sliders/form/edit/' . $slider->image_slider_id); ?>"><div class="fa fa-pencil"></div></a>
-										<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-danger" href="<?php echo site_url('properties/image_sliders/delete/' . $slider->image_slider_id); ?>"><div class="fa fa-trash"></div></a>
+										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('properties/image_sliders/form/edit/' . $slider->image_slider_id); ?>"><div class="fa fa-pencil"></div></a>
+										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-danger" href="<?php echo site_url('properties/image_sliders/delete/' . $slider->image_slider_id); ?>"><div class="fa fa-trash"></div></a>
 									</div>
 									<img src="<?php echo site_url($slider->image_slider_image); ?>" width="100%" />
 								</div>

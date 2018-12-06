@@ -51,6 +51,7 @@ $(function() {
 			floor_property_id: $('#floor_property_id').val(),
 			floor_level: $('#floor_level').val(),
 			floor_image: $('#floor_image').val(),
+			floor_alt_image: $('#floor_alt_image').val(),
 			floor_status: $('#floor_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
@@ -76,7 +77,7 @@ $(function() {
 				$('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal').modal('hide'); 
+				$('#modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 

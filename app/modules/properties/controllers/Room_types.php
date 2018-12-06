@@ -211,9 +211,10 @@ class Room_types extends MX_Controller {
 		}
 
 		$data = array(
-			'room_type_property_id'		=> $this->input->post('room_type_property_id'),
+			'room_type_property_id'	=> $this->input->post('room_type_property_id'),
 			'room_type_name'		=> $this->input->post('room_type_name'),
 			'room_type_image'		=> $this->input->post('room_type_image'),
+			'room_type_alt_image'	=> $this->input->post('room_type_alt_image'),
 			'room_type_status'		=> $this->input->post('room_type_status'),
 		);
 		

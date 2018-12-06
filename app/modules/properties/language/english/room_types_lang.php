@@ -17,6 +17,7 @@ $lang['room_type_id']				= 'ID';
 $lang['room_type_property_id']		= 'Property';
 $lang['room_type_name']				= 'Name';
 $lang['room_type_image']			= 'Image';
+$lang['room_type_alt_image']			= 'Alternate Text';
 $lang['room_type_status']			= 'Status';
 
 // Buttons

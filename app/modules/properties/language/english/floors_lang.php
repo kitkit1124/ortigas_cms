@@ -17,6 +17,7 @@ $lang['floor_id']					= 'ID';
 $lang['floor_property_id']			= 'Property';
 $lang['floor_level']				= 'Level';
 $lang['floor_image']				= 'Image';
+$lang['floor_alt_image']			= 'Alternative Text';
 $lang['floor_status']				= 'Status';
 
 // Buttons

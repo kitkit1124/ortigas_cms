@@ -89,7 +89,12 @@
 				</center>
 
 			</div>
-			<p class="note <?php echo isset($record->unit_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i> <i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i><span style="clear: both;"></span></p>
+			<p class="note <?php echo isset($record->unit_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i>
+				<i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i>
+				<br>
+				<i style="float: left;margin-left: 6px;">Ideal image size: 1920 x 400</i>
+				<span style="clear: both;"></span>
+			</p>
 			<div id="error-unit_image"></div>
 
 			<div style="display: none">

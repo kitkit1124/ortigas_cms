@@ -52,6 +52,7 @@
 								<a href="<?php echo site_url('properties/properties/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 									<img id="category_image_img" src="<?php echo site_url(isset($record->category_image) ? $record->category_image : 'ui/images/placeholder.png'); ?>" class="img-responsive active_image_thumb" width="100%" alt=""/>
 								</a>
+								<?php echo form_textarea(array('id'=>'category_alt_image', 'name'=>'category_alt_image', 'rows'=>'2', 'value'=>set_value('category_alt_image', isset($record->category_alt_image) ? $record->category_alt_image : '', false), 'class'=>'form-control', 'placeholder'=>lang('category_alt_image'),'title'=>lang('category_alt_image') )); ?>
 								<br>
 								<div id="error-category_image"></div>	
 

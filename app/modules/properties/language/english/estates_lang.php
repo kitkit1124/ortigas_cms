@@ -21,7 +21,9 @@ $lang['estate_bottom_text']		= 'SEO Content';
 $lang['estate_latitude']		= 'Latitude';
 $lang['estate_longtitude']		= 'Longitude';
 $lang['estate_image']			= 'Banner Image';
+$lang['estate_alt_image']		= 'Alternative Text for Banner Image';
 $lang['estate_thumb']			= 'Estate Logo';
+$lang['estate_alt_thumb']		= 'Alternative Text for Estate Logo';
 $lang['estate_status']			= 'Status';
 $lang['estate_location']		= 'Location';
 

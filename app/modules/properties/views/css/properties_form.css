@@ -27,10 +27,10 @@
     object-fit: cover;
 }
 
-/*#upload_button{
+#upload_button{
  	padding: 0px;
  }
-
+/*
 .button_add_slider{
     position: absolute;
     top: 12px;

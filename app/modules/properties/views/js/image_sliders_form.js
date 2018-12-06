@@ -117,6 +117,7 @@ $(function() {
 			image_slider_section_type: section_type,
 			image_slider_section_id: section_id,
 			image_slider_image: $('#image_slider_image').val(),
+			image_slider_alt_image: $('#image_slider_alt_image').val(),
 			image_slider_title: $('#image_slider_title').val(),
 			image_slider_title_size: $('#image_slider_title_size').val(),
 			image_slider_title_pos: $('#image_slider_title_pos').val(),

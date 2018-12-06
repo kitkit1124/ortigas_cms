@@ -54,6 +54,7 @@ class Migration_Create_image_sliders extends CI_Migration {
 			'image_slider_caption'			=> array('type' => 'TEXT', 'null' => FALSE),
 			'image_slider_caption_size'		=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'image_slider_caption_pos'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'image_slider_alt_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'image_slider_order'			=> array('type' => 'TINYINT', 'constraint' => 3, 'unsigned' => TRUE, 'null' => FALSE),
 			'image_slider_status'			=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 

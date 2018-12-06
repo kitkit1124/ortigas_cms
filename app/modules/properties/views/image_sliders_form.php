@@ -13,13 +13,24 @@
 		
 		<div class="form-group">
 			<div class="row">
-			    <div class="col-sm-2">
+			    <div class="col-sm-3">
 			     	<label for="image_slider_image_link"><?php echo lang('image_slider_image')?>:</label>			
 			     </div>
-			    <div class="col-sm-10">
+			    <div class="col-sm-9">
 			        <a href="javascript:;" id="image_slider_image_link">
 			        	<img id="image_slider_image_thumb" src="<?php echo (isset($record->image_slider_image) && $record->image_slider_image) ? site_url($record->image_slider_image) : site_url('ui/images/transparent.png'); ?>" height="200" /></a>
 			        <div id="error-image_slider_image"></div>
+			    </div>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+			    <div class="col-sm-3">
+			     	<label for="image_slider_image_link"><?php echo lang('image_slider_alt_image')?>:</label>			
+			     </div>
+			    <div class="col-sm-9">
+					<?php echo form_textarea(array('id'=>'image_slider_alt_image', 'name'=>'image_slider_alt_image', 'rows'=>'3', 'value'=>set_value('image_slider_alt_image', isset($record->image_slider_alt_image) ? $record->image_slider_alt_image : ''), 'class'=>'form-control', 'placeholder'=> lang('image_slider_alt_image') )); ?>	
 			    </div>
 			</div>
 		</div>
@@ -37,7 +48,8 @@
 		</div>
 
 		<div class="form-group" style="display: none;">		
-			<?php echo form_input(array('id'=>'image_slider_image', 'name'=>'image_slider_image', 'value'=>set_value('image_slider_image', isset($record->image_slider_image) ? $record->image_slider_image : ''), 'class'=>'form-control'));?>			
+			<?php echo form_input(array('id'=>'image_slider_image', 'name'=>'image_slider_image', 'value'=>set_value('image_slider_image', isset($record->image_slider_image) ? $record->image_slider_image : ''), 'class'=>'form-control'));?>	
+	
 		</div>
 
 		<div class="form-group" style="display: none;">
@@ -78,10 +90,10 @@
 
 		<div class="form-group">
 			<div class="row">
-			<div class="col-sm-2">
+			<div class="col-sm-3">
 		     	<label for="image_slider_caption_pos"><?php echo lang('image_slider_status')?>:</label>			
 		    </div>
-		    <div class="col-sm-10">
+		    <div class="col-sm-7">
 		        <?php $options = create_dropdown('array', 'Active,Disabled'); ?>
 				<?php echo form_dropdown('image_slider_status', $options, set_value('image_slider_status', (isset($record->image_slider_status)) ? $record->image_slider_status : ''), 'id="image_slider_status" class="form-control"'); ?>
 				<div id="error-image_slider_status"></div>
@@ -119,8 +131,8 @@
 
 								</div>
 								<div class="note_container <?php echo isset($record->image_slider_image) ? 'hide' : ''; ?>">
-								<p class="note" style="text-align: left; width: auto;">Note:</p>
-								<i>Recommended file type JPEG | PNG</i><br><i> Max file size: 2.0 Mb</i>
+								<p class="note" style="text-align: left; width: auto;">Note:</p><br><br>
+								<i>Recommended file type JPEG | PNG</i><br><i>Ideal image size: 1920 x 400</i><br><i> Max file size: 2.0 Mb</i>
 								</div>
 
 

@@ -20,6 +20,7 @@ $(function() {
 			category_description: tinyMCE.get('category_description').getContent(),
 			category_bottom_description: tinyMCE.get('category_bottom_description').getContent(),
 			category_image: $('#category_image').val(),
+			category_alt_image: $('#category_alt_image').val(),
 			category_status: $('#category_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),

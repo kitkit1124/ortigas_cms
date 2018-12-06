@@ -246,14 +246,15 @@ class Image_sliders extends MX_Controller {
 		$data = array(
 			'image_slider_section_type'		=> $this->input->post('image_slider_section_type'),
 			'image_slider_section_id'		=> $this->input->post('image_slider_section_id'),
-			'image_slider_image'		=> $this->input->post('image_slider_image'),
-			'image_slider_title'		=> $this->input->post('image_slider_title'),
+			'image_slider_image'			=> $this->input->post('image_slider_image'),
+			'image_slider_title'			=> $this->input->post('image_slider_title'),
 			'image_slider_title_size'		=> $this->input->post('image_slider_title_size'),
 			'image_slider_title_pos'		=> $this->input->post('image_slider_title_pos'),
-			'image_slider_caption'		=> $this->input->post('image_slider_caption'),
+			'image_slider_caption'			=> $this->input->post('image_slider_caption'),
 			'image_slider_caption_size'		=> $this->input->post('image_slider_caption_size'),
 			'image_slider_caption_pos'		=> $this->input->post('image_slider_caption_pos'),
-			'image_slider_status'		=> $this->input->post('image_slider_status'),
+			'image_slider_alt_image'			=> $this->input->post('image_slider_alt_image'),
+			'image_slider_status'			=> $this->input->post('image_slider_status'),
 		);
 		
 

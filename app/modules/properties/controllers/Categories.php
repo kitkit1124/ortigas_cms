@@ -226,6 +226,7 @@ class Categories extends MX_Controller {
 		$data = array(
 			'category_name'			=> $this->input->post('category_name'),
 			'category_image'		=> $this->input->post('category_image'),
+			'category_alt_image'	=> $this->input->post('category_alt_image'),
 			'category_description'	=> $this->input->post('category_description'),
 			'category_bottom_description'	=> $this->input->post('category_bottom_description'),
 			'category_status'		=> $this->input->post('category_status'),

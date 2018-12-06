@@ -44,17 +44,18 @@ class Migration_Create_room_types extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'room_type_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
-			'room_type_property_id'		=> array('type' => 'SMALLINT', 'constraint' => 5, 'null' => FALSE),
+			'room_type_id'			=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'room_type_property_id'	=> array('type' => 'SMALLINT', 'constraint' => 5, 'null' => FALSE),
 			'room_type_name'		=> array('type' => 'VARCHAR', 'constraint' => 100, 'null' => FALSE),
 			'room_type_image'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
+			'room_type_alt_image'	=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'room_type_status'		=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 
 			'room_type_created_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 			'room_type_created_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
-			'room_type_modified_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
-			'room_type_modified_on' 	=> array('type' => 'DATETIME', 'null' => TRUE),
-			'room_type_deleted' 		=> array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => FALSE, 'default' => 0),
+			'room_type_modified_by' => array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
+			'room_type_modified_on' => array('type' => 'DATETIME', 'null' => TRUE),
+			'room_type_deleted' 	=> array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => FALSE, 'default' => 0),
 			'room_type_deleted_by' 	=> array('type' => 'MEDIUMINT', 'unsigned' => TRUE, 'null' => TRUE),
 		);
 

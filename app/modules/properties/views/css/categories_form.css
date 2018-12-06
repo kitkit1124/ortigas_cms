@@ -11,6 +11,9 @@
 	-ms-user-select: none;
 }
 
+#upload_button{
+	padding: 0;
+}
 .modal-body {
     max-height: 555px;
 }

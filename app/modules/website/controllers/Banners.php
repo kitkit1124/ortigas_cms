@@ -365,6 +365,7 @@ class Banners extends MX_Controller {
 		$data = array(
 			'banner_thumb'			=> $this->input->post('banner_thumb'),
 			'banner_image'			=> $this->input->post('banner_image'),
+			'banner_alt_image'		=> $this->input->post('banner_alt_image'),
 			'banner_caption'		=> $this->input->post('banner_caption'),
 			'banner_link'			=> $this->input->post('banner_link'),
 			'banner_target'			=> $this->input->post('banner_target'),

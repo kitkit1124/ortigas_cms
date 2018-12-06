@@ -40,6 +40,7 @@ $(function() {
 			post_posted_on: $('#post_posted_on').val(),
 			post_layout: $('#post_layout').val(),
 			post_status: $('.post_status:checked').val(),
+			post_alt_image: $('#post_alt_image').val(),
 			// post_sidebar_id: $('#post_sidebar_id').val(),
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},

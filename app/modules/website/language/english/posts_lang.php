@@ -25,6 +25,8 @@ $lang['post_status']				= 'Status';
 $lang['post_properties']			= 'Tag Properties';
 $lang['post_tags']					= 'Tags';
 $lang['post_image']					= 'Image';
+$lang['post_alt_image']				= 'Alternate Text';
+
 
 // Buttons
 $lang['button_add']					= 'Add Post';

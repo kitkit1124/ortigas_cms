@@ -135,7 +135,7 @@
 										<a href="<?php echo site_url('website/banners/form/add/' . $banner_group_id); ?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-plus"></i>
 										<?php echo lang('button_add')?></a>
 										<?php if ($banner_group_id > 10){ ?>
-										<a href="<?php echo site_url('website/banner_groups/form/edit/' . $banner_group_id); ?>" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal"><i class="fa fa-edit"></i> Edit Group</a>
+										<a href="<?php echo site_url('website/banner_groups/form/edit/' . $banner_group_id); ?>" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-edit"></i> Edit Group</a>
 										<a href="<?php echo site_url('website/banner_groups/delete/' . $banner_group_id); ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal"><i class="fa fa-trash"></i> Delete Group</a>
 										<?php } ?>
 									</div>	    	
@@ -147,10 +147,10 @@
 												<li class="ui-state-default col-sm-3" data-id="<?php echo $banner->banner_id; ?>">
 													<div class="thumbnail">
 														<div class="pull-right btn-actions">
-															<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-success" href="<?php echo site_url('website/banners/form/edit/' . $banner->banner_id); ?>"><div class="fa fa-pencil"></div></a>
+															<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('website/banners/form/edit/' . $banner->banner_id); ?>"><div class="fa fa-pencil"></div></a>
 															<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-danger" href="<?php echo site_url('website/banners/delete/' . $banner->banner_id); ?>"><div class="fa fa-trash"></div></a>
 														</div>
-														<img src="<?php echo site_url($banner->banner_image); ?>" width="100%" />
+														<img src="<?php echo site_url($banner->banner_image); ?>" width="100%"/>
 													</div>
 												</li>
 											<?php endforeach; ?>

@@ -297,6 +297,7 @@ class Careers extends MX_Controller {
 			'career_dept'				=> $this->input->post('career_dept'),
 			'career_div'				=> $this->input->post('career_div'),
 			'career_image'				=> $this->input->post('career_image'),
+			'career_alt_image'			=> $this->input->post('career_alt_image'),
 			'career_req'				=> $this->input->post('career_req'),
 			'career_res'				=> $this->input->post('career_res'),
 			'career_location'			=> $this->input->post('career_location'),

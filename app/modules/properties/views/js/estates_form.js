@@ -23,7 +23,9 @@ $(function() {
 			estate_latitude: $('#estate_latitude').val(),
 			estate_longtitude: $('#estate_longtitude').val(),
 			estate_image: $('#estate_image').val(),
+			estate_alt_image: $('#estate_alt_image').val(),
 			estate_thumb: $('#estate_thumb').val(),
+			estate_alt_thumb: $('#estate_alt_thumb').val(),
 			estate_status: $('#estate_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
