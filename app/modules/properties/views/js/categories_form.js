@@ -37,6 +37,7 @@ $(function() {
 				if (o.errors) {
 					for (var form_name in o.errors) {
 						$('#error-' + form_name).html(o.errors[form_name]);
+						$('#error-asterisk-' + form_name).html('<span style="color:red">*</span>');
 					}
 				}
 			} else {

@@ -20,7 +20,7 @@
 		</div>
 
 		<div class="form-group row">
-			<label for="category_name" class="col-sm-5 col-form-label"><?php echo lang('category_name')?>:</label>
+			<label for="category_name" class="col-sm-5 col-form-label"><?php echo lang('category_name')?>: &nbsp;<span id="error-asterisk-category_name" class="error_asterisk"></span></label>
 			<div class="col-sm-7">
 				<?php echo form_input(array('id'=>'category_name', 'name'=>'category_name', 'value'=>set_value('category_name', isset($record->category_name) ? $record->category_name : ''), 'class'=>'form-control'));?>
 				<div id="error-category_name"></div>

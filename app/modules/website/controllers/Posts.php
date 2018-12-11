@@ -300,6 +300,7 @@ class Posts extends MX_Controller
 		$this->form_validation->set_rules('post_posted_on', lang('post_posted_on'), 'required');
 		$this->form_validation->set_rules('post_layout', lang('post_layout'), 'required');
 		$this->form_validation->set_rules('post_status', lang('post_status'), 'required');
+		$this->form_validation->set_rules('post_tags[]', lang('post_tags'), 'required');
 
 		if (in_array($this->input->post('post_layout'), array('right_sidebar', 'left_sidebar'))) 
 		{

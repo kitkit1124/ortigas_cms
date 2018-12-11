@@ -20,14 +20,14 @@
 					<div class="col-sm-9">
 
 						<div class="form-group">
-							<label class="control-label" for="partial_title"><?php echo lang('partial_title'); ?>:</label>	
+							<label class="control-label" for="partial_title"><?php echo lang('partial_title'); ?>:</label>&nbsp;<span id="error-asterisk-partial_title" class="error_asterisk"></span>		
 							<?php echo form_input(array('id'=>'partial_title', 'name'=>'partial_title', 'value'=>set_value('partial_title', isset($record->partial_title) ? $record->partial_title : ''), 'class'=>'form-control meta-title'));?>
 							<div id="error-partial_title"></div>
 						</div>
 
 
 						<div class="form-group">
-							<label for="partial_content"><?php echo lang('partial_content'); ?>:</label>
+							<label for="partial_content"><?php echo lang('partial_content'); ?>:</label>&nbsp;<span id="error-asterisk-partial_content" class="error_asterisk"></span>	
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>

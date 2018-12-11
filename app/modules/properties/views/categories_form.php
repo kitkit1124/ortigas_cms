@@ -20,7 +20,7 @@
 										<?php echo form_input(array('id'=>'category_name_original', 'name'=>'category_name_original', 'value'=>set_value('category_name_original', isset($record->category_name) ? $record->category_name : ''), 'class'=>'form-control'));?>
 										</div>
 										
-										<label for="category_name"><?php echo lang('category_name')?>:</label>			
+										<label for="category_name"><?php echo lang('category_name')?>:</label>		
 										<?php echo form_input(array('id'=>'category_name', 'name'=>'category_name', 'value'=>set_value('category_name', isset($record->category_name) ? $record->category_name : ''), 'class'=>'form-control'));?>
 										<div id="error-category_name"></div>			
 									</div>

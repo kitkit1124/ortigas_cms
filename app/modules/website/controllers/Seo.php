@@ -127,6 +127,11 @@ class Seo extends MX_Controller {
 
 		// render the page
 		$this->template->set_template('modal');
+
+		$this->template->add_js('npm/tinymce/tinymce.min.js');
+		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
+
+		
 		$this->template->add_css(module_css('website', 'seo_form'), 'embed');
 		$this->template->add_js(module_js('website', 'seo_form'), 'embed');
 		$this->template->write_view('content', 'seo_form', $data);

@@ -20,7 +20,7 @@
 					<div class="col-sm-9">
 
 						<div class="form-group">
-							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>:</label>	
+							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>: </label>&nbsp;<span id="error-asterisk-page_title" class="error_asterisk"></span>
 							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title'));?>
 							<div id="error-page_title"></div>
 						</div>
@@ -31,9 +31,9 @@
 							<div id="error-page_heading_text"></div>
 						</div>
 
-						<?php if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){} else{ ?>
-						<div class="form-group">
-							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>
+						<?php $display = ''; if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){ $display = 'hide'; } ?>
+						<div class="form-group <?php echo $display; ?>">
+							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk"></span>
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>
@@ -45,8 +45,6 @@
 							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'10', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_content"></div>
 						</div>
-						<?php } ?>
-
 						
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
 							<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>									

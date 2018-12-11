@@ -18,7 +18,7 @@ $(function() {
 		// submits the data to the backend
 		$.post(ajax_url, {
 			seo_title: $('#seo_title').val(),
-			seo_content: $('#seo_content').val(),
+			seo_content: tinyMCE.get('seo_content').getContent(),
 			seo_status: $('#seo_status').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
@@ -37,6 +37,7 @@ $(function() {
 				if (o.errors) {
 					for (var form_name in o.errors) {
 						$('#error-' + form_name).html(o.errors[form_name]);
+						$('#error-asterisk-' + form_name).html('<span style="color:red">*</span>');
 					}
 				}
 			} else {
@@ -68,4 +69,23 @@ $(function() {
 			return false;
 		}
 	});
+
+	tinymce.init({
+		selector: "#seo_content",
+		theme: "modern",
+		statusbar: true,
+		menubar: true,
+		relative_urls: false,
+		remove_script_host : false,
+		convert_urls : true,
+		plugins: [
+			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+			'searchreplace wordcount visualblocks visualchars code',
+			'insertdatetime media nonbreaking save table contextmenu directionality',
+			'emoticons template paste textcolor colorpicker textpattern'
+		],
+		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link mybutton documents videos',
+		image_advtab: true,
+	});
+
 });
