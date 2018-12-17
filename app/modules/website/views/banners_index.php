@@ -79,7 +79,7 @@
 									 					<label class="col-form-label"><?php echo lang('video_caption')?>:</label>	
 									 				</div>
 									 				<div class="col-sm">
-									 					<?php echo form_textarea(array('id'=>'video_caption', 'name'=>'video_caption', 'rows'=>'3', 'value'=>set_value('video_caption', isset($video->video_caption) ? $video->video_caption : ''), 'class'=>'form-control')); ?>
+									 					<?php echo form_textarea(array('id'=>'video_caption', 'name'=>'video_caption', 'rows'=>'3', 'value'=>set_value('video_caption', isset($video->video_caption) ? $video->video_caption : '', FALSE), 'class'=>'form-control')); ?>
 									 					<div id="error-video_caption"></div>
 									 				</div>
 									 			</div>

@@ -12,6 +12,8 @@ $(function() {
 
 	// handles the post action
 
+	$('.disabled').prop('disabled','true');
+
 	$('#page_properties, #page_posts').select2();
 
 	$('#post').click(function(e){

@@ -17,11 +17,13 @@
 
 					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
+					<?php $if_disabled = ""; if($record->page_id < 7 || $record->page_id == 12 || $record->page_id == 13){ $if_disabled="disabled"; }?>
+
 					<div class="col-sm-9">
 
 						<div class="form-group">
 							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>: </label>&nbsp;<span id="error-asterisk-page_title" class="error_asterisk"></span>
-							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title'));?>
+							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title '.$if_disabled));?>
 							<div id="error-page_title"></div>
 						</div>
 
