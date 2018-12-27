@@ -17,13 +17,13 @@
 								<div style="display: none">
 								<?php echo form_input(array('id'=>'estate_name_original', 'name'=>'estate_name_original', 'value'=>set_value('estate_name_original', isset($record->estate_name) ? $record->estate_name : ''), 'class'=>'form-control form-control-lg'));?>
 								</div>
-								<label for="estate_name"><?php echo lang('estate_name')?>:</label>			
+								<label for="estate_name"><?php echo lang('estate_name')?>:</label><span class="error_asterisk"> *</span>				
 								<?php echo form_input(array('id'=>'estate_name', 'name'=>'estate_name', 'value'=>set_value('estate_name', isset($record->estate_name) ? $record->estate_name : ''), 'class'=>'form-control form-control-lg'));?>
 								<div id="error-estate_name"></div>			
 							</div>
 
 							<div class="form-group">
-								<label for="estate_text"><?php echo lang('estate_text')?>:</label>			
+								<label for="estate_text"><?php echo lang('estate_text')?>:</label><span class="error_asterisk"> *</span>				
 								<?php echo form_textarea(array('id'=>'estate_text', 'name'=>'estate_text', 'rows'=>'5', 'value'=>set_value('estate_text', isset($record->estate_text) ? $record->estate_text : '', false), 'class'=>'form-control')); ?>
 								<div id="error-estate_text"></div>			
 							</div>
@@ -73,7 +73,7 @@
 						</div>
 						<div class="col-sm-3">
 							<div class="form-group">
-								<label for="estate_image"><?php echo lang('estate_image')?>:</label>			
+								<label for="estate_image"><?php echo lang('estate_image')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 									<img id="estate_active_photo" src="<?php echo site_url(isset($record->estate_image) ? $record->estate_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
@@ -89,7 +89,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="estate_thumb"><?php echo lang('estate_thumb')?>:</label>			
+								<label for="estate_thumb"><?php echo lang('estate_thumb')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload_thumb/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
 									<img id="estate_active_thumb" src="<?php echo site_url(isset($record->estate_thumb) ? $record->estate_thumb : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>

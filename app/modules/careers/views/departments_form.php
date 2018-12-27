@@ -12,7 +12,7 @@
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
-			<label for="department_name"><?php echo lang('department_name')?>:</label>			
+			<label for="department_name"><?php echo lang('department_name')?>:</label><span class="error_asterisk"> *</span>				
 			<?php echo form_input(array('id'=>'department_name', 'name'=>'department_name', 'value'=>set_value('department_name', isset($record->department_name) ? $record->department_name : ''), 'class'=>'form-control'));?>
 			<?php echo form_input(array('id'=>'department_name_original', 'name'=>'department_name_original', 'value'=>set_value('department_name_original', isset($record->department_name) ? $record->department_name : ''), 'style'=>'display:none'));?>
 			<div id="error-department_name"></div>			

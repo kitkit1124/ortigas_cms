@@ -19,7 +19,7 @@
 		</div>
 
 		<div class="form-group">
-			<label for="division_name"><?php echo lang('division_name')?>:</label>			
+			<label for="division_name"><?php echo lang('division_name')?>:</label><span class="error_asterisk"> *</span>				
 			<?php echo form_input(array('id'=>'division_name', 'name'=>'division_name', 'value'=>set_value('division_name', isset($record->division_name) ? $record->division_name : ''), 'class'=>'form-control'));?>
 			<?php echo form_input(array('id'=>'division_name_original', 'name'=>'division_name_original', 'value'=>set_value('division_name_original', isset($record->division_name) ? $record->division_name : ''), 'style'=>'display:none'));?>
 			<div id="error-division_name"></div>			

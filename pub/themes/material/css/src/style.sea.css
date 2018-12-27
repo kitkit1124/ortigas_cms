@@ -3430,3 +3430,5 @@ a > code {
 .custom-select::-ms-expand {
   opacity: 0;
 }
+
+.error_asterisk{ color: red; }

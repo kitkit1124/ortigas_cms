@@ -20,13 +20,13 @@
 					<div class="col-sm-9">
 
 						<div class="form-group">
-							<label for="post_title"><?php echo lang('post_title'); ?>:</label>&nbsp;<span id="error-asterisk-post_title" class="error_asterisk"></span>
+							<label for="post_title"><?php echo lang('post_title'); ?>:</label>&nbsp;<span id="error-asterisk-post_title" class="error_asterisk">*</span>
 							<?php echo form_input(array('id'=>'post_title', 'name'=>'post_title', 'value'=>set_value('post_title', isset($record->post_title) ? $record->post_title : ''), 'class'=>'form-control meta-title'));?>
 							<div id="error-post_title"></div>
 						</div>
 
 						<div class="form-group">
-							<label for="post_content"><?php echo lang('post_content'); ?>:</label>&nbsp;<span id="error-asterisk-post_content" class="error_asterisk"></span>
+							<label for="post_content"><?php echo lang('post_content'); ?>:</label>&nbsp;<span id="error-asterisk-post_content" class="error_asterisk">*</span>
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>
@@ -57,13 +57,13 @@
 						</div>
 
 						<div class="form-group">
-							<label for="post_posted_on"><?php echo lang('post_posted_on'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk"></span>
+							<label for="post_posted_on"><?php echo lang('post_posted_on'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<?php echo form_input(array('id'=>'post_posted_on', 'name'=>'post_posted_on', 'value'=>set_value('post_posted_on', isset($record->post_posted_on) ? $record->post_posted_on : date('Y-m-d H:i:s')), 'class'=>'form-control', 'data-field'=>'datetime', 'readonly'=>''));?>
 							<div id="error-post_posted_on"></div>
 						</div>
 
 						<div class="form-group">
-							<label for="post_layout"><?php echo lang('post_layout')?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk"></span>
+							<label for="post_layout"><?php echo lang('post_layout')?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<?php echo form_dropdown('post_layout', config_item('theme_layouts'), set_value('post_layout', (isset($record->post_layout)) ? $record->post_layout : ''), 'id="post_layout" class="form-control"'); ?>
 							<div id="error-post_layout"></div>
 						</div>		
@@ -82,7 +82,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="post_properties"><?php echo lang('post_properties'); ?>:</label>&nbsp;<span id="error-asterisk-post_properties" class="error_asterisk"></span>
+							<label for="post_properties"><?php echo lang('post_properties'); ?>:</label>
 							<div id="properties">
 								<select id="post_properties" class="post_properties form-control" multiple="multiple">
 									<?php foreach($properties as $key => $property) { 
@@ -95,7 +95,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="post_tags"><?php echo lang('post_tags'); ?>:</label>&nbsp;<span id="error-asterisk-post_tags" class="error_asterisk"></span>
+							<label for="post_tags"><?php echo lang('post_tags'); ?>:</label>&nbsp;<span id="error-asterisk-post_tags" class="error_asterisk">*</span>
 							<div id="tags">
 								<select id="post_tags" class="post_tags form-control" multiple="multiple">
 									<?php foreach($tags as $key => $tag) { 
@@ -108,7 +108,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="post_categories"><?php echo lang('post_categories'); ?>:</label>&nbsp;<span id="error-asterisk-post_categories" class="error_asterisk"></span>
+							<label for="post_categories"><?php echo lang('post_categories'); ?>:</label>&nbsp;<span id="error-asterisk-post_categories" class="error_asterisk">*</span>
 							<div id="categories">
 								<?php if ($categories): ?>
 									<?php foreach ($categories as $category): ?>

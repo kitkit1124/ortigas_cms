@@ -5,6 +5,9 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
+					<?php if (isset($record->property_id) AND isset($record->property_metatag_id)): ?>
+						<a class="nav-link" href="<?php echo site_url('metatags/form/properties/properties/' . $record->property_id); ?>" data-toggle="modal" data-target="#modal" class="btn btn-info"><span class="fa fa-cog"></span> Meta Tags</a>
+					<?php endif; ?>
 				</div>
 			</div>
 			<div class="card-header d-flex align-items-center">
@@ -15,27 +18,27 @@
 					<div class="col-sm-9 prop_left_details">
 						<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
-						<div class="form-group"><span style="color: red">*</span>
+						<div class="form-group">
 							<div style="display: none">
 								<?php echo form_input(array('id'=>'property_name_original', 'name'=>'property_name_original', 'value'=>set_value('property_name_original', isset($record->property_name) ? $record->property_name : ''), 'class'=>'form-control form-control-lg'));?>
 							</div>
 
-							<label for="property_name"><?php echo lang('property_name')?>:</label>			
+							<label for="property_name"><?php echo lang('property_name')?>:</label><span class="error_asterisk"> *</span>				
 							<?php echo form_input(array('id'=>'property_name', 'name'=>'property_name', 'value'=>set_value('property_name', isset($record->property_name) ? $record->property_name : ''), 'class'=>'form-control form-control-lg'));?>
 							<div id="error-property_name"></div>			
 						</div>
 
 						<div class="row">
 							<div class="col-sm-6 property_vital_details">
-								<div class="form-group"><span style="color: red">*</span> 
-									<label for="property_estate_id"><?php echo lang('property_estate_id')?>:</label>
+								<div class="form-group">
+									<label for="property_estate_id"><?php echo lang('property_estate_id')?>:</label><span class="error_asterisk"> *</span>	
 									<?php echo form_dropdown('property_estate_id', $estates, set_value('property_estate_id', (isset($record->property_estate_id)) ? $record->property_estate_id : ''), 'id="property_estate_id" class="form-control"'); ?>
 									<div id="error-property_estate_id"></div>
 								</div>
 							</div>
 							<div class="col-sm-6 property_vital_details">
-								<div class="form-group"><span style="color: red">*</span>
-									<label for="property_category_id"><?php echo lang('property_category_id')?>:</label>
+								<div class="form-group">
+									<label for="property_category_id"><?php echo lang('property_category_id')?>:</label><span class="error_asterisk"> *</span>	
 									<?php echo form_dropdown('property_category_id', $categories, set_value('property_category_id', (isset($record->property_category_id)) ? $record->property_category_id : ''), 'id="property_category_id" class="form-control"'); ?>
 									<div id="error-property_category_id"></div>
 								</div>
@@ -44,15 +47,15 @@
 
 						<div class="row">
 							<div class="col-sm-6 property_vital_details">
-								<div class="form-group"><span style="color: red">*</span>
-									<label for="property_location_id"><?php echo lang('property_location_id')?>:</label>
+								<div class="form-group">
+									<label for="property_location_id"><?php echo lang('property_location_id')?>:</label><span class="error_asterisk"> *</span>	
 									<?php echo form_dropdown('property_location_id', $locations, set_value('property_location_id', (isset($record->property_location_id)) ? $record->property_location_id : ''), 'id="property_location_id" class="form-control"'); ?>
 									<div id="error-property_location_id"></div>
 								</div>
 							</div>
 							<div class="col-sm-6 property_vital_details">
-								<div class="form-group"><span style="color: red">*</span>
-									<label for="property_prop_type_id"><?php echo lang('property_prop_type_id')?>:</label>
+								<div class="form-group">
+									<label for="property_prop_type_id"><?php echo lang('property_prop_type_id')?>:</label><span class="error_asterisk"> *</span>	
 									<?php echo form_dropdown('property_prop_type_id', $property_types, set_value('property_prop_type_id', (isset($record->property_prop_type_id)) ? $record->property_prop_type_id : ''), 'id="property_prop_type_id" class="form-control"'); ?>
 									<div id="error-property_prop_type_id"></div>
 								</div>
@@ -61,8 +64,8 @@
 
 						<div class="row">
 							<div class="col-sm-6 property_vital_details">
-								<div class="form-group"><span style="color: red">*</span>
-									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label>
+								<div class="form-group">
+									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label><span class="error_asterisk"> *</span>	
 									<?php echo form_dropdown('property_price_range_id', $price_range, set_value('property_price_range_id', (isset($record->property_price_range_id)) ? $record->property_price_range_id : ''), 'id="property_price_range_id" class="form-control"'); ?>
 									<div id="error-property_price_range_id"></div>
 								</div>
@@ -101,8 +104,8 @@
 						      <div id="property_descriptions" class="collapse" data-parent="#accordion">
 						        <div class="card-body">		
 									<div class="property_overview">
-										<div class="form-group"><span style="color: red">*</span>
-											<label for="property_overview"><?php echo lang('property_overview')?>:</label>			
+										<div class="form-group">
+											<label for="property_overview"><?php echo lang('property_overview')?>:</label><span class="error_asterisk"> *</span>				
 											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_overview"></div>			
 										</div>

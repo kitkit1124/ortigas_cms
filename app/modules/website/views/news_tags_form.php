@@ -12,7 +12,7 @@
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
-			<label for="news_tag_name"><?php echo lang('news_tag_name')?>:</label>&nbsp;<span id="error-asterisk-news_tag_name" class="error_asterisk"></span>			
+			<label for="news_tag_name"><?php echo lang('news_tag_name')?>:</label>&nbsp;<span id="error-asterisk-news_tag_name" class="error_asterisk">*</span>			
 			<?php echo form_input(array('id'=>'news_tag_name', 'name'=>'news_tag_name', 'value'=>set_value('news_tag_name', isset($record->news_tag_name) ? $record->news_tag_name : ''), 'class'=>'form-control'));?>
 			<div id="error-news_tag_name"></div>			
 		</div>

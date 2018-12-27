@@ -12,7 +12,7 @@
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
-			<label for="property_type_name"><?php echo lang('property_type_name')?>:</label>			
+			<label for="property_type_name"><?php echo lang('property_type_name')?>:</label><span class="error_asterisk"> *</span>				
 			<?php echo form_input(array('id'=>'property_type_name', 'name'=>'property_type_name', 'value'=>set_value('property_type_name', isset($record->property_type_name) ? $record->property_type_name : ''), 'class'=>'form-control'));?>
 
 			<?php echo form_input(array('id'=>'property_type_name_original', 'name'=>'property_type_name_original', 'style' => 'display:none' , 'value'=>set_value('property_type_name_original', isset($record->property_type_name) ? $record->property_type_name : ''), 'class'=>'form-control'));?>

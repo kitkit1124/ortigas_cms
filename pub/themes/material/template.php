@@ -6,7 +6,7 @@ $user = $this->ion_auth->user()->row();
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><?php echo config_item('app_name'); ?> - <?php echo $page_heading; ?></title>
+	<title><?php echo $page_heading; ?> - <?php echo config_item('app_name'); ?></title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta name="robots" content="all,follow">

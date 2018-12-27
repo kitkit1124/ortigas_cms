@@ -12,13 +12,13 @@
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
-			<label for="seo_title"><?php echo lang('seo_title')?>:</label>&nbsp;<span id="error-asterisk-seo_title" class="error_asterisk"></span>				
+			<label for="seo_title"><?php echo lang('seo_title')?>:</label>&nbsp;<span id="error-asterisk-seo_title" class="error_asterisk">*</span>				
 			<?php echo form_input(array('id'=>'seo_title', 'name'=>'seo_title', 'value'=>set_value('seo_title', isset($record->seo_title) ? $record->seo_title : ''), 'class'=>'form-control'));?>
 			<div id="error-seo_title"></div>			
 		</div>
 
 		<div class="form-group">
-			<label for="seo_content"><?php echo lang('seo_content')?>:</label>&nbsp;<span id="error-asterisk-seo_content" class="error_asterisk"></span>			
+			<label for="seo_content"><?php echo lang('seo_content')?>:</label>&nbsp;<span id="error-asterisk-seo_content" class="error_asterisk">*</span>			
 			<?php echo form_textarea(array('id'=>'seo_content', 'name'=>'seo_content', 'rows'=>'14', 'value'=>set_value('seo_content', isset($record->seo_content) ? $record->seo_content : '',false), 'class'=>'form-control')); ?>
 			<div id="error-seo_content"></div>			
 		</div>

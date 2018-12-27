@@ -57,6 +57,7 @@ class Posts_model extends BF_Model
 
 		return $this->join('users as creator', 'creator.id = post_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = post_modified_by', 'LEFT')
+					->order_by('post_posted_on','desc')
 					->datatables($fields);
 	}
 
@@ -67,6 +68,7 @@ class Posts_model extends BF_Model
 
 		$query = $this->where('post_status', 'Posted')
 				->where('post_deleted', 0)
+				->order_by('post_posted_on','DESC')
 				->order_by('post_title', 'ASC')
 				->join('post_categories', 'post_categories.post_category_post_id = post_id' )
 				->join('categories', 'category_id = post_categories.post_category_category_id')

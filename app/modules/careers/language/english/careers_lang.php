@@ -23,7 +23,7 @@ $lang['career_location']			= 'Location';
 $lang['career_latitude']			= 'Latitude';
 $lang['career_longitude']			= 'Longitude';
 $lang['career_status']				= 'Status';
-$lang['career_image']				= 'Image';
+$lang['career_image']				= 'Banner Image';
 $lang['career_alt_image']			= 'Alternative Text';
 
 // Buttons

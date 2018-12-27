@@ -17,12 +17,17 @@
 
 					<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
-					<?php $if_disabled = ""; if($record->page_id < 7 || $record->page_id == 12 || $record->page_id == 13){ $if_disabled="disabled"; }?>
+					<?php 
+						$if_disabled = ""; 
+						if(isset($record->page_id) && $record->page_id){
+							if($record->page_id < 7 || $record->page_id == 12 || $record->page_id == 13){ $if_disabled="disabled"; }
+						}
+					?>
 
 					<div class="col-sm-9">
 
 						<div class="form-group">
-							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>: </label>&nbsp;<span id="error-asterisk-page_title" class="error_asterisk"></span>
+							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>: </label>&nbsp;<span id="error-asterisk-page_title" class="error_asterisk">*</span>
 							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title '.$if_disabled));?>
 							<div id="error-page_title"></div>
 						</div>
@@ -35,7 +40,7 @@
 
 						<?php $display = ''; if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){ $display = 'hide'; } ?>
 						<div class="form-group <?php echo $display; ?>">
-							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk"></span>
+							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>

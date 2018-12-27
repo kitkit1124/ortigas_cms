@@ -27,6 +27,8 @@ class Properties_model extends BF_Model {
 	protected $deleted_field		= 'property_deleted';
 	protected $deleted_by_field		= 'property_deleted_by';
 
+	public $metatag_key				= 'property_metatag_id';
+
 	// --------------------------------------------------------------------
 
 	/**
