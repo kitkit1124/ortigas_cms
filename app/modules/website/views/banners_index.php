@@ -25,12 +25,13 @@
 				  <!-- Tab panes -->
 				 <div class="tab-content">
 				 	<?php if ($banner_group_id == 1){ ?>	
+
 	 			   		<div class="form-group">
 	 			   			<input type="hidden" id='csrf' name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 
 							<label class="banner_display_label"><h2><?php echo lang('banner_display')?></h2></label>
-							<?php echo form_radio('banner_display', 'Active', set_value('banner_display', (isset($record->banner_display) && $record->banner_display) ? TRUE: FALSE), 'id="banner_display1"'); ?><label for="banner_display1" class="pointer">Video</label>
-				 			<?php echo form_radio('banner_display', 'Inactive', set_value('banner_display', (isset($record->banner_display) && $record->banner_display) ? FALSE : TRUE), 'id="banner_display2"'); ?><label for="banner_display2" class="pointer">Slider</label> 
+							<?php echo form_radio('banner_display', 'Active', set_value('banner_display', (isset($video->video_status) && $video->video_status == 'Active') ? TRUE: FALSE), 'id="banner_display1" data-text="Video Display"'); ?><label for="banner_display1" class="pointer">Video</label>
+				 			<?php echo form_radio('banner_display', 'Inactive', set_value('banner_display', (isset($video->video_status) && $video->video_status  == 'Active') ? FALSE : TRUE), 'id="banner_display2" data-text="Banner Slider"'); ?><label for="banner_display2" class="pointer">Slider</label> 
 						
 							<div id="error-banner_display"></div>
 						</div>
@@ -150,7 +151,7 @@
 															<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('website/banners/form/edit/' . $banner->banner_id); ?>"><div class="fa fa-pencil"></div></a>
 															<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-danger" href="<?php echo site_url('website/banners/delete/' . $banner->banner_id); ?>"><div class="fa fa-trash"></div></a>
 														</div>
-														<img src="<?php echo site_url($banner->banner_image); ?>" width="100%"/>
+														<img src="<?php echo site_url($banner->banner_image); ?>"  onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" width="100%"/>
 													</div>
 												</li>
 											<?php endforeach; ?>

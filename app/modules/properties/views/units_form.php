@@ -85,7 +85,7 @@
 			<div id="image_container">
 				<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
 				<center>
-					<img id="unit_active_image" src="<?php echo site_url(isset($record->unit_image) ? $record->unit_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+					<img id="unit_active_image" src="<?php echo site_url(isset($record->unit_image) ? $record->unit_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 				</center>
 
 			</div>

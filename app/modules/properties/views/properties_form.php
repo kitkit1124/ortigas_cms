@@ -281,7 +281,7 @@
 							<label for="property_image"><?php echo lang('property_image')?>:</label>
 							<br>		
 							<a href="<?php echo site_url('properties/properties/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-								<img id="property_active_image" src="<?php echo site_url(isset($record->property_image) ? $record->property_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+								<img id="property_active_image" src="<?php echo site_url(isset($record->property_image) ? $record->property_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>
 							<?php echo form_textarea(array('id'=>'property_alt_image', 'name'=>'property_alt_image', 'rows'=>'2', 'value'=>set_value('property_alt_image', isset($record->property_alt_image) ? $record->property_alt_image : '', false), 'class'=>'form-control', 'placeholder' => lang('property_alt_image') )); ?> 
 
@@ -297,7 +297,7 @@
 							<label for="property_image"><?php echo lang('property_logo')?>:</label>
 							<br>		
 							<a href="<?php echo site_url('properties/properties/form_upload_logo/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-								<img id="property_active_logo" src="<?php echo site_url(isset($record->property_logo) ? $record->property_logo : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+								<img id="property_active_logo" src="<?php echo site_url(isset($record->property_logo) ? $record->property_logo : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>
 							<?php echo form_textarea(array('id'=>'property_alt_logo', 'name'=>'property_alt_logo', 'rows'=>'2', 'value'=>set_value('property_alt_logo', isset($record->property_alt_logo) ? $record->property_alt_logo : '', false), 'class'=>'form-control', 'placeholder' => lang('property_alt_logo') )); ?> 
 							<br>

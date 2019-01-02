@@ -27,6 +27,8 @@ class Categories_model extends BF_Model {
 	protected $deleted_field		= 'category_deleted';
 	protected $deleted_by_field		= 'category_deleted_by';
 
+	public $metatag_key				= 'category_metatag_id';
+
 	// --------------------------------------------------------------------
 
 	/**

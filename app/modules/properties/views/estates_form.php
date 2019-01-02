@@ -3,6 +3,9 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
+					<?php if (isset($record->estate_id) AND isset($record->estate_metatag_id)): ?>
+						<a class="nav-link" href="<?php echo site_url('metatags/form/properties/estates/' . $record->estate_id); ?>" data-toggle="modal" data-target="#modal" class="btn btn-info"><span class="fa fa-cog"></span> Meta Tags</a>
+					<?php endif; ?>
 				</div>
 			</div>
 			<div class="card-header d-flex align-items-center">
@@ -76,7 +79,7 @@
 								<label for="estate_image"><?php echo lang('estate_image')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-									<img id="estate_active_photo" src="<?php echo site_url(isset($record->estate_image) ? $record->estate_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+									<img id="estate_active_photo" src="<?php echo site_url(isset($record->estate_image) ? $record->estate_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'estate_alt_image', 'name'=>'estate_alt_image', 'rows'=>'2', 'value'=>set_value('estate_alt_image', isset($record->estate_alt_image) ? $record->estate_alt_image : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_image'), 'title' => lang('estate_alt_image') )); ?>
 								<br />
@@ -92,7 +95,7 @@
 								<label for="estate_thumb"><?php echo lang('estate_thumb')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload_thumb/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
-									<img id="estate_active_thumb" src="<?php echo site_url(isset($record->estate_thumb) ? $record->estate_thumb : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+									<img id="estate_active_thumb" src="<?php echo site_url(isset($record->estate_thumb) ? $record->estate_thumb : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'estate_alt_thumb', 'name'=>'estate_alt_thumb', 'rows'=>'2', 'value'=>set_value('estate_alt_thumb', isset($record->estate_alt_thumb) ? $record->estate_alt_thumb : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_thumb'), 'title' => lang('estate_alt_thumb') )); ?>
 								<br />

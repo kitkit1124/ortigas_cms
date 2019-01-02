@@ -5,6 +5,9 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
+					<?php if (isset($record->career_id) AND isset($record->career_metatag_id)): ?>
+						<a class="nav-link" href="<?php echo site_url('metatags/form/careers/careers/' . $record->career_id); ?>" data-toggle="modal" data-target="#modal" class="btn btn-info"><span class="fa fa-cog"></span> Meta Tags</a>
+					<?php endif; ?>
 				</div>
 			</div>
 			<div class="card-header d-flex align-items-center">
@@ -78,7 +81,7 @@
 						<div class="form-group">
 							<label for="career_active_image"><?php echo lang('career_image')?>:</label><span class="error_asterisk"> *</span>	
 							<a href="<?php echo site_url('careers/careers/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-								<img id="career_active_image" src="<?php echo site_url(isset($record->career_image) ? $record->career_image : 'ui/images/placeholder.png'); ?>" class="img-responsive" width="100%" alt=""/>
+								<img id="career_active_image" src="<?php echo site_url(isset($record->career_image) ? $record->career_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>
 							<br>
 							<div id="error-career_image"></div>	

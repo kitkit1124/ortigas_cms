@@ -27,6 +27,8 @@ class Careers_model extends BF_Model {
 	protected $deleted_field		= 'career_deleted';
 	protected $deleted_by_field		= 'career_deleted_by';
 
+	public $metatag_key				= 'career_metatag_id';
+
 	// --------------------------------------------------------------------
 
 	/**

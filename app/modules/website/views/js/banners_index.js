@@ -1,10 +1,13 @@
 $(function() {
 
 	$('input[name="banner_display"]').change(function(){
-		
+		var text = $(this).attr('data-text');
 		$.post(site_url + 'website/banners/main_video_save', {
 			video_id: 1,
 			video_status: $('input[name="banner_display"]:checked').val(),
+		},
+		function(){
+			alertify.success('Index Banner Updated: Set to ' + text);
 		});
 
 	});
