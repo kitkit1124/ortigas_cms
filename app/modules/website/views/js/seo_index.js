@@ -26,6 +26,12 @@ $(function() {
 					return '<a href="seo/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
 				},
 			},
+			{
+				"aTargets": [2],
+				"mRender": function (data, type, full) {
+					return 'SEO Content';
+				},
+			},
 			// {
 			// 	"aTargets": [6],
 			// 	 "mRender": function (data, type, full) {

@@ -323,7 +323,7 @@ class Estates extends MX_Controller {
 		
 		$name = $this->input->post('estate_name');
 		$orig_name = $this->input->post('estate_name_original');
-		$duplicate = $this->estates_model->find_by('estate_name', $name);
+		$duplicate = $this->estates_model->find_by(array('estate_name' => $name, 'estate_deleted' => 0));
 			
 		if ($action == 'edit'){
 			if($orig_name == $name){}

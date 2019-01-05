@@ -73,9 +73,10 @@ class Migration_Create_seo extends CI_Migration {
 
 
 		$data = array(
-			array('seo_title'  => 'Google Tag Manager', 'seo_content' => '', 'seo_status' => 'Active'),
-			array('seo_title'  => 'Facebook Pixel Code', 'seo_content' => '','seo_status' => 'Active'),
-			array('seo_title'  => 'Google Code for Remarketing Tag', 'seo_content' => '', 'seo_status' => 'Active'),	
+			array('seo_title'  => 'HEAD', 'seo_content' => '<!--SEO1-->', 'seo_status' => 'Active'),
+			array('seo_title'  => 'START BODY', 'seo_content' => '<!--SEO2-->', 'seo_status' => 'Active'),
+			array('seo_title'  => 'END BODY', 'seo_content' => '<!--SEO3-->','seo_status' => 'Active'),
+			array('seo_title'  => 'FOOTER', 'seo_content' => '<!--SEO4-->','seo_status' => 'Active'),
 		);
 		$this->db->insert_batch($this->_table, $data);
 	}

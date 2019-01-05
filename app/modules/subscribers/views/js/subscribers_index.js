@@ -3,7 +3,7 @@ $(function() {
 	var oTable = $('#datatables').dataTable({
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "properties/datatables",
+		"sAjaxSource": "subscribers/datatables",
 		"lengthMenu": [[10, 20, 50, 100, 300, -1], [10, 20, 50, 100, 300, "All"]],
 		"pagingType": "full_numbers",
 		"language": {
@@ -23,10 +23,9 @@ $(function() {
 			{
 				"aTargets": [1],
 				"mRender": function (data, type, full) {
-					return '<a href="properties/form/edit/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+					return '<a href="subscribers/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
 				},
 			},
-
 			// {
 			// 	"aTargets": [6],
 			// 	 "mRender": function (data, type, full) {
@@ -43,13 +42,12 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [27],
+				"aTargets": [7],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="' + site_url + 'metatags/form/properties/properties/' + full[0] + '" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Meta Tags" class="btn btn-sm btn-info"><span class="fa fa-cogs"></span></a> ';
-					html += '<a href="properties/form/view/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
-					html += '<a href="properties/form/edit/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
-					html += '<a href="properties/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
+					html = '<a href="subscribers/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
+					html += '<a href="subscribers/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
+					html += '<a href="subscribers/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
 
 					return html;
 				},

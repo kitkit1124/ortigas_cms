@@ -248,7 +248,7 @@ $user = $this->ion_auth->user()->row();
 		</div>
 	</div>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN6cUNcHO88eddYIc5mo4nW4t-sOPILCE&libraries=places&callback=initMap" type="text/javascript"></script>
+	
 	<script>var site_url = '<?php echo site_url(); ?>';</script>
 	<?php if (NULL !== config_item('website_url')): ?>
 		<script>var website_url = '<?php echo config_item('website_url'); ?>';</script>
@@ -282,5 +282,7 @@ $user = $this->ion_auth->user()->row();
 	<?php if (NULL != $this->session->flashdata('flash_error')): ?>
 		<script>alertify.error("<?php echo $this->session->flashdata('flash_error'); ?>");</script>
 	<?php endif; ?>
+
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN6cUNcHO88eddYIc5mo4nW4t-sOPILCE&libraries=places&callback=initMap" type="text/javascript"></script>
 </body>
 </html>

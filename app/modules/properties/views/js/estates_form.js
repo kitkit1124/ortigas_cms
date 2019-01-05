@@ -50,6 +50,8 @@ $(function() {
 				} else {
 					// shows the success message
 					alertify.success(o.message); 
+
+					setTimeout(function(){ location.reload(); }, 1000);					
 				} 
 			}
 
