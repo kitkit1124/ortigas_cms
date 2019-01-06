@@ -123,7 +123,8 @@ class Estates extends MX_Controller {
 					'estate_name'			=> form_error('estate_name'),
 					'estate_slug'			=> form_error('estate_slug'),
 					'estate_text'			=> form_error('estate_text'),
-					'estate_bottom_text'			=> form_error('estate_bottom_text'),
+					'estate_snippet_quote'	=> form_error('estate_snippet_quote'),
+					'estate_bottom_text'	=> form_error('estate_bottom_text'),
 					'estate_latitude'		=> form_error('estate_latitude'),
 					'estate_longtitude'		=> form_error('estate_longtitude'),
 					'estate_image'			=> form_error('estate_image'),
@@ -200,6 +201,7 @@ class Estates extends MX_Controller {
 					'estate_name'			=> form_error('estate_name'),
 					'estate_slug'			=> form_error('estate_slug'),
 					'estate_text'			=> form_error('estate_text'),
+					'estate_snippet_quote'	=> form_error('estate_snippet_quote'),
 					'estate_latitude'		=> form_error('estate_latitude'),
 					'estate_longtitude'		=> form_error('estate_longtitude'),
 					'estate_image'			=> form_error('estate_image'),
@@ -246,6 +248,7 @@ class Estates extends MX_Controller {
 					'estate_name'			=> form_error('estate_name'),
 					'estate_slug'			=> form_error('estate_slug'),
 					'estate_text'			=> form_error('estate_text'),
+					'estate_snippet_quote'	=> form_error('estate_snippet_quote'),
 					'estate_latitude'		=> form_error('estate_latitude'),
 					'estate_longtitude'		=> form_error('estate_longtitude'),
 					'estate_image'			=> form_error('estate_image'),
@@ -313,6 +316,7 @@ class Estates extends MX_Controller {
 		// validate inputs
 		$this->form_validation->set_rules('estate_name', lang('estate_name'), 'required');
 		$this->form_validation->set_rules('estate_text', lang('estate_text'), 'required');
+		$this->form_validation->set_rules('estate_snippet_quote', lang('estate_snippet_quote'), 'required');
 		$this->form_validation->set_rules('estate_latitude', lang('estate_latitude'), 'max_length[255]');
 		$this->form_validation->set_rules('estate_longtitude', lang('estate_longtitude'), 'max_length[255]');
 		$this->form_validation->set_rules('estate_image', lang('estate_image'), 'required');
@@ -348,6 +352,7 @@ class Estates extends MX_Controller {
 			'estate_name'			=> $this->input->post('estate_name'),
 			'estate_slug'			=> url_title($this->input->post('estate_name'), '-', TRUE),
 			'estate_text'			=> $this->input->post('estate_text'),
+			'estate_snippet_quote'			=> $this->input->post('estate_snippet_quote'),
 			'estate_bottom_text'	=> $this->input->post('estate_bottom_text'),
 			'estate_latitude'		=> $this->input->post('estate_latitude'),
 			'estate_longtitude'		=> $this->input->post('estate_longtitude'),

@@ -19,9 +19,13 @@
 
 					<div class="col-sm-9">
 
+						<div style="display: none">
+							<?php echo form_input(array('id'=>'post_title_orig', 'name'=>'post_title_orig', 'value'=>set_value('post_title_orig', isset($record->post_title) ? $record->post_title : ''), 'class'=>'form-control meta-title'));?>
+						</div>
+
 						<div class="form-group">
 							<label for="post_title"><?php echo lang('post_title'); ?>:</label>&nbsp;<span id="error-asterisk-post_title" class="error_asterisk">*</span>
-							<?php echo form_input(array('id'=>'post_title', 'name'=>'post_title', 'value'=>set_value('post_title', isset($record->post_title) ? $record->post_title : ''), 'class'=>'form-control meta-title'));?>
+							<?php echo form_input(array('id'=>'post_title', 'name'=>'post_title', 'value'=>set_value('post_title', isset($record->post_title) ? $record->post_title : '',FALSE), 'class'=>'form-control meta-title'));?>
 							<div id="error-post_title"></div>
 						</div>
 
@@ -69,6 +73,7 @@
 						</div>		
 
 						<div class="form-group">
+							<label for="post_image"><?php echo lang('post_image'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<a href="<?php echo site_url('website/posts/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="post_active_image" src="<?php echo site_url(isset($record->post_image) ? $record->post_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>

@@ -112,7 +112,6 @@ class Divisions extends MX_Controller {
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
-					'division_department_id'		=> form_error('division_department_id'),
 					'division_name'		=> form_error('division_name'),
 					'division_status'		=> form_error('division_status'),
 				);
@@ -176,19 +175,19 @@ class Divisions extends MX_Controller {
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('division_department_id', lang('division_department_id'), 'required');
+		// $this->form_validation->set_rules('division_department_id', lang('division_department_id'), 'required');
 		$this->form_validation->set_rules('division_name', lang('division_name'), 'required');
 		$this->form_validation->set_rules('division_status', lang('division_status'), 'required');
 
 
-		$did =  $this->input->post('division_department_id');
+		// $did =  $this->input->post('division_department_id');
 		$name =  $this->input->post('division_name');
-		$idname =  $this->input->post('division_department_id').$this->input->post('division_name');
-		$orig_name = $this->input->post('division_department_id_original').$this->input->post('division_name_original');
-		$duplicate = $this->divisions_model->find_by(array('division_department_id'=>$did, 'division_name'=>$name));
+		// $idname =  $this->input->post('division_department_id').$this->input->post('division_name');
+		$orig_name = $this->input->post('division_name').$this->input->post('division_name_original');
+		$duplicate = $this->divisions_model->find_by(array('division_name'=>$name, 'division_deleted'=>0));
 			
 		if ($action == 'edit'){
-			if($orig_name == $idname){}
+			if($orig_name == $name){}
 			else{
 				if($duplicate){
 				$this->form_validation->set_rules('division_name', lang('division_name'), 'required|is_unique["division_name"]');
@@ -209,7 +208,7 @@ class Divisions extends MX_Controller {
 		}
 
 		$data = array(
-			'division_department_id'		=> $this->input->post('division_department_id'),
+			// 'division_department_id'		=> $this->input->post('division_department_id'),
 			'division_name'					=> $this->input->post('division_name'),
 			'division_status'				=> $this->input->post('division_status'),
 		);

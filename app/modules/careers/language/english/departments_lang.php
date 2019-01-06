@@ -13,8 +13,9 @@
 $lang['crumb_module']				= 'Departments'; 
 
 // Labels
-$lang['department_id']			= 'ID';
-$lang['department_name']			= 'Name';
+$lang['department_id']				= 'ID';
+$lang['department_division_id']		= 'Division';
+$lang['department_name']			= 'Department Name';
 $lang['department_status']			= 'Status';
 
 // Buttons
@@ -27,9 +28,10 @@ $lang['button_edit_this']			= 'Edit This';
 // Index Function
 $lang['index_heading']				= 'Departments';
 $lang['index_subhead']				= 'List of all Departments';
-$lang['index_id']			= 'ID';
-$lang['index_name']			= 'Name';
-$lang['index_status']			= 'Status';
+$lang['index_id']					= 'ID';
+$lang['index_name']					= 'Name';
+$lang['index_division']				= 'Division';
+$lang['index_status']				= 'Status';
 
 $lang['index_created_on']			= 'Created On';
 $lang['index_created_by']			= 'Created By';

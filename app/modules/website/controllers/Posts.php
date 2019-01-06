@@ -293,7 +293,6 @@ class Posts extends MX_Controller
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('post_title', lang('post_title'), 'required');
 		$this->form_validation->set_rules('post_content', lang('post_content'), 'required');
 		$this->form_validation->set_rules('post_categories[]', lang('post_categories'), 'required');
 		$this->form_validation->set_rules('post_image', lang('post_image'), 'required');
@@ -301,6 +300,30 @@ class Posts extends MX_Controller
 		$this->form_validation->set_rules('post_layout', lang('post_layout'), 'required');
 		$this->form_validation->set_rules('post_status', lang('post_status'), 'required');
 		$this->form_validation->set_rules('post_tags[]', lang('post_tags'), 'required');
+
+
+
+		$name = $this->input->post('post_title');
+		$orig_name = $this->input->post('post_title_orig');
+		$duplicate = $this->posts_model->find_by(array('post_title' => $name, 'post_deleted' => 0));
+			
+		if ($action == 'edit'){
+			if($orig_name == $name){}
+			else{
+				if($duplicate){
+				$this->form_validation->set_rules('post_title', lang('post_title'), 'required|is_unique["post_title"]');
+				}
+			}
+		}
+		if ($action == 'add'){
+			if($duplicate){
+			$this->form_validation->set_rules('post_title', lang('post_title'), 'required|is_unique["post_title"]');
+			}
+		}
+
+		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+		
+
 
 		if (in_array($this->input->post('post_layout'), array('right_sidebar', 'left_sidebar'))) 
 		{

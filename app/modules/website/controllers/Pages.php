@@ -264,11 +264,29 @@ class Pages extends MX_Controller
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('page_title', lang('page_title'), 'required|max_length[255]');
 		$this->form_validation->set_rules('page_content', lang('page_content'), 'required');
 		$this->form_validation->set_rules('page_heading_text', lang('page_heading_text'), 'max_length[255]');
 		$this->form_validation->set_rules('page_layout', lang('page_layout'), 'required');
 		$this->form_validation->set_rules('page_status', lang('page_status'), 'required');
+
+		$name = $this->input->post('page_title');
+		$orig_name = $this->input->post('page_title_orig');
+		$duplicate = $this->pages_model->find_by(array('page_title' => $name, 'page_deleted' => 0));
+			
+		if ($action == 'edit'){
+			if($orig_name == $name){}
+			else{
+				if($duplicate){
+				$this->form_validation->set_rules('page_title', lang('page_title'), 'required|is_unique["page_title"]|max_length[255]');
+				}
+			}
+		}
+		if ($action == 'add'){
+			if($duplicate){
+			$this->form_validation->set_rules('page_title', lang('page_title'), 'required|is_unique["page_title"]|max_length[255]');
+			}
+		}
+
 
 		if (in_array($this->input->post('page_layout'), array('right_sidebar', 'left_sidebar'))) 
 		{

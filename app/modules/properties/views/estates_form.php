@@ -26,6 +26,12 @@
 							</div>
 
 							<div class="form-group">
+								<label for="estate_snippet_quote"><?php echo lang('estate_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
+								<?php echo form_textarea(array('id'=>'estate_snippet_quote', 'name'=>'estate_snippet_quote', 'rows'=>'3', 'value'=>set_value('estate_snippet_quote', isset($record->estate_snippet_quote) ? $record->estate_snippet_quote : '', false), 'class'=>'form-control')); ?>
+								<div id="error-estate_snippet_quote"></div>			
+							</div>
+
+							<div class="form-group">
 								<label for="estate_text"><?php echo lang('estate_text')?>:</label><span class="error_asterisk"> *</span>				
 								<?php echo form_textarea(array('id'=>'estate_text', 'name'=>'estate_text', 'rows'=>'5', 'value'=>set_value('estate_text', isset($record->estate_text) ? $record->estate_text : '', false), 'class'=>'form-control')); ?>
 								<div id="error-estate_text"></div>			

@@ -26,6 +26,7 @@ $(function() {
 			property_prop_type_id: $('#property_prop_type_id').val(),
 			property_is_featured: $('input[name="property_featured"]:checked').val(),
 			property_overview: tinyMCE.get('property_overview').getContent(),
+			property_snippet_quote: tinyMCE.get('property_snippet_quote').getContent(),
 			property_bottom_overview: tinyMCE.get('property_bottom_overview').getContent(),
 			property_image: $('#property_image').val(),
 			property_alt_image: $('#property_alt_image').val(),
@@ -95,7 +96,7 @@ $(function() {
 	});
 
 	tinymce.init({
-		selector: "#property_overview, #property_bottom_overview, #property_nearby_malls, #property_nearby_schools, #property_nearby_hospitals, #property_nearby_markets",
+		selector: "#property_overview, #property_snippet_quote, #property_bottom_overview, #property_nearby_malls, #property_nearby_schools, #property_nearby_hospitals, #property_nearby_markets",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,

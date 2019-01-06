@@ -21,6 +21,7 @@ class Departments extends MX_Controller {
 		parent::__construct();
 
 		$this->load->library('users/acl');
+		$this->load->model('divisions_model');
 		$this->load->model('departments_model');
 		$this->load->language('departments');
 	}
@@ -110,7 +111,8 @@ class Departments extends MX_Controller {
 			{	
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
-				$response['errors'] = array(					
+				$response['errors'] = array(
+					'department_division_id'=> form_error('department_division_id'),					
 					'department_name'		=> form_error('department_name'),
 					'department_status'		=> form_error('department_status'),
 				);
@@ -121,7 +123,7 @@ class Departments extends MX_Controller {
 
 		if ($action != 'add') $data['record'] = $this->departments_model->find($id);
 
-
+		$data['divisions'] = $this->divisions_model->get_select_divisions();
 		
 
 		// render the page
@@ -174,15 +176,18 @@ class Departments extends MX_Controller {
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
+		$this->form_validation->set_rules('department_division_id', lang('department_division_id'), 'required');
 		$this->form_validation->set_rules('department_name', lang('department_name'), 'required');
 		$this->form_validation->set_rules('department_status', lang('department_status'), 'required');
 
+		$did =  $this->input->post('department_division_id');
 		$name = $this->input->post('department_name');
+		$idname =  $this->input->post('department_division_id').$this->input->post('division_name');
 		$orig_name = $this->input->post('department_name_original');
-		$duplicate = $this->departments_model->find_by('department_name', $name);
+		$duplicate = $this->departments_model->find_by(array('department_name'=> $name, 'department_division_id'=>$did, 'department_deleted'=>0));
 			
 		if ($action == 'edit'){
-			if($orig_name == $name){}
+			if($orig_name == $idname){}
 			else{
 				if($duplicate){
 				$this->form_validation->set_rules('department_name', lang('department_name'), 'required|is_unique["department_name"]');
@@ -203,6 +208,7 @@ class Departments extends MX_Controller {
 		}
 
 		$data = array(
+			'department_division_id'		=> $this->input->post('department_division_id'),
 			'department_name'		=> $this->input->post('department_name'),
 			'department_status'		=> $this->input->post('department_status'),
 		);

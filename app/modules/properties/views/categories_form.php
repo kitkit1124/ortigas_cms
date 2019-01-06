@@ -29,6 +29,12 @@
 									</div>
 
 									<div class="form-group">
+										<label for="category_snippet_quote"><?php echo lang('category_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
+										<?php echo form_textarea(array('id'=>'category_snippet_quote', 'name'=>'category_snippet_quote', 'rows'=>'3', 'value'=>set_value('category_snippet_quote', isset($record->category_snippet_quote) ? $record->category_snippet_quote : '', false), 'class'=>'form-control')); ?>
+										<div id="error-category_snippet_quote"></div>			
+									</div>
+
+									<div class="form-group">
 										<label for="category_description"><?php echo lang('category_description')?>:</label><span class="error_asterisk"> *</span>				
 										<?php echo form_textarea(array('id'=>'category_description', 'name'=>'category_description', 'rows'=>'6', 'value'=>set_value('category_description', isset($record->category_description) ? $record->category_description : '', false), 'class'=>'form-control')); ?>
 										<div id="error-category_description"></div>			

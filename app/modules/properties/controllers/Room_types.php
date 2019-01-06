@@ -187,7 +187,7 @@ class Room_types extends MX_Controller {
 		$name =  $this->input->post('room_type_name');
 		$idname =  $this->input->post('room_type_property_id').$this->input->post('room_type_name');
 		$orig_name = $this->input->post('room_type_property_id_original').$this->input->post('room_type_name_original');
-		$duplicate = $this->room_types_model->find_by(array('room_type_property_id'=>$pid, 'room_type_name'=>$name));
+		$duplicate = $this->room_types_model->find_by(array('room_type_property_id'=>$pid, 'room_type_name'=>$name, 'room_type_deleted' => 0));
 			
 		if ($action == 'edit'){
 			if($orig_name == $idname){}

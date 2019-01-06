@@ -247,7 +247,9 @@ class Units extends MX_Controller {
 				'unit_property_id'	=>$pid,
 				'unit_floor_id' 	=>$fid,
 				'unit_room_type_id' =>$rid,
-				'unit_number'		=>$name
+				'unit_number'		=>$name,
+				'unit_deleted' 		=> 0
+
 			)
 		);
 			

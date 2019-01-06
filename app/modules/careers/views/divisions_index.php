@@ -17,7 +17,7 @@
 						<tr>
 							<th class="all"><?php echo lang('index_id'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_name'); ?></th>
-							<th class="all"><?php echo lang('index_department_id'); ?></th>
+							<th class="none"><?php echo lang('index_department_id'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_status'); ?></th>
 
 							<th class="none"><?php echo lang('index_created_on')?></th>

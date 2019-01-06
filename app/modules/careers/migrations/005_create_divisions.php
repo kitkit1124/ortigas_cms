@@ -28,7 +28,7 @@ class Migration_Create_divisions extends CI_Migration {
 			'menu_link' 		=> 'careers/divisions', 
 			'menu_perm' 		=> 'careers.divisions.link', 
 			'menu_icon' 		=> 'fa fa-university', 
-			'menu_order' 		=> 2, 
+			'menu_order' 		=> 1, 
 			'menu_active' 		=> 1
 		),
 	);
@@ -44,7 +44,7 @@ class Migration_Create_divisions extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'division_id'			=> array('type' => 'SMALLINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'division_id'			=> array('type' => 'TINYINT', 'constraint' => 5, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
 			'division_department_id'=> array('type' => 'TINYINT', 'constraint' => 3, 'null' => FALSE),
 			'division_name'			=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'division_status'		=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),

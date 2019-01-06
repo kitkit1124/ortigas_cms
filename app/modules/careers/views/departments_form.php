@@ -12,6 +12,13 @@
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
+		<label for="department_division_id"><?php echo lang('department_division_id')?>:</label><span class="error_asterisk"> *</span>	
+			<?php echo form_dropdown('department_division_id', $divisions, set_value('department_division_id', (isset($record->department_division_id)) ? $record->department_division_id : ''), 'id="department_division_id" class="form-control"'); ?>
+			<?php echo form_dropdown('department_division_id_original', $divisions, set_value('department_division_id_original', (isset($record->department_division_id)) ? $record->department_division_id : ''), 'id="department_division_id_original" style="display:none"'); ?>
+			<div id="error-department_division_id"></div>
+		</div>
+
+		<div class="form-group">
 			<label for="department_name"><?php echo lang('department_name')?>:</label><span class="error_asterisk"> *</span>				
 			<?php echo form_input(array('id'=>'department_name', 'name'=>'department_name', 'value'=>set_value('department_name', isset($record->department_name) ? $record->department_name : ''), 'class'=>'form-control'));?>
 			<?php echo form_input(array('id'=>'department_name_original', 'name'=>'department_name_original', 'value'=>set_value('department_name_original', isset($record->department_name) ? $record->department_name : ''), 'style'=>'display:none'));?>

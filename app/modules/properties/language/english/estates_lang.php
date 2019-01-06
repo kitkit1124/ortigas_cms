@@ -26,6 +26,7 @@ $lang['estate_thumb']			= 'Estate Logo';
 $lang['estate_alt_thumb']		= 'Alternative Text for Estate Logo';
 $lang['estate_status']			= 'Status';
 $lang['estate_location']		= 'Location';
+$lang['estate_snippet_quote']	= 'Snippet Quote';
 
 // Buttons
 $lang['button_add']				= 'Add Estate';

@@ -144,11 +144,13 @@ class Careers extends MX_Controller {
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
 		}
 
-		$data['departments'] = $this->departments_model->get_active_departments();
+		$data['divisions'] = $this->divisions_model->get_select_divisions();
+		
 		if($id) {		
-			$career =  $this->careers_model->find($id);		
-			
-			$data['divisions'] = $this->divisions_model->get_select_divisions($career->career_dept);
+			$career =  $this->careers_model->find($id); 
+
+			$data['departments'] = $this->departments_model->get_departments($career->career_div);		
+
 		}
 		// render the page
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
@@ -167,6 +169,16 @@ class Careers extends MX_Controller {
 			$this->load->model('divisions_model');
 			$divisions = $this->divisions_model->get_active_divisions($department_id);
 			echo json_encode($divisions);
+		}
+	}
+
+	public function get_departments(){
+		if (!$this->input->is_ajax_request()) {	show_404();	}
+		$division_id = $_GET['division_id'];
+		if($division_id){
+			$this->load->model('departments_model');
+			$departments = $this->departments_model->get_active_divisions_form($division_id);
+			echo json_encode($departments);
 		}
 	}
 
@@ -265,7 +277,9 @@ class Careers extends MX_Controller {
 			array(
 				'career_div' 	=>$div,
 				'career_dept' =>$dept,
-				'career_position_title'	=>$name
+				'career_position_title'	=>$name,
+				'career_deleted'	=> 0,
+
 			)
 		);
 			

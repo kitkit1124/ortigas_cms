@@ -60,20 +60,20 @@ class Divisions_model extends BF_Model {
 					->datatables($fields);
 	}
 
-	public function get_select_divisions($department_id = null){
+	// public function get_select_divisions($department_id = null){
 
-		if($department_id){
+	// 	if($department_id){
 
-			$this->where('division_department_id', $department_id);
-		}
+	// 		$this->where('division_department_id', $department_id);
+	// 	}
 
-		$query = $this->where('division_status', 'Active')
-				->where('division_deleted', 0)
-				->order_by('division_name', 'ASC')
-				->format_dropdown('division_id', 'division_name', TRUE);
+	// 	$query = $this->where('division_status', 'Active')
+	// 			->where('division_deleted', 0)
+	// 			->order_by('division_name', 'ASC')
+	// 			->format_dropdown('division_id', 'division_name', TRUE);
 
-		return $query;		
-	}
+	// 	return $query;		
+	// }
 
 
 	public function get_active_divisions($department_id = null){
@@ -84,6 +84,15 @@ class Divisions_model extends BF_Model {
 			->find_all();
 
 	return $query;		
+	}
+
+	public function get_select_divisions(){
+		$query = $this->where('division_status', 'Active')
+				->where('division_deleted', 0)
+				->order_by('division_name', 'ASC')
+				->format_dropdown('division_id', 'division_name', TRUE);
+
+		return $query;		
 	}
 
 }

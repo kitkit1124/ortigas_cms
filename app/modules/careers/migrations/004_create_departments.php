@@ -44,7 +44,8 @@ class Migration_Create_departments extends CI_Migration {
 	{
 		// create the table
 		$fields = array(
-			'department_id'			=> array('type' => 'TINYINT', 'constraint' => 3, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'department_id'			=> array('type' => 'SMALLINT', 'constraint' => 3, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
+			'department_division_id'=> array('type' => 'TINYINT', 'constraint' => 3, 'null' => FALSE),
 			'department_name'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),
 			'department_status'		=> array('type' => 'SET("Active","Disabled")', 'null' => FALSE),
 

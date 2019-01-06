@@ -126,6 +126,7 @@ class Properties extends MX_Controller {
 					'property_name'				=> form_error('property_name'),
 					'property_slug'				=> form_error('property_slug'),
 					'property_overview'			=> form_error('property_overview'),
+					'property_snippet_quote'	=> form_error('property_snippet_quote'),
 					'property_image'			=> form_error('property_image'),
 					'property_logo'				=> form_error('property_logo'),
 					'property_website'			=> form_error('property_website'),
@@ -331,6 +332,7 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_prop_type_id', lang('property_prop_type_id'), 'required');
 		$this->form_validation->set_rules('property_name', lang('property_name'), 'required|max_length[255]');
 		$this->form_validation->set_rules('property_overview', lang('property_overview'), 'required');
+		$this->form_validation->set_rules('property_snippet_quote', lang('property_snippet_quote'), 'required');
 		$this->form_validation->set_rules('property_image', lang('property_image'), 'required');
 		$this->form_validation->set_rules('property_logo', lang('property_logo'), 'required');
 		// $this->form_validation->set_rules('property_website', lang('property_website'), 'required');
@@ -351,7 +353,7 @@ class Properties extends MX_Controller {
 
 		$name = $this->input->post('property_name');
 		$orig_name = $this->input->post('property_name_original');
-		$duplicate = $this->properties_model->find_by('property_name', $name);
+		$duplicate = $this->properties_model->find_by(array('property_name' => $name, 'property_deleted' => 0));
 			
 		if ($action == 'edit'){
 			if($orig_name == $name){}
@@ -382,6 +384,7 @@ class Properties extends MX_Controller {
 			'property_is_featured'		=> $this->input->post('property_is_featured'),
 			'property_name'				=> $this->input->post('property_name'),
 			'property_overview'			=> $this->input->post('property_overview'),
+			'property_snippet_quote  '	=> $this->input->post('property_snippet_quote'),
 			'property_bottom_overview'	=> $this->input->post('property_bottom_overview'),
 			'property_slug'				=> url_title($this->input->post('property_name'), '-', TRUE),
 			'property_image'			=> $this->input->post('property_image'),

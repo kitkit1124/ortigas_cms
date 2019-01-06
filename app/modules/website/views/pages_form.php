@@ -25,10 +25,12 @@
 					?>
 
 					<div class="col-sm-9">
-
+						<div style="display: none">
+							<?php echo form_input(array('id'=>'page_title_orig', 'name'=>'page_title_orig', 'value'=>set_value('page_title_orig', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title'));?>
+						</div>
 						<div class="form-group">
 							<label class="control-label" for="page_title"><?php echo lang('page_title'); ?>: </label>&nbsp;<span id="error-asterisk-page_title" class="error_asterisk">*</span>
-							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : ''), 'class'=>'form-control meta-title '.$if_disabled));?>
+							<?php echo form_input(array('id'=>'page_title', 'name'=>'page_title', 'value'=>set_value('page_title', isset($record->page_title) ? $record->page_title : '',FALSE), 'class'=>'form-control meta-title '.$if_disabled));?>
 							<div id="error-page_title"></div>
 						</div>
 

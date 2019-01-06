@@ -18,6 +18,7 @@ $(function() {
 			category_name_original: $('#category_name_original').val(),
 			category_name: $('#category_name').val(),
 			category_description: tinyMCE.get('category_description').getContent(),
+			category_snippet_quote: tinyMCE.get('category_snippet_quote').getContent(),
 			category_bottom_description: tinyMCE.get('category_bottom_description').getContent(),
 			category_image: $('#category_image').val(),
 			category_alt_image: $('#category_alt_image').val(),
@@ -69,7 +70,7 @@ $(function() {
 	});
 
 	tinymce.init({
-		selector: "#category_description, #category_bottom_description", 
+		selector: "#category_description, #category_bottom_description, #category_snippet_quote", 
 		theme: "modern",
 		statusbar: true,
 		menubar: true,

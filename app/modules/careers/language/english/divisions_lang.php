@@ -15,7 +15,7 @@ $lang['crumb_module']				= 'Divisions';
 // Labels
 $lang['division_id']				= 'ID';
 $lang['division_department_id']		= 'Department';
-$lang['division_name']				= 'Name';
+$lang['division_name']				= 'Division Name';
 $lang['division_status']			= 'Status';
 
 // Buttons

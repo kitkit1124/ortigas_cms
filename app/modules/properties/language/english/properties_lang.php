@@ -19,6 +19,7 @@ $lang['property_location_id']		= 'Location';
 $lang['property_name']				= 'Name';
 $lang['property_slug']				= 'Slug';
 $lang['property_overview']			= 'Overview Description';
+$lang['property_snippet_quote']		= 'Snippet Quote';
 $lang['property_description']		= 'Descriptions';
 $lang['property_bottom_overview']	= 'SEO Content';
 $lang['property_image']				= 'Banner Image';

@@ -31,6 +31,7 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(post_url, {
+			post_title_orig: $('#post_title_orig').val(),
 			post_title: $('#post_title').val(),
 			post_content: tinyMCE.activeEditor.getContent(),
 			post_categories: checkedCategories,

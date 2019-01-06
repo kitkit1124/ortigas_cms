@@ -23,19 +23,19 @@
 
 				<div class="form-group">
 					<label for="metatag_title"><?php echo lang('metatag_title')?>:</label>
-					<?php echo form_input(array('id'=>'metatag_title', 'name'=>'metatag_title', 'value'=>set_value('metatag_title', isset($record->metatag_title) ? $record->metatag_title : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'metatag_title', 'name'=>'metatag_title', 'value'=>set_value('metatag_title', isset($record->metatag_title) ? $record->metatag_title : '',false), 'class'=>'form-control'));?>
 					<div id="error-metatag_title"></div>
 				</div>
 
 				<div class="form-group">
 					<label for="metatag_keywords"><?php echo lang('metatag_keywords')?>:</label>
-					<?php echo form_textarea(array('id'=>'metatag_keywords', 'name'=>'metatag_keywords', 'rows'=>'2', 'value'=>set_value('metatag_keywords', isset($record->metatag_keywords) ? $record->metatag_keywords : ''), 'class'=>'form-control')); ?>
+					<?php echo form_textarea(array('id'=>'metatag_keywords', 'name'=>'metatag_keywords', 'rows'=>'2', 'value'=>set_value('metatag_keywords', isset($record->metatag_keywords) ? $record->metatag_keywords : '',false), 'class'=>'form-control')); ?>
 					<div id="error-metatag_keywords"></div>
 				</div>
 
 				<div class="form-group">
 					<label for="metatag_description"><?php echo lang('metatag_description')?>:</label>
-					<?php echo form_textarea(array('id'=>'metatag_description', 'name'=>'metatag_description', 'rows'=>'2', 'value'=>set_value('metatag_description', isset($record->metatag_description) ? $record->metatag_description : ''), 'class'=>'form-control')); ?>
+					<?php echo form_textarea(array('id'=>'metatag_description', 'name'=>'metatag_description', 'rows'=>'2', 'value'=>set_value('metatag_description', isset($record->metatag_description) ? $record->metatag_description : '', false), 'class'=>'form-control')); ?>
 					<div id="error-metatag_description"></div>
 				</div>
 			</div>
@@ -44,13 +44,13 @@
 
 				<div class="form-group">
 					<label for="metatag_twitter_title"><?php echo lang('metatag_twitter_title')?>:</label>
-					<?php echo form_input(array('id'=>'metatag_twitter_title', 'name'=>'metatag_twitter_title', 'value'=>set_value('metatag_twitter_title', isset($record->metatag_twitter_title) ? $record->metatag_twitter_title : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'metatag_twitter_title', 'name'=>'metatag_twitter_title', 'value'=>set_value('metatag_twitter_title', isset($record->metatag_twitter_title) ? $record->metatag_twitter_title : '',false), 'class'=>'form-control'));?>
 					<div id="error-metatag_twitter_title"></div>
 				</div>
 
 				<div class="form-group">
 					<label for="metatag_twitter_description"><?php echo lang('metatag_twitter_description')?>:</label>
-					<?php echo form_textarea(array('id'=>'metatag_twitter_description', 'name'=>'metatag_twitter_description', 'rows'=>'2', 'value'=>set_value('metatag_twitter_description', isset($record->metatag_twitter_description) ? $record->metatag_twitter_description : ''), 'class'=>'form-control')); ?>
+					<?php echo form_textarea(array('id'=>'metatag_twitter_description', 'name'=>'metatag_twitter_description', 'rows'=>'2', 'value'=>set_value('metatag_twitter_description', isset($record->metatag_twitter_description) ? $record->metatag_twitter_description : '',false), 'class'=>'form-control')); ?>
 					<div id="error-metatag_twitter_description"></div>
 				</div>
 
@@ -66,13 +66,13 @@
 
 				<div class="form-group">
 					<label for="metatag_og_title"><?php echo lang('metatag_og_title')?>:</label>
-					<?php echo form_input(array('id'=>'metatag_og_title', 'name'=>'metatag_og_title', 'value'=>set_value('metatag_og_title', isset($record->metatag_og_title) ? $record->metatag_og_title : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'metatag_og_title', 'name'=>'metatag_og_title', 'value'=>set_value('metatag_og_title', isset($record->metatag_og_title) ? $record->metatag_og_title : '',false), 'class'=>'form-control'));?>
 					<div id="error-metatag_og_title"></div>
 				</div>
 
 				<div class="form-group">
 					<label for="metatag_og_description"><?php echo lang('metatag_og_description')?>:</label>
-					<?php echo form_textarea(array('id'=>'metatag_og_description', 'name'=>'metatag_og_description', 'rows'=>'2', 'value'=>set_value('metatag_og_description', isset($record->metatag_og_description) ? $record->metatag_og_description : ''), 'class'=>'form-control')); ?>
+					<?php echo form_textarea(array('id'=>'metatag_og_description', 'name'=>'metatag_og_description', 'rows'=>'2', 'value'=>set_value('metatag_og_description', isset($record->metatag_og_description) ? $record->metatag_og_description : '',false), 'class'=>'form-control')); ?>
 					<div id="error-metatag_og_description"></div>
 				</div>
 

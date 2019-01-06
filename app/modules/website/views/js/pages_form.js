@@ -37,6 +37,7 @@ $(function() {
 		// submits the data to the backend
 		$.post(post_url, {
 			page_parent_id: $('#page_parent_id').val(),
+			page_title_orig: $('#page_title_orig').val(),
 			page_title: $('#page_title').val(),
 			page_heading_text: $('#page_heading_text').val(),
 			page_content: tinyMCE.get('page_content').getContent(),

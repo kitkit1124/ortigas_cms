@@ -41,6 +41,7 @@ class Departments_model extends BF_Model {
 		$fields = array(
 			'department_id',
 			'department_name',
+			'division_name',
 			'department_status',
 
 			'department_created_on', 
@@ -51,10 +52,47 @@ class Departments_model extends BF_Model {
 
 		return $this->join('users as creator', 'creator.id = department_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = department_modified_by', 'LEFT')
+					->join('career_divisions', 'career_divisions.division_id = department_division_id', 'LEFT')
 					->datatables($fields);
 	}
 
 	public function get_active_departments(){
+		$query = $this->where('department_status', 'Active')
+				->where('department_deleted', 0)
+				->order_by('department_name', 'ASC')
+				->format_dropdown('department_id', 'department_name', TRUE);
+
+		return $query;		
+	}
+
+
+	public function get_active_divisions_form($division_id = null){
+	$query = $this->where('department_status', 'Active')
+			->where('department_deleted', 0)
+			->where('department_division_id', $division_id)
+			->order_by('department_name', 'ASC')
+			->find_all();
+
+	return $query;		
+	}
+
+
+	public function get_active_departments_ajax($division_id = null){
+	$query = $this->where('department_status', 'Active')
+			->where('department_deleted', 0)
+			->where('department_division_id', $division_id)
+			->order_by('department_name', 'ASC')
+			->find_all();
+
+	return $query;		
+	}
+
+	public function get_departments($division_id = null){
+
+		if($division_id){
+			$this->where('department_division_id', $division_id);
+		}
+
 		$query = $this->where('department_status', 'Active')
 				->where('department_deleted', 0)
 				->order_by('department_name', 'ASC')

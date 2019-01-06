@@ -59,7 +59,6 @@
 			</div>
 		</div>
 
-
 		<div class="row">
 			<div class="col-sm-3">
 				<label for="message_email"><?php echo lang('message_email')?>:</label>
@@ -71,7 +70,8 @@
 				</div>
 			</div>
 		</div>
-
+	
+		<?php if($record->message_mobile != 0 && isset($record->message_mobile)):?>
 		<div class="row">
 			<div class="col-sm-3">
 				<label for="message_mobile"><?php echo lang('message_mobile')?>:</label>
@@ -83,7 +83,9 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
+		<?php if($record->message_location != 0 && isset($record->message_location)):?>
 		<div class="row">
 			<div class="col-sm-3">
 				<label for="message_location"><?php echo lang('message_location')?>:</label>
@@ -95,6 +97,7 @@
 				</div>
 			</div>
 		</div>
+		<?php endif; ?>
 
 		<div class="row">
 			<div class="col-sm-3">

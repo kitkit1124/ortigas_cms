@@ -188,7 +188,7 @@ class Floors extends MX_Controller {
 		$name =  $this->input->post('floor_level');
 		$idname =  $this->input->post('floor_property_id').$this->input->post('floor_level');
 		$orig_name = $this->input->post('floor_property_id_original').$this->input->post('floor_level_original');
-		$duplicate = $this->floors_model->find_by(array('floor_property_id'=>$pid, 'floor_level'=>$name));
+		$duplicate = $this->floors_model->find_by(array('floor_property_id'=>$pid, 'floor_level'=>$name, 'floor_deleted' => 0)); 
 			
 		if ($action == 'edit'){
 			if($orig_name == $idname){}

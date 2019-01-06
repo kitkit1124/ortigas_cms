@@ -116,6 +116,7 @@ class Categories extends MX_Controller {
 					'category_name'			=> form_error('category_name'),
 					'category_image'		=> form_error('category_image'),
 					'category_description'	=> form_error('category_description'),
+					'category_snippet_quote'	=> form_error('category_snippet_quote'),
 					'category_bottom_description'	=> form_error('category_bottom_description'),
 					'category_status'		=> form_error('category_status'),
 				);
@@ -195,13 +196,14 @@ class Categories extends MX_Controller {
 		$this->form_validation->set_rules('category_name', lang('category_name'), 'required');
 		$this->form_validation->set_rules('category_image', lang('category_image'), 'required');
 		$this->form_validation->set_rules('category_description', lang('category_description'), 'required');
+		$this->form_validation->set_rules('category_snippet_quote', lang('category_snippet_quote'), 'required');
 		$this->form_validation->set_rules('category_status', lang('category_status'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
 		$name = $this->input->post('category_name');
 		$orig_name = $this->input->post('category_name_original');
-		$duplicate = $this->categories_model->find_by('category_name', $name);
+		$duplicate = $this->categories_model->find_by(array('category_name' => $name, 'category_deleted' => 0));
 			
 		if ($action == 'edit'){
 			if($orig_name == $name){}
@@ -228,6 +230,7 @@ class Categories extends MX_Controller {
 			'category_image'		=> $this->input->post('category_image'),
 			'category_alt_image'	=> $this->input->post('category_alt_image'),
 			'category_description'	=> $this->input->post('category_description'),
+			'category_snippet_quote'	=> $this->input->post('category_snippet_quote'),
 			'category_bottom_description'	=> $this->input->post('category_bottom_description'),
 			'category_status'		=> $this->input->post('category_status'),
 		);

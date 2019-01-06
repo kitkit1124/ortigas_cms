@@ -17,6 +17,7 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(ajax_url, {
+			department_division_id: $('#department_division_id').val(),
 			department_name: $('#department_name').val(),
 			department_name_original: $('#department_name_original').val(),
 			department_status: $('#department_status').val(),

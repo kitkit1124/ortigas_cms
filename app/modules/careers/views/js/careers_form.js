@@ -1,24 +1,25 @@
 $(function() {
 	
-	var dept_id = $('#career_dept').val();
-	if(dept_id){}
-	else{ $('#career_div').prop( "disabled", true ).css('color','#999'); }
-	$('#career_dept').change(function() {
-		$('#career_div').prop( "disabled", false ).css('color','#495057');
+	var div_id = $('#career_div').val();
+	if(div_id){}
+	else{ $('#career_dept').prop( "disabled", true ).css('color','#999'); }
+
+	$('#career_div').change(function() {
+		$('#career_dept').prop( "disabled", false ).css('color','#495057');
 		var id = $(this).val();
-		$('#career_div').html(' ').append('<option value=""> </option>');
+		$('#career_dept').html(' ').append('<option value=""> </option>');
 
 		if(id){
-			$.ajax({method: "GET",url: site_url+"careers/careers/get_divisions",data: { department_id : id } })
+			$.ajax({method: "GET",url: site_url+"careers/careers/get_departments",data: { division_id : id } })
 			.done(function( data ) {
 				d = jQuery.parseJSON(data);
 				$.each(d, function( index, value ) {
-					$('#career_div').append('<option value="' + value.division_id + '">' + value.division_name + '</option>');
+					$('#career_dept').append('<option value="' + value.department_id + '">' + value.department_name + '</option>');
 				});
 			});
 		}
 		else{
-			$('#career_div').prop( "disabled", true ).css('color','#999').html('<option value="">Please select Property first</option>');
+			$('#career_dept').prop( "disabled", true ).css('color','#999').html('<option value="">Please select Division first</option>');
 		}
     });	
 	

@@ -29,18 +29,23 @@
 						<div class="form-group">
 							<div class="row">
 								<div class="col-sm-6">
-									<label for="career_dept"><?php echo lang('career_dept')?>:</label><span class="error_asterisk"> *</span>				
-									<?php echo form_dropdown('career_dept', $departments, set_value('career_dept', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept" class="form-control"'); ?>
-									<?php echo form_dropdown('career_dept_original', $departments, set_value('career_dept_original', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept_original" style="display:none;"'); ?>
+									<label for="career_div"><?php echo lang('career_div')?>:</label><span class="error_asterisk"> *</span>	
+										
+									<?php echo form_dropdown('career_div', $divisions, set_value('career_div', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div" class="form-control"'); ?>
+									<?php echo form_dropdown('career_div_original', $divisions, set_value('career_div_original', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div_original" style="display:none;"'); ?>
+									<div id="error-career_div"></div>	
+								</div>
+
+								<div class="col-sm-6">
+									<label for="career_dept"><?php echo lang('career_dept')?>:</label><span class="error_asterisk"> *</span>	
+
+									<?php if(isset($record->career_div)) { $options = $departments; } else { $options = array(null=>'Please select Divisions first'); }?>	
+
+									<?php echo form_dropdown('career_dept', $options, set_value('career_dept', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept" class="form-control"'); ?>
+									<?php echo form_dropdown('career_dept_original', $options, set_value('career_dept_original', (isset($record->career_dept)) ? $record->career_dept : ''), 'id="career_dept_original" style="display:none;"'); ?>
 									<div id="error-career_dept"></div>
 								</div>
-								<div class="col-sm-6">
-									<label for="career_div"><?php echo lang('career_div')?>:</label><span class="error_asterisk"> *</span>	
-									<?php if(isset($record->career_div)) { $options = $divisions; } else { $options = array(null=>'Please select Department first'); }?>			
-									<?php echo form_dropdown('career_div', $options, set_value('career_div', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div" class="form-control"'); ?>
-									<?php echo form_dropdown('career_div_original', $options, set_value('career_div_original', (isset($record->career_div)) ? $record->career_div : ''), 'id="career_div_original" style="display:none;"'); ?>
-									<div id="error-career_div"></div>	
-								</div>	
+							
 							</div>	
 						</div>
 				

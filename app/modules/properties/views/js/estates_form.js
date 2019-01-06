@@ -19,6 +19,7 @@ $(function() {
 			estate_name_original: $('#estate_name_original').val(),
 			estate_name: $('#estate_name').val(),
 			estate_text: tinyMCE.get('estate_text').getContent(),
+			estate_snippet_quote: tinyMCE.get('estate_snippet_quote').getContent(),
 			estate_bottom_text: tinyMCE.get('estate_bottom_text').getContent(),
 			estate_latitude: $('#estate_latitude').val(),
 			estate_longtitude: $('#estate_longtitude').val(),
@@ -78,7 +79,7 @@ $(function() {
 	});
 
 	tinymce.init({
-		selector: "#estate_text, #estate_bottom_text",
+		selector: "#estate_text, #estate_bottom_text, #estate_snippet_quote",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,

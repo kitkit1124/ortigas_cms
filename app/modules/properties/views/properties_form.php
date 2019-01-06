@@ -96,13 +96,21 @@
 						<div id="accordion">
 							<div class="card">
 						      <div class="card-header">
-						        <a class="card-link" data-toggle="collapse" href="#property_descriptions"><label><?php echo lang('property_description')?></label>
+						        <a class="card-link" data-toggle="collapse" href="#property_descriptions"><label><?php echo lang('property_description')?> <span class="error_asterisk"> *</span></label>
 						        	<div id="error-property_overview"></div>	
 									<div id="error-property_bottom_overview"></div>
 						        </a>
 						      </div>
 						      <div id="property_descriptions" class="collapse" data-parent="#accordion">
 						        <div class="card-body">		
+						        	<div class="property_snippet_quote">
+										<div class="form-group">
+											<label for="property_snippet_quote"><?php echo lang('property_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
+											<?php echo form_textarea(array('id'=>'property_snippet_quote', 'name'=>'property_snippet_quote', 'rows'=>'2', 'value'=>set_value('property_snippet_quote', isset($record->property_snippet_quote) ? $record->property_snippet_quote : '', false), 'class'=>'form-control')); ?> 
+											<div id="error-property_snippet_quote"></div>			
+										</div>
+									</div>
+
 									<div class="property_overview">
 										<div class="form-group">
 											<label for="property_overview"><?php echo lang('property_overview')?>:</label><span class="error_asterisk"> *</span>				
@@ -278,7 +286,7 @@
 
 					<div class="col-sm-3  prop_right_details">
 						<div class="form-group">
-							<label for="property_image"><?php echo lang('property_image')?>:</label>
+							<label for="property_image"><?php echo lang('property_image')?>: <span class="error_asterisk"> *</span></label>
 							<br>		
 							<a href="<?php echo site_url('properties/properties/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="property_active_image" src="<?php echo site_url(isset($record->property_image) ? $record->property_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
@@ -294,7 +302,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="property_image"><?php echo lang('property_logo')?>:</label>
+							<label for="property_image"><?php echo lang('property_logo')?>: <span class="error_asterisk"> *</span></label>
 							<br>		
 							<a href="<?php echo site_url('properties/properties/form_upload_logo/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="property_active_logo" src="<?php echo site_url(isset($record->property_logo) ? $record->property_logo : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
