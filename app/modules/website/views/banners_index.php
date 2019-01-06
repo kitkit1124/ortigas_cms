@@ -70,7 +70,7 @@
 								 						<label class="col-form-label"><?php echo lang('video_title')?>:</label>
 									 				</div>
 									 				<div class="col-sm">
-									 					<?php echo form_input(array('id'=>'video_title', 'name'=>'video_title', 'value'=>set_value('video_title', isset($video->video_title) ? $video->video_title : ''), 'class'=>'form-control')); ?>
+									 					<?php echo form_input(array('id'=>'video_title', 'name'=>'video_title', 'value'=>set_value('video_title', isset($video->video_title) ? $video->video_title : '', FALSE), 'class'=>'form-control')); ?>
 									 					<div id="error-video_title"></div>
 									 				</div>
 									 			</div>
