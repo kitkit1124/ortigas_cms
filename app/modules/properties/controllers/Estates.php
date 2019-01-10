@@ -150,7 +150,7 @@ class Estates extends MX_Controller {
 				->find_all();
 		}
 
-
+		$data['featured_numrows'] = $this->estates_model->count_by(array('estate_status'=>'Active', 'estate_deleted'=>0, 'estate_is_featured'=>1));
 		
 		if ($action == 'view')
 		{
@@ -352,7 +352,8 @@ class Estates extends MX_Controller {
 			'estate_name'			=> $this->input->post('estate_name'),
 			'estate_slug'			=> url_title($this->input->post('estate_name'), '-', TRUE),
 			'estate_text'			=> $this->input->post('estate_text'),
-			'estate_snippet_quote'			=> $this->input->post('estate_snippet_quote'),
+			'estate_is_featured'	=> $this->input->post('estate_featured'),
+			'estate_snippet_quote'	=> $this->input->post('estate_snippet_quote'),
 			'estate_bottom_text'	=> $this->input->post('estate_bottom_text'),
 			'estate_latitude'		=> $this->input->post('estate_latitude'),
 			'estate_longtitude'		=> $this->input->post('estate_longtitude'),

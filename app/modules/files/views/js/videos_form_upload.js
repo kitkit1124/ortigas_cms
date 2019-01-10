@@ -3,9 +3,16 @@ Dropzone.autoDiscover = false;
 $(function() {
 
 	var myDropzone = new Dropzone("#dropzone");
-
+/*	 Dropzone.options.myDropzone = {
+	    maxFilesize: 5000,
+	    init: function() {
+	      this.on("uploadprogress", function(file, progress) {
+	        console.log("File progress", progress);
+	      });
+	    }
+	  }*/
 	myDropzone.on("success", function(file, response) {
-
+		
 		var response = jQuery.parseJSON(response);
 
 		if (response.status == 'failed') {

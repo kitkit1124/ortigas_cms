@@ -25,6 +25,12 @@
 								<div id="error-estate_name"></div>			
 							</div>
 
+							<!-- <div class="form-group">
+								<label for="estate_slug"><?php //echo lang('estate_slug')?>:</label><span class="error_asterisk"> *</span>				
+								<?php //echo form_input(array('id'=>'estate_slug', 'name'=>'estate_slug', 'value'=>set_value('estate_slug', isset($record->estate_slug) ? $record->estate_slug : ''), 'class'=>'form-control'));?>
+								<div id="error-estate_slug"></div>			
+							</div> -->
+
 							<div class="form-group">
 								<label for="estate_snippet_quote"><?php echo lang('estate_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
 								<?php echo form_textarea(array('id'=>'estate_snippet_quote', 'name'=>'estate_snippet_quote', 'rows'=>'3', 'value'=>set_value('estate_snippet_quote', isset($record->estate_snippet_quote) ? $record->estate_snippet_quote : '', false), 'class'=>'form-control')); ?>
@@ -113,6 +119,17 @@
 								</div>		
 							</div>
 
+							<div class="col-sm-6 property_vital_details">
+								<div class="form-group">
+									<label for="estate_featured" class="estate_featured_label"><?php echo lang('estate_featured')?>?</label>
+									<div>
+										<?php echo form_radio('estate_featured', 1, set_value('estate_featured', (isset($record->estate_is_featured) && $record->estate_is_featured) ? TRUE: FALSE), 'id="estate_featured1"'); ?><label for="estate_featured1" class="pointer pointer1">Yes</label>
+										<?php echo form_radio('estate_featured', 0, set_value('estate_featured', (isset($record->estate_is_featured) && $record->estate_is_featured) ? FALSE : TRUE), 'id="estate_featured2"'); ?><label for="estate_featured2" class="pointer">No</label>
+									</div>
+									<div id="error-estate_featured"></div>
+								</div>
+							</div>
+
 							<div class="form-group">
 								<label for="estate_status"><?php echo lang('estate_status')?>:</label>
 								<?php $options = create_dropdown('array', 'Active,Disabled'); ?>
@@ -139,4 +156,5 @@
 var site_url = '<?php echo site_url() ?>';
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
+var featured_numrows = '<?php echo $featured_numrows ?>';
 </script>

@@ -221,9 +221,11 @@ class Videos extends MX_Controller
 		$folder = $this->upload_folders->get();
 
 		// upload config
+		
 		$config = array();
 		$config['upload_path'] = $folder;
 		$config['allowed_types'] = 'mp4|avi';
+		$config['file_size']  = 0;
 		$config['max_size']	= 0;
 		$config['max_width']  = 0;
 		$config['max_height']  = 0;

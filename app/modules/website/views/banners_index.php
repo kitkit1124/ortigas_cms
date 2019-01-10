@@ -28,27 +28,37 @@
 
 	 			   		<div class="form-group">
 	 			   			<input type="hidden" id='csrf' name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-
-							<label class="banner_display_label"><h2><?php echo lang('banner_display')?></h2></label>
-							<?php echo form_radio('banner_display', 'Active', set_value('banner_display', (isset($video->video_status) && $video->video_status == 'Active') ? TRUE: FALSE), 'id="banner_display1" data-text="Video Display"'); ?><label for="banner_display1" class="pointer">Video</label>
-				 			<?php echo form_radio('banner_display', 'Inactive', set_value('banner_display', (isset($video->video_status) && $video->video_status  == 'Active') ? FALSE : TRUE), 'id="banner_display2" data-text="Banner Slider"'); ?><label for="banner_display2" class="pointer">Slider</label> 
-						
-							<div id="error-banner_display"></div>
+							
+							<?php //echo form_radio('banner_display', 'Active', set_value('banner_display', (isset($video->video_status) && $video->video_status == 'Active') ? TRUE: FALSE), 'id="banner_display1" data-text="Video Display"'); ?><!-- <label for="banner_display1" class="pointer">Video</label> -->
+				 			<?php //echo form_radio('banner_display', 'Inactive', set_value('banner_display', (isset($video->video_status) && $video->video_status  == 'Active') ? FALSE : TRUE), 'id="banner_display2" data-text="Banner Slider"'); ?><!-- <label for="banner_display2" class="pointer">Slider</label>  -->
+							
+						<div class="form-group selected_display_form">
+							<div class="col-sm-3">
+								<label class="banner_display_label"><h2><?php echo lang('banner_display')?></h2></label>	
+							</div>
+							<div class="col-sm-3"><?php $options = array('Active'=>'Video','Inactive'=>'Slider'); ?>
+								<?php echo form_dropdown('banner_display', $options, set_value('banner_display', (isset($video->video_status)) ? $video->video_status : ''), 'id="banner_display" class="form-control"'); ?>
+							</div>	
+							<div class="col-sm-3"><?php $options = create_dropdown('array', 'Video,Slider'); ?>
+								<button id="banner_display_button" class="btn btn-success btn-lg btn-block" type="submit" data-loading-text="<?php echo lang('processing')?>">
+									<i class="fa fa-save"> </i> Update
+								</button>
+							</div>
 						</div>
 
 						<!-- Nav tabs -->
 						  <ul class="nav nav-tabs" role="tablist">
 						    <li class="nav-item">
-						      <a class="nav-link active" data-toggle="tab" href="#video">Video</a>
+						      <a class="nav-link <?php echo isset($video->video_status) && $video->video_status  == 'Active' ? 'active show' : ''; ?>" data-toggle="tab" href="#video">Video</a>
 						    </li>
-						    <li class="nav-item">
-						      <a class="nav-link" data-toggle="tab" href="#slider">Slider</a>
+						    <li class="nav-item" >
+						      <a class="nav-link <?php echo isset($video->video_status) && $video->video_status  == 'Inactive' ? 'active show' : ''; ?>" data-toggle="tab" href="#slider">Slider</a>
 						    </li>
 						  </ul>
 
 						<!-- Tab panes -->
 						  <div class="tab-content">
-						    <div id="video" class="tab-pane active"><br>
+						    <div id="video" class="tab-pane <?php echo isset($video->video_status) && $video->video_status  == 'Active' ? 'active' : ''; ?>"><br>
 						 			<div id="video_upload">
 						 				<div class="row">
 						 					<div class="col-sm-4">
@@ -129,7 +139,7 @@
 
 									</div>
 						    </div>
-						    <div id="slider" class="tab-pane fade"><br>
+						    <div id="slider" class="tab-pane <?php echo isset($video->video_status) && $video->video_status  == 'Inactive' ? 'active' : ''; ?>"><br>
 
 							<?php } ?>
 						    		<div class="text-right add_banner">

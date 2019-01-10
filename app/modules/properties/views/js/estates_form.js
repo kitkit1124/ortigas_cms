@@ -21,6 +21,7 @@ $(function() {
 			estate_text: tinyMCE.get('estate_text').getContent(),
 			estate_snippet_quote: tinyMCE.get('estate_snippet_quote').getContent(),
 			estate_bottom_text: tinyMCE.get('estate_bottom_text').getContent(),
+			estate_featured: $('input[name="estate_featured"]:checked').val(),
 			estate_latitude: $('#estate_latitude').val(),
 			estate_longtitude: $('#estate_longtitude').val(),
 			estate_image: $('#estate_image').val(),
@@ -77,6 +78,14 @@ $(function() {
 			return false;
 		}
 	});
+
+	if(featured_numrows >= 3){
+	    $('#estate_featured1').click(function(){
+	    	alertify.alert("Information: Latest 3 Featured Estates will be only shown.");
+	    	$('#alertify-ok').click(function(){ $(this).fadeOut(100); }); 
+	    });
+	}
+
 
 	tinymce.init({
 		selector: "#estate_text, #estate_bottom_text, #estate_snippet_quote",

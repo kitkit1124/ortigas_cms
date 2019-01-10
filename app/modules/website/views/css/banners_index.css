@@ -48,3 +48,7 @@ ol#instruction, ol#operations {
 	margin-bottom: 10px;
     margin-right: 15px;
 }
+
+.selected_display_form{
+	margin: 30px 0 50px 0;
+}

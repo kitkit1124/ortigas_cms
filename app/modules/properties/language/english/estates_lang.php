@@ -15,7 +15,7 @@ $lang['crumb_module']			= 'Estates';
 // Labels
 $lang['estate_id']				= 'ID';
 $lang['estate_name']			= 'Name';
-$lang['estate_slug']			= 'Slug';
+$lang['estate_slug']			= 'Page Slug';
 $lang['estate_text']			= 'Overview Description';
 $lang['estate_bottom_text']		= 'SEO Content';
 $lang['estate_latitude']		= 'Latitude';
@@ -27,6 +27,7 @@ $lang['estate_alt_thumb']		= 'Alternative Text for Estate Logo';
 $lang['estate_status']			= 'Status';
 $lang['estate_location']		= 'Location';
 $lang['estate_snippet_quote']	= 'Snippet Quote';
+$lang['estate_featured']		= 'Set as featured?';
 
 // Buttons
 $lang['button_add']				= 'Add Estate';

@@ -1,13 +1,16 @@
 $(function() {
 
-	$('input[name="banner_display"]').change(function(){
-		var text = $(this).attr('data-text');
+	// $('input[name="banner_display"]').change(function(){
+
+	$('#banner_display_button').click(function(){
+		// var text = $(this).attr('data-text');
 		$.post(site_url + 'website/banners/main_video_save', {
 			video_id: 1,
-			video_status: $('input[name="banner_display"]:checked').val(),
+			video_status: $('#banner_display').val() //$('input[name="banner_display"]:checked').val(),
 		},
 		function(){
-			alertify.success('Index Banner Updated: Set to ' + text);
+			alertify.success('Selected Dislay Banner Updated');
+			setTimeout(function(){location.reload(); }, 1500);
 		});
 
 	});

@@ -293,6 +293,7 @@ class Posts extends MX_Controller
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
+		$this->form_validation->set_rules('post_title', lang('post_title'), 'required');
 		$this->form_validation->set_rules('post_content', lang('post_content'), 'required');
 		$this->form_validation->set_rules('post_categories[]', lang('post_categories'), 'required');
 		$this->form_validation->set_rules('post_image', lang('post_image'), 'required');
