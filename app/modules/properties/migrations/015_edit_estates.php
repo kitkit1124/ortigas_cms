@@ -37,7 +37,7 @@ class Migration_Edit_estates extends CI_Migration
 
 	public function down()
 	{
-		$this->dbforge->drop_column($this->_table, 'estate_snippet_quote');
+		// $this->dbforge->drop_column($this->_table, 'estate_snippet_quote');
 		// $this->dbforge->drop_column($this->_table, 'estate_is_featured');
 	}
 }
