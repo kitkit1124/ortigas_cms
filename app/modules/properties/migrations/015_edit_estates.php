@@ -29,7 +29,7 @@ class Migration_Edit_estates extends CI_Migration
 	{
 		$fields = array(
 			'estate_snippet_quote' => array('type' => 'TEXT', 'null' => FALSE),
-			// 'estate_is_featured' => array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => TRUE),
+			'estate_is_featured' => array('type' => 'TINYINT', 'constraint' => 1, 'unsigned' => TRUE, 'null' => TRUE),
 		);
 		
 		$this->dbforge->add_column($this->_table, $fields);
@@ -37,7 +37,7 @@ class Migration_Edit_estates extends CI_Migration
 
 	public function down()
 	{
-		// $this->dbforge->drop_column($this->_table, 'estate_snippet_quote');
-		// $this->dbforge->drop_column($this->_table, 'estate_is_featured');
+		$this->dbforge->drop_column($this->_table, 'estate_snippet_quote');
+		$this->dbforge->drop_column($this->_table, 'estate_is_featured');
 	}
 }
