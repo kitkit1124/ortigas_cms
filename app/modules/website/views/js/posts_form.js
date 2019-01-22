@@ -42,6 +42,7 @@ $(function() {
 			post_layout: $('#post_layout').val(),
 			post_status: $('.post_status:checked').val(),
 			post_alt_image: $('#post_alt_image').val(),
+			post_slug: $('#post_slug').val(),
 			// post_sidebar_id: $('#post_sidebar_id').val(),
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},

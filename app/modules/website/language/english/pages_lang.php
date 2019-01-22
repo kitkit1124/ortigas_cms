@@ -26,6 +26,9 @@ $lang['page_layout']				= 'Page Layout';
 $lang['page_sidebar_id']			= 'Page Sidebar';
 $lang['page_properties']			= 'Tag Properties';
 $lang['page_posts']					= 'Tag Articles';
+$lang['page_latitude']				= 'Latitude';
+$lang['page_longitude']				= 'Longtitude';
+$lang['page_map_name']				= 'Map Text';
 
 // Buttons
 $lang['button_add']					= 'Add Page';

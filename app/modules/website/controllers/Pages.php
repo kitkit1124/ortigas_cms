@@ -142,6 +142,11 @@ class Pages extends MX_Controller
 					'page_layout'		=> form_error('page_layout'),
 					'page_properties'	=> form_error('page_properties[]'),
 					'page_tagposts'		=> form_error('page_tagposts[]'),
+					'page_latitude'		=> form_error('page_latitude'),
+					'page_longitude'	=> form_error('page_longitude'),
+					'page_map_name'		=> form_error('page_map_name'),
+					'page_slug'			=> form_error('page_slug'),
+
 					// 'page_sidebar_id'	=> form_error('page_sidebar_id'),
 					'page_status'		=> form_error('page_status'),
 				);
@@ -304,6 +309,11 @@ class Pages extends MX_Controller
 		// get the page path
 		$path = $this->pages_model->get_page_path($this->input->post('page_parent_id'));
 		$slug = url_title($this->input->post('page_title'), '-', TRUE);
+
+		if($this->input->post('page_slug') && $this->input->post('page_slug')){
+			$slug = $this->input->post('page_slug');
+		}
+	
 		if ($path)
 		{
 			$uri = $path . '/' . $slug;
@@ -317,11 +327,14 @@ class Pages extends MX_Controller
 			'page_parent_id'		=> $this->input->post('page_parent_id'),
 			'page_title'			=> $this->input->post('page_title'),
 			'page_heading_text'		=> $this->input->post('page_heading_text'),
-			'page_slug'				=> url_title($this->input->post('page_title'), '-', TRUE),
+			'page_slug'				=> $slug,
 			'page_uri'				=> $uri,
 			'page_content'			=> $this->input->post('page_content'),
 			'page_bottom_content'	=> $this->input->post('page_bottom_content'),
 			'page_layout'			=> $this->input->post('page_layout'),
+			'page_latitude'			=> $this->input->post('page_latitude'),
+			'page_longitude'		=> $this->input->post('page_longitude'),
+			'page_map_name'			=> $this->input->post('page_map_name'),
 			// 'page_sidebar_id'	=> $this->input->post('page_sidebar_id'),
 			'page_status'			=> $this->input->post('page_status'),
 		);

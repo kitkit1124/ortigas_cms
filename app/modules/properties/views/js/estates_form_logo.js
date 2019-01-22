@@ -16,8 +16,8 @@ $(function() {
 			// closes the modal
 			$('#modal').modal('hide'); 
 		
-			$('#post_image').val(response.image);
-			$('#post_active_image').attr('src', site_url + response.image);
+			$('#estate_logo').val(response.image);
+			$('#estate_active_logo').attr('src', site_url + response.image);
 
 			// restores the modal content to loading state
 			restore_modal(); 
@@ -31,6 +31,7 @@ $(function() {
 
 
 	});
+
 
 	var oTable = $('#dt-images').dataTable({
 		"bProcessing": true,
@@ -103,8 +104,8 @@ $(function() {
 		// insert the image
 		var image = $(this).attr('data-image');
 		var thumb = $(this).attr('data-thumb');
-		$('#post_image').val(image);
-		$('#post_active_image').attr('src', site_url + image);
+		$('#estate_logo').val(image);
+		$('#estate_active_logo').attr('src', site_url + image);
 
 		// show the form
 /*		$('#image').css('display','none');
@@ -113,7 +114,6 @@ $(function() {
 		$('.modal-footer .btn').trigger('click');
 	});
 
-
 	// disables the enter key
 	$('form input').keydown(function(event){
 		if(event.keyCode == 13) {
@@ -121,7 +121,5 @@ $(function() {
 			return false;
 		}
 	});
-
-
 
 });

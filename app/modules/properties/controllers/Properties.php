@@ -128,6 +128,7 @@ class Properties extends MX_Controller {
 					'property_overview'			=> form_error('property_overview'),
 					'property_snippet_quote'	=> form_error('property_snippet_quote'),
 					'property_image'			=> form_error('property_image'),
+					'property_thumb'			=> form_error('property_thumb'),
 					'property_logo'				=> form_error('property_logo'),
 					'property_website'			=> form_error('property_website'),
 					'property_facebook'			=> form_error('property_facebook'),
@@ -147,6 +148,7 @@ class Properties extends MX_Controller {
 					'property_ground'				=> form_error('property_ground'),
 					'property_presell'				=> form_error('property_presell'),
 					'property_turnover'				=> form_error('property_turnover'),
+					'property_slug'					=> form_error('property_slug'),
 				);
 				echo json_encode($response);
 				exit;
@@ -212,6 +214,7 @@ class Properties extends MX_Controller {
 		$this->template->add_css(module_css('properties', 'amenities_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'amenities_index'), 'embed');
 
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'properties_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_form'), 'embed');
 		$this->template->write_view('content', 'properties_form', $data);
@@ -283,6 +286,38 @@ class Properties extends MX_Controller {
 	}
 
 
+	function form_upload_thumb($action = 'add', $id = FALSE)
+	{
+		$this->acl->restrict('properties.properties.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($property_id = $this->_save($action, $id))
+			{
+
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $property_id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('properties', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('properties', 'properties_form_thumb'), 'embed');
+		$this->template->write_view('content', 'form_upload', $data);
+		$this->template->render();
+	}
+
 	// --------------------------------------------------------------------
 
 	/**
@@ -334,7 +369,7 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_overview', lang('property_overview'), 'required');
 		$this->form_validation->set_rules('property_snippet_quote', lang('property_snippet_quote'), 'required');
 		$this->form_validation->set_rules('property_image', lang('property_image'), 'required');
-		$this->form_validation->set_rules('property_logo', lang('property_logo'), 'required');
+		$this->form_validation->set_rules('property_thumb', lang('property_thumb'), 'required');
 		// $this->form_validation->set_rules('property_website', lang('property_website'), 'required');
 		$this->form_validation->set_rules('property_facebook', lang('property_facebook'), 'max_length[255]');
 		$this->form_validation->set_rules('property_twitter', lang('property_twitter'), 'max_length[255]');
@@ -375,6 +410,12 @@ class Properties extends MX_Controller {
 			return FALSE;
 		}
 
+		$slug = url_title($this->input->post('property_name'), '-', TRUE);
+
+		if($this->input->post('property_slug') && $this->input->post('property_slug')){
+			$slug = $this->input->post('property_slug');
+		}
+
 		$data = array(
 			'property_estate_id'		=> $this->input->post('property_estate_id'),
 			'property_category_id'		=> $this->input->post('property_category_id'),
@@ -386,9 +427,11 @@ class Properties extends MX_Controller {
 			'property_overview'			=> $this->input->post('property_overview'),
 			'property_snippet_quote  '	=> $this->input->post('property_snippet_quote'),
 			'property_bottom_overview'	=> $this->input->post('property_bottom_overview'),
-			'property_slug'				=> url_title($this->input->post('property_name'), '-', TRUE),
+			'property_slug'				=> $slug,
 			'property_image'			=> $this->input->post('property_image'),
 			'property_alt_image'		=> $this->input->post('property_alt_image'),
+			'property_thumb'			=> $this->input->post('property_thumb'),
+			'property_alt_thumb'		=> $this->input->post('property_alt_thumb'),
 			'property_logo'				=> $this->input->post('property_logo'),
 			'property_alt_logo'			=> $this->input->post('property_alt_logo'),
 			'property_website'			=> $this->input->post('property_website'),

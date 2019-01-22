@@ -30,6 +30,12 @@
 						</div>
 
 						<div class="form-group">
+							<label for="post_slug"><?php echo lang('post_slug'); ?>:</label>
+							<?php echo form_input(array('id'=>'post_slug', 'name'=>'post_slug', 'value'=>set_value('post_slug', isset($record->post_slug) ? $record->post_slug : '',FALSE), 'class'=>'form-control meta-title'));?>
+							<div id="error-post_slug"></div>
+						</div>
+
+						<div class="form-group">
 							<label for="post_content"><?php echo lang('post_content'); ?>:</label>&nbsp;<span id="error-asterisk-post_content" class="error_asterisk">*</span>
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
@@ -74,6 +80,8 @@
 
 						<div class="form-group">
 							<label for="post_image"><?php echo lang('post_image'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
+						</div>
+						<div class="form-group">
 							<a href="<?php echo site_url('website/posts/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="post_active_image" src="<?php echo site_url(isset($record->post_image) ? $record->post_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>

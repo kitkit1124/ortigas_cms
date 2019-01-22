@@ -9,44 +9,83 @@
 
 	<div class="form">
 		<div class="row">
-			<div class="col-sm-5">
+			<div class="col-sm-7">
 				<div class="form-group">
 
-					<?php if(isset($record->room_type_image)) { ?> <style type="text/css"> #dropzone{ display: none; } </style> <?php } 
-					else {  ?> <style type="text/css"> #image_container{ display: none; } </style> <?php } ?>
-					
-					<div class="form image_upload">
-						<?php echo form_open(site_url('files/images/upload'), array('class'=>'dropzone', 'id'=>'dropzone'));?>
-							<div class="fallback">
-								<input name="file" type="file"/>
+					<div class="disimg">
+
+						<div id="image_container">
+							<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
+							<center>
+								<img id="room_type_active_image" src="<?php echo site_url(isset($record->room_type_image) ? $record->room_type_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+							</center>
+						</div>
+
+						<p class="note <?php echo isset($record->room_type_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i>
+							<i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i>
+							<br>
+							<i style="float: left;margin-left: 6px;">Ideal image size: 1920 x 400</i>
+							<span style="clear: both;"></span>
+						</p>
+						<div id="error-room_type_image"></div>
+
+						<div style="display: none">
+						<?php echo form_input(array('id'=>'room_type_image', 'name'=>'room_type_image', 'value'=>set_value('room_type_image', isset($record->room_type_image) ? $record->room_type_image : ''), 'class'=>'form-control'));?>
+						</div>		
+
+						<?php echo form_textarea(array('id'=>'room_type_alt_image', 'name'=>'room_type_alt_image', 'rows'=>'2', 'value'=>set_value('room_type_alt_image', isset($record->room_type_alt_image) ? $record->room_type_alt_image : '', false), 'class'=>'form-control', 'placeholder'=> lang('room_type_alt_image'), 'title'=> lang('room_type_alt_image') )); ?>	
+	
+					</div>	
+					<div class="uplimg hide">
+						<ul class="nav nav-tabs" role="tablist">
+							<li class="nav-item active"><a href="#tab_1"  class="nav-link" data-toggle="tab">Upload Image</a></li>
+							<li class="nav-item"><a href="#tab_2"  class="nav-link "data-toggle="tab">Add Existing Image</a></li>
+							<li class="nav-item"><a href=""  class="nav-link go-back" data-toggle="tab">Back</a></li>
+						</ul>
+						<div class="tab-content" data-target="">	
+
+							<div class="tab-pane active" id="tab_1">
+								<div class="form">
+									<div class="form image_upload">
+										<?php echo form_open(site_url('files/images/upload'), array('class'=>'dropzone', 'id'=>'dropzone'));?>
+											<div class="fallback">
+												<input name="file" type="file"/>
+											</div>
+										<?php echo form_close();?> 
+									</div>
+								</div>
 							</div>
-						<?php echo form_close();?> 
+
+							<div class="tab-pane" id="tab_2">
+								<table class="table table-striped table-bordered table-hover dt-responsive" id="dt-images">
+									<thead>
+										<tr>
+											<th class="all"><?php echo lang('index_id')?></th>
+											<th class="min-desktop"><?php echo lang('index_width'); ?></th>
+											<th class="min-desktop"><?php echo lang('index_height'); ?></th>
+											<th class="min-desktop"><?php echo lang('index_name'); ?></th>
+											<th class="min-desktop"><?php echo lang('index_file'); ?></th>
+											<th class="min-desktop"><?php echo lang('index_thumb'); ?></th>
+
+											<th class="none"><?php echo lang('index_created_on')?></th>
+											<th class="none"><?php echo lang('index_created_by')?></th>
+											<th class="none"><?php echo lang('index_modified_on')?></th>
+											<th class="none"><?php echo lang('index_modified_by')?></th>
+											<th class="min-tablet"><?php echo lang('index_action')?></th>
+										</tr>
+									</thead>
+								</table>
+								<div id="thumbnails" class="row text-center"></div>
+							</div>
+						</div>
 					</div>
-					<div id="image_container">
-						<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
-						<center>
-							<img id="room_type_active_image" src="<?php echo site_url(isset($record->room_type_image) ? $record->room_type_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
-						</center>
 
-					</div>
-					<p class="note <?php echo isset($record->room_type_image) ? 'hide' : ''; ?>"><i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i>
-						<i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i>
-						<br>
-						<i style="float: left;margin-left: 6px;">Ideal image size: 1920 x 400</i>
-						<span style="clear: both;"></span>
-					</p>
-					<div id="error-room_type_image"></div>
 
-					<div style="display: none">
-					<?php echo form_input(array('id'=>'room_type_image', 'name'=>'room_type_image', 'value'=>set_value('room_type_image', isset($record->room_type_image) ? $record->room_type_image : ''), 'class'=>'form-control'));?>
-					</div>		
-
-					<?php echo form_textarea(array('id'=>'room_type_alt_image', 'name'=>'room_type_alt_image', 'rows'=>'2', 'value'=>set_value('room_type_alt_image', isset($record->room_type_alt_image) ? $record->room_type_alt_image : '', false), 'class'=>'form-control', 'placeholder'=> lang('room_type_alt_image'), 'title'=> lang('room_type_alt_image') )); ?>		
 				</div>
 				
 			</div>
 
-			<div class="col-sm-7">
+			<div class="col-sm-5">
 				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 				
 				<div class="form-group">

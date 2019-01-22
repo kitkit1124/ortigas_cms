@@ -25,11 +25,11 @@
 								<div id="error-estate_name"></div>			
 							</div>
 
-							<!-- <div class="form-group">
-								<label for="estate_slug"><?php //echo lang('estate_slug')?>:</label><span class="error_asterisk"> *</span>				
-								<?php //echo form_input(array('id'=>'estate_slug', 'name'=>'estate_slug', 'value'=>set_value('estate_slug', isset($record->estate_slug) ? $record->estate_slug : ''), 'class'=>'form-control'));?>
+							 <div class="form-group">
+								<label for="estate_slug"><?php echo lang('estate_slug')?>:</label>		
+								<?php echo form_input(array('id'=>'estate_slug', 'name'=>'estate_slug', 'value'=>set_value('estate_slug', isset($record->estate_slug) ? $record->estate_slug : ''), 'class'=>'form-control'));?>
 								<div id="error-estate_slug"></div>			
-							</div> -->
+							</div> 
 
 							<div class="form-group">
 								<label for="estate_snippet_quote"><?php echo lang('estate_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
@@ -119,6 +119,26 @@
 								</div>		
 							</div>
 
+							<div class="form-group">
+								<label for="estate_logo"><?php echo lang('estate_logo')?>:</label>			
+								<br>
+
+								<?php if(isset($record->estate_logo) && $record->estate_logo && $action == 'edit'): ?>
+									<i class="fa fa-window-close clear_logo" aria-hidden="true"></i>
+								<?php endif;?>	
+								<a href="<?php echo site_url('properties/estates/form_upload_logo/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
+									<img id="estate_active_logo" src="<?php echo site_url(isset($record->estate_logo) ? $record->estate_logo : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+								</a>
+								<?php echo form_textarea(array('id'=>'estate_alt_logo', 'name'=>'estate_alt_logo', 'rows'=>'2', 'value'=>set_value('estate_alt_logo', isset($record->estate_alt_logo) ? $record->estate_alt_logo : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_logo'), 'title' => lang('estate_alt_thumb') )); ?>
+								<br />
+
+								<div id="error-estate_logo"></div>	
+
+								<div style="display: none;">
+								<?php echo form_input(array('id'=>'estate_logo', 'name'=>'estate_logo', 'value'=>set_value('estate_logo', isset($record->estate_logo) ? $record->estate_logo : ''), 'class'=>'form-control'));?>
+								</div>		
+							</div>
+
 							<div class="col-sm-6 property_vital_details">
 								<div class="form-group">
 									<label for="estate_featured" class="estate_featured_label"><?php echo lang('estate_featured')?>?</label>
@@ -157,4 +177,5 @@ var site_url = '<?php echo site_url() ?>';
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 var featured_numrows = '<?php echo $featured_numrows ?>';
+var action = '<?php echo $action ?>';
 </script>

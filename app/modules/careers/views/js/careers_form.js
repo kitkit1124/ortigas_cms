@@ -52,6 +52,7 @@ $(function() {
 			career_longitude: $('#career_longitude').val(),
 			career_status: $('#career_status').val(),
 			career_alt_image: $('#career_alt_image').val(),
+			career_slug: $('#career_slug').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -170,9 +171,6 @@ function initMap() {
     google.maps.event.addListener(map,'dragend',function(event) {
         $('#career_latitude').val(map.getCenter().lat());
         $('#career_longitude').val(map.getCenter().lng());
-
-    	console.log(map);
-
     });
 
     // zoom event

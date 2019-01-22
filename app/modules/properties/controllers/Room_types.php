@@ -126,8 +126,18 @@ class Room_types extends MX_Controller {
 		$this->load->model('properties_model');
 		$data['properties'] = $this->properties_model->get_active_properties();
 
+
+		// add plugins
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+		
 		// render the page
 		$this->template->set_template('modal');
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css('npm/dropzone/dropzone.min.css');
 		$this->template->add_js('npm/dropzone/dropzone.min.js');
 		$this->template->add_css(module_css('properties', 'room_types_form'), 'embed');

@@ -1,0 +1,9 @@
+.modal-body {
+    max-height: 570px;
+}
+
+.modal .form-group input,.modal .form-group select{
+	background-color: #FFF;
+	border: none;
+	border-bottom: 1px solid #666;
+}

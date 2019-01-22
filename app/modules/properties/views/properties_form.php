@@ -28,6 +28,12 @@
 							<div id="error-property_name"></div>			
 						</div>
 
+						<div class="form-group">
+							<label for="property_slug"><?php echo lang('property_slug')?>:</label>			
+							<?php echo form_input(array('id'=>'property_slug', 'name'=>'property_slug', 'value'=>set_value('property_slug', isset($record->property_slug) ? $record->property_slug : ''), 'class'=>'form-control form-control-lg'));?>
+							<div id="error-property_slug"></div>			
+						</div>
+
 						<div class="row">
 							<div class="col-sm-6 property_vital_details">
 								<div class="form-group">
@@ -302,11 +308,30 @@
 						</div>
 
 						<div class="form-group">
-							<label for="property_image"><?php echo lang('property_logo')?>: <span class="error_asterisk"> *</span></label>
+							<label for="property_image"><?php echo lang('property_thumb')?>: <span class="error_asterisk"> *</span></label>
 							<br>		
+							<a href="<?php echo site_url('properties/properties/form_upload_thumb/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
+								<img id="property_active_thumb" src="<?php echo site_url(isset($record->property_thumb) ? $record->property_thumb : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+							</a>
+							<?php echo form_textarea(array('id'=>'property_alt_thumb', 'name'=>'property_alt_thumb', 'rows'=>'2', 'value'=>set_value('property_alt_thumb', isset($record->property_alt_thumb) ? $record->property_alt_thumb : '', false), 'class'=>'form-control', 'placeholder' => lang('property_alt_thumb') )); ?> 
+							<br>
+							<div id="error-property_thumb"></div>	
+
+							<div style="display: none">
+							<?php echo form_input(array('id'=>'property_thumb', 'name'=>'property_thumb', 'value'=>set_value('property_thumb', isset($record->property_thumb) ? $record->property_thumb : ''), 'class'=>'form-control'));?>
+							</div>		
+						</div>
+
+						<div class="form-group">
+							<label for="property_image"><?php echo lang('property_logo')?>: 
+							<br>	
+								<?php if(isset($record->property_logo) && $record->property_logo && $action == 'edit'): ?>
+									<i class="fa fa-window-close clear_logo" aria-hidden="true"></i>
+								<?php endif;?>	
 							<a href="<?php echo site_url('properties/properties/form_upload_logo/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
 								<img id="property_active_logo" src="<?php echo site_url(isset($record->property_logo) ? $record->property_logo : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>
+								
 							<?php echo form_textarea(array('id'=>'property_alt_logo', 'name'=>'property_alt_logo', 'rows'=>'2', 'value'=>set_value('property_alt_logo', isset($record->property_alt_logo) ? $record->property_alt_logo : '', false), 'class'=>'form-control', 'placeholder' => lang('property_alt_logo') )); ?> 
 							<br>
 							<div id="error-property_logo"></div>	
@@ -348,4 +373,5 @@
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 var featured_numrows = '<?php echo $featured_numrows ?>';
+var action = '<?php echo $action ?>';
 </script>

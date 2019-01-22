@@ -25,6 +25,12 @@
 							<?php echo form_input(array('id'=>'career_position_title_original', 'name'=>'career_position_title_original', 'value'=>set_value('career_position_title_original', isset($record->career_position_title) ? $record->career_position_title : ''), 'style'=>'display:none;'));?>
 							<div id="error-career_position_title"></div>			
 						</div>
+
+						<div class="form-group">
+							<label for="career_position_title"><?php echo lang('career_slug')?>:</label>			
+							<?php echo form_input(array('id'=>'career_slug', 'name'=>'career_slug', 'value'=>set_value('career_slug', isset($record->career_slug) ? $record->career_slug : ''), 'class'=>'form-control'));?>
+							<div id="error-career_slug"></div>			
+						</div>
 				
 						<div class="form-group">
 							<div class="row">

@@ -225,8 +225,8 @@ class Videos extends MX_Controller
 		$config = array();
 		$config['upload_path'] = $folder;
 		$config['allowed_types'] = 'mp4|avi';
-		$config['file_size']  = 0;
-		$config['max_size']	= 0;
+		$config['file_size']  = 20000;
+		$config['max_size']	= 20000;
 		$config['max_width']  = 0;
 		$config['max_height']  = 0;
 		// $config['encrypt_name'] = TRUE;

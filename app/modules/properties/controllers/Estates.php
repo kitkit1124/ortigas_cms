@@ -171,6 +171,7 @@ class Estates extends MX_Controller {
 		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
 
 		// render the page
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'estates_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'estates_form'), 'embed');
 		$this->template->write_view('content', 'estates_form', $data);
@@ -274,6 +275,53 @@ class Estates extends MX_Controller {
 
 	// --------------------------------------------------------------------
 
+	function form_upload_logo($action = 'add', $id = FALSE)
+	{
+		$this->acl->restrict('properties.estates.' . $action, 'modal');
+
+		// page title
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($estate_id = $this->_save($action, $id))
+			{
+
+				echo json_encode(array('success' => true, 'action' => $action, 'id' => $estate_id, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{	
+				$response['success'] = FALSE;
+				$response['message'] = lang('validation_error');
+				$response['errors'] = array(					
+					'estate_name'			=> form_error('estate_name'),
+					'estate_slug'			=> form_error('estate_slug'),
+					'estate_text'			=> form_error('estate_text'),
+					'estate_snippet_quote'	=> form_error('estate_snippet_quote'),
+					'estate_latitude'		=> form_error('estate_latitude'),
+					'estate_longtitude'		=> form_error('estate_longtitude'),
+					'estate_image'			=> form_error('estate_image'),
+					'estate_thumb'			=> form_error('estate_thumb'),
+					'estate_logo'			=> form_error('estate_logo'),
+					'estate_status'			=> form_error('estate_status'),
+				);
+				echo json_encode($response);
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('properties', 'form_upload'), 'embed');
+		$this->template->add_js(module_js('properties', 'estates_form_logo'), 'embed');
+		$this->template->write_view('content', 'form_upload', $data);
+		$this->template->render();
+	}
+
 	/**
 	 * delete
 	 *
@@ -348,9 +396,15 @@ class Estates extends MX_Controller {
 			return FALSE;
 		}
 
+		$slug = url_title($this->input->post('estate_name'), '-', TRUE);
+
+		if($this->input->post('estate_slug') && $this->input->post('estate_slug')){
+			$slug = $this->input->post('estate_slug');
+		}
+
 		$data = array(
 			'estate_name'			=> $this->input->post('estate_name'),
-			'estate_slug'			=> url_title($this->input->post('estate_name'), '-', TRUE),
+			'estate_slug'			=> $slug,
 			'estate_text'			=> $this->input->post('estate_text'),
 			'estate_is_featured'	=> $this->input->post('estate_featured'),
 			'estate_snippet_quote'	=> $this->input->post('estate_snippet_quote'),
@@ -361,6 +415,8 @@ class Estates extends MX_Controller {
 			'estate_alt_image'		=> $this->input->post('estate_alt_image'),
 			'estate_thumb'			=> $this->input->post('estate_thumb'),
 			'estate_alt_thumb'		=> $this->input->post('estate_alt_thumb'),
+			'estate_logo'			=> $this->input->post('estate_logo'),
+			'estate_alt_logo'		=> $this->input->post('estate_alt_logo'),
 			'estate_status'			=> $this->input->post('estate_status'),
 		);
 		

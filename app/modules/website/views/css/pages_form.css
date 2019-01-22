@@ -8,3 +8,13 @@
 
 .select2 .selection{ width: 100%; }
 .hide{ display: none !important; }
+#pac-input {
+    margin-top: 10px;
+    padding: 6px;
+    width: 60%;
+}
+#map {
+    height: 400px;
+    width: 100%;
+    margin-bottom: 20px;
+}

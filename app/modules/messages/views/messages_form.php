@@ -41,7 +41,7 @@
 			</div>
 			<div class="col-sm-9">
 				<div class="form-group">		
-					<?php echo form_input(array('id'=>'message_section_id', 'name'=>'message_section_id', 'value'=>set_value('message_section_id', isset($property->property_name) ? $property->property_name : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'message_section_id', 'name'=>'message_section_id', 'value'=>set_value('message_section_id', isset($section) ? $section : ''), 'class'=>'form-control'));?>
 					<div id="error-message_section_id"></div>			
 				</div>
 			</div>

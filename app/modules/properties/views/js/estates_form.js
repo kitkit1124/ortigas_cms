@@ -29,6 +29,9 @@ $(function() {
 			estate_thumb: $('#estate_thumb').val(),
 			estate_alt_thumb: $('#estate_alt_thumb').val(),
 			estate_status: $('#estate_status').val(),
+			estate_alt_logo: $('#estate_alt_logo').val(),
+			estate_logo: $('#estate_logo').val(),
+			estate_slug: $('#estate_slug').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -57,8 +60,6 @@ $(function() {
 				} 
 			}
 
-			//console.log(o.action);
-
 			// reset the button
 			$this.html($this.data('original-text'));
 
@@ -86,6 +87,10 @@ $(function() {
 	    });
 	}
 
+	$('.clear_logo').on('click',function(){
+		$('#estate_active_logo').attr('src', site_url + 'ui/images/placeholder.png');
+		$('#estate_logo').attr('value',0);
+	});
 
 	tinymce.init({
 		selector: "#estate_text, #estate_bottom_text, #estate_snippet_quote",
@@ -151,6 +156,15 @@ function initMap() {
         });
     });
 
+    if(action=='edit'){
+
+    	if($('#estate_latitude').val() != 0  &&  $('#estate_longtitude').val() !=0){ 
+		    var geocoder = new google.maps.Geocoder;
+		    var infowindow = new google.maps.InfoWindow;
+		    geocodeLatLng(geocoder, map, infowindow);
+		}
+	}
+
 
     // drag event
     google.maps.event.addListener(map,'dragend',function(event) {
@@ -162,4 +176,26 @@ function initMap() {
     google.maps.event.addListener(map,'zoom_changed',function(event) {
         $('#zoom').val(map.getZoom());
     });
+}
+
+function geocodeLatLng(geocoder, map, infowindow) {
+	var latlng = new google.maps.LatLng($('#estate_latitude').val(), $('#estate_longtitude').val());
+
+	geocoder.geocode({'location': latlng}, function(results, status) {
+	  if (status === 'OK') {
+	    if (results[0]) {
+	      map.setZoom(11);
+	      var marker = new google.maps.Marker({
+	        position: latlng,
+	        map: map
+	      });
+	      infowindow.setContent(results[0].formatted_address);
+	      infowindow.open(map, marker);
+	    } else {
+	      window.alert('No results found');
+	    }
+	  } else {
+	    window.alert('Geocoder failed due to: ' + status);
+	  }
+	});
 }

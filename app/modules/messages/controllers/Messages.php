@@ -23,6 +23,10 @@ class Messages extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('messages_model');
 		$this->load->model('properties/properties_model');
+		$this->load->model('properties/estates_model');
+		$this->load->model('properties/property_lease_spaces_model');
+		$this->load->model('careers/careers_model');
+		$this->load->model('website/posts_model');
 		$this->load->language('messages');
 	}
 	
@@ -128,9 +132,30 @@ class Messages extends MX_Controller {
 		}
 
 		if ($action != 'add')
-		$data['record'] = $this->messages_model->find($id);
-		$data['property'] = $this->properties_model->find($data['record']->message_id);
+		$record = $this->messages_model->find($id);
+		$data['record'] = $record;
+		if($record->message_section == 'Estates'){
+			$section = $this->estates_model->find($data['record']->message_section_id);
+			$section = $section->estate_name;
+		}
+		else if($record->message_section == 'Leasing Inquiry'){
+			$section = $this->property_lease_spaces_model->find($data['record']->message_section_id);
+			$section = $section->lease_name;
+		}
+		else if($record->message_section == 'Career Inquiry'){
+			$section = $this->careers_model->find($data['record']->message_section_id);
+			$section = $section->career_position_title;
+		}
+		else if($record->message_section == 'News'){
+			$section = $this->posts_model->find($data['record']->message_section_id);
+			$section = $section->post_title;
+		}
+		else{
+			$section = $this->properties_model->find($data['record']->message_section_id);
+			$section = $section->property_name;
+		}
 
+		$data['section'] = $section;
 
 		
 

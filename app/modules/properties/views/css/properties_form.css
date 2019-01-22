@@ -30,6 +30,14 @@
 #upload_button{
  	padding: 0px;
  }
+
+ .clear_logo{
+    position: absolute;
+    margin-top: 10px;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+ }
 /*
 .button_add_slider{
     position: absolute;

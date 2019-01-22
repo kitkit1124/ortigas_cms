@@ -23,6 +23,8 @@ class Jobs extends MX_Controller {
 		$this->load->library('users/acl');
 		$this->load->model('jobs_model');
 		$this->load->language('jobs');
+		$this->load->model('careers/divisions_model');
+		$this->load->model('careers/departments_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -111,12 +113,12 @@ class Jobs extends MX_Controller {
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
-					'job_career_id'		=> form_error('job_career_id'),
-					'job_application_name'		=> form_error('job_application_name'),
-					'job_email'		=> form_error('job_email'),
-					'job_mobile'		=> form_error('job_mobile'),
-					'job_document'		=> form_error('job_document'),
-					'job_pitch'		=> form_error('job_pitch'),
+					'job_career_id'			=> form_error('job_career_id'),
+					'job_application_name'	=> form_error('job_application_name'),
+					'job_email'				=> form_error('job_email'),
+					'job_mobile'			=> form_error('job_mobile'),
+					'job_document'			=> form_error('job_document'),
+					'job_pitch'				=> form_error('job_pitch'),
 				);
 				echo json_encode($response);
 				exit;
@@ -130,6 +132,9 @@ class Jobs extends MX_Controller {
 		$careers = $this->careers_model->get_select_careers();
 		$data['careers'] = $careers;
 		
+		$data['divisions'] = $this->divisions_model->find($data['record']->job_career_id);
+		$data['departments'] = $this->departments_model->find($data['record']->job_career_id);
+
 
 		// render the page
 		$this->template->set_template('modal');
@@ -196,12 +201,12 @@ class Jobs extends MX_Controller {
 		}
 
 		$data = array(
-			'job_career_id'		=> $this->input->post('job_career_id'),
-			'job_application_name'		=> $this->input->post('job_application_name'),
-			'job_email'		=> $this->input->post('job_email'),
-			'job_mobile'		=> $this->input->post('job_mobile'),
-			'job_document'		=> $this->input->post('job_document'),
-			'job_pitch'		=> $this->input->post('job_pitch'),
+			'job_career_id'			=> $this->input->post('job_career_id'),
+			'job_application_name'	=> $this->input->post('job_application_name'),
+			'job_email'				=> $this->input->post('job_email'),
+			'job_mobile'			=> $this->input->post('job_mobile'),
+			'job_document'			=> $this->input->post('job_document'),
+			'job_pitch'				=> $this->input->post('job_pitch'),
 		);
 		
 

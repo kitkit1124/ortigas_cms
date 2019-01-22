@@ -3,9 +3,9 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
-					<?php if ($this->acl->restrict('website.seo.add', 'return')): ?>
-						<a href="<?php echo site_url('website/seo/form/add')?>" data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo lang('button_add')?></a>
-					<?php endif; ?>
+					<!-- <?php //if ($this->acl->restrict('website.seo.add', 'return')): ?>
+						<a href="<?php //echo site_url('website/seo/form/add')?>" data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php //echo lang('button_add')?></a>
+					<?php //endif; ?> -->
 				</div>
 			</div>
 			<div class="card-header d-flex align-items-center">

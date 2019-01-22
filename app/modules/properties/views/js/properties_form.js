@@ -30,6 +30,8 @@ $(function() {
 			property_bottom_overview: tinyMCE.get('property_bottom_overview').getContent(),
 			property_image: $('#property_image').val(),
 			property_alt_image: $('#property_alt_image').val(),
+			property_thumb: $('#property_thumb').val(),
+			property_alt_thumb: $('#property_alt_thumb').val(),
 			property_logo: $('#property_logo').val(),
 			property_alt_logo: $('#property_alt_logo').val(),
 			property_website: $('#property_website').val(), 
@@ -50,6 +52,8 @@ $(function() {
 			property_ground: $('#property_ground').val(),
 			property_presell: $('#property_presell').val(),
 			property_turnover: $('#property_turnover').val(),
+			property_slug: $('#property_slug').val(),
+
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -93,6 +97,12 @@ $(function() {
 			event.preventDefault();
 			return false;
 		}
+	});
+
+
+	$('.clear_logo').on('click',function(){
+		$('#property_active_logo').attr('src', site_url + 'ui/images/placeholder.png');
+		$('#property_logo').attr('value','');
 	});
 
 	tinymce.init({
@@ -166,7 +176,14 @@ function initMap() {
         });
     });
 
-
+    if(action=='edit'){
+	    if($('#property_latitude').val() != 0  &&  $('#property_longitude').val() !=0){ 
+		    var geocoder = new google.maps.Geocoder;
+		    var infowindow = new google.maps.InfoWindow;
+		    geocodeLatLng(geocoder, map, infowindow);
+		}
+	}
+    
     // drag event
     google.maps.event.addListener(map,'dragend',function(event) {
         $('#property_latitude').val(map.getCenter().lat());
@@ -176,5 +193,28 @@ function initMap() {
     // zoom event
     google.maps.event.addListener(map,'zoom_changed',function(event) {
         $('#zoom').val(map.getZoom());
+    });
+}
+
+
+function geocodeLatLng(geocoder, map, infowindow) {
+    var latlng = new google.maps.LatLng($('#property_latitude').val(), $('#property_longitude').val());
+
+    geocoder.geocode({'location': latlng}, function(results, status) {
+      if (status === 'OK') {
+        if (results[0]) {
+          map.setZoom(11);
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map
+          });
+          infowindow.setContent(results[0].formatted_address);
+          infowindow.open(map, marker);
+        } else {
+          window.alert('No results found');
+        }
+      } else {
+        window.alert('Geocoder failed due to: ' + status);
+      }
     });
 }

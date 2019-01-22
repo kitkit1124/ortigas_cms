@@ -32,6 +32,14 @@ p.note{
 	display: none;
 }
 
+.clear_logo{
+position: absolute;
+margin-top: 10px;
+right: 25px;
+font-size: 30px;
+cursor: pointer;
+}
+
 #pac-input {
     margin-top: 10px;
     padding: 6px;

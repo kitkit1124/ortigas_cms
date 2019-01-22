@@ -15,6 +15,42 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col-sm-2">
+					<label for="Date"><?php echo lang('date')?>:</label>	
+				</div>
+				<div class="col-sm-10">
+					<?php 
+					$dtpost = date_create($record->job_created_on); 
+					echo form_input(array('id'=>'Date', 'name'=>'Date', 'value'=>set_value('Date', isset($record->job_created_on) ? date_format($dtpost,"F j, Y") : ''), 'class'=>'form-control'));?>
+				</div>
+			</div>		
+		</div>
+
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="division_id"><?php echo lang('division_id')?>:</label>	
+				</div>
+				<div class="col-sm-10">
+					<?php echo form_input(array('id'=>'division_id', 'name'=>'division_id', 'value'=>set_value('division_id', isset($divisions->division_name) ? $divisions->division_name : ''), 'class'=>'form-control'));?>
+				</div>
+			</div>		
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
+					<label for="department_id"><?php echo lang('department_id')?>:</label>	
+				</div>
+				<div class="col-sm-10">
+					<?php echo form_input(array('id'=>'department_id', 'name'=>'department_id', 'value'=>set_value('department_id', isset($departments->department_name) ? $departments->department_name : ''), 'class'=>'form-control'));?>
+				</div>
+			</div>		
+		</div>
+
+		<div class="form-group">
+			<div class="row">
+				<div class="col-sm-2">
 					<label for="job_career_id"><?php echo lang('job_career_id')?>:</label>	
 				</div>
 				<div class="col-sm-10">

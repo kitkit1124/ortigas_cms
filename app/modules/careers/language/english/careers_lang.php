@@ -25,6 +25,8 @@ $lang['career_longitude']			= 'Longitude';
 $lang['career_status']				= 'Status';
 $lang['career_image']				= 'Banner Image';
 $lang['career_alt_image']			= 'Alternative Text';
+$lang['career_slug']				= 'Slug';
+
 
 // Buttons
 $lang['button_add']					= 'Add Career';

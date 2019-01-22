@@ -11,3 +11,9 @@ RewriteCond $1 !^(index\.php|robots\.txt|npm|data|themes|ui|mods)
 RewriteRule ^(.*)$ index.php/$1 [L]
 
 RedirectMatch 404 /\\.git(/|$)
+
+php_value upload_max_filesize 20M
+php_value max_execution_time 90
+php_value max_input_time 90
+php_value memory_limit 196M
+php_value post_max_size 20M

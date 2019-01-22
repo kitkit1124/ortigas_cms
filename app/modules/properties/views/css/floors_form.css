@@ -1,8 +1,45 @@
+#dt-images_wrapper .row:first-child {
+	display: none;
+}
+
+#dt-images_wrapper .row:last-child {
+	background-color: #FFF;
+	border: none;
+}
+
+
+#image_sizes .thumbnail, #thumbnails .thumbnail {
+	position: relative;
+	height: 130px;
+	overflow: hidden;
+	padding: 0;
+	/*background-color: #DDD;*/
+}
+
+.popover {
+	z-index: 99999;
+}
+
+.caption {
+    position:absolute;
+    top:0;
+    right:0;
+    background:rgba(0, 0, 0, 0.75);
+    width:100%;
+    height:100%;
+    padding:1%;
+    display: none;
+    text-align:center;
+    color:#fff !important;
+    z-index:2;
+}
+
 #floor_active_image{
 	border-radius: 4px;
 	margin-bottom: 10px;
 	max-width: 300px;
-
+	width: 300px; 
+	cursor: pointer;
 	user-drag: none; 
 	user-select: none;
 	-moz-user-select: none;
@@ -34,4 +71,8 @@ p.note{
 
 .hide{
 	display: none;
+}
+
+#dropzone{
+	display: block !important;
 }

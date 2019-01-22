@@ -144,6 +144,7 @@ class Posts extends MX_Controller
 					'post_tags'			=> form_error('post_tags[]'),
 					'post_posted_on'	=> form_error('post_posted_on'),
 					'post_layout'		=> form_error('post_layout'),
+					'post_slug'			=> form_error('post_slug'),
 					// 'post_sidebar_id'	=> form_error('post_sidebar_id'),
 					'post_status'		=> form_error('post_status'),
 				);
@@ -213,6 +214,7 @@ class Posts extends MX_Controller
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
 		}
 		$this->template->add_css(module_css('website', 'posts_form'), 'embed');
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_js(module_js('website', 'posts_form'), 'embed');
 		$this->template->write_view('content', 'posts_form', $data);
 		$this->template->render();
@@ -338,10 +340,16 @@ class Posts extends MX_Controller
 			return FALSE;
 		}
 
+		$slug = url_title($this->input->post('post_title'), '-', TRUE);
+
+		if($this->input->post('post_slug') && $this->input->post('post_slug')){
+			$slug = $this->input->post('post_slug');
+		}
+
 		$data = array(
 			'post_title'		=> $this->input->post('post_title'),
-			'post_alt_image'		=> $this->input->post('post_alt_image'),
-			'post_slug'			=> url_title($this->input->post('post_title'), '-', TRUE),
+			'post_alt_image'	=> $this->input->post('post_alt_image'),
+			'post_slug'			=> $slug,
 			'post_content'		=> $this->input->post('post_content'),
 			'post_image'		=> $this->input->post('post_image'),
 			'post_posted_on'	=> $this->input->post('post_posted_on'),

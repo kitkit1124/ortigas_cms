@@ -34,6 +34,12 @@
 							<div id="error-page_title"></div>
 						</div>
 
+						<div class="form-group">
+							<label class="control-label" for="page_slug"><?php echo lang('page_slug'); ?>: </label>
+							<?php echo form_input(array('id'=>'page_slug', 'name'=>'page_slug', 'value'=>set_value('page_slug', isset($record->page_slug) ? $record->page_slug : '',FALSE), 'class'=>'form-control meta-title '.$if_disabled));?>
+							<div id="error-page_slug"></div>
+						</div>
+
 						<div class="form-group <?php echo isset($record->page_id) && $record->page_id == 1 ? "" : "hide"; ?>">
 							<label class="control-label" for="page_heading_text"><?php echo lang('page_heading_text'); ?>:</label>	
 							<?php echo form_input(array('id'=>'page_heading_text', 'name'=>'page_heading_text', 'value'=>set_value('page_heading_text', isset($record->page_heading_text) ? $record->page_heading_text : ''), 'class'=>'form-control'));?>
@@ -59,6 +65,29 @@
 							<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>									
 							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? $record->page_bottom_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_bottom_content"></div>
+						</div>
+
+						<?php $map_display_hide = 'hide'; if(isset($record->page_id) && $record->page_id && ($record->page_id == 6)){ $map_display_hide = ''; } ?>
+						<div class="<?php echo $map_display_hide; ?>">
+							<div class="form-group">
+								<label class="control-label" for="page_map_name"><?php echo lang('page_map_name'); ?> Override <span style="color:#CCC">(Optional)</span>: </label>
+								<?php echo form_textarea(array('id'=>'page_map_name', 'name'=>'page_map_name', 'rows'=>'2', 'value'=>set_value('page_map_name', isset($record->page_map_name) ? $record->page_map_name : '',FALSE), 'class'=>'form-control meta-title '));?>
+								<div id="error-page_map_name"></div>
+							</div>
+
+							<div class="form-group">
+																	
+								<input id="pac-input" type="text" placeholder="Search" value="<?php echo isset($record->page_map_name) ? $record->page_map_name : ''; ?>">
+								<div id="map"></div>
+							
+
+								<div style="display: none">				
+									<?php echo form_input(array('id'=>'page_latitude', 'name'=>'page_latitude', 'value'=>set_value('page_latitude', isset($record->page_latitude) ? $record->page_latitude : ''), 'class'=>'form-control'));?>
+						
+									<?php echo form_input(array('id'=>'page_longitude', 'name'=>'page_longitude', 'value'=>set_value('page_longitude', isset($record->page_longitude) ? $record->page_longitude : ''), 'class'=>'form-control'));?>
+								</div>
+								 
+							</div>
 						</div>
 
 						
@@ -155,4 +184,5 @@
 <script>
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
+var action = '<?php echo $action ?>';
 </script>

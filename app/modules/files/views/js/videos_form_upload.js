@@ -4,7 +4,7 @@ $(function() {
 
 	var myDropzone = new Dropzone("#dropzone");
 /*	 Dropzone.options.myDropzone = {
-	    maxFilesize: 5000,
+	    maxFilesize: 10000,
 	    init: function() {
 	      this.on("uploadprogress", function(file, progress) {
 	        console.log("File progress", progress);

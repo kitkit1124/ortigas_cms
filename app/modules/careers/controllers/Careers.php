@@ -129,6 +129,7 @@ class Careers extends MX_Controller {
 					'career_latitude'			=> form_error('career_latitude'),
 					'career_longitude'			=> form_error('career_longitude'),
 					'career_status'				=> form_error('career_status'),
+					'career_slug'				=> form_error('career_slug'),
 				);
 				echo json_encode($response);
 				exit;
@@ -152,10 +153,20 @@ class Careers extends MX_Controller {
 			$data['departments'] = $this->departments_model->get_departments($career->career_div);		
 
 		}
+
+		// add plugins
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+
 		// render the page
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
 
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('careers', 'careers_form'), 'embed');
 		$this->template->add_js(module_js('careers', 'careers_form'), 'embed');
 		$this->template->write_view('content', 'careers_form', $data);
@@ -305,9 +316,15 @@ class Careers extends MX_Controller {
 			return FALSE;
 		}
 
+		$slug = url_title($this->input->post('career_position_title'), '-', TRUE);
+
+		if($this->input->post('career_slug') && $this->input->post('career_slug')){
+			$slug = $this->input->post('career_slug');
+		}
+
 		$data = array(
 			'career_position_title'		=> $this->input->post('career_position_title'),
-			'career_slug'				=> url_title($this->input->post('career_position_title'), '-', TRUE),
+			'career_slug'				=> $slug,
 			'career_dept'				=> $this->input->post('career_dept'),
 			'career_div'				=> $this->input->post('career_div'),
 			'career_image'				=> $this->input->post('career_image'),

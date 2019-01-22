@@ -145,6 +145,7 @@ class Categories extends MX_Controller {
 		$this->template->add_css(module_css('properties', 'related_links_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'related_links_index'), 'embed');
 
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'categories_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'categories_form'), 'embed');
 		$this->template->write_view('content', 'categories_form', $data);
