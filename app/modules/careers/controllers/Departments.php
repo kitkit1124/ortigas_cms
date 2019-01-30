@@ -180,11 +180,12 @@ class Departments extends MX_Controller {
 		$this->form_validation->set_rules('department_name', lang('department_name'), 'required');
 		$this->form_validation->set_rules('department_status', lang('department_status'), 'required');
 
-		$did =  $this->input->post('department_division_id');
+		$cid =  $this->input->post('department_division_id');
+		$oid =  $this->input->post('department_division_id_original');
 		$name = $this->input->post('department_name');
-		$idname =  $this->input->post('department_division_id').$this->input->post('division_name');
-		$orig_name = $this->input->post('department_name_original');
-		$duplicate = $this->departments_model->find_by(array('department_name'=> $name, 'department_division_id'=>$did, 'department_deleted'=>0));
+		$idname =  $cid.$name;
+		$orig_name = $oid.$this->input->post('department_name_original');
+		$duplicate = $this->departments_model->find_by(array('department_name'=> $name, 'department_division_id'=>$cid, 'department_deleted'=>0));
 			
 		if ($action == 'edit'){
 			if($orig_name == $idname){}
@@ -208,9 +209,10 @@ class Departments extends MX_Controller {
 		}
 
 		$data = array(
-			'department_division_id'		=> $this->input->post('department_division_id'),
-			'department_name'		=> $this->input->post('department_name'),
-			'department_status'		=> $this->input->post('department_status'),
+			'department_division_id'	=> $this->input->post('department_division_id'),
+			'department_slug'			=> url_title($this->input->post('department_name'), '-', TRUE),
+			'department_name'			=> $this->input->post('department_name'),
+			'department_status'			=> $this->input->post('department_status'),
 		);
 		
 

@@ -181,6 +181,75 @@ class Categories extends MX_Controller {
 	}
 
 
+	public function reorder_view()
+	{
+	
+		// page title
+		$data['page_heading'] = lang('index_heading');
+		$data['page_subhead'] = lang('reorder_subhead');
+		
+		// breadcrumbs
+		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
+		$this->breadcrumbs->push(lang('crumb_module'), site_url('properties'));
+		$this->breadcrumbs->push(lang('reorder_subhead'), site_url('properties/reorder_view'));
+		
+		// session breadcrumb
+		$this->session->set_userdata('redirect', current_url());
+		
+		// add plugins
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+		
+		$data['categories'] = $this->categories_model->get_active_categories_order();
+
+		$this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
+		
+		// render the page
+		$this->template->add_css(module_css('properties', 'settings_index'), 'embed');
+		$this->template->add_css(module_css('properties', 'reorder_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'reorder_index'), 'embed');
+		$this->template->write_view('content', 'reorder_index', $data);
+		$this->template->render();
+	}
+
+	/**
+	 * reorder
+	 *
+	 * @access	public
+	 * @param	array $this->input->post('banner_ids')
+	 * @author 	Gutz Marzan <gutzby.marzan@digify.com.ph>
+	 */
+	
+	function reorder()
+	{
+
+		$ids = $this->input->post('ids');
+
+		// get the banners
+		$categories = $this->categories_model
+			->where_in('category_id', $ids)
+			->find_all();
+
+		if ($categories)
+		{
+			foreach ($categories as $value)
+			{
+				// update the banner
+				$this->categories_model->update($value->category_id, array(
+					'category_order' => array_search($value->category_id, $ids)
+				));
+			}
+		}
+
+		echo json_encode(array('success' => true, 'message' => lang('reorder_success'))); exit;
+	
+	}
+
+
 	// --------------------------------------------------------------------
 
 	/**

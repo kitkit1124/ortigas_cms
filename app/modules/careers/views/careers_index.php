@@ -18,14 +18,14 @@
 							<th class="all"><?php echo lang('index_id'); ?></th>
 							<th class="all"><?php echo lang('index_position_title'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_dept'); ?></th>
-							<th class="none"><?php echo lang('index_req'); ?></th>
+							<th class="none"><?php echo lang('index_created_on'); ?></th>
 							<th class="none"><?php echo lang('index_res'); ?></th>
 							<th class="none"><?php echo lang('index_location'); ?></th>
 							<th class="none"><?php echo lang('index_latitude'); ?></th>
 							<th class="none"><?php echo lang('index_longitude'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_status'); ?></th>
 
-							<th class="none"><?php echo lang('index_created_on')?></th>
+							<th class="none"><?php echo lang('index_req')?></th>
 							<th class="none"><?php echo lang('index_created_by')?></th>
 							<th class="none"><?php echo lang('index_modified_on')?></th>
 							<th class="none"><?php echo lang('index_modified_by')?></th>

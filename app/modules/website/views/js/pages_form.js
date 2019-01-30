@@ -108,7 +108,7 @@ $(function() {
 			'emoticons template paste textcolor colorpicker textpattern fontawesome'
 		],
 		// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link images documents videos',
-		toolbar1: 'undo redo | styleselect | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist | link fontawesome',
+		toolbar1: 'undo redo | styleselect forecolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist | link fontawesome',
 		image_advtab: true,
 		// setup: function (editor) {
 		// 	editor.addButton('images', {

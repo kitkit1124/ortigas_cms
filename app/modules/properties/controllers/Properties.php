@@ -130,6 +130,7 @@ class Properties extends MX_Controller {
 					'property_image'			=> form_error('property_image'),
 					'property_thumb'			=> form_error('property_thumb'),
 					'property_logo'				=> form_error('property_logo'),
+					'property_link_label'		=> form_error('property_link_label'),
 					'property_website'			=> form_error('property_website'),
 					'property_facebook'			=> form_error('property_facebook'),
 					'property_twitter'			=> form_error('property_twitter'),
@@ -144,6 +145,7 @@ class Properties extends MX_Controller {
 					'property_nearby_schools'		=> form_error('property_nearby_schools'),
 					'property_tags'					=> form_error('property_tags'),
 					'property_status'				=> form_error('property_status'),
+					'property_availability'			=> form_error('property_availability'),
 					'property_construction_update'	=> form_error('property_construction_update'),
 					'property_ground'				=> form_error('property_ground'),
 					'property_presell'				=> form_error('property_presell'),
@@ -349,6 +351,75 @@ class Properties extends MX_Controller {
 
 	// --------------------------------------------------------------------
 
+	public function reorder_view()
+	{
+	
+		// page title
+		$data['page_heading'] = lang('index_heading');
+		$data['page_subhead'] = lang('reorder_subhead');
+		
+		// breadcrumbs
+		$this->breadcrumbs->push(lang('crumb_home'), site_url(''));
+		$this->breadcrumbs->push(lang('crumb_module'), site_url('properties'));
+		$this->breadcrumbs->push(lang('reorder_subhead'), site_url('properties/reorder_view'));
+		
+		// session breadcrumb
+		$this->session->set_userdata('redirect', current_url());
+		
+		// add plugins
+		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');
+		$this->template->add_css('npm/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css');
+		$this->template->add_js('npm/datatables.net/js/jquery.dataTables.js');
+		$this->template->add_js('npm/datatables.net-bs4/js/dataTables.bootstrap4.js');
+		$this->template->add_js('npm/datatables.net-responsive/js/dataTables.responsive.min.js');
+		$this->template->add_js('npm/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js');
+		
+		$data['property'] = $this->properties_model->get_active_properties_order();
+
+		$this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
+		
+		// render the page
+		$this->template->add_css(module_css('properties', 'settings_index'), 'embed');
+		$this->template->add_css(module_css('properties', 'reorder_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'reorder_index'), 'embed');
+		$this->template->write_view('content', 'reorder_index', $data);
+		$this->template->render();
+	}
+
+	/**
+	 * reorder
+	 *
+	 * @access	public
+	 * @param	array $this->input->post('banner_ids')
+	 * @author 	Gutz Marzan <gutzby.marzan@digify.com.ph>
+	 */
+	
+	function reorder()
+	{
+
+		$ids = $this->input->post('ids');
+
+		// get the banners
+		$properties = $this->properties_model
+			->where_in('property_id', $ids)
+			->find_all();
+
+		if ($properties)
+		{
+			foreach ($properties as $value)
+			{
+				// update the banner
+				$this->properties_model->update($value->property_id, array(
+					'property_order' => array_search($value->property_id, $ids)
+				));
+			}
+		}
+
+		echo json_encode(array('success' => true, 'message' => lang('reorder_success'))); exit;
+	
+	}
+	//
+
 	/**
 	 * _save
 	 *
@@ -370,7 +441,7 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_snippet_quote', lang('property_snippet_quote'), 'required');
 		$this->form_validation->set_rules('property_image', lang('property_image'), 'required');
 		$this->form_validation->set_rules('property_thumb', lang('property_thumb'), 'required');
-		// $this->form_validation->set_rules('property_website', lang('property_website'), 'required');
+		//$this->form_validation->set_rules('property_website', lang('property_website'), 'required');
 		$this->form_validation->set_rules('property_facebook', lang('property_facebook'), 'max_length[255]');
 		$this->form_validation->set_rules('property_twitter', lang('property_twitter'), 'max_length[255]');
 		$this->form_validation->set_rules('property_instagram', lang('property_instagram'), 'max_length[255]');
@@ -382,7 +453,7 @@ class Properties extends MX_Controller {
 		//$this->form_validation->set_rules('property_nearby_markets', lang('property_nearby_markets'), 'required');
 		//$this->form_validation->set_rules('property_nearby_hospitals', lang('property_nearby_hospitals'), 'required');
 		//$this->form_validation->set_rules('property_nearby_schools', lang('property_nearby_schools'), 'required');
-		//$this->form_validation->set_rules('property_tags', lang('property_tags'), 'required');
+		$this->form_validation->set_rules('property_availability', lang('property_availability'), 'required');
 		$this->form_validation->set_rules('property_status', lang('property_status'), 'required');
 
 
@@ -434,6 +505,7 @@ class Properties extends MX_Controller {
 			'property_alt_thumb'		=> $this->input->post('property_alt_thumb'),
 			'property_logo'				=> $this->input->post('property_logo'),
 			'property_alt_logo'			=> $this->input->post('property_alt_logo'),
+			'property_link_label'		=> $this->input->post('property_link_label'),
 			'property_website'			=> $this->input->post('property_website'),
 			'property_facebook'			=> $this->input->post('property_facebook'),
 			'property_twitter'			=> $this->input->post('property_twitter'),
@@ -448,6 +520,7 @@ class Properties extends MX_Controller {
 			'property_nearby_schools'	=> $this->input->post('property_nearby_schools'),
 			'property_tags'				=> $this->input->post('property_tags'),
 			'property_status'			=> $this->input->post('property_status'),
+			'property_availability'		=> $this->input->post('property_availability'),
 			'property_construction_update'=> $this->input->post('property_construction_update'),
 			'property_ground'			=> $this->input->post('property_ground'),
 			'property_presell'			=> $this->input->post('property_presell'),

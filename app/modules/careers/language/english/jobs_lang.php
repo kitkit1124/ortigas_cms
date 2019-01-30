@@ -44,6 +44,7 @@ $lang['index_mobile']				= 'Mobile';
 $lang['index_document']				= 'Document';
 $lang['index_pitch']				= 'Pitch';
 
+$lang['index_time_stamp']			= 'Time Stamp';
 $lang['index_created_on']			= 'Created On';
 $lang['index_created_by']			= 'Created By';
 $lang['index_modified_on']			= 'Modified On';

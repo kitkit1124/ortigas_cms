@@ -1,0 +1,25 @@
+.division_container{
+    max-width: 100%;
+}
+
+#sortable li{
+    margin: 10px;
+    display: inline-block;
+    width: 240px;
+}
+
+.division_container img{
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+}
+
+.division_container .order_text{
+    background-color: #3ea6a4;
+    padding: 2px;
+    width: 23px;
+    border-radius: 50%;
+    font-size: 0.8em;
+    text-align: center;
+    color: #FFF;
+}

@@ -34,6 +34,7 @@ $(function() {
 			property_alt_thumb: $('#property_alt_thumb').val(),
 			property_logo: $('#property_logo').val(),
 			property_alt_logo: $('#property_alt_logo').val(),
+			property_link_label: $('#property_link_label').val(), 
 			property_website: $('#property_website').val(), 
 			property_facebook: $('#property_facebook').val(),
 			property_twitter: $('#property_twitter').val(),
@@ -53,6 +54,7 @@ $(function() {
 			property_presell: $('#property_presell').val(),
 			property_turnover: $('#property_turnover').val(),
 			property_slug: $('#property_slug').val(),
+			property_availability: $('#property_availability').val(),
 
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),

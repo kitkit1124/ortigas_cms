@@ -3,7 +3,7 @@ $(function() {
 	var oTable = $('#datatables').dataTable({
 		"bProcessing": true,
 		"bServerSide": true,
-		"sAjaxSource": "departments/datatables",
+		"sAjaxSource": "navigation_settings/datatables",
 		"lengthMenu": [[10, 20, 50, 100, 300, -1], [10, 20, 50, 100, 300, "All"]],
 		"pagingType": "full_numbers",
 		"language": {
@@ -23,7 +23,7 @@ $(function() {
 			{
 				"aTargets": [1],
 				"mRender": function (data, type, full) {
-					return '<a href="departments/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+					return '<a href="navigation_settings/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
 				},
 			},
 			// {
@@ -42,12 +42,12 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [8],
+				"aTargets": [6],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="departments/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
-					html += '<a href="departments/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
-					html += '<a href="departments/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
+					html = '<a href="navigation_settings/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
+					html += '<a href="navigation_settings/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
+					html += '<a href="navigation_settings/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
 
 					return html;
 				},

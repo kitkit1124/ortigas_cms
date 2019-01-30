@@ -18,6 +18,10 @@
 						<?php endforeach; ?>
 					<?php endif; ?>
 					<li class="nav-item">
+				      <a class="nav-link" data-toggle="modal" data-target="#modal-lg" href="<?php echo site_url('website/navigation_settings/form/edit'); ?>"><i class="fa fa-paint-brush" aria-hidden="true"></i> Color Theme</a>
+				    </li>
+
+					<li class="nav-item">
 				      <a class="nav-link" data-toggle="modal" data-target="#modal-lg" href="<?php echo site_url('website/navigroups/form/add'); ?>"><i class="fa fa-plus"></i> Add Navigation Group</a>
 				    </li>
 				</ul>

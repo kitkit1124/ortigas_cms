@@ -237,38 +237,44 @@
 						      <div id="collapseThree" class="collapse" data-parent="#accordion">
 						        <div class="card-body">
 
+						        	<div class="form-group">
+										 <label for="property_link_label" class="fa fa-external-link">&nbsp;</label><label for="property_link_label"> <?php echo lang('property_link_label')?></label>	
+										<?php echo form_input(array('id'=>'property_link_label', 'name'=>'property_link_label', 'value'=>set_value('property_link_label', isset($record->property_link_label) ? $record->property_link_label : ''), 'class'=>'form-control'));?>
+										<div id="error-property_link_label"></div>			
+									</div>
+
 							        <div class="form-group">
-										 <label for="property_website"><?php echo lang('property_website')?></label>		
+										 <label for="property_website" class="fa fa-globe">&nbsp;</label><label for="property_website"> <?php echo lang('property_website')?></label>	
 										<?php echo form_input(array('id'=>'property_website', 'name'=>'property_website', 'value'=>set_value('property_website', isset($record->property_website) ? $record->property_website : ''), 'class'=>'form-control'));?>
 										<div id="error-property_website"></div>			
 									</div>
 
 									<div class="form-group">
-										<label for="property_facebook" class="fa fa-facebook-square"></label>			
+										<label for="property_facebook" class="fa fa-facebook-square">&nbsp;</label><label for="property_website"> <?php echo lang('property_facebook')?></label>			
 										<?php echo form_input(array('id'=>'property_facebook', 'name'=>'property_facebook', 'value'=>set_value('property_facebook', isset($record->property_facebook) ? $record->property_facebook : ''), 'class'=>'form-control'));?>
 										<div id="error-property_facebook"></div>			
 									</div>
 
 									<div class="form-group">
-										<label for="property_twitter" class="fa fa-twitter-square"></label>			
+										<label for="property_twitter" class="fa fa-twitter-square">&nbsp;</label><label for="property_website"> <?php echo lang('property_twitter')?></label>		
 										<?php echo form_input(array('id'=>'property_twitter', 'name'=>'property_twitter', 'value'=>set_value('property_twitter', isset($record->property_twitter) ? $record->property_twitter : ''), 'class'=>'form-control'));?>
 										<div id="error-property_twitter"></div>			
 									</div>
 
 									<div class="form-group">
-										<span for="property_instagram" class="fa fa-instagram"></span>			
+										<label for="property_instagram" class="fa fa-instagram">&nbsp;</label><label for="property_website"> <?php echo lang('property_instagram')?></label>	
 										<?php echo form_input(array('id'=>'property_instagram', 'name'=>'property_instagram', 'value'=>set_value('property_instagram', isset($record->property_instagram) ? $record->property_instagram : ''), 'class'=>'form-control'));?>
 										<div id="error-property_instagram"></div>			
 									</div>
 
 									<div class="form-group">
-										<label for="property_linkedin" class="fa fa-linkedin-square"></label>				
+										<label for="property_linkedin" class="fa fa-linkedin-square">&nbsp;</label><label for="property_website"> <?php echo lang('property_linkedin')?></label>			
 										<?php echo form_input(array('id'=>'property_linkedin', 'name'=>'property_linkedin', 'value'=>set_value('property_linkedin', isset($record->property_linkedin) ? $record->property_linkedin : ''), 'class'=>'form-control'));?>
 										<div id="error-property_linkedin"></div>			
 									</div>
 
 									<div class="form-group">
-										<label for="property_youtube" class="fa fa-youtube"></label>				
+										<label for="property_youtube" class="fa fa-youtube">&nbsp;</label><label for="property_website"> <?php echo lang('property_youtube')?></label>				
 										<?php echo form_input(array('id'=>'property_youtube', 'name'=>'property_youtube', 'value'=>set_value('property_youtube', isset($record->property_youtube) ? $record->property_youtube : ''), 'class'=>'form-control'));?>
 										<div id="error-property_youtube"></div>			
 									</div>
@@ -345,6 +351,13 @@
 							<label for="property_tags"><?php echo lang('property_tags')?>:</label>			
 							<?php echo form_input(array('id'=>'property_tags', 'name'=>'property_tags', 'value'=>set_value('property_tags', isset($record->property_tags) ? $record->property_tags : ''), 'class'=>'form-control',  'data-role'=>'tagsinput'));?>
 							<div id="error-property_tags"></div>			
+						</div>
+
+						<div class="form-group">
+							<label for="property_availability"><?php echo lang('property_availability')?>:</label>
+							<?php $options = create_dropdown('array', 'RFO,Pre-selling,Sold-Out'); ?>
+								<?php echo form_dropdown('property_availability', $options, set_value('property_availability', (isset($record->property_availability)) ? $record->property_availability : ''), 'id="property_availability" class="form-control"'); ?>
+								<div id="error-property_availability"></div>
 						</div>
 
 						<div class="form-group">

@@ -28,6 +28,7 @@ $lang['property_logo']				= 'Property Logo';
 $lang['property_alt_logo']			= 'Alternative Text for Logo';
 $lang['property_thumb']				= 'Property Thumbnail';
 $lang['property_alt_thumb']			= 'Alternative Text for Thumbnail';
+$lang['property_link_label']		= 'Website Button Label';
 $lang['property_website']			= 'Website';
 $lang['property_facebook']			= 'Facebook';
 $lang['property_twitter']			= 'Twitter';
@@ -50,6 +51,7 @@ $lang['property_prop_type_id']		= 'Development Type';
 $lang['property_featured']			= 'Set as featured';
 $lang['property_construction']		= 'Construction Update';
 $lang['property_amenities']			= 'Amenities';
+$lang['property_availability']		= 'Availability';
 
 
 // Buttons
@@ -94,6 +96,10 @@ $lang['index_created_by']			= 'Created By';
 $lang['index_modified_on']			= 'Modified On';
 $lang['index_modified_by']			= 'Modified By';
 $lang['index_action']				= 'Action';
+
+
+$lang['reorder_subhead']			= 'Sort property';
+
 
 // View Function
 $lang['view_heading']				= 'View Property';

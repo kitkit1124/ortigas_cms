@@ -63,11 +63,21 @@ class Estates_model extends BF_Model {
 	}
 
 	public function get_active_estates(){
-		$query = $this->estates_model
+		$query = $this
 				->where('estate_status', 'Active')
 				->where('estate_deleted', 0)
 				->order_by('estate_name', 'ASC')
 				->format_dropdown('estate_id', 'estate_name', TRUE);
+
+		return $query;		
+	}
+
+	public function get_active_estates_order(){
+		$query = $this
+				->where('estate_status', 'Active')
+				->where('estate_deleted', 0)
+				->order_by('estate_order', 'ASC')
+				->find_all();
 
 		return $query;		
 	}

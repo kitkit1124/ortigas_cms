@@ -17,6 +17,10 @@ $lang['division_id']				= 'ID';
 $lang['division_department_id']		= 'Department';
 $lang['division_name']				= 'Division Name';
 $lang['division_status']			= 'Status';
+$lang['division_content']			= 'Content';
+$lang['division_seo_content']		= 'SEO Content';
+$lang['division_image']				= 'Banner Image';
+$lang['division_alt_image']			= 'Alternative Text for Banner Image';
 
 // Buttons
 $lang['button_add']					= 'Add Division';

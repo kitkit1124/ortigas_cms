@@ -18,7 +18,7 @@
 							<th class="all"><?php echo lang('index_id'); ?></th>
 							<th class="all"><?php echo lang('index_career_id'); ?></th>
 							<th class="min-desktop"><?php echo lang('index_application_name'); ?></th>
-							<th class="none"><?php echo lang('index_email'); ?></th>
+							<th class="all"><?php echo lang('index_time_stamp'); ?></th>
 							<th class="none"><?php echo lang('index_mobile'); ?></th>
 							<th class="none"><?php echo lang('index_document'); ?></th>
 							<th class="none"><?php echo lang('index_pitch'); ?></th>

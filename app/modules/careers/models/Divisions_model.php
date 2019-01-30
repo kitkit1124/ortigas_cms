@@ -27,6 +27,8 @@ class Divisions_model extends BF_Model {
 	protected $deleted_field		= 'division_deleted';
 	protected $deleted_by_field		= 'division_deleted_by';
 
+	public $metatag_key				= 'division_metatag_id';
+
 	// --------------------------------------------------------------------
 
 	/**

@@ -26,6 +26,13 @@ $(function() {
 					return '<a href="jobs/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal-lg" tooltip-toggle="tooltip" data-placement="top" title="View">' + data + '</a>';
 				},
 			},
+			{
+				"aTargets": [3],
+				"mRender": function (data, type, full) {
+					
+					return dateToString(full[8]);
+				},
+			},
 			// {
 			// 	"aTargets": [6],
 			// 	 "mRender": function (data, type, full) {
@@ -62,5 +69,26 @@ $(function() {
 	$('body').on('hidden.bs.modal', '.modal', function () {        
 		// eg. destroys the wysiwyg editor
 	});
+
+	function dateToString(date) {
+	  var month = new Array();
+	  month[0] = "January";
+	  month[1] = "February";
+	  month[2] = "March";
+	  month[3] = "April";
+	  month[4] = "May";
+	  month[5] = "June";
+	  month[6] = "July";
+	  month[7] = "August";
+	  month[8] = "September";
+	  month[9] = "October";
+	  month[10] = "November";
+	  month[11] = "December";
+
+	  var d = new Date (date);
+
+	  return   month[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + ' - ' + d.getHours() +':'+ d.getSeconds() ;
+	}
+
 
 });

@@ -471,6 +471,9 @@ $config['csrf_exclude_uris'] = array(
 	'website/banners/main_video_save',
 	'properties/image_sliders/reorder',
 	'properties/settings/reorder',
+	'properties/properties/reorder',
+	'properties/estates/reorder',
+	'properties/categories/reorder',
 	'users/roles/update_access', // TODO: implement csrf here
 	// 'website/navigations/save',
 );

@@ -1,6 +1,6 @@
 <link href="<?php echo site_url('npm/dropzone/dropzone.min.css'); ?>" rel="stylesheet" type="text/css" />
 <div class="modal-header">
-	<h5 class="modal-title" id="modalLabel"><?php echo lang('button_upload')?></h5>
+	<h5 class="modal-title" id="modalLabel"><?php echo 'Upload Image'?></h5>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>

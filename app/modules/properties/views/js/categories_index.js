@@ -45,7 +45,8 @@ $(function() {
 				"aTargets": [8],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="' + site_url + 'metatags/form/properties/categories/' + full[0] + '" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Meta Tags" class="btn btn-sm btn-info"><span class="fa fa-cogs"></span></a> ';
+					html = '<a href="' + site_url + 'properties/categories/reorder_view/' + '" tooltip-toggle="tooltip" data-placement="top" title="Reorder Category" class="btn btn-sm"><span class="fa fa-sort"></span></a> ';
+					html += '<a href="' + site_url + 'metatags/form/properties/categories/' + full[0] + '" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Meta Tags" class="btn btn-sm btn-info"><span class="fa fa-cogs"></span></a> ';
 					html += '<a href="categories/form/view/'+full[0]+'" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
 					html += '<a href="categories/form/edit/'+full[0]+'" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
 					//html += '<a href="categories/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';

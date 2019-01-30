@@ -102,7 +102,7 @@
 					<label for="job_referred"><?php echo lang('job_referred')?>:</label>
 				</div>
 				<div class="col-sm-10">
-					<?php echo form_input(array('id'=>'job_referred', 'name'=>'job_referred', 'value'=>set_value('job_referred', isset($record->job_referred) ? $record->job_referred : ''), 'class'=>'form-control'));?>
+					<?php echo form_input(array('id'=>'job_referred', 'name'=>'job_referred', 'value'=>set_value('job_referred', isset($record->job_referred) ? $record->job_referred : '', false), 'class'=>'form-control'));?>
 					<div id="error-job_referred"></div>			
 				</div>
 			</div>		

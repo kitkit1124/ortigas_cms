@@ -3,8 +3,8 @@
 		<div class="card">
 			<div class="card-close">
 				<div class="card-buttons">
-					<?php if ($this->acl->restrict('careers.divisions.add', 'return')): ?>
-						<a href="<?php echo site_url('careers/divisions/form/add')?>" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo lang('button_add')?></a>
+					<?php if ($this->acl->restrict('website.navigation_settings.add', 'return')): ?>
+						<a href="<?php echo site_url('website/navigation_settings/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo lang('button_add')?></a>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -16,9 +16,7 @@
 					<thead>
 						<tr>
 							<th class="all"><?php echo lang('index_id'); ?></th>
-							<th class="min-desktop"><?php echo lang('index_name'); ?></th>
-							<th class="none"><?php echo lang('index_department_id'); ?></th>
-							<th class="min-desktop"><?php echo lang('index_status'); ?></th>
+			<th class="all"><?php echo lang('index_color_theme'); ?></th>
 
 							<th class="none"><?php echo lang('index_created_on')?></th>
 							<th class="none"><?php echo lang('index_created_by')?></th>

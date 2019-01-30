@@ -17,11 +17,7 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(ajax_url, {
-			department_division_id: $('#department_division_id').val(),
-			department_division_id_original: $('#department_division_id_original').val(),
-			department_name: $('#department_name').val(),
-			department_name_original: $('#department_name_original').val(),
-			department_status: $('#department_status').val(),
+			nav_setting_color_theme: $('#nav_setting_color_theme').val(),
 
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
@@ -43,10 +39,10 @@ $(function() {
 				}
 			} else {
 				// refreshes the datatables
-				$('#datatables').dataTable().fnDraw();
+				// $('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal').modal('hide'); 
+				$('#modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 

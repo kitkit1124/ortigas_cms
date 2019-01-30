@@ -46,7 +46,8 @@ $(function() {
 				"aTargets": [27],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
-					html = '<a href="' + site_url + 'metatags/form/properties/properties/' + full[0] + '" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Meta Tags" class="btn btn-sm btn-info"><span class="fa fa-cogs"></span></a> ';
+					html = '<a href="' + site_url + 'properties/reorder_view/' + '" tooltip-toggle="tooltip" data-placement="top" title="Reorder Property" class="btn btn-sm"><span class="fa fa-sort"></span></a> ';
+					html += '<a href="' + site_url + 'metatags/form/properties/properties/' + full[0] + '" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Meta Tags" class="btn btn-sm btn-info"><span class="fa fa-cogs"></span></a> ';
 					html += '<a href="properties/form/view/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
 					html += '<a href="properties/form/edit/'+full[0]+'" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';
 					html += '<a href="properties/delete/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Delete" class="btn btn-sm btn-danger"><span class="fa fa-trash-o"></span></a>';
