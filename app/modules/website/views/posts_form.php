@@ -20,7 +20,7 @@
 					<div class="col-sm-9">
 
 						<div style="display: none">
-							<?php echo form_input(array('id'=>'post_title_orig', 'name'=>'post_title_orig', 'value'=>set_value('post_title_orig', isset($record->post_title) ? $record->post_title : ''), 'class'=>'form-control meta-title'));?>
+							<?php echo form_input(array('id'=>'post_title_orig', 'name'=>'post_title_orig', 'value'=>set_value('post_title_orig', isset($record->post_title) ? $record->post_title : '', false), 'class'=>'form-control meta-title'));?>
 						</div>
 
 						<div class="form-group">
