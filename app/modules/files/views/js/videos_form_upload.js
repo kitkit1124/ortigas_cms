@@ -37,7 +37,7 @@ $(function() {
 		$('.dz-message').show();
 
 
-	}).on('done',function(file, response){
+	}).on('error',function(file, response){
 		console.log(response);
 	});
 
