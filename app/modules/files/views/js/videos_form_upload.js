@@ -38,7 +38,7 @@ $(function() {
 
 
 	}).on('error',function(file, response){
-		alertify.error('The uploaded file exceeds the maximum allowed size .');
+		alert('The uploaded file exceeds the maximum allowed size .');
 	});
 
 	// disables the enter key
