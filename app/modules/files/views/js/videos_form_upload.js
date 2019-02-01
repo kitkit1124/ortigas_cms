@@ -36,7 +36,8 @@ $(function() {
 		$('.dz-image, .dz-preview').remove();
 		$('.dz-message').show();
 	}).on("fail", function(file,response){
-		alertify.error(jQuery(response.error).text());
+		alert('');
+		//alertify.error(jQuery(response.error).text());
 	});
 
 	// disables the enter key
