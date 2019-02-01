@@ -39,6 +39,9 @@ $(function() {
 
 	}).on('error',function(file, response){
 		alert('The uploaded file exceeds the maximum allowed size .');
+		$('#modal').modal('hide');
+		restore_modal(); 
+		alertify.error('The uploaded file exceeds the maximum allowed size .');
 	});
 
 	// disables the enter key
