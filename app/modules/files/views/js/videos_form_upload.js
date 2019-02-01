@@ -37,8 +37,8 @@ $(function() {
 		$('.dz-message').show();
 
 
-	}).on('error',function(file, response){
-		alert(jQuery(response.error).text());
+	}).on('done',function(file, response){
+		console.log(response);
 	});
 
 	// disables the enter key
