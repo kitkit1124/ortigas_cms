@@ -7,7 +7,7 @@
 
 <div class="modal-body">
 
-	<div class="form">
+	<div class="form related_link_container">
 
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
@@ -20,6 +20,7 @@
 		<div class="form-group">
 			<label for="related_link_link"><?php echo lang('related_link_link')?>:</label>			
 			<?php echo form_input(array('id'=>'related_link_link', 'name'=>'related_link_link', 'value'=>set_value('related_link_link', isset($record->related_link_link) ? $record->related_link_link : ''), 'class'=>'form-control'));?>
+			<i>Sample URL: "http://ortigas.com.ph"</i>
 			<div id="error-related_link_link"></div>			
 		</div>
 

@@ -16,7 +16,7 @@ $(function() {
 		var response = jQuery.parseJSON(response);
 
 		if (response.status == 'failed') {
-			alert(jQuery(response.error).text());
+			alertify.error(jQuery(response.error).text());
 
 		} else {
 
@@ -35,8 +35,8 @@ $(function() {
 		
 		$('.dz-image, .dz-preview').remove();
 		$('.dz-message').show();
-
-
+	}).on("fail", function(file,response){
+		alertify.error(jQuery(response.error).text());
 	});
 
 	// disables the enter key

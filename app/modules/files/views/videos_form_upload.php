@@ -13,7 +13,12 @@
 				<input name="file" type="file"/>
 			</div>
 		<?php echo form_close();?> 
-		<p class="note"><i style="float: left;margin-left: 6px;">Recommended file type MP4 | AVI</i> <i style="float: right; margin-right: 6px;"> Max file size: 20.0 Mb</i><span style="clear: both;"></span></p>
+		<p class="note" style="height: 35px;">
+			<i style="float: left;margin-left: 6px;">Recommended file type MP4</i>
+			<i style="float: right; margin-right: 6px;"> Max file size: 15.0 Mb</i>
+			<i style="float: left;margin-left: 6px;">Recommended Resolution 1920 x 720 </i>
+			<span style="clear: both;"></span>
+		</p>
 	</div>
 
 </div>

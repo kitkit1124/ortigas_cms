@@ -20,7 +20,7 @@
 				<div class="col-sm-10">
 					<?php 
 					$dtpost = date_create($record->job_created_on); 
-					echo form_input(array('id'=>'Date', 'name'=>'Date', 'value'=>set_value('Date', isset($record->job_created_on) ? date_format($dtpost,"F j, Y") : ''), 'class'=>'form-control'));?>
+					echo form_input(array('id'=>'Date', 'name'=>'Date', 'value'=>set_value('Date', isset($record->job_created_on) ? date_format($dtpost,"F j, Y - h:s A") : ''), 'class'=>'form-control'));?>
 				</div>
 			</div>		
 		</div>
@@ -147,7 +147,7 @@
 							break;
 					}
 					?>
-					<a href="<?php echo config_item('website_url'); echo isset($record->job_document) ? $record->job_document : '' ?>" download><i class="<?php echo isset($record->job_document) ? $thumb : ''; ?>" aria-hidden="true"></i></a>
+					<a href="<?php echo config_item('website_url'); echo isset($record->job_document) ? $record->job_document : '' ?>" download><i class="<?php echo isset($record->job_document) ? $thumb : ''; ?>" aria-hidden="true"></i><i class="fa fa-download" aria-hidden="true"></i></a>
 					<?php //echo form_input(array('id'=>'job_document', 'name'=>'job_document', 'value'=>set_value('job_document', isset($record->job_document) ? $record->job_document : ''), 'class'=>'form-control'));?>
 					<div id="error-job_document"></div>			
 				</div>

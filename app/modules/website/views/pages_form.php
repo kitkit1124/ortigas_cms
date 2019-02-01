@@ -48,7 +48,15 @@
 
 						<?php $display = ''; if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){ $display = 'hide'; } ?>
 						<div class="form-group <?php echo $display; ?>">
-							<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
+
+							<?php if($record->page_id == 11){ ?>
+								<label class="control-label" for="page_content">OCLP Content:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
+							<?php } else{ ?>
+								<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
+							<?php }?>
+
+
+							
 							<div class="pull-right" style="margin-top:-5px">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>
@@ -62,7 +70,11 @@
 						</div>
 						
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
-							<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>									
+							<?php if($record->page_id == 11){ ?>
+								<label class="control-label" for="page_bottom_content">CCC Content: </label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
+							<?php } else{ ?>
+								<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>
+							<?php }?>
 							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? $record->page_bottom_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_bottom_content"></div>
 						</div>

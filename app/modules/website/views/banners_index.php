@@ -62,7 +62,7 @@
 						 			<div id="video_upload">
 						 				<div class="row">
 						 					<div class="col-sm-4">
-								 				<video width="400" controls>
+								 				<video width="400" controls autoplay="true">
 												  <source src="<?php echo site_url().$video->video_location; ?>" type="video/mp4">
 												  Your browser does not support HTML5 video.
 												</video><br>
@@ -70,7 +70,7 @@
 													<i class="fa fa-upload"></i>
 												</a>
 						 					</div>
-						 					<div class="col-sm-6">
+						 					<div class="col-sm-8">
 						 						<h1>Video Details</h1>
 
 						 						<input type="hidden" id='csrf_video' value="<?php echo $this->security->get_csrf_hash(); ?>" />
