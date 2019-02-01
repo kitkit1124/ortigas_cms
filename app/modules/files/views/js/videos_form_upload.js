@@ -11,38 +11,35 @@ $(function() {
 	      });
 	    }
 	  }*/
-	 try{
-			myDropzone.on("success", function(file, response) {
-				
-				var response = jQuery.parseJSON(response);
+	myDropzone.on("success", function(file, response) {
+		
+		var response = jQuery.parseJSON(response);
 
-				if (response.status == 'failed') {
-					alert(jQuery(response.error).text());
+		if (response.status == 'failed') {
+			alert(jQuery(response.error).text());
 
-				} else {
+		} else {
 
-					// closes the modal
-					$('#modal').modal('hide'); 
-				
-					// $('#video_upload video').val(response.image);
-					$('#video_upload video').attr('src', site_url + response.video_source);
+			// closes the modal
+			$('#modal').modal('hide'); 
+		
+			// $('#video_upload video').val(response.image);
+			$('#video_upload video').attr('src', site_url + response.video_source);
 
-					// restores the modal content to loading state
-					restore_modal(); 
+			// restores the modal content to loading state
+			restore_modal(); 
 
-					// shows the success message
-					alertify.success(response.message);
-				}
-				
-				$('.dz-image, .dz-preview').remove();
-				$('.dz-message').show();
-
-
-			});
+			// shows the success message
+			alertify.success(response.message);
 		}
-		catch(e){
-			console.log(e)
-		}
+		
+		$('.dz-image, .dz-preview').remove();
+		$('.dz-message').show();
+
+
+	}).on('error',function(file, response){
+		alert(jQuery(response.error).text());
+	});
 
 	// disables the enter key
 	$('form input').keydown(function(event){
