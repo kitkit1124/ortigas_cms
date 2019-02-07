@@ -135,24 +135,39 @@ class Messages extends MX_Controller {
 		$record = $this->messages_model->find($id);
 		$data['record'] = $record;
 		if($record->message_section == 'Estates'){
-			$section = $this->estates_model->find($data['record']->message_section_id);
-			$section = $section->estate_name;
+			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
+				$section = $this->estates_model->find($data['record']->message_section_id);
+				$section = $section->estate_name;
+			}
+			else{
+				$section = 'General';
+			}
 		}
 		else if($record->message_section == 'Leasing Inquiry'){
 			$section = $this->property_lease_spaces_model->find($data['record']->message_section_id);
 			$section = $section->lease_name;
 		}
 		else if($record->message_section == 'Career Inquiry'){
-			$section = $this->careers_model->find($data['record']->message_section_id);
-			$section = $section->career_position_title;
+			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
+				$section = $this->careers_model->find($data['record']->message_section_id);
+				$section = $section->career_position_title;
+			}
+			else{
+				$section = 'General';
+			}
 		}
 		else if($record->message_section == 'News'){
 			$section = $this->posts_model->find($data['record']->message_section_id);
-			$section = $section->post_title;
+			$section = 'General';
 		}
-		else{
-			$section = $this->properties_model->find($data['record']->message_section_id);
-			$section = $section->property_name;
+		else if($record->message_section == 'Residences' || $record->message_section == 'Malls' || $record->message_section == 'Offices'){
+			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
+				$section = $this->properties_model->find($data['record']->message_section_id);
+				$section = $section->property_name;
+			}
+			else{
+				$section = 'General';
+			}
 		}
 
 		$data['section'] = $section;

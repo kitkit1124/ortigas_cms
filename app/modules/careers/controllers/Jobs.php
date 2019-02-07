@@ -131,9 +131,10 @@ class Jobs extends MX_Controller {
 		$this->load->model('careers_model');
 		$careers = $this->careers_model->get_select_careers();
 		$data['careers'] = $careers;
-		
-		$data['divisions'] = $this->divisions_model->find($data['record']->job_career_id);
-		$data['departments'] = $this->departments_model->find($data['record']->job_career_id);
+
+		$career = $this->careers_model->find($data['record']->job_career_id);
+		$data['divisions'] = $this->divisions_model->where('division_status','Active')->where('division_deleted',0)->find($career->career_div);
+		$data['departments'] = $this->departments_model->where('department_status','Active')->where('department_deleted',0)->find($career->career_dept);
 
 
 		// render the page
