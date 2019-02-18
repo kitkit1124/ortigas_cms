@@ -22,14 +22,22 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 
 	     		<?php if ($sliders): ?>
 					<div id="sortable" class="row">
-						<?php foreach ($sliders as $slider): ?>
+						<?php foreach ($sliders as $slider): 
+							$src = $slider->image_slider_image;
+							if(substr($src,-3) == 'png') {
+								$src = str_replace(".png", "_thumb.png", $src); 
+							}else{
+								$src = str_replace(".jpg", "_thumb.jpg", $src); 
+							}
+						?>
+
 							<li class="ui-state-default col-sm-3" data-id="<?php echo $slider->image_slider_id; ?>">
 								<div class="thumbnail">
 									<div class="pull-right thumbnail_buttons">
 										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('properties/image_sliders/form/edit/' . $slider->image_slider_id); ?>"><div class="fa fa-pencil"></div></a>
 										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-danger" href="<?php echo site_url('properties/image_sliders/delete/' . $slider->image_slider_id); ?>"><div class="fa fa-trash"></div></a>
 									</div>
-									<img src="<?php echo site_url($slider->image_slider_image); ?>" width="100%" />
+									<img src="<?php echo site_url($src); ?>" width="100%" />
 								</div>
 							</li>
 						<?php endforeach; ?>

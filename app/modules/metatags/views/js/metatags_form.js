@@ -124,6 +124,8 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(ajax_url, {
+			metatag_robots: $('#metatag_robots').val(),
+			metatag_code: $('#metatag_code').val(),
 			metatag_title: $('#metatag_title').val(),
 			metatag_keywords: $('#metatag_keywords').val(),
 			metatag_description: $('#metatag_description').val(),

@@ -1,6 +1,6 @@
 $(function() {
 	
-	
+	var map;
 	// handles the submit action
 	$('#post').click(function(e){
 		// change the button to loading state
@@ -40,7 +40,8 @@ $(function() {
 			property_twitter: $('#property_twitter').val(),
 			property_instagram: $('#property_instagram').val(),
 			property_linkedin: $('#property_linkedin').val(),
-			property_youtube: $('#property_youtube').val(),
+			property_map_name: $('#property_map_name').val(),
+			property_latitude: $('#property_latitude').val(),
 			property_latitude: $('#property_latitude').val(),
 			property_longitude: $('#property_longitude').val(),
 			property_nearby_malls: tinyMCE.get('property_nearby_malls').getContent(),
@@ -174,6 +175,7 @@ function initMap() {
             searchBox.setBounds(bounds);    
             $('#property_latitude').val(map.getCenter().lat());
             $('#property_longitude').val(map.getCenter().lng());
+          
             $('#zoom').val(map.getZoom());
         });
     });
@@ -184,6 +186,7 @@ function initMap() {
 		    var infowindow = new google.maps.InfoWindow;
 		    geocodeLatLng(geocoder, map, infowindow);
 		}
+
 	}
     
     // drag event
@@ -205,13 +208,16 @@ function geocodeLatLng(geocoder, map, infowindow) {
     geocoder.geocode({'location': latlng}, function(results, status) {
       if (status === 'OK') {
         if (results[0]) {
-          map.setZoom(11);
+          map.setZoom(16);
           var marker = new google.maps.Marker({
             position: latlng,
             map: map
           });
-          infowindow.setContent(results[0].formatted_address);
-          infowindow.open(map, marker);
+          // infowindow.setContent(results[0].formatted_address);
+          // infowindow.open(map, marker);
+          map = results[0].formatted_address;
+          $('#pac-input').val(map);
+
         } else {
           window.alert('No results found');
         }

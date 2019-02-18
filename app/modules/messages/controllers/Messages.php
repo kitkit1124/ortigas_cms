@@ -133,44 +133,37 @@ class Messages extends MX_Controller {
 
 		if ($action != 'add')
 		$record = $this->messages_model->find($id);
+
+
 		$data['record'] = $record;
-		if($record->message_section == 'Estates'){
-			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
-				$section = $this->estates_model->find($data['record']->message_section_id);
-				$section = $section->estate_name;
+
+		$section = $record->message_section;
+        $section_id = $record->message_section_id;
+
+		if(isset($section_id) && $section_id > 0){
+			if($section == 'Estates'){
+				$sec_data = $this->estates_model->find($section_id);
+				$message_section_id = $sec_data->estate_name;
 			}
-			else{
-				$section = 'General';
+			else if($section == 'Leasing Inquiry'){
+				$sec_data = $this->property_lease_spaces_model->find($section_id);
+				$message_section_id = $sec_data->lease_name;
+			}
+			else if($section == 'Career Inquiry'){
+				$sec_data = $this->careers_model->find($section_id);
+				$message_section_id = $sec_data->career_position_title;
+			}
+			else if($section == 'Residences' || $section == 'Malls' || $section == 'Offices' || $section == 'Sales Inquiry'){
+				$sec_data = $this->properties_model->find($section_id);
+				$message_section_id = $sec_data->property_name;
 			}
 		}
-		else if($record->message_section == 'Leasing Inquiry'){
-			$section = $this->property_lease_spaces_model->find($data['record']->message_section_id);
-			$section = $section->lease_name;
-		}
-		else if($record->message_section == 'Career Inquiry'){
-			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
-				$section = $this->careers_model->find($data['record']->message_section_id);
-				$section = $section->career_position_title;
-			}
-			else{
-				$section = 'General';
-			}
-		}
-		else if($record->message_section == 'News'){
-			$section = $this->posts_model->find($data['record']->message_section_id);
-			$section = 'General';
-		}
-		else if($record->message_section == 'Residences' || $record->message_section == 'Malls' || $record->message_section == 'Offices'){
-			if(isset($data['record']->message_section_id) && $data['record']->message_section_id > 0){
-				$section = $this->properties_model->find($data['record']->message_section_id);
-				$section = $section->property_name;
-			}
-			else{
-				$section = 'General';
-			}
+		else{
+			$message_section_id = 'General';
 		}
 
-		$data['section'] = $section;
+
+		$data['section'] = $message_section_id;
 
 		
 

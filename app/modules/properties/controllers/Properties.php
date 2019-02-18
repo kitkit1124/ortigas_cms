@@ -137,6 +137,7 @@ class Properties extends MX_Controller {
 					'property_instagram'		=> form_error('property_instagram'),
 					'property_linkedin'			=> form_error('property_linkedin'),
 					'property_youtube'			=> form_error('property_youtube'),
+					'property_map_name'			=> form_error('property_map_name'),
 					'property_latitude'			=> form_error('property_latitude'),
 					'property_longitude'		=> form_error('property_longitude'),
 					'property_nearby_malls'		=> form_error('property_nearby_malls'),
@@ -434,7 +435,7 @@ class Properties extends MX_Controller {
 		$this->form_validation->set_rules('property_estate_id', lang('property_estate_id'), 'required');
 		$this->form_validation->set_rules('property_category_id', lang('property_category_id'), 'required');
 		$this->form_validation->set_rules('property_location_id', lang('property_location_id'), 'required');
-		$this->form_validation->set_rules('property_price_range_id', lang('property_price_range_id'), 'required');
+		// $this->form_validation->set_rules('property_price_range_id', lang('property_price_range_id'), 'required');
 		$this->form_validation->set_rules('property_prop_type_id', lang('property_prop_type_id'), 'required');
 		$this->form_validation->set_rules('property_name', lang('property_name'), 'required|max_length[255]');
 		$this->form_validation->set_rules('property_overview', lang('property_overview'), 'required');
@@ -512,6 +513,7 @@ class Properties extends MX_Controller {
 			'property_instagram'		=> $this->input->post('property_instagram'),
 			'property_linkedin'			=> $this->input->post('property_linkedin'),
 			'property_youtube'			=> $this->input->post('property_youtube'),
+			'property_map_name'			=> $this->input->post('property_map_name'),
 			'property_latitude'			=> $this->input->post('property_latitude'),
 			'property_longitude'		=> $this->input->post('property_longitude'),
 			'property_nearby_malls'		=> $this->input->post('property_nearby_malls'),

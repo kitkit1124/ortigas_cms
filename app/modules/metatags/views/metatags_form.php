@@ -22,6 +22,13 @@
 			<div class="tab-pane active" id="meta_tab">
 
 				<div class="form-group">
+					<label for="metatag_robots"><?php echo lang('metatag_robots')?>:</label>
+					<?php $options = create_dropdown('array', 'Default,No Index'); ?>
+					<?php echo form_dropdown('metatag_robots', $options, set_value('metatag_robots', (isset($record->metatag_robots)) ? $record->metatag_robots : ''), 'id="metatag_robots" class="form-control"'); ?>
+					<div id="error-metatag_robots"></div>
+				</div>
+
+				<div class="form-group">
 					<label for="metatag_title"><?php echo lang('metatag_title')?>:</label>
 					<?php echo form_input(array('id'=>'metatag_title', 'name'=>'metatag_title', 'value'=>set_value('metatag_title', isset($record->metatag_title) ? $record->metatag_title : '',false), 'class'=>'form-control'));?>
 					<div id="error-metatag_title"></div>
@@ -37,6 +44,12 @@
 					<label for="metatag_description"><?php echo lang('metatag_description')?>:</label>
 					<?php echo form_textarea(array('id'=>'metatag_description', 'name'=>'metatag_description', 'rows'=>'2', 'value'=>set_value('metatag_description', isset($record->metatag_description) ? $record->metatag_description : '', false), 'class'=>'form-control')); ?>
 					<div id="error-metatag_description"></div>
+				</div>
+
+				<div class="form-group">
+					<label for="metatag_code"><?php echo lang('metatag_code')?>:</label>
+					<?php echo form_textarea(array('id'=>'metatag_code', 'name'=>'metatag_code', 'rows'=>'2', 'value'=>set_value('metatag_code', isset($record->metatag_code) ? $record->metatag_code : '', false), 'class'=>'form-control')); ?>
+					<div id="error-metatag_code"></div>
 				</div>
 			</div>
 

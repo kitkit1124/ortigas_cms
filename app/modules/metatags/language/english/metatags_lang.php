@@ -18,6 +18,8 @@ $lang['title_facebook_tags']			= 'Facebook';
 $lang['title_twitter_tags']				= 'Twitter';
 
 // Labels
+$lang['metatag_robots']					= 'Robots';
+$lang['metatag_code']					= 'Internal Code';
 $lang['metatag_title']					= 'Title';
 $lang['metatag_keywords']				= 'Keywords';
 $lang['metatag_description']			= 'Description';

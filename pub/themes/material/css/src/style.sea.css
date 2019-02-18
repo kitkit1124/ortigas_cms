@@ -25,6 +25,7 @@ span {
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
+  word-break: break-word;
 }
 
 a:hover, a:focus,

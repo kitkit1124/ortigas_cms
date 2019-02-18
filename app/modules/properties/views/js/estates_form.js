@@ -189,8 +189,10 @@ function geocodeLatLng(geocoder, map, infowindow) {
 	        position: latlng,
 	        map: map
 	      });
-	      infowindow.setContent(results[0].formatted_address);
-	      infowindow.open(map, marker);
+	      // infowindow.setContent(results[0].formatted_address);
+	      // infowindow.open(map, marker);
+	      map = results[0].formatted_address;
+          $('#pac-input').val(map);
 	    } else {
 	      window.alert('No results found');
 	    }

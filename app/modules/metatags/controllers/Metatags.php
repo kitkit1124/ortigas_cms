@@ -76,7 +76,9 @@ class Metatags extends MX_Controller
 			{	
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
-				$response['errors'] = array(					
+				$response['errors'] = array(			
+					'metatag_robots'				=> form_error('metatag_robots'),
+					'metatag_code'					=> form_error('metatag_code'),		
 					'metatag_title'					=> form_error('metatag_title'),
 					'metatag_keywords'				=> form_error('metatag_keywords'),
 					'metatag_description'			=> form_error('metatag_description'),
@@ -144,6 +146,8 @@ class Metatags extends MX_Controller
 		}
 
 		$data = array(
+			'metatag_robots'				=> $this->input->post('metatag_robots'),
+			'metatag_code'				=> $this->input->post('metatag_code'),
 			'metatag_title'					=> $this->input->post('metatag_title'),
 			'metatag_keywords'				=> $this->input->post('metatag_keywords'),
 			'metatag_description'			=> $this->input->post('metatag_description'),

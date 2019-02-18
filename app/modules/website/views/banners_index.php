@@ -145,8 +145,9 @@
 						    		<div class="text-right add_banner">
 										<a href="<?php echo site_url('website/banners/form/add/' . $banner_group_id); ?>" class="btn btn-sm btn-success" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-plus"></i>
 										<?php echo lang('button_add')?></a>
-										<?php if ($banner_group_id > 10){ ?>
+										
 										<a href="<?php echo site_url('website/banner_groups/form/edit/' . $banner_group_id); ?>" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-lg"><i class="fa fa-edit"></i> Edit Group</a>
+										<?php if ($banner_group_id > 10){ ?>
 										<a href="<?php echo site_url('website/banner_groups/delete/' . $banner_group_id); ?>" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#modal"><i class="fa fa-trash"></i> Delete Group</a>
 										<?php } ?>
 									</div>	    	

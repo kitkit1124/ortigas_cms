@@ -1,4 +1,3 @@
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDN6cUNcHO88eddYIc5mo4nW4t-sOPILCE&libraries=places&callback=initMap" type="text/javascript"></script>
 <section id="roles">
 	<div class="container-fluid">
 
@@ -71,7 +70,7 @@
 						<div class="row">
 							<div class="col-sm-6 property_vital_details">
 								<div class="form-group">
-									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label><span class="error_asterisk"> *</span>	
+									<label for="property_price_range_id"><?php echo lang('property_price_range_id')?>:</label>
 									<?php echo form_dropdown('property_price_range_id', $price_range, set_value('property_price_range_id', (isset($record->property_price_range_id)) ? $record->property_price_range_id : ''), 'id="property_price_range_id" class="form-control"'); ?>
 									<div id="error-property_price_range_id"></div>
 								</div>
@@ -187,8 +186,16 @@
 						      </div>
 						      <div id="collapseTwo" class="collapse" data-parent="#accordion">
 						        <div class="card-body">
+
+						        	<div class="form-group">
+										<label class="control-label" for="property_map_name"><?php echo lang('property_map_name'); ?> Override <span style="color:#CCC">(Optional)</span>: </label>
+										<?php echo form_textarea(array('id'=>'property_map_name', 'name'=>'property_map_name', 'rows'=>'2', 'value'=>set_value('property_map_name', isset($record->property_map_name) ? $record->property_map_name : '',FALSE), 'class'=>'form-control meta-title '));?>
+										<div id="error-property_map_name"></div>
+									</div>
+
+
 									<div class="form-group">
-													
+														
 										<input id="pac-input" type="text" placeholder="Search">
 										<div id="map"></div>
 										<div style="display: none;">
@@ -196,7 +203,7 @@
 											<?php echo form_input(array('id'=>'property_latitude', 'name'=>'property_latitude', 'value'=>set_value('property_latitude', isset($record->property_latitude) ? $record->property_latitude : ''), 'class'=>'form-control'));?>
 										</div>
 									</div>     
-									<div class="row">
+									<div class="row hidden hide">
 										<div class="col">
 											<div class="form-group">
 												<label for="property_nearby_malls"><?php echo lang('property_nearby_malls')?>:</label>			

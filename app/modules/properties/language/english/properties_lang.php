@@ -35,6 +35,7 @@ $lang['property_twitter']			= 'Twitter';
 $lang['property_instagram']			= 'Instagram';
 $lang['property_linkedin']			= 'Linkedin';
 $lang['property_youtube']			= 'Youtube';
+$lang['property_map_name']			= 'Map Text';
 $lang['property_latitude']			= 'Latitude';
 $lang['property_longitude']			= 'Longitude';
 $lang['property_nearby_malls']		= 'Nearby Malls';
