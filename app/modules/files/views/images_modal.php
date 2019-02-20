@@ -173,7 +173,7 @@ $(function() {
 					if (full[4]) {
 						buttons += '<button class="btn btn-default btn-image" data-thumb="' + full[5] +'" data-image="' + full[4] + '">Original</button> ';
 					}
-					return '<div class="col-mini-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + site_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
+					return '<div class="col-mini-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
 				},
 			},
 			{
@@ -217,7 +217,7 @@ $('#image_sizes, #thumbnails').on("click", ".btn-image", function() {
 	var image = $(this).attr('data-image');
 	var thumb = $(this).attr('data-thumb');
 
-	$('#' + image_field_id + '_preview').attr('src', site_url + thumb);
+	$('#' + image_field_id + '_preview').attr('src', asset_url + thumb);
 	$('#' + image_field_id + '_thumb').val(thumb);
 	$('#' + image_field_id).val(image);
 

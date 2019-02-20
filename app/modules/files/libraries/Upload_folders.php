@@ -34,7 +34,7 @@ class Upload_folders {
 	 */	
 	function get()
 	{
-		$upload_path = 'data/uploads/';
+		$upload_path = getenv('UPLOAD_FOLDER').'data/uploads/';
 
 		$year = date("Y");   
 		$month = date("m");   

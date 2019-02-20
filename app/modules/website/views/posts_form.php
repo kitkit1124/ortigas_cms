@@ -83,7 +83,7 @@
 						</div>
 						<div class="form-group">
 							<a href="<?php echo site_url('website/posts/form_upload/add')?>"data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-								<img id="post_active_image" src="<?php echo site_url(isset($record->post_image) ? $record->post_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+								<img id="post_active_image" src="<?php echo isset($record->post_image) ? getenv('UPLOAD_ROOT').$record->post_image : site_url('ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</a>
 							<?php echo form_textarea(array('id'=>'post_alt_image', 'name'=>'post_alt_image', 'rows'=>'2', 'value'=>set_value('post_alt_image', isset($record->post_alt_image) ? $record->post_alt_image : '', FALSE), 'class'=>'form-control meta-description','placeholder'=>lang('post_alt_image'), 'title'=>lang('post_alt_image') )); ?>
 							<br>

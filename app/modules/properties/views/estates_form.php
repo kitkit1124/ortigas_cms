@@ -91,7 +91,7 @@
 								<label for="estate_image"><?php echo lang('estate_image')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-									<img id="estate_active_photo" src="<?php echo site_url(isset($record->estate_image) ? $record->estate_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+									<img id="estate_active_photo" src="<?php echo isset($record->estate_image) ? getenv('UPLOAD_ROOT').$record->estate_image : site_url('ui/images/placeholder.png') ; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'estate_alt_image', 'name'=>'estate_alt_image', 'rows'=>'2', 'value'=>set_value('estate_alt_image', isset($record->estate_alt_image) ? $record->estate_alt_image : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_image'), 'title' => lang('estate_alt_image') )); ?>
 								<br />
@@ -107,7 +107,7 @@
 								<label for="estate_thumb"><?php echo lang('estate_thumb')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a href="<?php echo site_url('properties/estates/form_upload_thumb/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
-									<img id="estate_active_thumb" src="<?php echo site_url(isset($record->estate_thumb) ? $record->estate_thumb : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+									<img id="estate_active_thumb" src="<?php echo isset($record->estate_thumb) ? getenv('UPLOAD_ROOT').$record->estate_thumb : site_url('ui/images/placeholder.png') ; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'estate_alt_thumb', 'name'=>'estate_alt_thumb', 'rows'=>'2', 'value'=>set_value('estate_alt_thumb', isset($record->estate_alt_thumb) ? $record->estate_alt_thumb : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_thumb'), 'title' => lang('estate_alt_thumb') )); ?>
 								<br />
@@ -127,7 +127,7 @@
 									<i class="fa fa-window-close clear_logo" aria-hidden="true"></i>
 								<?php endif;?>	
 								<a href="<?php echo site_url('properties/estates/form_upload_logo/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm  btn-add" id="upload_button_thumb">
-									<img id="estate_active_logo" src="<?php echo site_url(isset($record->estate_logo) ? $record->estate_logo : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+									<img id="estate_active_logo" src="<?php echo isset($record->estate_logo) ? getenv('UPLOAD_ROOT').$record->estate_logo : site_url('ui/images/placeholder.png') ; ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'estate_alt_logo', 'name'=>'estate_alt_logo', 'rows'=>'2', 'value'=>set_value('estate_alt_logo', isset($record->estate_alt_logo) ? $record->estate_alt_logo : '', false), 'class'=>'form-control', 'placeholder' => lang('estate_alt_logo'), 'title' => lang('estate_alt_thumb') )); ?>
 								<br />

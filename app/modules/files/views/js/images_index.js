@@ -28,7 +28,7 @@ $(function() {
 			{
 				"aTargets": [5],
 				"mRender": function (data, type, full) {
-					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3"><div class="thumbnail"><a href="images/crop/' + full[0] + '" style="right:25px; position: absolute;"><i class="fa fa-crop" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modal" class="close" href="images/delete/' + full[0] + '">&times;</a><a href="' + 'images/view/' + full[0] + '" data-toggle="modal" data-target="#modal"><div class="caption text-center"><strong>' + full[3] + '</strong></div><img src="' + site_url + data + '" class="img-responsive" width="100%" /></a></div></div>';
+					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3"><div class="thumbnail"><a href="images/crop/' + full[0] + '" style="right:25px; position: absolute;"><i class="fa fa-crop" aria-hidden="true"></i></a><a data-toggle="modal" data-target="#modal" class="close" href="images/delete/' + full[0] + '">&times;</a><a href="' + 'images/view/' + full[0] + '" data-toggle="modal" data-target="#modal"><div class="caption text-center"><strong>' + full[3] + '</strong></div><img src="' + asset_url + data + '" class="img-responsive" width="100%" /></a></div></div>';
 				},
 			},
 			{

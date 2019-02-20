@@ -115,19 +115,19 @@ $(function() {
 
 			var html = '<h3>Select the image size to insert</h3><div class="btn-group" role="group">';
 			if (response.thumb) {
-				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + response.host + response.thumb+'">Thumb</button>';
+				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + asset_url + response.thumb+'">Thumb</button>';
 			}
 			if (response.small) {
-				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + response.host + response.small+'">Small</button>';
+				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + asset_url + response.small+'">Small</button>';
 			}
 			if (response.medium) {
-				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + response.host + response.medium+'">Medium</button>';
+				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + asset_url + response.medium+'">Medium</button>';
 			}
 			if (response.large) {
-				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + response.host + response.large+'">Large</button>';
+				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + asset_url + response.large+'">Large</button>';
 			}
 			if (response.image) {
-				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + response.host + response.image+'">Orig</button>';
+				html += '<button class="btn btn-mini btn-default btn-image" data-name="' + response.name +'" data-src="' + asset_url + response.image+'">Orig</button>';
 			}
 			html += '</div>';
 
@@ -160,21 +160,21 @@ $(function() {
 				"mRender": function (data, type, full) {
 					var buttons = '';
 					if (full[5]) {
-						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + website_url + full[5] + '">Thumb</button> ';
+						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + asset_url + full[5] + '">Thumb</button> ';
 					}
 					if (full[8]) {
-						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + website_url + full[8] + '">Small</button> ';
+						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + asset_url + full[8] + '">Small</button> ';
 					}
 					if (full[7]) {
-						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + website_url + full[7] + '">Medium</button> ';
+						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + asset_url + full[7] + '">Medium</button> ';
 					}
 					if (full[6]) {
-						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + website_url + full[6] + '">Large</button> ';
+						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + asset_url + full[6] + '">Large</button> ';
 					}
 					if (full[4]) {
-						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + website_url + full[4] + '">Original</button> ';
+						buttons += '<button class="btn btn-mini btn-default btn-image" data-name="' + full[3] +'" data-src="' + asset_url + full[4] + '">Original</button> ';
 					}
-					return '<div class="col-mini-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail mb-3"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + site_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
+					return '<div class="col-mini-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail mb-3"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
 				},
 			},
 			{

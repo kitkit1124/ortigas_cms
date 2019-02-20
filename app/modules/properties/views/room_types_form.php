@@ -17,7 +17,7 @@
 						<div id="image_container">
 							<!-- <button id="clear_photo_button" class="fa fa-window-close"></button> -->
 							<center>
-								<img id="room_type_active_image" src="<?php echo site_url(isset($record->room_type_image) ? $record->room_type_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+								<img id="room_type_active_image" src="<?php echo isset($record->room_type_image) ? getenv('UPLOAD_ROOT').$record->room_type_image : site_url('ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 							</center>
 						</div>
 

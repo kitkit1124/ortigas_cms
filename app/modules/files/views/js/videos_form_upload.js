@@ -24,7 +24,7 @@ $(function() {
 			$('#modal').modal('hide'); 
 		
 			// $('#video_upload video').val(response.image);
-			$('#video_upload video').attr('src', site_url + response.video_source);
+			$('#video_upload video').attr('src', asset_url + response.video_source);
 
 			// restores the modal content to loading state
 			restore_modal(); 

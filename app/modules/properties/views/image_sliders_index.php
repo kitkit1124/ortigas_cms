@@ -37,7 +37,7 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('properties/image_sliders/form/edit/' . $slider->image_slider_id); ?>"><div class="fa fa-pencil"></div></a>
 										<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-danger" href="<?php echo site_url('properties/image_sliders/delete/' . $slider->image_slider_id); ?>"><div class="fa fa-trash"></div></a>
 									</div>
-									<img src="<?php echo site_url($src); ?>" width="100%" />
+									<img src="<?php echo getenv('UPLOAD_ROOT').$src; ?>" width="100%" />
 								</div>
 							</li>
 						<?php endforeach; ?>

@@ -454,16 +454,18 @@ class Images extends MX_Controller
 			}
 		}
 
+		$image_file = str_replace(getenv('UPLOAD_FOLDER'),"",$image_file);
+
 		// add to db
 		$data = array(
 			'image_width'		=> $image_data['image_width'],
 			'image_height'		=> $image_data['image_height'],
 			'image_name'		=> $image_data['orig_name'],
 			'image_file'		=> $image_file,
-			'image_large'		=> (isset($new_image['large'])) ? $new_image['large'] : '',
-			'image_medium'		=> (isset($new_image['medium'])) ? $new_image['medium'] : '',
-			'image_small'		=> (isset($new_image['small'])) ? $new_image['small'] : '',
-			'image_thumb'		=> (isset($new_image['thumb'])) ? $new_image['thumb'] : $image_file,
+			'image_large'		=> (isset($new_image['large'])) ? str_replace(getenv('UPLOAD_FOLDER'),"",$new_image['large']) : '',
+			'image_medium'		=> (isset($new_image['medium'])) ? str_replace(getenv('UPLOAD_FOLDER'),"",$new_image['medium']) : '',
+			'image_small'		=> (isset($new_image['small'])) ? str_replace(getenv('UPLOAD_FOLDER'),"",$new_image['small']) : '',
+			'image_thumb'		=> (isset($new_image['thumb'])) ? str_replace(getenv('UPLOAD_FOLDER'),"",$new_image['thumb']) : $image_file,
 		);
 		$this->images_model->insert($data);
 

@@ -122,7 +122,7 @@ $(function() {
 
 			console.log(src);
 
-			tinyMCE.execCommand('mceInsertContent', false, '<a href="' + site_url + src + '">' + name + '</a>');
+			tinyMCE.execCommand('mceInsertContent', false, '<a href="' + asset_url + src + '">' + name + '</a>');
 
 			// closes the modal
 			$('#modal').modal('hide');
@@ -155,7 +155,7 @@ $(function() {
 				"mRender": function (data, type, full) {
 					var buttons = '';
 
-					buttons = '<button class="btn btn-mini btn-default btn-doc" data-name="' + full[1] +'" data-src="' + site_url + full[2] + '">Insert</button>';
+					buttons = '<button class="btn btn-mini btn-default btn-doc" data-name="' + full[1] +'" data-src="' + asset_url + full[2] + '">Insert</button>';
 
 					return '<div class="col-mini-6 col-sm-4 col-md-4 col-lg-4"><div class="thumbnail mb-3"><a data-toggle="modal" data-target="#modal" class="close" href="documents/delete/' + full[0] + '">&times;</a><a href="' + 'documents/view/' + full[0] + '" data-toggle="modal" data-target="#modal"><div><strong>' + full[1] + '</strong></div><div class="caption text-center"><strong>' + buttons + '</strong></div><i class="' + full[3] + '" aria-hidden="true"></i></a></div></div>';
 				},

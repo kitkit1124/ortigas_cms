@@ -17,10 +17,10 @@ $(function() {
 			$('#modal').modal('hide'); 
 		
 			$('#property_image').val(response.image);
-			$('#property_active_image').attr('src', site_url + response.image);
+			$('#property_active_image').attr('src', asset_url + response.image);
 
 			$('.selected_image').val(response.image);
-			$('.active_image_thumb').attr('src', site_url + response.image);
+			$('.active_image_thumb').attr('src', asset_url + response.image);
 
 			// restores the modal content to loading state
 			restore_modal(); 
@@ -67,7 +67,7 @@ $(function() {
 					if (full[4]) {
 						buttons += '<button class="btn btn-xs btn-default btn-image" data-image="' + full[4] + '" data-thumb="' + full[5] + '">Original</button> ';
 					}
-					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + site_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
+					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
 				},
 			},
 
@@ -107,10 +107,10 @@ $(function() {
 		var image = $(this).attr('data-image');
 		var thumb = $(this).attr('data-thumb');
 		$('#property_image').val(image);
-		$('#property_active_image').attr('src', site_url + image);
+		$('#property_active_image').attr('src', asset_url + image);
 
 		$('.selected_image').val(image);
-		$('.active_image_thumb').attr('src', site_url + image);
+		$('.active_image_thumb').attr('src', asset_url + image);
 
 		// show the form
 /*		$('#image').css('display','none');

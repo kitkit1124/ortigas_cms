@@ -18,7 +18,7 @@
 			     </div>
 			    <div class="col-sm-9">
 			        <a href="javascript:;" id="image_slider_image_link">
-			        	<img id="image_slider_image_thumb" src="<?php echo (isset($record->image_slider_image) && $record->image_slider_image) ? site_url($record->image_slider_image) : site_url('ui/images/transparent.png'); ?>" height="200" /></a>
+			        	<img id="image_slider_image_thumb" src="<?php echo (isset($record->image_slider_image) && $record->image_slider_image) ? getenv('UPLOAD_ROOT').$record->image_slider_image : site_url('ui/images/transparent.png'); ?>" height="200" /></a>
 			        <div id="error-image_slider_image"></div>
 			    </div>
 			</div>

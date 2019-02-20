@@ -13,7 +13,7 @@ $(function() {
 		} else {
 
 			$('#unit_image').val(img.image);
-			$('#unit_active_image').attr('src', site_url + img.image);
+			$('#unit_active_image').attr('src', asset_url + img.image);
 			$('.dz-image, .dz-preview').remove();
 			$('.dz-message').show();
 			

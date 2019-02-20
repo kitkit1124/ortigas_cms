@@ -30,7 +30,7 @@ $(function() {
 				"aTargets": [0],
 				"mRender": function (data, type, full) {
 
-					return '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2"><div class="thumbnails"><a data-toggle="modal" data-target="#modal" class="close" href="documents/delete/' + full[0] + '">&times;</a><a href="' + site_url + full[2] + '" download><div class="caption text-center"><strong>' + full[1] + '</strong></div><i class="' + full[3] + '" aria-hidden="true"></i></a></div></div>';
+					return '<div class="col-xs-12 col-sm-6 col-md-4 col-lg-2"><div class="thumbnails"><a data-toggle="modal" data-target="#modal" class="close" href="documents/delete/' + full[0] + '">&times;</a><a href="' + asset_url + full[2] + '" download><div class="caption text-center"><strong>' + full[1] + '</strong></div><i class="' + full[3] + '" aria-hidden="true"></i></a></div></div>';
 				},
 			},
 			{

@@ -53,7 +53,7 @@
 								<label for="division_image"><?php echo lang('division_image')?>:</label><span class="error_asterisk"> *</span>				
 								<br>
 								<a style="padding: 0;" href="<?php echo site_url('/careers/divisions/form_upload/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-add" id="upload_button">
-									<img id="division_active_photo" src="<?php echo site_url(isset($record->division_image) ? $record->division_image : 'ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
+									<img id="division_active_photo" src="<?php echo isset($record->division_image) ? getenv('UPLOAD_ROOT').$record->division_image : site_url('ui/images/placeholder.png'); ?>" onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" class="img-responsive" width="100%" alt=""/>
 								</a>
 								<?php echo form_textarea(array('id'=>'division_alt_image', 'name'=>'division_alt_image', 'rows'=>'2', 'value'=>set_value('division_alt_image', isset($record->division_alt_image) ? $record->division_alt_image : '', false), 'class'=>'form-control', 'placeholder' => lang('division_alt_image'), 'title' => lang('division_alt_image') )); ?>
 								<br />

@@ -199,7 +199,7 @@ class Documents extends MX_Controller
 		// upload config
 		$config = array();
 		$config['upload_path'] = $folder;
-		$config['allowed_types'] = 'xlsx|docx|one|pptx|doc|xlsb|xls|asd|dotx|dot|docm|ppt|pptm|xltx|ppsm|xla|ppsx|xlt|ppsx|xlt|psw|uot|hwp|odm|sxg|sxc|sxc|pdf';
+		$config['allowed_types'] = 'xlsx|docx|one|pptx|doc|xlsb|xls|asd|dotx|dot|docm|ppt|pptm|xltx|ppsm|xla|ppsx|xlt|ppsx|xlt|psw|uot|hwp|odm|sxg|sxc|sxc|pdf|docx';
 		$config['max_size']	= 0;
 		$config['max_width']  = 0;
 		$config['max_height']  = 0;
@@ -262,6 +262,9 @@ class Documents extends MX_Controller
 			$document_name = $document_data['orig_name'];
 
 			// add to db
+
+			$folder = str_replace(getenv('UPLOAD_FOLDER'),"",$folder);
+			
 			$data = array(
 				'document_name'		=> $document_name,
 				'document_file'		=> $folder . '/' . $document_name,

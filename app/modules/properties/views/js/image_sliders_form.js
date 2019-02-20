@@ -29,7 +29,7 @@ $(function() {
 				buttons += '<button class="btn btn-xs btn-default btn-image" data-image="' + response.image+'" data-thumb="' + response.thumb+'">Original</button>';
 			}
 
-			html = '<div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + response.host + response.thumb + '" class="img-responsive" width="100%" /></div><h4>Hover on the image then select the size</h4>';
+			html = '<div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + response.thumb + '" class="img-responsive" width="100%" /></div><h4>Hover on the image then select the size</h4>';
 
 			$('#image_sizes').html(html);
 		}
@@ -70,7 +70,7 @@ $(function() {
 					if (full[4]) {
 						buttons += '<button class="btn btn-xs btn-default btn-image" data-image="' + full[4] + '" data-thumb="' + full[5] + '">Original</button> ';
 					}
-					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + site_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
+					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
 				},
 			},
 
@@ -179,7 +179,7 @@ $(function() {
 		// insert the image
 		var image = $(this).attr('data-image');
 		$('#image_slider_image').val(image);
-		$('#image_slider_image_thumb').attr('src', site_url + image);
+		$('#image_slider_image_thumb').attr('src', asset_url + image);
 
 		// show the form
 		$('#image').css('display','none');

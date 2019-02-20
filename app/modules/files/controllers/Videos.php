@@ -255,6 +255,8 @@ class Videos extends MX_Controller
 			$video_data = $this->upload->data();
 
 			// add to db
+
+			$folder = str_replace(getenv('UPLOAD_FOLDER'),"",$folder);
 			$data = array(
 			    'video_location'     => $folder.'/'.$video_data['file_name']
 			);

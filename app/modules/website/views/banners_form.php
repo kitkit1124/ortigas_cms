@@ -17,7 +17,7 @@
 			     	<label for="banner_image"><?php echo lang('banner_image')?>:</label>
 			     </div>
 			    <div class="col-sm-9">
-			        <a href="javascript:;" id="banner_image_link" class="banner_image" data-target="banner_thumb"><img id="preview_image_thumb" src="<?php echo (isset($record->banner_thumb) && $record->banner_thumb) ? site_url($record->banner_thumb) : site_url('ui/images/transparent.png'); ?>" height="140" /></a>
+			        <a href="javascript:;" id="banner_image_link" class="banner_image" data-target="banner_thumb"><img id="preview_image_thumb" src="<?php echo (isset($record->banner_thumb) && $record->banner_thumb) ? getenv('UPLOAD_ROOT').$record->banner_thumb : site_url('ui/images/transparent.png'); ?>" height="140" /></a>
 			        <div id="error-banner_image"></div>
 			    </div>
 			</div>

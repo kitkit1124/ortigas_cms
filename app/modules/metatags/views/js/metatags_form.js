@@ -79,7 +79,7 @@ $(function() {
 					if (full[4]) {
 						buttons += '<button class="btn btn-sm btn-default btn-image" data-src="' + full[4] + '">Original</button> ';
 					}
-					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail mb-4"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + site_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
+					return '<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6"><div class="thumbnail mb-4"><div class="caption"><h4>Select the image size</h4>' + buttons + '</div><img src="' + asset_url + data + '" class="img-responsive" width="100%" data-id="' + full[0] + '" /></div></div>';
 				},
 			},
 
@@ -253,7 +253,7 @@ $('#image_sizes, #thumbnails').on("click", ".btn-image", function() {
 	var src = $(this).attr('data-src');
 	var target = $(this).closest('.tab-content').attr('data-target');
 	$('#' + target + ' .metatag_image_path').val(src);
-	$('#' + target + ' .metatag_image_thumb').attr('src', site_url + src);
+	$('#' + target + ' .metatag_image_thumb').attr('src', asset_url + src);
 
 	// show the tab
 	var target_tab = $('#' + target).closest('.tab-pane').attr('id');

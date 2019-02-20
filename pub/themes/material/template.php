@@ -249,7 +249,10 @@ $user = $this->ion_auth->user()->row();
 	</div>
 
 	
-	<script>var site_url = '<?php echo site_url(); ?>';</script>
+	<script>
+		var site_url = '<?php echo site_url(); ?>';
+		var asset_url = '<?php echo getenv('UPLOAD_ROOT'); ?>';
+	</script>
 	<?php if (NULL !== config_item('website_url')): ?>
 		<script>var website_url = '<?php echo config_item('website_url'); ?>';</script>
 	<?php endif; ?>

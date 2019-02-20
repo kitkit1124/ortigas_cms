@@ -63,7 +63,7 @@
 						 				<div class="row">
 						 					<div class="col-sm-4">
 								 				<video width="400" controls autoplay="true">
-												  <source src="<?php echo site_url().$video->video_location; ?>" type="video/mp4">
+												  <source src="<?php echo getenv('UPLOAD_ROOT').$video->video_location; ?>" type="video/mp4">
 												  Your browser does not support HTML5 video.
 												</video><br>
 												<a href="<?php echo site_url('website/banners/video_upload/add')?>" data-toggle="modal" data-target="#modal" id="upload_button" class="btn btn-sm btn-primary" style="min-width: 400px">
@@ -162,7 +162,7 @@
 															<a data-toggle="modal" data-target="#modal-lg" class="btn btn-xs btn-success" href="<?php echo site_url('website/banners/form/edit/' . $banner->banner_id); ?>"><div class="fa fa-pencil"></div></a>
 															<a data-toggle="modal" data-target="#modal" class="btn btn-xs btn-danger" href="<?php echo site_url('website/banners/delete/' . $banner->banner_id); ?>"><div class="fa fa-trash"></div></a>
 														</div>
-														<img src="<?php echo site_url($banner->banner_image); ?>"  onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" width="100%"/>
+														<img src="<?php echo getenv('UPLOAD_ROOT').$banner->banner_image; ?>"  onerror="this.onerror=null;this.src='<?php echo site_url('ui/images/placeholder.png')?>';" width="100%"/>
 													</div>
 												</li>
 											<?php endforeach; ?>
