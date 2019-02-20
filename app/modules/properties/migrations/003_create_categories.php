@@ -75,9 +75,9 @@ class Migration_Create_categories extends CI_Migration {
 		$this->migrations_model->add_menus($this->_menus);
 
 		$data = array(
-			array('category_name'  => 'Residences', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
-			array('category_name'  => 'Malls', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
-			array('category_name'  => 'Offices', 'category_image' => 'data/photos/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Residences', 'category_image' => 'data/images/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Malls', 'category_image' => 'data/images/placeholder_category.jpg', 'category_status'  => 'Active'),
+			array('category_name'  => 'Offices', 'category_image' => 'data/images/placeholder_category.jpg', 'category_status'  => 'Active'),
 		);
 		$this->db->insert_batch($this->_table, $data);
 	}
