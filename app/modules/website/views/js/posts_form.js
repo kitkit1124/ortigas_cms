@@ -1,9 +1,11 @@
 $(function() {
 
-
-
-
 	$('#post_properties, #post_tags').select2();
+
+	$('.clear_logo').on('click',function(){
+		$('.upload_document_holder .fa-5x, .upload_document_holder span').remove();
+		$('#post_document').attr('value','');
+	});
 
 	// handles the post action
 	$('#post').click(function(e){
@@ -43,6 +45,12 @@ $(function() {
 			post_status: $('.post_status:checked').val(),
 			post_alt_image: $('#post_alt_image').val(),
 			post_slug: $('#post_slug').val(),
+			post_facebook: $('#post_facebook').val(),
+			post_twitter: $('#post_twitter').val(),
+			post_instagram: $('#post_instagram').val(),
+			post_linkedin: $('#post_linkedin').val(),
+			post_youtube: $('#post_youtube').val(),
+			post_document:  $('#post_document').val(),
 			// post_sidebar_id: $('#post_sidebar_id').val(),
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},

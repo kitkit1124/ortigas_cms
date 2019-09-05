@@ -28,7 +28,7 @@
 
 						<div class="form-group">
 							<label for="partial_content"><?php echo lang('partial_content'); ?>:</label>&nbsp;<span id="error-asterisk-partial_content" class="error_asterisk">*</span>	
-							<div class="pull-right" style="margin-top:-5px">
+							<div class="pull-right" style="margin-top:-5px; display: none;">
 								<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
 								<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>
 								<a href="<?php echo site_url('files/videos/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-video-o"></span> Video</a>

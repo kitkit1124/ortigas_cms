@@ -30,3 +30,58 @@
 #upload_button{
  	padding: 0px;
  }
+
+#dropzone {
+	/*height: 50px !important;*/
+	padding: 0;
+	margin: 0;
+	border: 1px dashed #CCC;
+	width: 100% !important;
+	height: 10px;
+	overflow: hidden;
+}
+
+.modal-body label, .dropzone .dz-message .upload{
+	color: #07793f;
+	letter-spacing: 1px;
+	font-size: 11px;
+	padding-top: 8px;
+	text-transform: uppercase;
+	text-align: left;
+	width: 99%;
+}
+
+
+.upload_document_holder{
+	max-width: 366px;
+	height: 120px;
+	border: 1px dashed;
+	text-align: center;
+    padding: 10px;
+}
+
+.btn_upload{
+	border-top-right-radius: 0px !important;
+	border-top-left-radius: 0px;
+	max-width: 366px;
+	width: 100%;
+}
+
+.color_pdf{
+	color: #d24726;
+}
+
+.color_doc{
+	color: #0f50b4;
+}
+
+ .clear_logo{
+    position: absolute;
+    right: 25px;
+    font-size: 30px;
+    cursor: pointer;
+ }
+
+ .upload_document_holder span{
+ 	font-size: .75rem;
+ }

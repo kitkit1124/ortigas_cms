@@ -145,6 +145,11 @@ class Posts extends MX_Controller
 					'post_posted_on'	=> form_error('post_posted_on'),
 					'post_layout'		=> form_error('post_layout'),
 					'post_slug'			=> form_error('post_slug'),
+					'post_facebook'		=> form_error('post_facebook'),
+					'post_twitter'		=> form_error('post_twitter'),
+					'post_instagram'	=> form_error('post_instagram'),
+					'post_linkedin'		=> form_error('post_linkedin'),
+					'post_youtube'		=> form_error('post_youtube'),
 					// 'post_sidebar_id'	=> form_error('post_sidebar_id'),
 					'post_status'		=> form_error('post_status'),
 				);
@@ -206,6 +211,9 @@ class Posts extends MX_Controller
 		$this->template->add_css('npm/datetimepicker/DateTimePicker.min.css');
 		$this->template->add_js('npm/datetimepicker/DateTimePicker.min.js');
 
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+
 		$this->template->add_css('npm/select2/css/select2.min.css');
 		$this->template->add_js('npm/select2/js/select2.min.js');
 		
@@ -250,6 +258,46 @@ class Posts extends MX_Controller
 		$this->template->add_css(module_css('website', 'form_upload'), 'embed');
 		$this->template->add_js(module_js('website', 'form_upload'), 'embed');
 		$this->template->write_view('content', 'form_upload', $data);
+		$this->template->render();
+	}
+
+
+	function form_document($action = 'add', $id = FALSE)
+	{
+		$this->acl->restrict('files.documents.' . $action, 'modal');
+
+		$data['page_heading'] = 'Upload Document';
+		$data['action'] = $action;
+
+		if ($this->input->post())
+		{
+			if ($this->_save($action, $id))
+			{
+				echo json_encode(array('success' => true, 'message' => lang($action . '_success'))); exit;
+			}
+			else
+			{	
+				$response['success'] = FALSE;
+				$response['message'] = lang('validation_error');
+				$response['errors'] = array(					
+					'document_name'		=> form_error('document_name'),
+					'document_file'		=> form_error('document_file'),
+					'document_thumb'	=> form_error('document_thumb'),
+				);
+				echo json_encode($response);
+				exit;
+			}
+		}
+
+		if ($action != 'add') $data['record'] = $this->documents_model->find($id);
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+		$this->template->add_css(module_css('files', 'documents_form'), 'embed');
+		$this->template->add_js(module_js('website', 'form_document'), 'embed');
+		$this->template->write_view('content', 'files/documents_form', $data);
 		$this->template->render();
 	}
 
@@ -354,6 +402,12 @@ class Posts extends MX_Controller
 			'post_image'		=> $this->input->post('post_image'),
 			'post_posted_on'	=> $this->input->post('post_posted_on'),
 			'post_layout'		=> $this->input->post('post_layout'),
+			'post_facebook'		=> $this->input->post('post_facebook'),
+			'post_twitter'		=> $this->input->post('post_twitter'),
+			'post_instagram'	=> $this->input->post('post_instagram'),
+			'post_linkedin'		=> $this->input->post('post_linkedin'),
+			'post_youtube'		=> $this->input->post('post_youtube'),
+			'post_document'		=> $this->input->post('post_document'),
 			// 'post_sidebar_id'	=> $this->input->post('post_sidebar_id'),
 			'post_status'		=> $this->input->post('post_status'),
 		);

@@ -22,10 +22,11 @@
 				<?php echo form_close();?> 
 				<p class="note">
 					<i style="float: left;margin-left: 6px;">Recommended file type JPEG | PNG</i>
-					<i style="float: right; margin-right: 6px;"> Max file size: 2.0 Mb</i>
+					<i style="float: right; margin-right: 6px;"><?php echo $image_quality['size']; ?></i>
 					<br>
-					<i style="float: left;margin-left: 6px;">Ideal image size: 1920 x 400</i>
+					<i style="float: left;margin-left: 6px;"><?php echo $image_quality['resolution']; ?></i>
 					<span style="clear: both;"></span>
+
 				</p>
 			</div>
 		</div>

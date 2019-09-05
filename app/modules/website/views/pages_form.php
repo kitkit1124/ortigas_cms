@@ -49,7 +49,7 @@
 						<?php $display = ''; if(isset($record->page_id) && $record->page_id && ($record->page_id == 12 || $record->page_id == 13)){ $display = 'hide'; } ?>
 						<div class="form-group <?php echo $display; ?>">
 
-							<?php if($record->page_id == 11){ ?>
+							<?php if(isset($record->page_id) && $record->page_id == 11){ ?>
 								<label class="control-label" for="page_content">OCLP Content:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<?php } else{ ?>
 								<label class="control-label" for="page_content"><?php echo lang('page_content'); ?>:</label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
@@ -70,7 +70,7 @@
 						</div>
 						
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
-							<?php if($record->page_id == 11){ ?>
+							<?php if(isset($record->page_id) &&  $record->page_id == 11){ ?>
 								<label class="control-label" for="page_bottom_content">CCC Content: </label>&nbsp;<span id="error-asterisk-page_content" class="error_asterisk">*</span>
 							<?php } else{ ?>
 								<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>
@@ -111,7 +111,10 @@
 									<?php echo $this->load->view('properties/related_links_index', $data); ?>
 								</div>
 							<?php } ?>
-						<?php } ?>
+						<?php } else{
+								$data['section_id'] = 0;
+								$data['section_type'] = 'pages';
+						}?>
 
 
 					</div>

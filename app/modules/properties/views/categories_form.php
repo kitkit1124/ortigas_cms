@@ -47,9 +47,11 @@
 									</div>
 
 									<div id="related_link">
+									<?php if(isset($record->category_id)): ?>
 										<?php $data['section_id'] = $record->category_id; ?>
 										<?php $data['section_type'] = 'categories'; ?>
 										<?php echo $this->load->view('properties/related_links_index', $data); ?>
+									<?php endif; ?>
 									</div>
 								</div>
 						</div>

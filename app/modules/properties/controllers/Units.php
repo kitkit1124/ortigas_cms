@@ -154,6 +154,9 @@ class Units extends MX_Controller {
 			}
 		}
 
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 500 x 500';
+
 		// render the page
 		$this->template->set_template('modal');
 		$this->template->add_css('npm/dropzone/dropzone.min.css');

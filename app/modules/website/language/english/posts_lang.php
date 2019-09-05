@@ -24,8 +24,14 @@ $lang['post_sidebar_id']			= 'Page Sidebar';
 $lang['post_status']				= 'Status';
 $lang['post_properties']			= 'Tag Properties';
 $lang['post_tags']					= 'Tags';
-$lang['post_image']					= 'Image';
 $lang['post_alt_image']				= 'Alternate Text';
+$lang['post_social_pages']			= 'Social Pages';
+$lang['post_facebook']				= 'Facebook';
+$lang['post_twitter']				= 'Twitter';
+$lang['post_instagram']				= 'Instagram';
+$lang['post_youtube']				= 'YouTube';
+$lang['post_linkedin']				= 'Linkedin';
+$lang['post_document']				= 'Document';
 
 
 // Buttons
@@ -33,6 +39,7 @@ $lang['button_add']					= 'Add Post';
 $lang['button_update']				= 'Save Changes';
 $lang['button_delete']				= 'Delete Post';
 $lang['button_edit_this']			= 'Edit This';
+$lang['button_upload']				= 'Upload Document';
 
 
 // Index Function

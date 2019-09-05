@@ -214,6 +214,9 @@ class Estates extends MX_Controller {
 			}
 		}
 
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 1920 x 410';
+
 		if ($action != 'add') $data['record'] = $this->images_model->find($id);
 
 		// render the page
@@ -260,6 +263,9 @@ class Estates extends MX_Controller {
 				exit;
 			}
 		}
+		
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 300 x 300';
 
 		if ($action != 'add') $data['record'] = $this->images_model->find($id);
 
@@ -311,6 +317,9 @@ class Estates extends MX_Controller {
 		}
 
 		if ($action != 'add') $data['record'] = $this->images_model->find($id);
+
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 300 x 300';
 
 		// render the page
 		$this->template->set_template('modal');

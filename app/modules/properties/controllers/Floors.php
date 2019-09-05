@@ -125,7 +125,8 @@ class Floors extends MX_Controller {
 
 		$this->load->model('properties_model');
 		$data['properties'] = $this->properties_model->get_active_properties();
-		
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 500 x 500';
 
 		// add plugins
 		$this->template->add_css('npm/datatables.net-bs4/css/dataTables.bootstrap4.css');

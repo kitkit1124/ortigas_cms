@@ -48,6 +48,42 @@
 							<?php echo form_textarea(array('id'=>'post_content', 'name'=>'post_content', 'rows'=>'15', 'value'=>set_value('post_content', isset($record->post_content) ? $record->post_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-post_content"></div>
 						</div>
+						<br>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="post_content"><?php echo lang('post_social_pages'); ?>:</label>
+								<div class="form-group">
+									<label for="post_facebook" class="fa fa-facebook-square">&nbsp;</label><label for="post_website"> <?php echo lang('post_facebook')?></label>			
+									<?php echo form_input(array('id'=>'post_facebook', 'name'=>'post_facebook', 'value'=>set_value('post_facebook', isset($record->post_facebook) ? $record->post_facebook : ''), 'class'=>'form-control'));?>
+									<div id="error-post_facebook"></div>			
+								</div>
+
+								<div class="form-group">
+									<label for="post_twitter" class="fa fa-twitter-square">&nbsp;</label><label for="post_website"> <?php echo lang('post_twitter')?></label>		
+									<?php echo form_input(array('id'=>'post_twitter', 'name'=>'post_twitter', 'value'=>set_value('post_twitter', isset($record->post_twitter) ? $record->post_twitter : ''), 'class'=>'form-control'));?>
+									<div id="error-post_twitter"></div>			
+								</div>
+
+								<div class="form-group">
+									<label for="post_instagram" class="fa fa-instagram">&nbsp;</label><label for="post_website"> <?php echo lang('post_instagram')?></label>	
+									<?php echo form_input(array('id'=>'post_instagram', 'name'=>'post_instagram', 'value'=>set_value('post_instagram', isset($record->post_instagram) ? $record->post_instagram : ''), 'class'=>'form-control'));?>
+									<div id="error-post_instagram"></div>			
+								</div>
+
+								<div class="form-group">
+									<label for="post_linkedin" class="fa fa-linkedin-square">&nbsp;</label><label for="post_website"> <?php echo lang('post_linkedin')?></label>			
+									<?php echo form_input(array('id'=>'post_linkedin', 'name'=>'post_linkedin', 'value'=>set_value('post_linkedin', isset($record->post_linkedin) ? $record->post_linkedin : ''), 'class'=>'form-control'));?>
+									<div id="error-post_linkedin"></div>			
+								</div>
+
+								<div class="form-group">
+									<label for="post_youtube" class="fa fa-youtube">&nbsp;</label><label for="post_website"> <?php echo lang('post_youtube')?></label>				
+									<?php echo form_input(array('id'=>'post_youtube', 'name'=>'post_youtube', 'value'=>set_value('post_youtube', isset($record->post_youtube) ? $record->post_youtube : ''), 'class'=>'form-control'));?>
+									<div id="error-post_youtube"></div>			
+								</div>
+							</div>
+							
+						</div>
 
 					</div>
 
@@ -93,6 +129,56 @@
 							<?php echo form_input(array('id'=>'post_image', 'name'=>'post_image', 'value'=>set_value('post_image', isset($record->post_image) ? $record->post_image : ''), 'class'=>'form-control'));?>
 							</div>		
 						</div>
+
+						<div class="form-group">
+		          			<div class="upload_document_holder">
+		          				<?php if(isset($record->post_document) && $record->post_document && $record->post_document != null && $action == 'edit'): ?>
+
+		          				<i class="fa fa-window-close clear_logo" aria-hidden="true"></i>
+
+								<?php $path = site_url().isset($record->post_document) ? $record->post_document : '';
+								$ext = pathinfo($path, PATHINFO_EXTENSION);
+								switch ($ext)
+								{
+									case "docx":
+									case "doc":
+									case "dotx":
+									case "dot":
+									case "docm":
+										$thumb = 'fa fa-file-word-o fa-5x color_doc';
+										break;
+									case "xlsx":
+									case "xlsb":
+									case "xls":
+									case "xltx":
+									case "xla":
+									case "xlt":
+										$thumb = 'fa fa-file-excel-o fa-5x';
+										break;
+									case "pptx":
+									case "ppt":
+									case "pptm":
+									case "ppsm":
+									case "ppsx":
+									case "psw":
+										$thumb = 'fa fa-file-powerpoint-o fa-5x';
+										break;
+									case "pdf":
+										$thumb = 'fa fa-file-pdf-o fa-5x color_pdf';
+										break;
+								}
+								?>
+									<a href="<?php echo getenv('UPLOAD_ROOT'); echo isset($record->post_document) ? $record->post_document : '' ?>" download><i class="<?php echo isset($record->post_document) ? $thumb : ''; ?>" aria-hidden="true"></i></a>
+									<br>
+									<span><?php echo substr(str_replace("data/uploads/".date('Y')."/".date('m')."/", "", $record->post_document), 0, 45); ?> </span>
+			          				
+			          				
+		          				<?php endif; ?>
+		          			</div>
+		          			<a href="<?php echo site_url('website/posts/form_document/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add btn_upload" id="btn_add"><span class="fa fa-upload"></span> <?php echo lang('button_upload')?></a>
+		          			
+		          			<?php echo form_input('post_document','', 'id="post_document" style="display:none"'); ?>
+		          		</div>
 
 						<div class="form-group">
 							<label for="post_properties"><?php echo lang('post_properties'); ?>:</label>

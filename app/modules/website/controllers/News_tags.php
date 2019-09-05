@@ -186,9 +186,12 @@ class News_tags extends MX_Controller {
 			return FALSE;
 		}
 
+		$slug = url_title($this->input->post('news_tag_name'), '-', TRUE);
+
 		$data = array(
-			'news_tag_name'		=> $this->input->post('news_tag_name'),
-			'news_tag_description'		=> $this->input->post('news_tag_description'),
+			'news_tag_name'			=> $this->input->post('news_tag_name'),
+			'news_tag_slug'			=> $slug,
+			'news_tag_description'	=> $this->input->post('news_tag_description'),
 			'news_tag_status'		=> $this->input->post('news_tag_status'),
 		);
 		
