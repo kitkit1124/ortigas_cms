@@ -112,6 +112,7 @@ class Locations extends MX_Controller {
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
 					'location_name'		=> form_error('location_name'),
+					'location_image'		=> form_error('location_image'),
 					'location_status'		=> form_error('location_status'),
 				);
 				echo json_encode($response);
@@ -123,9 +124,15 @@ class Locations extends MX_Controller {
 
 
 		
+		$data['image_quality']['size'] = 'Max file size: 1 MB';
+		$data['image_quality']['resolution'] = 'Ideal image size: 500 x 500';
 
 		// render the page
 		$this->template->set_template('modal');
+		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
+		$this->template->add_css('npm/dropzone/dropzone.min.css');
+		$this->template->add_js('npm/dropzone/dropzone.min.js');
+
 		$this->template->add_css(module_css('properties', 'locations_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'locations_form'), 'embed');
 		$this->template->write_view('content', 'locations_form', $data);
@@ -175,6 +182,7 @@ class Locations extends MX_Controller {
 	{
 		// validate inputs
 		$this->form_validation->set_rules('location_name', lang('location_name'), 'required');
+		$this->form_validation->set_rules('location_image', lang('location_image'), 'required');
 		$this->form_validation->set_rules('location_status', lang('location_status'), 'required');
 
 
@@ -205,6 +213,7 @@ class Locations extends MX_Controller {
 
 		$data = array(
 			'location_name'		=> $this->input->post('location_name'),
+			'location_image'		=> $this->input->post('location_image'),
 			'location_status'		=> $this->input->post('location_status'),
 		);
 		
