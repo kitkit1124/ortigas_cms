@@ -20,6 +20,7 @@ $lang['page_heading_text']			= 'Page Header Text';
 $lang['page_slug']					= 'Slug';
 $lang['page_content']				= 'Content';
 $lang['page_bottom_content']		= 'SEO Content';
+$lang['page_rear_content']		= 'Rear Content';
 $lang['page_posted_on']				= 'Posted On';
 $lang['page_status']				= 'Status';
 $lang['page_layout']				= 'Page Layout';

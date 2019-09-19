@@ -24,6 +24,8 @@ class Estates extends MX_Controller {
 		$this->load->model('estates_model');
 		$this->load->language('estates');
 		$this->load->model('related_links_model');
+		$this->load->model('locations_model');
+		
 	}
 	
 	// --------------------------------------------------------------------
@@ -122,6 +124,7 @@ class Estates extends MX_Controller {
 				$response['errors'] = array(					
 					'estate_name'			=> form_error('estate_name'),
 					'estate_slug'			=> form_error('estate_slug'),
+					'estate_location_id'	=> form_error('estate_location_id'),
 					'estate_text'			=> form_error('estate_text'),
 					'estate_snippet_quote'	=> form_error('estate_snippet_quote'),
 					'estate_bottom_text'	=> form_error('estate_bottom_text'),
@@ -148,6 +151,8 @@ class Estates extends MX_Controller {
 				->order_by('image_slider_order', 'asc')
 				->order_by('image_slider_id', 'desc')
 				->find_all();
+
+			$data['locations'] = $this->load->locations_model->get_active_locations();
 		}
 
 		$data['featured_numrows'] = $this->estates_model->count_by(array('estate_status'=>'Active', 'estate_deleted'=>0, 'estate_is_featured'=>1));
@@ -440,6 +445,7 @@ class Estates extends MX_Controller {
 		// validate inputs
 		$this->form_validation->set_rules('estate_name', lang('estate_name'), 'required');
 		$this->form_validation->set_rules('estate_text', lang('estate_text'), 'required');
+		$this->form_validation->set_rules('estate_location_id', lang('estate_location_id'), 'required');
 		$this->form_validation->set_rules('estate_snippet_quote', lang('estate_snippet_quote'), 'required');
 		$this->form_validation->set_rules('estate_latitude', lang('estate_latitude'), 'max_length[255]');
 		$this->form_validation->set_rules('estate_longtitude', lang('estate_longtitude'), 'max_length[255]');
@@ -481,6 +487,7 @@ class Estates extends MX_Controller {
 		$data = array(
 			'estate_name'			=> $this->input->post('estate_name'),
 			'estate_slug'			=> $slug,
+			'estate_location_id'	=> $this->input->post('estate_location_id'),
 			'estate_text'			=> $this->input->post('estate_text'),
 			'estate_is_featured'	=> $this->input->post('estate_featured'),
 			'estate_snippet_quote'	=> $this->input->post('estate_snippet_quote'),

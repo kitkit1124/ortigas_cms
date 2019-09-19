@@ -32,6 +32,12 @@
 							</div> 
 
 							<div class="form-group">
+								<label for="estate_location_id"><?php echo lang('estate_location_id')?>:</label><span class="error_asterisk"> *</span>	
+								<?php echo form_dropdown('estate_location_id', $locations, set_value('estate_location_id', (isset($record->estate_location_id)) ? $record->estate_location_id : ''), 'id="estate_location_id" class="form-control"'); ?>
+								<div id="error-estate_location_id"></div>
+							</div>
+
+							<div class="form-group">
 								<label for="estate_snippet_quote"><?php echo lang('estate_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
 								<?php echo form_textarea(array('id'=>'estate_snippet_quote', 'name'=>'estate_snippet_quote', 'rows'=>'3', 'value'=>set_value('estate_snippet_quote', isset($record->estate_snippet_quote) ? $record->estate_snippet_quote : '', false), 'class'=>'form-control')); ?>
 								<div id="error-estate_snippet_quote"></div>			

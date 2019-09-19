@@ -79,6 +79,17 @@
 							<div id="error-page_bottom_content"></div>
 						</div>
 
+						<div class="pull-right" style="margin-top:-5px">
+							<a href="<?php echo site_url('files/images/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-image-o"></span> Image</a>
+							<a href="<?php echo site_url('files/documents/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-pdf-o"></span> Document</a>
+							<a href="<?php echo site_url('files/videos/rte/mce'); ?>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal"><span class="fa fa-file-video-o"></span> Video</a>
+						</div>
+						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
+							<label class="control-label" for="page_rear_content"><?php echo lang('page_rear_content'); ?>:</label>
+							<?php echo form_textarea(array('id'=>'page_rear_content', 'name'=>'page_rear_content', 'rows'=>'10', 'value'=>set_value('page_rear_content', isset($record->page_rear_content) ? $record->page_rear_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<div id="error-page_rear_content"></div>
+						</div>
+
 						<?php $map_display_hide = 'hide'; if(isset($record->page_id) && $record->page_id && ($record->page_id == 6)){ $map_display_hide = ''; } ?>
 						<div class="<?php echo $map_display_hide; ?>">
 							<div class="form-group">
@@ -200,4 +211,5 @@
 var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 var action = '<?php echo $action ?>';
+var tinymce_selector = "#page_content, #page_bottom_content, #page_rear_content";
 </script>

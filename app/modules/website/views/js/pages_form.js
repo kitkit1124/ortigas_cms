@@ -42,8 +42,8 @@ $(function() {
 			page_heading_text: $('#page_heading_text').val(),
 			page_content: tinyMCE.get('page_content').getContent(),
 			page_bottom_content: tinyMCE.get('page_bottom_content').getContent(),
+			page_rear_content: tinyMCE.get('page_rear_content').getContent(),
 			page_layout: $('#page_layout').val(),
-			page_status: $('.page_status:checked').val(),
 			page_status: $('.page_status:checked').val(),
 			page_map_name: $('#page_map_name').val(),
 			page_latitude: $('#page_latitude').val(),
@@ -87,59 +87,6 @@ $(function() {
 			// reset the button
 			$this.html($this.data('original-text'));
 		});
-	});
-
-	// initialize tinymce
-	tinymce.init({
-		selector: "#page_content, #page_bottom_content",
-		extended_valid_elements : "span[*],i[*]",
-		theme: "modern",
-		statusbar: true,
-		menubar: true,
-		relative_urls: false,
-		remove_script_host : false,
-		convert_urls : true,
-		content_css: 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
-   		noneditable_noneditable_class: 'fa',
-		plugins: [
-			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-			'searchreplace wordcount visualblocks visualchars code',
-			'insertdatetime media nonbreaking save table contextmenu directionality',
-			'emoticons template paste textcolor colorpicker textpattern fontawesome'
-		],
-		// toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link images documents videos',
-		toolbar1: 'undo redo | styleselect forecolor | bold italic | fontsizeselect  alignleft aligncenter alignright alignjustify | bullist numlist | link fontawesome',
-		image_advtab: true,
-		// setup: function (editor) {
-		// 	editor.addButton('images', {
-		// 		text: 'Image',
-		// 		icon: 'image',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/images/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// 	editor.addButton('documents', {
-		// 		text: 'Document',
-		// 		icon: 'newdocument',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/documents/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// 	editor.addButton('videos', {
-		// 		text: 'Video',
-		// 		icon: 'media',
-		// 		onclick: function () {
-		// 			$('#modal').modal({
-		// 				remote: site_url + 'files/videos/rte/mce'
-		// 			})
-		// 		}
-		// 	});
-		// },
-		// content_css: site_url + 'themes/aceadmin/css/tinymce.css'
 	});
 
 	// select page layout

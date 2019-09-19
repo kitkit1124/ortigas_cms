@@ -1,0 +1,49 @@
+@import "../../../npm/bootstrap/css/bootstrap.min.css";
+
+body {
+  padding: 10px;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+div[class^="col-"], div[class*=" col-"] {
+  border: 1px dashed #EEE;
+  padding: 0;
+}
+
+
+
+.embed-responsive .embed-responsive-item, .embed-responsive embed, .embed-responsive iframe, .embed-responsive object, .embed-responsive video{
+	position: unset;
+}
+
+.embed-responsive-4by3::before{
+	padding-top: 0;
+
+}
+
+.mce-preview-object{
+	width: 100%;
+}
+/*.col-sm-3 {
+    width: 24.5%;
+    display: inline-block;
+}
+
+.col-sm-4 {
+    width: 33%;
+    display: inline-block;
+}
+
+.col-sm-6{
+	width: 49.5%;
+    display: inline-block;
+ }
+
+.col-sm-8 {
+    width: 66%;
+    display: inline-block;
+}*/

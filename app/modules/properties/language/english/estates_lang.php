@@ -16,6 +16,7 @@ $lang['crumb_module']			= 'Estates';
 $lang['estate_id']				= 'ID';
 $lang['estate_name']			= 'Name';
 $lang['estate_slug']			= 'Slug';
+$lang['estate_location_id']			= 'Location';
 $lang['estate_text']			= 'Overview Description';
 $lang['estate_bottom_text']		= 'SEO Content';
 $lang['estate_latitude']		= 'Latitude';

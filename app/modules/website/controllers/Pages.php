@@ -205,6 +205,7 @@ class Pages extends MX_Controller
 
 		$this->template->add_js('npm/tinymce/tinymce.min.js');
 		$this->template->add_js('npm/tinymce/jquery.tinymce.min.js');
+		$this->template->add_js(module_js('website', 'tinymce_template'), 'embed');
 		// $this->template->add_css('npm/grid-editor/grideditor.css');
 		// $this->template->add_js('npm/grid-editor/jquery.grideditor.min.js');		
 		// $this->template->add_js('npm/grid-editor/jquery.grideditor.tinymce.js');
@@ -331,6 +332,7 @@ class Pages extends MX_Controller
 			'page_uri'				=> $uri,
 			'page_content'			=> $this->input->post('page_content'),
 			'page_bottom_content'	=> $this->input->post('page_bottom_content'),
+			'page_rear_content'		=> $this->input->post('page_rear_content'),
 			'page_layout'			=> $this->input->post('page_layout'),
 			'page_latitude'			=> $this->input->post('page_latitude'),
 			'page_longitude'		=> $this->input->post('page_longitude'),

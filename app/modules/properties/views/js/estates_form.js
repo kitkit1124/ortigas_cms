@@ -18,6 +18,7 @@ $(function() {
 		$.post(post_url, {
 			estate_name_original: $('#estate_name_original').val(),
 			estate_name: $('#estate_name').val(),
+			estate_location_id: $('#estate_location_id').val(),
 			estate_text: tinyMCE.get('estate_text').getContent(),
 			estate_snippet_quote: tinyMCE.get('estate_snippet_quote').getContent(),
 			estate_bottom_text: tinyMCE.get('estate_bottom_text').getContent(),
