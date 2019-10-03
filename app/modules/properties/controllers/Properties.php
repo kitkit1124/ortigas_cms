@@ -536,6 +536,8 @@ class Properties extends MX_Controller {
 			'property_ground'			=> $this->input->post('property_ground'),
 			'property_presell'			=> $this->input->post('property_presell'),
 			'property_turnover'			=> $this->input->post('property_turnover'),
+			'property_location_description'		=> $this->input->post('property_location_description'),
+			'property_amenities_description'	=> $this->input->post('property_amenities_description'),
 		);
 		
 

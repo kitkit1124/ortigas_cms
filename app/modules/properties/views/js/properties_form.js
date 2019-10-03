@@ -56,8 +56,9 @@ $(function() {
 			property_turnover: $('#property_turnover').val(),
 			property_slug: $('#property_slug').val(),
 			property_availability: $('#property_availability').val(),
-
-
+			property_location_description: $('#property_location_description').val(),
+			property_amenities_description: $('#property_amenities_description').val(),
+			
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
 		function(data, status){

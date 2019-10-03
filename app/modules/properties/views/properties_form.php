@@ -171,7 +171,7 @@
 						
 							<?php if(isset($record->property_id) && $record->property_id){ ?>
 								<div id="amenities_container">
-									<?php $data['property_id'] = $record->property_id; ?>
+									<?php $data['property_id'] = $record->property_id; ?>								
 									<?php echo $this->load->view('properties/amenities_index', $data); ?>
 								</div>
 
@@ -186,6 +186,14 @@
 						      </div>
 						      <div id="collapseTwo" class="collapse" data-parent="#accordion">
 						        <div class="card-body">
+
+						        	<div class="form-group">
+										<label class="control-label" for="property_location_description">
+											<?php echo lang('property_location_description'); ?>
+										</label>
+										<?php echo form_textarea(array('id'=>'property_location_description', 'name'=>'property_location_description', 'rows'=>'2', 'value'=>set_value('property_location_description', isset($record->property_location_description) ? $record->property_location_description : '',FALSE), 'class'=>'form-control meta-title '));?>
+										<div id="error-property_location_description"></div>
+									</div>
 
 						        	<div class="form-group">
 										<label class="control-label" for="property_map_name"><?php echo lang('property_map_name'); ?> Override <span style="color:#CCC">(Optional)</span>: </label>
