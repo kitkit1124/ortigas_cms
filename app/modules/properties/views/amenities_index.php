@@ -12,6 +12,12 @@
       </div>
       <div id="collapseOne_amenities" class="collapse" data-parent="#accordion_amenities">
        	<div class="card-body">
+       		<div class="form-group">
+       			<label class="control-label" for="property_amenities_description">
+					<?php echo lang('property_amenities_description'); ?>
+				</label>
+	       		<?php echo form_textarea(array('id'=>'property_amenities_description', 'name'=>'property_amenities_description', 'rows'=>'2', 'value'=>set_value('property_amenities_description', isset($record->property_amenities_description) ? $record->property_amenities_description : '',FALSE), 'class'=>'form-control meta-title '));?>
+	       	</div>
         	<table class="table table-striped table-bordered table-hover dt-responsive" id="datatables">
 				<thead>
 					<tr>

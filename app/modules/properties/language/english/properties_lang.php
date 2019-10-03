@@ -53,6 +53,8 @@ $lang['property_featured']			= 'Set as featured';
 $lang['property_construction']		= 'Construction Update';
 $lang['property_amenities']			= 'Amenities';
 $lang['property_availability']		= 'Availability';
+$lang['property_location_description']		= 'Description';
+$lang['property_amenities_description']		= 'Description';
 
 
 // Buttons
