@@ -15,6 +15,7 @@ $lang['crumb_module']				= 'Property Locations';
 // Labels
 $lang['location_id']				= 'ID';
 $lang['location_name']				= 'Name';
+$lang['location_description']		= 'Description';
 $lang['location_image']				= 'Image';
 $lang['location_status']			= 'Status';
 

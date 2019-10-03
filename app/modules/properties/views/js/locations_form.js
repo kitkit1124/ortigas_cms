@@ -140,6 +140,7 @@ $(function() {
 		$.post(ajax_url, {
 			location_name_original: $('#location_name_original').val(),
 			location_name: $('#location_name').val(),
+			location_description: $('#location_description').val(),
 			location_image: $('#location_image').val(),
 			location_status: $('#location_status').val(),
 

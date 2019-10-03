@@ -213,6 +213,7 @@ class Locations extends MX_Controller {
 
 		$data = array(
 			'location_name'		=> $this->input->post('location_name'),
+			'location_description'	=> $this->input->post('location_description'),
 			'location_image'		=> $this->input->post('location_image'),
 			'location_status'		=> $this->input->post('location_status'),
 		);
