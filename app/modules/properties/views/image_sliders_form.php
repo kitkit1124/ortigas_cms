@@ -8,7 +8,6 @@
 <div class="modal-body">
 
 	<div id="form" class="form">
-
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
 		<div class="form-group">
@@ -37,13 +36,13 @@
 
 		<div class="form-group" style="display: none;">
 			<label for="image_slider_section_type"><?php echo lang('image_slider_section_type')?>:</label>			
-			<?php echo form_input(array('id'=>'image_slider_section_type', 'name'=>'image_slider_section_type', 'value'=>'', 'class'=>'form-control'));?>
+			<?php echo form_input(array('id'=>'image_slider_section_type', 'name'=>'image_slider_section_type', 'value'=>$this->input->get('section_type'), 'class'=>'form-control'));?>
 			<div id="error-image_slider_section_type"></div>			
 		</div>
 
 		<div class="form-group" style="display: none;">
 			<label for="image_slider_section_id"><?php echo lang('image_slider_section_id')?>:</label>			
-			<?php echo form_input(array('id'=>'image_slider_section_id', 'name'=>'image_slider_section_id', 'value'=>'', 'class'=>'form-control'));?>
+			<?php echo form_input(array('id'=>'image_slider_section_id', 'name'=>'image_slider_section_id', 'value'=>$this->input->get('section_id'), 'class'=>'form-control'));?>
 			<div id="error-image_slider_section_id"></div>			
 		</div>
 

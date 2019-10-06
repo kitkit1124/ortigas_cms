@@ -170,6 +170,15 @@ class Properties extends MX_Controller {
 				->order_by('image_slider_order', 'asc')
 				->order_by('image_slider_id', 'desc')
 				->find_all();
+
+			$this->load->model('image_sliders_model');
+			$data['construction_sliders'] = $this->image_sliders_model
+				->where('image_slider_deleted', 0)
+				->where('image_slider_section_id', $id)
+				->where('image_slider_section_type', 'construction')
+				->order_by('image_slider_order', 'asc')
+				->order_by('image_slider_id', 'desc')
+				->find_all();
 		}
 
 

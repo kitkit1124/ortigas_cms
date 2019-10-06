@@ -134,7 +134,16 @@
 						        </div>
 						      </div>
 						    </div>
-													
+
+							<?php
+							if(isset($record->property_id) && $record->property_id){
+								$data['sliders'] = $construction_sliders;
+								$data['section_type'] = 'construction';
+								$data['section_id'] = $record->property_id;
+								
+								echo $this->load->view('image_sliders_index2', $data); 
+							}
+						?>							
 						   <div class="card">
 						      <div class="card-header">
 						        <a class="card-link" data-toggle="collapse" href="#construction_update"><label><?php echo lang('property_construction')?></label></a>

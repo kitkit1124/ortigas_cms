@@ -1,6 +1,6 @@
 <?php 
 $this->template->add_css(module_css('properties', 'image_sliders_index'), 'embed'); 
-$this->template->add_js(module_js('properties', 'image_sliders_index'), 'embed');
+$this->template->add_js(module_js('properties', 'image_sliders_index2'), 'embed');
 $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 ?>
 
@@ -21,7 +21,7 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 	        <div class="card-body">
 
 	     		<?php if ($sliders): ?>
-					<div id="sortable" class="row">
+					<div id="sortable_" class="row">
 						<?php foreach ($sliders as $slider): 
 							$src = $slider->image_slider_image;
 							if(substr($src,-3) == 'png') {
