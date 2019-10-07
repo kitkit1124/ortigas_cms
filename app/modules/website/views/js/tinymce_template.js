@@ -3,13 +3,13 @@ $(function() {
 	tinymce.init({
 		oninit: 'setPlainText',
 		selector: tinymce_selector,
-		extended_valid_elements : "span[*],i[*]",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,
 		relative_urls: false,
 		remove_script_host : false,
 		convert_urls : true,
+		extended_valid_elements : "span[*],i[*]",
 		plugins: [
 			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 			'searchreplace wordcount visualblocks visualchars code',
@@ -70,6 +70,11 @@ $(function() {
 			});
 		},
 		//content_css: site_url + 'npm/bootstrap/css/bootstrap.min.css',
-		content_css: site_url + 'themes/material/css/tinymce.css'
+		// content_css: site_url + 'themes/material/css/tinymce.css'
+		// content_css: site_url + 'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'
+		content_css: [
+			'https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css',
+			 site_url + 'themes/material/css/tinymce.css',
+			]
 	});
 });
