@@ -1,7 +1,7 @@
 .button_add_slider{
     position: absolute;
     top: 12px;
-    left: 80px;
+    left: 200px;
 }
 
 .card-link label{
@@ -24,9 +24,9 @@
     top: 4px;
 }
 
-#sortable { list-style-type: none; margin: 0; padding: 0; }
-#sortable li { cursor: move; }
-#sortable .btn-actions {
+#sortable, #sortable_ { list-style-type: none; margin: 0; padding: 0; }
+#sortable li, #sortable_ li { cursor: move; }
+#sortable .btn-actions, #sortable .btn-actions_ {
 	position: absolute;
 	right: 20px;
 	top: 5px;

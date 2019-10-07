@@ -1,8 +1,8 @@
 $(function() {
-	$( "#sortable" ).sortable({
+	$( "#sortable_" ).sortable({
 		update: function( event, ui ) {
 			var slider_ids = new Array();
-			$("#sortable li").each(function(key, val){
+			$("#sortable_ li").each(function(key, val){
 				slider_ids.push($(this).attr('data-id'));
 			});
 			
@@ -30,6 +30,6 @@ $(function() {
 			});
 		}
 	});
-    $( "#sortable" ).disableSelection();
+    $( "#sortable_" ).disableSelection();
 
 });

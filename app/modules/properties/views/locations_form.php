@@ -8,8 +8,19 @@
 <div class="modal-body">
 
 	<div class="form">
+		<div class="form-group">
+				<div style="display: none">
+					<?php echo form_input(array('id'=>'location_name_original', 'name'=>'location_name_original', 'value'=>set_value('location_name_original', isset($record->location_name) ? $record->location_name : ''), 'class'=>'form-control'));?>
+				</div>
+
+				<label for="location_name"><?php echo lang('location_name')?>: <span class="error_asterisk"> *</span></label>	
+				<?php echo form_input(array('id'=>'location_name', 'name'=>'location_name', 'value'=>set_value('location_name', isset($record->location_name) ? $record->location_name : ''), 'class'=>'form-control'));?>
+				<div id="error-location_name"></div>			
+			</div>
 		<div class="row">
-			<div class="col-sm-7">
+			
+
+			<div class="col-sm-6">
 				<div class="form-group">
 					<div class="disimg">
 						<div id="image_container">
@@ -76,17 +87,13 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-5">
+			<div class="col-sm-6">
 				<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 				
 				<div class="form-group">
-					<div style="display: none">
-						<?php echo form_input(array('id'=>'location_name_original', 'name'=>'location_name_original', 'value'=>set_value('location_name_original', isset($record->location_name) ? $record->location_name : ''), 'class'=>'form-control'));?>
-					</div>
-
-					<label for="location_name"><?php echo lang('location_name')?>: <span class="error_asterisk"> *</span></label>	
-					<?php echo form_input(array('id'=>'location_name', 'name'=>'location_name', 'value'=>set_value('location_name', isset($record->location_name) ? $record->location_name : ''), 'class'=>'form-control'));?>
-					<div id="error-location_name"></div>			
+					<label for="location_description"><?php echo lang('location_description')?>:</label><span class="error_asterisk"> *</span>				
+					<?php echo form_textarea(array('id'=>'location_description', 'name'=>'location_description', 'rows'=>'3', 'value'=>set_value('location_description', isset($record->location_description) ? $record->location_description : '', false), 'class'=>'form-control')); ?>
+					<div id="error-location_description"></div>			
 				</div>
 
 				<div class="form-group">

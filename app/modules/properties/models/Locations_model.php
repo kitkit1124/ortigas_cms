@@ -27,6 +27,8 @@ class Locations_model extends BF_Model {
 	protected $deleted_field		= 'location_deleted';
 	protected $deleted_by_field		= 'location_deleted_by';
 
+	public $metatag_key				= 'location_metatag_id';
+
 	// --------------------------------------------------------------------
 
 	/**
