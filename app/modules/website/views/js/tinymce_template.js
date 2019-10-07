@@ -3,6 +3,7 @@ $(function() {
 	tinymce.init({
 		oninit: 'setPlainText',
 		selector: tinymce_selector,
+		extended_valid_elements : "span[*],i[*]",
 		theme: "modern",
 		statusbar: true,
 		menubar: true,
@@ -13,9 +14,9 @@ $(function() {
 			'advlist autolink lists link image charmap print preview hr anchor pagebreak',
 			'searchreplace wordcount visualblocks visualchars code',
 			'insertdatetime media nonbreaking save table contextmenu directionality',
-			'emoticons template paste textcolor colorpicker textpattern'
+			'emoticons template paste textcolor colorpicker textpattern fontawesome'
 		],
-		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link faqs testimonials videos| bscol66 bscol444 bscol84 bscol48 bscol363',
+		toolbar1: 'insertfile undo redo | styleselect forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link faqs testimonials videos fontawesome | bscol66 bscol444 bscol84 bscol48 bscol363',
 		image_advtab: true,
 		setup: function (editor) {
 			editor.addButton('bscol66', {
