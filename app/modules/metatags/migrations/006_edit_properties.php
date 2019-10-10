@@ -19,7 +19,7 @@ class Migration_Edit_properties extends CI_Migration
 		// check for dependencies
 		if (! $this->db->table_exists('properties'))
 		{
-			echo json_encode(array('success' => FALSE, 'message' => 'This upgrade requires the Websites module')); exit;
+			echo json_encode(array('success' => FALSE, 'message' => 'This upgrade requires the Properties module')); exit;
 		}
 
 		$this->load->model('core/migrations_model');

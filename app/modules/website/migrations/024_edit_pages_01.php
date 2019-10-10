@@ -27,11 +27,7 @@ class Migration_Edit_pages_01 extends CI_Migration
 	
 	public function up()
 	{
-		$fields = array(
-			'page_rear_content'	=> array('type' => 'TEXT', 'after'=> 'page_bottom_content', 'null' => TRUE),
-		);
-		
-		$this->dbforge->add_column($this->_table, $fields);
+	
 	
 	}
 
