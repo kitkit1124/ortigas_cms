@@ -12,6 +12,7 @@
 use Defuse\Crypto\Key;
 use Defuse\Crypto\Crypto;
 
+
 class Customers extends MX_Controller {
 	
 	/**
@@ -267,40 +268,42 @@ class Customers extends MX_Controller {
 
 	public function generate_data()
 	{
-		$faker = Faker\Factory::create();
+		$faker = Faker\Factory::create();	
 
-		$key = $this->key(getenv('KEY'));
+		//$key = Key::CreateNewRandomKey();
+		//$key = $key->saveToAsciiSafeString();
 
-		// $ciphertext  = Crypto::encrypt('testingsecretdata', $key);
-		// $secret_data = Crypto::decrypt($ciphertext, $key);
+		$key = 'def000004e43f0793f89d18d2f5bcdcb044fa7ebb65319eb266e7fb7dd936830162d998896953f9f0db6f5dd6d5a567598950ff4efa77e21dc8c527cd7adcb022f34674e';
+	     $key  =	$this->Key($key);
 
+		
 		$a = Crypto::encrypt((string) $faker->randomNumber(5), $key); 
-		$b = Crypto::decrypt($a, $key);
-
+		$b = Crypto::decrypt('def50200edc38196a2a67c3672d1c19af29988b84a9c1be3816e59651b9250b72546badac57c06a7178f0952172bec44100bca0076c7cb20db18bdce48a15f10b2bbcdff6b20e864273ab29965081d8e944e88b3688ac93a49', $key);
+	
 		$insert_data = array();
-		for ( $i=1; $i<=50; $i++ )
+		for ( $i=1; $i<=1; $i++ )
 		{
 			$insert_data = array(
 				'customer_fname' 			=> Crypto::encrypt($faker->firstName, $key),
 				'customer_lname'			=> Crypto::encrypt($faker->lastName, $key),
-				'customer_telno'			=> Crypto::encrypt($faker->phoneNumber, $key),
-				'customer_mobileno' 		=> Crypto::encrypt($faker->phoneNumber, $key),
-				'customer_email'			=> Crypto::encrypt($faker->email, $key),
+				'customer_telno'			=> Crypto::encrypt('09262150624', $key),
+				'customer_mobileno' 		=> Crypto::encrypt('09262150624', $key),
+				'customer_email'			=> Crypto::encrypt('jaime.ramos@gmail.com.ph', $key),
 				'customer_id_type'	  		=> Crypto::encrypt('Postal ID', $key),
 				'customer_id_details' 		=> Crypto::encrypt((string) $faker->randomNumber(5), $key),
-				'customer_mailing_country'	=> Crypto::encrypt($faker->country, $key),
+				'customer_mailing_country'	=> Crypto::encrypt('PHILIPPINES', $key),
 				'customer_mailing_house_no'	=> Crypto::encrypt((string) $faker->randomNumber(5), $key),
 				'customer_mailing_street'	=> Crypto::encrypt($faker->streetName, $key),
 				'customer_mailing_city'		=> Crypto::encrypt($faker->city, $key),
 				'customer_mailing_brgy'		=> Crypto::encrypt($faker->state, $key),
 				'customer_mailing_zip_code' => Crypto::encrypt($faker->postcode, $key),
-				'customer_billing_country'	=> Crypto::encrypt($faker->country, $key),
+				'customer_billing_country'	=> Crypto::encrypt('PHILIPPINES', $key),
 				'customer_billing_house_no'	=> Crypto::encrypt((string) $faker->randomNumber(5), $key),
 				'customer_billing_street'	=> Crypto::encrypt($faker->streetName, $key),
 				'customer_billing_city'		=> Crypto::encrypt($faker->city, $key),
 				'customer_billing_brgy'		=> Crypto::encrypt($faker->state, $key),
 				'customer_billing_zip_code' => Crypto::encrypt($faker->postcode, $key),
-			);
+			); 
 
 			$customer_id = $this->customers_model->insert($insert_data);
 
@@ -308,13 +311,13 @@ class Customers extends MX_Controller {
 			{
 				$reservation_data = array(
 					'reservation_customer_id'			=> $customer_id,
-					'reservation_reference_no'			=> $faker->randomNumber(5),
+					'reservation_reference_no'			=> $faker->randomNumber(5).$customer_id,
 					'reservation_project'				=> $faker->realText(20),
 					'reservation_property_specialist'	=> $faker->realText(20),
 					'reservation_sellers_group'			=> $faker->realText(20),
 					'reservation_unit_details'			=> $faker->realText(20),
 					'reservation_allocation'			=> $faker->realText(20),
-					'reservation_fee'					=> $faker->randomFloat(2),
+					'reservation_fee'					=> 0.01,
 					'reservation_notes'					=> $faker->text(150)
 				);
 				
