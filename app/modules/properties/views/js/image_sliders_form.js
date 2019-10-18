@@ -114,8 +114,8 @@ $(function() {
 
 		// submits the data to the backend
 		$.post(ajax_url, {
-			image_slider_section_type: section_type,
-			image_slider_section_id: section_id,
+			image_slider_section_type: $('#image_slider_section_type').val(),
+			image_slider_section_id: $('#image_slider_section_id').val(),
 			image_slider_image: $('#image_slider_image').val(),
 			image_slider_alt_image: $('#image_slider_alt_image').val(),
 			image_slider_title: $('#image_slider_title').val(),

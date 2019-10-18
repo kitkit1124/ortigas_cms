@@ -8,16 +8,16 @@ $this->template->add_js('mods/jquery-ui/jquery-ui.min.js');
 	<?php if(isset($section_id)){ ?>
 	   <div class="card">
 	      <div class="card-header">
-	        <a class="card-link" data-toggle="collapse" href="#collapseOne">
-	        	<label><?php echo 'Slider'?></label>		          
+	        <a class="card-link" data-toggle="collapse" href="#<?php echo $section_type; ?>">
+	        	<label><?php echo ucwords($section_type).' Slider'; ?></label>		          
 	        </a>
         	<div class="button_add_slider">
 	        	<?php if ($this->acl->restrict('properties.image_sliders.add', 'return')): ?>
-					<a href="<?php echo site_url('properties/image_sliders/form/add')?>" data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo 'Add Slider'?></a>
+					<a href="<?php echo site_url('properties/image_sliders/form/add?section_type='.$section_type.'&section_id='.$section_id)?>" data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span> <?php echo 'Add Slider'?></a>
 				<?php endif; ?>
 			</div>
 	      </div>
-	      <div id="collapseOne" class="collapse show" data-parent="#accordion">
+	      <div id="<?php echo $section_type; ?>" class="collapse show" data-parent="#accordion">
 	        <div class="card-body">
 
 	     		<?php if ($sliders): ?>

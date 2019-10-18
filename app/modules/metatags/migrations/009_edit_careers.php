@@ -19,7 +19,7 @@ class Migration_Edit_careers extends CI_Migration
 		// check for dependencies
 		if (! $this->db->table_exists('careers'))
 		{
-			echo json_encode(array('success' => FALSE, 'message' => 'This upgrade requires the Websites module')); exit;
+			echo json_encode(array('success' => FALSE, 'message' => 'This upgrade requires the Careers module')); exit;
 		}
 
 		$this->load->model('core/migrations_model');
