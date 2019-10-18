@@ -8,6 +8,8 @@
  * @copyright 	Copyright (c) 2019, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
 class Reservations extends MX_Controller {
 	
 	/**
@@ -22,6 +24,7 @@ class Reservations extends MX_Controller {
 
 		$this->load->library('users/acl');
 		$this->load->model('reservations_model');
+		$this->load->model('customers/customers_model');
 		$this->load->language('reservations');
 	}
 	
@@ -93,6 +96,11 @@ class Reservations extends MX_Controller {
 	 * @param   $id integer
 	 * @author 	Robert Christian Obias <robert.obias@digify.com.ph>
 	 */
+	private function key($key)
+	{
+		return Key::loadFromAsciiSafeString($key);
+	}
+
 	function form($action = 'add', $id = FALSE)
 	{
 		$this->acl->restrict('reservations.reservations.' . $action, 'modal');
@@ -111,7 +119,8 @@ class Reservations extends MX_Controller {
 				$response['success'] = FALSE;
 				$response['message'] = lang('validation_error');
 				$response['errors'] = array(					
-					'reservation_reference_no'		=> form_error('reservation_reference_no'),
+					'reservation_customer_id'		=> form_error('reservation_customer_id'),
+					//'reservation_reference_no'		=> form_error('reservation_reference_no'),
 					'reservation_project'		=> form_error('reservation_project'),
 					'reservation_property_specialist'		=> form_error('reservation_property_specialist'),
 					'reservation_sellers_group'		=> form_error('reservation_sellers_group'),
@@ -128,8 +137,15 @@ class Reservations extends MX_Controller {
 		if ($action != 'add') $data['record'] = $this->reservations_model->find($id);
 
 
-		
+		$c = $this->customers_model->select('customer_id,customer_fname,customer_lname')->order_by('customer_fname','asc')->find_all();
 
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+		$customers =array();
+		foreach ($c	 as $k => $value) {
+			$customers[$value->customer_id] =  Crypto::decrypt($value->customer_fname,$key)." ".Crypto::decrypt($value->customer_lname,$key);
+		}
+		$data['customers'] = $customers;
 		// render the page
 		$this->template->set_template('modal');
 		$this->template->add_css(module_css('reservations', 'reservations_form'), 'embed');
@@ -180,13 +196,13 @@ class Reservations extends MX_Controller {
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('reservation_reference_no', lang('reservation_reference_no'), 'required');
+		//$this->form_validation->set_rules('reservation_reference_no', lang('reservation_reference_no'), 'required');
 		$this->form_validation->set_rules('reservation_project', lang('reservation_project'), 'required');
 		$this->form_validation->set_rules('reservation_property_specialist', lang('reservation_property_specialist'), 'required');
 		$this->form_validation->set_rules('reservation_sellers_group', lang('reservation_sellers_group'), 'required');
 		$this->form_validation->set_rules('reservation_unit_details', lang('reservation_unit_details'), 'required');
 		$this->form_validation->set_rules('reservation_allocation', lang('reservation_allocation'), 'required');
-		$this->form_validation->set_rules('reservation_fee', lang('reservation_fee'), 'required');
+		$this->form_validation->set_rules('reservation_fee', lang('reservation_fee'), 'required|numeric');
 		$this->form_validation->set_rules('reservation_notes', lang('reservation_notes'), 'required');
 
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
@@ -195,15 +211,17 @@ class Reservations extends MX_Controller {
 		{
 			return FALSE;
 		}
+	
 
 		$data = array(
-			'reservation_reference_no'		=> $this->input->post('reservation_reference_no'),
+			'reservation_customer_id'		=> $this->input->post('reservation_customer_id'),
+			'reservation_reference_no'		=> rand(10000,99999).$this->input->post('reservation_customer_id'),
 			'reservation_project'		=> $this->input->post('reservation_project'),
 			'reservation_property_specialist'		=> $this->input->post('reservation_property_specialist'),
 			'reservation_sellers_group'		=> $this->input->post('reservation_sellers_group'),
 			'reservation_unit_details'		=> $this->input->post('reservation_unit_details'),
 			'reservation_allocation'		=> $this->input->post('reservation_allocation'),
-			'reservation_fee'		=> $this->input->post('reservation_fee'),
+			'reservation_fee'		=> number_format($this->input->post('reservation_fee'), 2, '.', ''),
 			'reservation_notes'		=> $this->input->post('reservation_notes'),
 		);
 		

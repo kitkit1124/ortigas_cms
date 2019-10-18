@@ -25,7 +25,7 @@ $(function() {
 			reservation_allocation: $('#reservation_allocation').val(),
 			reservation_fee: $('#reservation_fee').val(),
 			reservation_notes: $('#reservation_notes').val(),
-
+			reservation_customer_id: $('#reservation_customer_id').val(),
 			[csrf_name]: $('input[name=' + csrf_name + ']').val(),
 		},
 		function(data, status){

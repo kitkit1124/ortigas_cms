@@ -10,12 +10,20 @@
 	<div class="form">
 
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
-		
-				<div class="form-group">
+		<div class="form-group">
+			<label class=" control-label" for="reservation_customer_id">Customer Name</label>
+			
+			
+				<?php echo form_dropdown('reservation_customer_id', $customers, set_value('reservation_customer_id', (isset($record->reservation_customer_id)) ? $record->reservation_customer_id : ''), 'id="reservation_customer_id" class="form-control"'); ?>
+				<div id="error-reservation_customer_id"></div>
+			
+		</div>
+
+		<!-- <div class="form-group">
 			<label for="reservation_reference_no"><?php echo lang('reservation_reference_no')?>:</label>			
 			<?php echo form_input(array('id'=>'reservation_reference_no', 'name'=>'reservation_reference_no', 'value'=>set_value('reservation_reference_no', isset($record->reservation_reference_no) ? $record->reservation_reference_no : ''), 'class'=>'form-control'));?>
 			<div id="error-reservation_reference_no"></div>			
-		</div>
+		</div> -->
 
 		<div class="form-group">
 			<label for="reservation_project"><?php echo lang('reservation_project')?>:</label>			
