@@ -46,6 +46,7 @@ class Migration_Create_payments extends CI_Migration {
 		$fields = array(
 			'payment_id'		=> array('type' => 'INT', 'constraint' => 10, 'auto_increment' => TRUE, 'unsigned' => TRUE, 'null' => FALSE),
 			'payment_reservation_id'		=> array('type' => 'INT', 'constraint' => 10, 'null' => FALSE),
+			'payment_type'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => TRUE),
 			'payment_paynamics_no'		=> array('type' => 'varchar', 'constraint' => 255, 'null' => TRUE),
 			'payment_encoded_details'		=> array('type' => 'TEXT', 'null' => FALSE),
 			'payment_status'		=> array('type' => 'VARCHAR', 'constraint' => 255, 'null' => FALSE),

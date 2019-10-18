@@ -33,6 +33,13 @@ $lang['index_reservation_id']			= 'Reference Number';
 $lang['index_encoded_details']			= 'Encoded Details';
 $lang['index_paynamics_reference_no']			= 'Paynamics reference Number';
 
+$lang['index_reservation_fee']			= 'Amount';
+$lang['index_payment_type']			= 'Payment Type';
+$lang['index_reservation_project']			= 'Project';
+$lang['index_fullname']			= 'Full Name';
+
+
+
 $lang['index_status']			= 'Status';
 
 $lang['index_created_on']			= 'Created On';

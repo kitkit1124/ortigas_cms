@@ -8,6 +8,10 @@
  * @copyright 	Copyright (c) 2019, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
+
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
+
 class Payments_model extends BF_Model {
 
 	protected $table_name			= 'payments';
@@ -42,6 +46,10 @@ class Payments_model extends BF_Model {
 			'payment_id',
 			'payment_reservation_id',
 			'payment_paynamics_no',
+			'concat(customer_fname, " ", customer_lname) as fullname',
+			'reservation_project',
+			'payment_type',
+			'reservation_fee',
 			'payment_status',
 
 			'payment_created_on', 
@@ -49,9 +57,18 @@ class Payments_model extends BF_Model {
 			'payment_modified_on', 
 			'concat(modifier.first_name, " ", modifier.last_name)'
 		);
+		
+		$callback = array(
+            array(
+                'method'  => array('Callbacks', 'payments')
+            )
+        );
 
 		return $this->join('users as creator', 'creator.id = payment_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = payment_modified_by', 'LEFT')
-					->datatables($fields);
+					->join('reservations','reservation_reference_no =  payment_reservation_id')
+					->join('customers', 'customer_id = reservation_customer_id', 0)
+					->datatables($fields,$callback);
 	}
 }
+

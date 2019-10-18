@@ -66,8 +66,14 @@ class Customers_model extends BF_Model {
 			'concat(modifier.first_name, " ", modifier.last_name)'
 		);
 
+		$callback = array(
+            array(
+                'method'  => array('Callbacks', 'customers')
+            )
+        );
+
 		return $this->join('users as creator', 'creator.id = customer_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = customer_modified_by', 'LEFT')
-					->datatables($fields);
+					->datatables($fields,$callback);
 	}
 }

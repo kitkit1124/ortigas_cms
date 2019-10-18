@@ -225,26 +225,31 @@ class Customers extends MX_Controller {
 			return FALSE;
 		}
 
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
 		$data = array(
-			'customer_fname'		=> $this->input->post('customer_fname'),
-			'customer_lname'		=> $this->input->post('customer_lname'),
-			'customer_telno'		=> $this->input->post('customer_telno'),
-			'customer_mobileno'		=> $this->input->post('customer_mobileno'),
-			'customer_email'		=> $this->input->post('customer_email'),
-			'customer_id_type'		=> $this->input->post('customer_id_type'),
-			'customer_id_details'		=> $this->input->post('customer_id_details'),
-			'customer_mailing_country'		=> $this->input->post('customer_mailing_country'),
-			'customer_mailing_house_no'		=> $this->input->post('customer_mailing_house_no'),
-			'customer_mailing_street'		=> $this->input->post('customer_mailing_street'),
-			'customer_mailing_city'		=> $this->input->post('customer_mailing_city'),
-			'customer_mailing_brgy'		=> $this->input->post('customer_mailing_brgy'),
-			'customer_mailing_zip_code'		=> $this->input->post('customer_mailing_zip_code'),
-			'customer_billing_country'		=> $this->input->post('customer_billing_country'),
-			'customer_billing_house_no'		=> $this->input->post('customer_billing_house_no'),
-			'customer_billing_street'		=> $this->input->post('customer_billing_street'),
-			'customer_billing_city'		=> $this->input->post('customer_billing_city'),
-			'customer_billing_brgy'		=> $this->input->post('customer_billing_brgy'),
-			'customer_billing_zip_code'		=> $this->input->post('customer_billing_zip_code'),
+			'customer_fname'		=> Crypto::encrypt($this->input->post('customer_fname'), $key),
+			'customer_lname'		=> Crypto::encrypt($this->input->post('customer_lname'), $key),
+			'customer_telno'		=> Crypto::encrypt($this->input->post('customer_telno'), $key),
+			'customer_mobileno'		=> Crypto::encrypt($this->input->post('customer_mobileno'), $key),
+			'customer_email'		=> Crypto::encrypt($this->input->post('customer_email'), $key),
+			'customer_id_type'		=> Crypto::encrypt($this->input->post('customer_id_type'), $key),
+			'customer_id_details'		=> Crypto::encrypt($this->input->post('customer_id_details'), $key),
+			'customer_mailing_country'		=> Crypto::encrypt($this->input->post('customer_mailing_country'), $key),
+			'customer_mailing_house_no'		=> Crypto::encrypt($this->input->post('customer_mailing_house_no'), $key),
+			'customer_mailing_street'		=> Crypto::encrypt($this->input->post('customer_mailing_street'), $key),
+			'customer_mailing_city'		=> Crypto::encrypt($this->input->post('customer_mailing_city'), $key),
+			'customer_mailing_brgy'		=> Crypto::encrypt($this->input->post('customer_mailing_brgy'), $key),
+			'customer_mailing_zip_code'		=> Crypto::encrypt($this->input->post('customer_mailing_zip_code'), $key),
+			'customer_billing_country'		=> Crypto::encrypt($this->input->post('customer_billing_country'), $key),
+			'customer_billing_house_no'		=> Crypto::encrypt($this->input->post('customer_billing_house_no'), $key),
+			'customer_billing_street'		=> Crypto::encrypt($this->input->post('customer_billing_street'), $key),
+			'customer_billing_city'		=> Crypto::encrypt($this->input->post('customer_billing_city'), $key),
+			'customer_billing_brgy'		=>  Crypto::encrypt($this->input->post('customer_billing_brgy'), $key),
+			'customer_billing_zip_code'		=> Crypto::encrypt($this->input->post('customer_billing_zip_code'), $key),
+
+			
 		);
 		
 

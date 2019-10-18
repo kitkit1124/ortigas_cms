@@ -18,6 +18,10 @@
 							<th class="all"><?php echo lang('index_id'); ?></th>
 			<th class="all"><?php echo lang('index_reservation_id'); ?></th>
 			<th class="min-desktop"><?php echo lang('index_paynamics_reference_no'); ?></th>
+			<th class="min-desktop"><?php echo lang('index_fullname'); ?></th>
+			<th class="min-desktop"><?php echo lang('index_reservation_project'); ?></th>
+			<th class="min-desktop"><?php echo lang('index_payment_type'); ?></th>
+			<th class="min-desktop"><?php echo lang('index_reservation_fee'); ?></th>
 			<th class="min-desktop"><?php echo lang('index_status'); ?></th>
 
 							<th class="none"><?php echo lang('index_created_on')?></th>

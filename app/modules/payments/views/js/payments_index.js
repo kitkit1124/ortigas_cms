@@ -42,7 +42,7 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [8],
+				"aTargets": [12],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
 					html = '<a href="payments/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
