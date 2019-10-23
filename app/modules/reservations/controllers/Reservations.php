@@ -229,6 +229,16 @@ class Reservations extends MX_Controller {
 		if ($action == 'add')
 		{
 			$insert_id = $this->reservations_model->insert($data);
+			
+			$c = $this->customers_model->select('customer_email')->order_by('customer_fname','asc')->find_by(array('customer_id',$this->input->post('reservation_customer_id')));
+
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+		
+			$email =  Crypto::decrypt($c->customer_email,$key);
+			
+			$user = $this->ion_auth->user()->row();
+			$this->send_email($email,$user->email,$data['reservation_reference_no']);
 			$return = (is_numeric($insert_id)) ? $insert_id : FALSE;
 		}
 		else if ($action == 'edit')
@@ -238,6 +248,43 @@ class Reservations extends MX_Controller {
 
 		return $return;
 
+	}
+	public function send_email($to=null,$from=null,$ref_no)
+	{
+			$config['smtp_host'] = 'ortigas.com.ph';
+			$config['protocol'] = 'smtp';
+			$config['smtp_timeout'] = 10;
+            $config['smtp_port'] = 25;
+            $config['smtp_user'] = 'information@tiendesitas.com.ph';
+            $config['smtp_pass'] = 'K5a1$li1';
+            $config['mailtype'] = 'html';
+            $config['charset'] ='utf-8';
+            $config['newline'] ='\r\n';
+            $config['validation'] = true;
+            $config['email_debug'] ='y';
+        
+            $this->load->library('email');
+
+            $this->email->initialize($config);
+			
+			 $message_content = base_url('reservation/form/'.$ref_no);
+           	
+            $this->email->clear();
+            $this->email->set_newline("\r\n");
+            $this->email->to(config_item('app_email'));
+            $this->email->from(config_item('website_email'),config_item('website_name'));
+            $this->email->subject('Job Application');
+            $this->email->set_mailtype("html");
+            $this->email->message($message_content);
+            if($this->email->send())
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+			
 	}
 }
 
