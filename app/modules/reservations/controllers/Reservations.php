@@ -251,18 +251,28 @@ class Reservations extends MX_Controller {
 	}
 	public function send_email($to=null,$from=null,$ref_no)
 	{
-			$config['smtp_host'] = 'ortigas.com.ph';
-			$config['protocol'] = 'smtp';
-			$config['smtp_timeout'] = 10;
-            $config['smtp_port'] = 25;
-            $config['smtp_user'] = 'information@tiendesitas.com.ph';
-            $config['smtp_pass'] = 'K5a1$li1';
-            $config['mailtype'] = 'html';
-            $config['charset'] ='utf-8';
-            $config['newline'] ='\r\n';
-            $config['validation'] = true;
-            $config['email_debug'] ='y';
+			// $config['smtp_host'] = 'ortigas.com.ph';
+			// $config['protocol'] = 'smtp';
+			// $config['smtp_timeout'] = 10;
+   //          $config['smtp_port'] = 25;
+   //          $config['smtp_user'] = 'information@tiendesitas.com.ph';
+   //          $config['smtp_pass'] = 'K5a1$li1';
+   //          $config['mailtype'] = 'html';
+   //          $config['charset'] ='utf-8';
+   //          $config['newline'] ='\r\n';
+   //          $config['validation'] = true;
+   //          $config['email_debug'] ='y';
         
+		$config['smtp_host']    = '192.168.6.163';
+		$config['smtp_port']    = 25;
+		$config['smtp_user']    = '';
+		$config['smtp_pass']    = '';
+		$config['smtp_timeout'] = 10;
+		$config['mailtype']     = 'html';
+		$config['charset']      ='utf-8';
+		$config['newline']      = "\r\n";
+		$config['validation']   = TRUE;
+		$config['email_debug']  = 'y'; 
             $this->load->library('email');
 
             $this->email->initialize($config);
