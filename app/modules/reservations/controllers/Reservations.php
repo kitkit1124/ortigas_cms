@@ -230,7 +230,7 @@ class Reservations extends MX_Controller {
 		{
 			$insert_id = $this->reservations_model->insert($data);
 			
-			$c = $this->customers_model->select('customer_email')->order_by('customer_fname','asc')->find_by(array('customer_id',$this->input->post('reservation_customer_id')));
+			$c = $this->customers_model->select('customer_email')->find_by(array('customer_id' => $this->input->post('reservation_customer_id')));
 
 		$key = getenv('KEY');
 		$key  =	$this->Key($key);
@@ -249,7 +249,7 @@ class Reservations extends MX_Controller {
 		return $return;
 
 	}
-	public function send_email($to=null,$from=null,$ref_no)
+	public function send_email($to,$from,$ref_no)
 	{
 			// $config['smtp_host'] = 'ortigas.com.ph';
 			// $config['protocol'] = 'smtp';
@@ -277,7 +277,7 @@ class Reservations extends MX_Controller {
 
             $this->email->initialize($config);
 			
-			 $message_content = base_url('reservation/form/'.$ref_no);
+			$message_content = getenv('WEB_URL').'reservations/form/'.$ref_no;
            	
             $this->email->clear();
             $this->email->set_newline("\r\n");
