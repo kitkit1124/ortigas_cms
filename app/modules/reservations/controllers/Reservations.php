@@ -281,9 +281,9 @@ class Reservations extends MX_Controller {
            	
             $this->email->clear();
             $this->email->set_newline("\r\n");
-            $this->email->to(config_item('app_email'));
-            $this->email->from(config_item('website_email'),config_item('website_name'));
-            $this->email->subject('Job Application');
+            $this->email->to($to);
+            $this->email->from($from,config_item('website_name'));
+            $this->email->subject('Reservation Form');
             $this->email->set_mailtype("html");
             $this->email->message($message_content);
             if($this->email->send())
