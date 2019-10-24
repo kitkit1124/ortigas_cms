@@ -205,6 +205,7 @@ class Reservations extends MX_Controller {
 		$this->form_validation->set_rules('reservation_fee', lang('reservation_fee'), 'required|numeric');
 		$this->form_validation->set_rules('reservation_notes', lang('reservation_notes'), 'required');
 
+
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
 		if ($this->form_validation->run($this) == FALSE)
@@ -277,7 +278,7 @@ class Reservations extends MX_Controller {
 
             $this->email->initialize($config);
 			
-			$message_content = getenv('WEB_URL').'reservations/form/'.$ref_no;
+			$message_content = getenv('WEB_URL').'/reservations/form/'.$ref_no;
            	
             $this->email->clear();
             $this->email->set_newline("\r\n");
