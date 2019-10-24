@@ -100,6 +100,8 @@ class Customers extends MX_Controller {
 	 * @param   $id integer
 	 * @author 	Robert Christian Obias <robert.obias@digify.com.ph>
 	 */
+
+	
 	function form($action = 'add', $id = FALSE)
 	{
 		$this->acl->restrict('customers.customers.' . $action, 'modal');
@@ -236,6 +238,21 @@ class Customers extends MX_Controller {
 	 * @param 	integer $id
 	 * @author 	Robert Christian Obias <robert.obias@digify.com.ph>
 	 */
+	Public function email_validation($email)
+	{
+	
+		$result = preg_match('/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',$email);
+		if($result)
+		{
+		 	return true;
+  		}
+		else
+		{
+    		return false;
+  		}
+			
+	}
+
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
@@ -243,7 +260,7 @@ class Customers extends MX_Controller {
 		$this->form_validation->set_rules('customer_lname','Last Name', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_telno', 'Phone Number', 'required|numeric|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_mobileno','Mobile Number', 'required|numeric|min_length[1]|max_length[50]');
-		$this->form_validation->set_rules('customer_email', 'Email Address', 'required|valid_email|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_email', 'Email Address', 'required|valid_email|min_length[1]|max_length[50]|trim|callback_email_validation');
 		$this->form_validation->set_rules('customer_id_type', 'ID Type', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_id_details', 'ID Details', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_mailing_country', 'Country', 'required|min_length[1]|max_length[50]');
@@ -258,7 +275,7 @@ class Customers extends MX_Controller {
 		$this->form_validation->set_rules('customer_billing_city', 'City', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_billing_brgy','Barangay', 'required|min_length[1]|max_length[50]');
 		$this->form_validation->set_rules('customer_billing_zip_code', 'Zip Code', 'required|min_length[1]|max_length[50]');
-
+		$this->form_validation->set_message('email_validation','The Email Address field must contain a valid email address.');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
 		if ($this->form_validation->run($this) == FALSE)
