@@ -17,6 +17,11 @@ $lang['payment_id']			= 'ID';
 $lang['payment_reservation_id']			= 'Reservation Id';
 $lang['payment_encoded_details']			= 'Encoded Details';
 $lang['payment_status']			= 'Status';
+$lang['reservation_fee']			= 'Amount';
+$lang['payment_type']			= 'Payment Type';
+$lang['reservation_project']			= 'Project';
+$lang['fullname']			= 'Full Name';
+$lang['paynamics_reference_no']			= 'Paynamics reference Number';
 
 // Buttons
 $lang['button_add']					= 'Add Payment';
@@ -50,6 +55,12 @@ $lang['index_action']				= 'Action';
 
 // View Function
 $lang['view_heading']				= 'View Payment';
+$lang['view_paynamics_reference_no']			= 'Paynamics reference Number';
+
+$lang['view_reservation_fee']			= 'Amount';
+$lang['view_payment_type']			= 'Payment Type';
+$lang['view_reservation_project']			= 'Project';
+$lang['view_fullname']			= 'Full Name';
 
 // Add Function
 $lang['add_heading']				= 'Add Payment';
