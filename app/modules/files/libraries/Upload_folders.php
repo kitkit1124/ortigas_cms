@@ -47,12 +47,16 @@ class Upload_folders {
 			if (file_exists($month_folder) == FALSE)
 			{
 				mkdir($month_folder, 0777);
+				chmod($month_folder,0777);
 			}
 		}
 		else
 		{
 			mkdir($year_folder, 0777);
 			mkdir($month_folder, 0777);
+
+			chmod($year_folder,0777);
+			chmod($month_folder,0777);
 		}
 
 		return $upload_path . $year . "/" . $month;
