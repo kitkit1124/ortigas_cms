@@ -100,6 +100,8 @@ class Customers extends MX_Controller {
 	 * @param   $id integer
 	 * @author 	Robert Christian Obias <robert.obias@digify.com.ph>
 	 */
+
+	
 	function form($action = 'add', $id = FALSE)
 	{
 		$this->acl->restrict('customers.customers.' . $action, 'modal');
@@ -143,9 +145,50 @@ class Customers extends MX_Controller {
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->customers_model->find($id);
+		if ($action != 'add') 
+		{
+			$fields = array(
+			'customer_id',
+			'customer_fname',
+			'customer_lname',
+			'customer_telno',
+			'customer_mobileno',
+			'customer_email',
+			'customer_id_type',
+			'customer_id_details',
+			'customer_mailing_country',
+			'customer_mailing_house_no',
+			'customer_mailing_street',
+			'customer_mailing_city',
+			'customer_mailing_brgy',
+			'customer_mailing_zip_code',
+			'customer_billing_country',
+			'customer_billing_house_no',
+			'customer_billing_street',
+			'customer_billing_city',
+			'customer_billing_brgy',
+			'customer_billing_zip_code',
+			);
 
+			$customers = $this->customers_model->select($fields)->find_by('customer_id',$id);
+			$key = getenv('KEY');
+			$key  =	$this->Key($key);
+			
+			$array = array();
+			foreach ($customers as $k => $value) {	
+					if($k !== 'customer_id' )
+					{	
+						$array[$k] =  Crypto::decrypt($value,$key);
+					}
+					else
+					{
 
+						$array[$k] =  $value;
+					}
+					
+				}
+			$data['record'] =  (object )$array;
+		}	
 		
 
 		// render the page
@@ -195,29 +238,43 @@ class Customers extends MX_Controller {
 	 * @param 	integer $id
 	 * @author 	Robert Christian Obias <robert.obias@digify.com.ph>
 	 */
+	Public function email_validation($email)
+	{
+		$result = preg_match('/^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/',$email);
+		if($result)
+		{
+		 	return true;
+  		}
+		else
+		{
+    		return false;
+  		}
+			
+	}
+
 	private function _save($action = 'add', $id = 0)
 	{
 		// validate inputs
-		$this->form_validation->set_rules('customer_fname', lang('customer_fname'), 'required');
-		$this->form_validation->set_rules('customer_lname', lang('customer_lname'), 'required');
-		$this->form_validation->set_rules('customer_telno', lang('customer_telno'), 'required');
-		$this->form_validation->set_rules('customer_mobileno', lang('customer_mobileno'), 'required');
-		$this->form_validation->set_rules('customer_email', lang('customer_email'), 'required');
-		$this->form_validation->set_rules('customer_id_type', lang('customer_id_type'), 'required');
-		$this->form_validation->set_rules('customer_id_details', lang('customer_id_details'), 'required');
-		$this->form_validation->set_rules('customer_mailing_country', lang('customer_mailing_country'), 'required');
-		$this->form_validation->set_rules('customer_mailing_house_no', lang('customer_mailing_house_no'), 'required');
-		$this->form_validation->set_rules('customer_mailing_street', lang('customer_mailing_street'), 'required');
-		$this->form_validation->set_rules('customer_mailing_city', lang('customer_mailing_city'), 'required');
-		$this->form_validation->set_rules('customer_mailing_brgy', lang('customer_mailing_brgy'), 'required');
-		$this->form_validation->set_rules('customer_mailing_zip_code', lang('customer_mailing_zip_code'), 'required');
-		$this->form_validation->set_rules('customer_billing_country', lang('customer_billing_country'), 'required');
-		$this->form_validation->set_rules('customer_billing_house_no', lang('customer_billing_house_no'), 'required');
-		$this->form_validation->set_rules('customer_billing_street', lang('customer_billing_street'), 'required');
-		$this->form_validation->set_rules('customer_billing_city', lang('customer_billing_city'), 'required');
-		$this->form_validation->set_rules('customer_billing_brgy', lang('customer_billing_brgy'), 'required');
-		$this->form_validation->set_rules('customer_billing_zip_code', lang('customer_billing_zip_code'), 'required');
-
+		$this->form_validation->set_rules('customer_fname', 'First Name', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_lname','Last Name', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_telno', 'Phone Number', 'required|numeric|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mobileno','Mobile Number', 'required|numeric|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_email', 'Email Address', 'required|valid_email|min_length[1]|max_length[50]|trim|callback_email_validation');
+		$this->form_validation->set_rules('customer_id_type', 'ID Type', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_id_details', 'ID Details', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_country', 'Country', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_house_no','House Number', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_street', 'Street', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_city', 'City', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_brgy', 'Barangay', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_mailing_zip_code', 'Zip Code', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_country', 'Country', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_house_no', 'House Number', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_street', 'Street', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_city', 'City', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_brgy','Barangay', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_rules('customer_billing_zip_code', 'Zip Code', 'required|min_length[1]|max_length[50]');
+		$this->form_validation->set_message('email_validation','The Email Address field must contain a valid email address.');
 		$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
 		
 		if ($this->form_validation->run($this) == FALSE)
@@ -260,6 +317,7 @@ class Customers extends MX_Controller {
 		}
 		else if ($action == 'edit')
 		{
+			
 			$return = $this->customers_model->update($id, $data);
 		}
 

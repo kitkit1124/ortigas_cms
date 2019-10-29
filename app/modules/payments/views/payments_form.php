@@ -11,18 +11,37 @@
 
 		<input type="hidden" name="<?php echo $this->security->get_csrf_token_name(); ?>" value="<?php echo $this->security->get_csrf_hash(); ?>" />
 		
-				<div class="form-group">
+		<div class="form-group">
 			<label for="payment_reservation_id"><?php echo lang('payment_reservation_id')?>:</label>			
 			<?php echo form_input(array('id'=>'payment_reservation_id', 'name'=>'payment_reservation_id', 'value'=>set_value('payment_reservation_id', isset($record->payment_reservation_id) ? $record->payment_reservation_id : ''), 'class'=>'form-control'));?>
 			<div id="error-payment_reservation_id"></div>			
 		</div>
 
 		<div class="form-group">
-			<label for="payment_encoded_details"><?php echo lang('payment_encoded_details')?>:</label>			
-			<?php echo form_textarea(array('id'=>'payment_encoded_details', 'name'=>'payment_encoded_details', 'rows'=>'3', 'value'=>set_value('payment_encoded_details', isset($record->payment_encoded_details) ? $record->payment_encoded_details : ''), 'class'=>'form-control')); ?>
-			<div id="error-payment_encoded_details"></div>			
+			<label for="payment_paynamics_no"><?php echo lang('paynamics_reference_no')?>:</label>			
+			<?php echo form_input(array('id'=>'payment_paynamics_no', 'name'=>'payment_paynamics_no', 'rows'=>'3', 'value'=>set_value('payment_paynamics_no', isset($record->payment_paynamics_no) ? $record->payment_paynamics_no : ''), 'class'=>'form-control')); ?>
+			<div id="error-payment_paynamics_no"></div>			
 		</div>
-
+		<div class="form-group">
+			<label for="fullname"><?php echo lang('fullname')?>:</label>			
+			<?php echo form_input(array('id'=>'fullname', 'name'=>'fullname', 'rows'=>'3', 'value'=>set_value('fullname', isset($record->customer_fname) ? $record->customer_fname." ".$record->customer_lname : ''), 'class'=>'form-control')); ?>
+			<div id="error-fullname"></div>			
+		</div>
+		<div class="form-group">
+			<label for="reservation_project"><?php echo lang('reservation_project')?>:</label>			
+			<?php echo form_input(array('id'=>'reservation_project', 'name'=>'reservation_project', 'rows'=>'3', 'value'=>set_value('reservation_project', isset($record->reservation_project) ? $record->reservation_project : ''), 'class'=>'form-control')); ?>
+			<div id="error-reservation_project"></div>			
+		</div>
+		<div class="form-group">
+			<label for="payment_type"><?php echo lang('payment_type')?>:</label>			
+			<?php echo form_input(array('id'=>'payment_type', 'name'=>'payment_type', 'rows'=>'3', 'value'=>set_value('payment_type', isset($record->payment_type) ? $record->payment_type : ''), 'class'=>'form-control')); ?>
+			<div id="error-payment_type"></div>			
+		</div>
+		<div class="form-group">
+			<label for="reservation_fee"><?php echo lang('reservation_fee')?>:</label>			
+			<?php echo form_input(array('id'=>'reservation_fee', 'name'=>'reservation_fee', 'rows'=>'3', 'value'=>set_value('reservation_fee', isset($record->reservation_fee) ? $record->reservation_fee : ''), 'class'=>'form-control')); ?>
+			<div id="error-reservation_fee"></div>			
+		</div>
 		<div class="form-group">
 			<label for="payment_status"><?php echo lang('payment_status')?>:</label>			
 			<?php echo form_input(array('id'=>'payment_status', 'name'=>'payment_status', 'value'=>set_value('payment_status', isset($record->payment_status) ? $record->payment_status : ''), 'class'=>'form-control'));?>

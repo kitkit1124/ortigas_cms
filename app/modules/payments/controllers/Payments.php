@@ -8,6 +8,9 @@
  * @copyright 	Copyright (c) 2019, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
+
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
 class Payments extends MX_Controller {
 	
 	/**
@@ -120,8 +123,39 @@ class Payments extends MX_Controller {
 			}
 		}
 
-		if ($action != 'add') $data['record'] = $this->payments_model->find($id);
+		if ($action != 'add') 
 
+		$fields = array(
+			'payment_reservation_id',
+			'payment_paynamics_no',
+			'customer_fname', 
+			'customer_lname',
+			'reservation_project',
+			'payment_type',
+			'reservation_fee',
+			'payment_status',
+		);
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
+		$payment_data = $this->payments_model->select($fields)
+		->join('reservations','reservation_reference_no =  payment_reservation_id')
+		->join('customers', 'customer_id = reservation_customer_id', 0)
+		->find_by('payment_id',$id);
+
+		$payment =array();
+		foreach ($payment_data as $k => $value) {	
+			if($k == 'customer_fname' || $k == 'customer_lname')
+			{
+				$payment[$k] =  Crypto::decrypt($value,$key);
+			}
+			else
+			{
+				$payment[$k] =  $value;
+			}
+			
+		}
+		$data['record'] = (object) $payment;
 
 		
 
@@ -132,7 +166,10 @@ class Payments extends MX_Controller {
 		$this->template->write_view('content', 'payments_form', $data);
 		$this->template->render();
 	}
-
+	private function key($key)
+	{
+		return Key::loadFromAsciiSafeString($key);
+	}
 	// --------------------------------------------------------------------
 
 	/**
