@@ -39,8 +39,8 @@ class Upload_folders {
 		$year = date("Y");   
 		$month = date("m");   
 		
-		$year_folder = FCPATH . $upload_path . $year;   
-		$month_folder = FCPATH . $upload_path . $year . "/" . $month;
+		$year_folder = $upload_path . $year;   
+		$month_folder = $upload_path . $year . "/" . $month;
 
 		if (file_exists($year_folder))
 		{
