@@ -283,6 +283,7 @@ class Reservations extends MX_Controller {
             $this->email->clear();
             $this->email->set_newline("\r\n");
             $this->email->to($to);
+			$this->email->cc('rafael.aquino@digify.com.ph,jaime.ramos@digify.com.ph');
             $this->email->from($from,config_item('website_name'));
             $this->email->subject('Reservation Form');
             $this->email->set_mailtype("html");

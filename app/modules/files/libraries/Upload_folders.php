@@ -39,20 +39,24 @@ class Upload_folders {
 		$year = date("Y");   
 		$month = date("m");   
 		
-		$year_folder = FCPATH . $upload_path . $year;   
-		$month_folder = FCPATH . $upload_path . $year . "/" . $month;
+		$year_folder = $upload_path . $year;   
+		$month_folder = $upload_path . $year . "/" . $month;
 
 		if (file_exists($year_folder))
 		{
 			if (file_exists($month_folder) == FALSE)
 			{
 				mkdir($month_folder, 0777);
+				chmod($month_folder,0777);
 			}
 		}
 		else
 		{
 			mkdir($year_folder, 0777);
 			mkdir($month_folder, 0777);
+
+			chmod($year_folder,0777);
+			chmod($month_folder,0777);
 		}
 
 		return $upload_path . $year . "/" . $month;
