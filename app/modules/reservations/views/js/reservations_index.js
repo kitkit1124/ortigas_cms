@@ -15,17 +15,16 @@ $(function() {
 		"bAutoWidth": false,
 		"aaSorting": [[ 0, "asc" ]],
 		"aoColumnDefs": [
-			
 			{
 				"aTargets": [0],
 				"sClass": "text-center",
 			},
-			{
-				"aTargets": [1],
-				"mRender": function (data, type, full) {
-					return '<a href="reservations/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
-				},
-			},
+			// {
+			// 	"aTargets": [1],
+			// 	"mRender": function (data, type, full) {
+			// 		return '<a href="reservations/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit">' + data + '</a>';
+			// 	},
+			// },
 			// {
 			// 	"aTargets": [6],
 			// 	 "mRender": function (data, type, full) {
@@ -42,7 +41,7 @@ $(function() {
 			// 	 "sClass": "text-center",
 			// },
 			{
-				"aTargets": [14],
+				"aTargets": [15],
 				"bSortable": false,
 				"mRender": function (data, type, full) {
 					html = '<a href="reservations/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
