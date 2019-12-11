@@ -42,7 +42,6 @@ class Reservations_model extends BF_Model {
 			'reservation_id',
 			'customer_fname',
 			'customer_lname',
-				
 			'reservation_reference_no',
 			'reservation_project',
 			'reservation_property_specialist',

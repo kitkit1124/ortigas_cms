@@ -178,7 +178,7 @@ class Customers extends MX_Controller {
 			foreach ($customers as $k => $value) {	
 					if($k !== 'customer_id' )
 					{	
-						$array[$k] =  Crypto::decrypt($value,$key);
+						$array[$k] =  ($value == '' ? '' : Crypto::decrypt($value,$key));
 					}
 					else
 					{

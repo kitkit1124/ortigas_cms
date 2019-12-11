@@ -26,9 +26,13 @@
 		</div> -->
 
 		<div class="form-group">
-			<label for="reservation_project"><?php echo lang('reservation_project')?>:</label>			
-			<?php echo form_input(array('id'=>'reservation_project', 'name'=>'reservation_project', 'value'=>set_value('reservation_project', isset($record->reservation_project) ? $record->reservation_project : ''), 'class'=>'form-control'));?>
-			<div id="error-reservation_project"></div>			
+			<label for="reservation_project"><?php echo lang('reservation_project')?>:</label>		
+
+			<?php echo form_dropdown('reservation_project', $properties, set_value('reservation_project', (isset($record->reservation_project)) ? $record->reservation_project : ''), 'id="reservation_project" class="form-control"'); ?>
+				<div id="error-reservation_project"></div>
+	
+			<!-- <?php echo form_input(array('id'=>'reservation_project', 'name'=>'reservation_project', 'value'=>set_value('reservation_project', isset($record->reservation_project) ? $record->reservation_project : ''), 'class'=>'form-control'));?>
+			<div id="error-reservation_project"></div>		 -->	
 		</div>
 
 		<div class="form-group">
