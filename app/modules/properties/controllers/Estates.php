@@ -154,7 +154,7 @@ class Estates extends MX_Controller {
 
 			$data['locations'] = $this->load->locations_model->get_active_locations();
 		}
-
+		$data['locations'] = $this->load->locations_model->get_active_locations();
 		$data['featured_numrows'] = $this->estates_model->count_by(array('estate_status'=>'Active', 'estate_deleted'=>0, 'estate_is_featured'=>1));
 		
 		if ($action == 'view')

@@ -10,6 +10,10 @@
  * @copyright 	Copyright (c) 2016, Digify, Inc.
  * @link		http://www.digify.com.ph
  */
+
+use Defuse\Crypto\Key;
+use Defuse\Crypto\Crypto;
+
 class Files extends MX_Controller
 {
 	/**
@@ -27,6 +31,9 @@ class Files extends MX_Controller
 
 		$this->load->library('users/acl');
 		$this->load->model('settings/configs_model');
+		$this->load->model('sellers/sellers_model');
+		$this->load->model('customers/customers_model');
+		$this->load->model('reservations/reservations_model');
 		$this->load->language('files');
 	}
 
@@ -201,6 +208,161 @@ class Files extends MX_Controller
 
         echo json_encode($response); exit;
     }
+
+	// public function import()
+	// {
+	// 	file_exists(base_url('/csv/import.xlsx'));
+
+
+ //        $csv		= $this->input->post('csv');
+	// 	$csv_data 	= $this->csv_reader->parse_file($csv);
+	// 	$data 		= array_chunk($csv_data, 10, TRUE);
+
+	// 	$key = getenv('KEY');
+	// 	$key  =	$this->Key($key);
+
+	// 	$data_arr = array();
+	// 			if ( $data )
+	// 			{
+	// 				set_time_limit(0);
+	// 				foreach ( $data as $data_key )
+	// 				{
+	// 					foreach ( $data_key as $val )
+	// 					{
+	// 						$clinic_name = remove_special_chars($val['CLINIC NAME']);
+
+	// 						// check if name exists
+	// 						if ( ! in_array($clinic_name, $hb_arr))
+	// 						{
+			
+
+	// 							$data_arr = array(
+	// 								'customer_fname'		=> Crypto::encrypt($val['clientfirtname'], $key),
+	// 								'customer_lname'		=> Crypto::encrypt($val['clientlastname'], $key),
+									
+	// 							);
+
+	// 							$insert_hmo = $this->hmo_branches_model->insert($hmo_branch_arr);
+	// 						}
+	// 					}
+
+	// 					sleep(10);
+	// 				}
+	
+	// 			}
+ //    }
+
+	public function import()
+	{
+		$csv_path = '../pub/csv/';   
+		//$files = scandir($csv_path, SCANDIR_SORT_DESCENDING);
+		//$newest_file = $files[0];
+		//print_r($newest_file);
+
+// get current directory path
+  
+$dirpath = '../pub/csv/'; 
+// set file pattern
+$dirpath .= "*.csv";
+// copy filenames to array
+$files = array();
+$files = glob($dirpath);
+
+
+		$csv = $files[0];
+		$file = fopen($csv, "r");
+
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
+		$data = array();
+			set_time_limit(0);
+		$count = 0 ;
+		while(($filesop = fgetcsv($file, 1000, ",")) !== false)
+			{
+				if($count != 0)
+				{
+	
+					$fields =array(
+					'seller_first_name' => $filesop[0],
+					'seller_middle_name' => $filesop[1],
+					'seller_last_name' => $filesop[2],
+				);
+
+				$id = $this->sellers_model->select('seller_id')->find_by($fields);	
+				if($id)
+				{ 
+					$seller_id = $id->seller_id;
+					if(!empty($filesop[0]))
+					{
+						$seller_data[] = 
+						array(
+							'customer_fname' => Crypto::encrypt(($filesop[3] == 'NULL' ? 'NULL' : $filesop[3]),$key),		
+							'customer_mname' => Crypto::encrypt(($filesop[4] == 'NULL' ? 'NULL' : $filesop[4]),$key),
+							'customer_lname' => Crypto::encrypt(($filesop[5] == 'NULL' ? 'NULL' : $filesop[5]),$key),
+							'customer_seller_id' => $seller_id,
+							'reservation_unit_details' => $filesop[6],
+							'reservation_notes' => $filesop[7],
+							
+						);
+
+					}
+										
+				}
+				else
+				{
+					$seller_id = $this->sellers_model->insert($fields);
+					$seller_data[] = 
+						array(
+							'customer_fname' => Crypto::encrypt(($filesop[3] == 'NULL' ? 'NULL' : ($filesop[3] == '' ? 'NULL' : $filesop[3])),$key),	
+							'customer_mname' => Crypto::encrypt(($filesop[4] == 'NULL' ? 'NULL' : ($filesop[4] == '' ? 'NULL' : $filesop[4])),$key),
+							'customer_lname' => Crypto::encrypt(($filesop[5] == 'NULL' ? 'NULL' : ($filesop[5] == '' ? 'NULL' : $filesop[5])),$key),
+							'customer_seller_id' => $seller_id,
+							'reservation_unit_details' => $filesop[6],
+							'reservation_notes' => $filesop[7],
+						);		
+			
+				}
+				}
+				$count++;		
+			}
+
+		$chunk_data 	= array_chunk($seller_data, 10, TRUE);
+		$customer_branch_arr = array();
+		foreach ( $chunk_data as $data_key )
+		{
+			foreach ( $data_key as $val )
+			{
+				$customer_branch_arr = 
+						array(
+							'customer_fname' => $val['customer_fname'],	
+							'customer_mname' => $val['customer_mname'],
+							'customer_lname' => $val['customer_lname'],
+							'customer_seller_id' =>$val['customer_seller_id'],
+						);	
+				
+				$customer_id = $this->customers_model->insert($customer_branch_arr);
+				$reservation_data = array(
+									'reservation_customer_id'  	=> $customer_id,
+									'reservation_reference_no' 	=> rand(10000,99999).$customer_id,
+									'reservation_unit_details' 	=> $val['reservation_unit_details'],
+									'reservation_notes'			=> $val['reservation_notes'],
+								);
+				$this->reservations_model->insert($reservation_data);
+			}
+
+		}
+		echo "<pre>";
+		print_r($customer_branch_arr);
+		echo "</pre>";
+		exit;
+
+    }
+    private function key($key)
+	{
+		return Key::loadFromAsciiSafeString($key);
+	}
+  
 
 }
 

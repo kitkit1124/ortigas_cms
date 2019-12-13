@@ -26,6 +26,7 @@ class Reservations extends MX_Controller {
 		$this->load->model('reservations_model');
 		$this->load->model('customers/customers_model');
 		$this->load->language('reservations');
+		$this->load->model('properties/properties_model');
 	}
 	
 	// --------------------------------------------------------------------
@@ -101,6 +102,49 @@ class Reservations extends MX_Controller {
 		return Key::loadFromAsciiSafeString($key);
 	}
 
+	function email_form($action = 'email', $id = FALSE)
+	{
+		
+
+		$data['page_heading'] = 'Send Form Link';
+		$data['action'] = $action;
+
+		
+		$reservation_data = $this->reservations_model->select('reservation_customer_id,reservation_reference_no')->find_by(array('reservation_customer_id' => $id));
+		$c = $this->customers_model->select('customer_email')->find_by(array('customer_id' =>$reservation_data->reservation_customer_id));
+		
+		$key = getenv('KEY');
+		$key  =	$this->Key($key);
+
+		if($c->customer_email == '')
+		{
+			$data['email'] = '';
+		}
+		else
+		{
+			$data['email'] =  Crypto::decrypt($c->customer_email,$key);
+		}
+		
+		 if ($this->input->post())
+		 {
+			
+	
+			$user = $this->ion_auth->user()->row();
+		 	$this->send_email($this->input->post('reservation_email'),$user->email,$reservation_data->reservation_reference_no);
+			echo json_encode(array('success' => true, 'message' => $this->input->post('reservation_email'))); exit;
+		 }	
+		// $user = $this->ion_auth->user()->row();
+		// $this->send_email($email,$user->email,$reservation_data->reservation_reference_no);
+	
+
+		// render the page
+		$this->template->set_template('modal');
+		$this->template->add_css(module_css('reservations', 'reservations_form'), 'embed');
+		$this->template->add_js(module_js('reservations', 'reservations_email_form'), 'embed');
+		$this->template->write_view('content', 'reservations_email_form', $data);
+		$this->template->render();
+	}
+
 	function form($action = 'add', $id = FALSE)
 	{
 		$this->acl->restrict('reservations.reservations.' . $action, 'modal');
@@ -137,15 +181,25 @@ class Reservations extends MX_Controller {
 		if ($action != 'add') $data['record'] = $this->reservations_model->find($id);
 
 
-		$c = $this->customers_model->select('customer_id,customer_fname,customer_lname')->order_by('customer_fname','asc')->find_all();
-
-		$key = getenv('KEY');
-		$key  =	$this->Key($key);
+		$c = $this->customers_model->select('customer_id,customer_fname,customer_lname')->where('customer_deleted',0)->order_by('customer_fname','asc')->find_all();
 		$customers =array();
-		foreach ($c	 as $k => $value) {
-			$customers[$value->customer_id] =  Crypto::decrypt($value->customer_fname,$key)." ".Crypto::decrypt($value->customer_lname,$key);
+
+		if($c)
+		{
+			$key = getenv('KEY');
+			$key  =	$this->Key($key);
+			$customers =array();
+			foreach ($c	 as $k => $value) {
+				$fname = (Crypto::decrypt($value->customer_fname,$key) == 'NULL' ? '': Crypto::decrypt($value->customer_fname,$key));
+				$lname = (Crypto::decrypt($value->customer_lname,$key) == 'NULL' ? '': Crypto::decrypt($value->customer_lname,$key));
+				$customers[$value->customer_id] =  $fname." ".$lname;
+			}
 		}
+
 		$data['customers'] = $customers;
+		
+		$data['properties'] = $this->properties_model->get_active_properties();
+
 		// render the page
 		$this->template->set_template('modal');
 		$this->template->add_css(module_css('reservations', 'reservations_form'), 'embed');

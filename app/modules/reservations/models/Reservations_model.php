@@ -40,7 +40,8 @@ class Reservations_model extends BF_Model {
 	{
 		$fields = array(
 			'reservation_id',
-			'reservation_customer_id',
+			'customer_fname',
+			'customer_lname',
 			'reservation_reference_no',
 			'reservation_project',
 			'reservation_property_specialist',
@@ -56,8 +57,15 @@ class Reservations_model extends BF_Model {
 			'concat(modifier.first_name, " ", modifier.last_name)'
 		);
 
+		$callback = array(
+            array(
+                'method'  => array('Callbacks', 'reservation_customers')
+            )
+        );
+
 		return $this->join('users as creator', 'creator.id = reservation_created_by', 'LEFT')
 					->join('users as modifier', 'modifier.id = reservation_modified_by', 'LEFT')
-					->datatables($fields);
+					->join('customers','customer_id = reservation_customer_id','LEFT')
+					->datatables($fields,$callback);
 	}
 }

@@ -16,15 +16,16 @@
 					<thead>
 						<tr>
 							<th class="all"><?php echo lang('index_id'); ?></th>
-			<th class="all"><?php echo lang('index_customer_id'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_reference_no'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_project'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_property_specialist'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_sellers_group'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_unit_details'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_allocation'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_fee'); ?></th>
-			<th class="min-desktop"><?php echo lang('index_notes'); ?></th>
+							<th class="all">First Name</th>
+							<th class="all">Last Name</th>
+							<th class="min-desktop"><?php echo lang('index_reference_no'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_project'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_property_specialist'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_sellers_group'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_unit_details'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_allocation'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_fee'); ?></th>
+							<th class="min-desktop"><?php echo lang('index_notes'); ?></th>
 
 							<th class="none"><?php echo lang('index_created_on')?></th>
 							<th class="none"><?php echo lang('index_created_by')?></th>

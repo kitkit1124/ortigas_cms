@@ -82,4 +82,17 @@ class Units_model extends BF_Model {
 
 		return $query;		
 	}
+
+	public function get_all_unit(){
+		$query = $this->units_model
+				->select('unit_id as id','property_name as name')
+				->where('unit_status', 'Active')
+				->where('unit_deleted', 0)
+				->join('floors','floors.floor_id = unit_floor_id')
+				->join('properties', 'properties.property_id = floors.floor_property_id')
+				->order_by('unit_id', 'ASC')
+				->find_all();
+
+		return $query;		
+	}
 }
