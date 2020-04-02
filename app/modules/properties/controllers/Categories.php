@@ -299,9 +299,9 @@ class Categories extends MX_Controller {
 			'category_name'			=> $this->input->post('category_name'),
 			'category_image'		=> $this->input->post('category_image'),
 			'category_alt_image'	=> $this->input->post('category_alt_image'),
-			'category_description'	=> $this->input->post('category_description'),
-			'category_snippet_quote'	=> $this->input->post('category_snippet_quote'),
-			'category_bottom_description'	=> $this->input->post('category_bottom_description'),
+			'category_description'	=> utf8_encode($this->input->post('category_description')),
+			'category_snippet_quote'	=> utf8_encode($this->input->post('category_snippet_quote')),
+			'category_bottom_description'	=> utf8_encode($this->input->post('category_bottom_description')),
 			'category_status'		=> $this->input->post('category_status'),
 		);
 		

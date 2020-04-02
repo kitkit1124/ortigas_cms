@@ -44,7 +44,7 @@ $(function() {
 				$('#datatables').dataTable().fnDraw();
 
 				// closes the modal
-				$('#modal-lg').modal('hide'); 
+				$('#modal, #modal-lg').modal('hide'); 
 
 				// restores the modal content to loading state
 				restore_modal(); 

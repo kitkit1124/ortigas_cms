@@ -192,7 +192,7 @@ class Property_pages extends MX_Controller {
 
 		$data = array(
 			'page_title'		=> $this->input->post('page_title'),
-			'page_content'		=> $this->input->post('page_content'),
+			'page_content'		=> utf8_encode($this->input->post('page_content')),
 			'page_status'		=> $this->input->post('page_status'),
 		);
 		

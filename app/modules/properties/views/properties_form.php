@@ -111,7 +111,7 @@
 						        	<div class="property_snippet_quote">
 										<div class="form-group">
 											<label for="property_snippet_quote"><?php echo lang('property_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
-											<?php echo form_textarea(array('id'=>'property_snippet_quote', 'name'=>'property_snippet_quote', 'rows'=>'2', 'value'=>set_value('property_snippet_quote', isset($record->property_snippet_quote) ? $record->property_snippet_quote : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_snippet_quote', 'name'=>'property_snippet_quote', 'rows'=>'2', 'value'=>set_value('property_snippet_quote', isset($record->property_snippet_quote) ? utf8_decode($record->property_snippet_quote) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_snippet_quote"></div>			
 										</div>
 									</div>
@@ -119,15 +119,15 @@
 									<div class="property_overview">
 										<div class="form-group">
 											<label for="property_overview"><?php echo lang('property_overview')?>:</label><span class="error_asterisk"> *</span>				
-											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? utf8_decode($record->property_overview) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_overview"></div>			
 										</div>
 									</div>
 
-									<div class="property_bottom_overview">
+									<div class="property_bottom_overview hidden hide">
 										<div class="form-group">
 											<label for="property_bottom_overview"><?php echo lang('property_bottom_overview')?>:</label>			
-											<?php echo form_textarea(array('id'=>'property_bottom_overview', 'name'=>'property_bottom_overview', 'rows'=>'3', 'value'=>set_value('property_bottom_overview', isset($record->property_bottom_overview) ? $record->property_bottom_overview : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_bottom_overview', 'name'=>'property_bottom_overview', 'rows'=>'3', 'value'=>set_value('property_bottom_overview', isset($record->property_bottom_overview) ? utf8_decode($record->property_bottom_overview) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_bottom_overview"></div>			
 										</div>
 									</div>

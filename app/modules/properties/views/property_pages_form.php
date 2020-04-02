@@ -19,7 +19,7 @@
 
 		<div class="form-group">
 			<label for="page_content"><?php echo lang('page_content')?>:</label><span class="error_asterisk"> *</span>			
-			<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'7', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control')); ?>
+			<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'7', 'value'=>set_value('page_content', isset($record->page_content) ? utf8_decode($record->page_content) : '', FALSE), 'class'=>'form-control')); ?>
 			<div id="error-page_content"></div>			
 		</div>
 
