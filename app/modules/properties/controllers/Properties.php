@@ -199,6 +199,10 @@ class Properties extends MX_Controller {
 
 		$data['featured_numrows'] = $this->properties_model->count_by(array('property_status'=>'Active', 'property_deleted'=>0, 'property_is_featured'=>1));
 		
+		$this->load->model('property_pages_model');
+		$data['property_pages'] = $this->property_pages_model->get_active_property_pages();
+
+
 		if ($action == 'view')
 		{
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
@@ -517,6 +521,7 @@ class Properties extends MX_Controller {
 			'property_overview'			=> $this->input->post('property_overview'),
 			'property_snippet_quote  '	=> $this->input->post('property_snippet_quote'),
 			'property_bottom_overview'	=> $this->input->post('property_bottom_overview'),
+			'property_page_id'			=> $this->input->post('property_page_id'),
 			'property_slug'				=> $slug,
 			'property_image'			=> $this->input->post('property_image'),
 			'property_alt_image'		=> $this->input->post('property_alt_image'),

@@ -131,6 +131,14 @@
 											<div id="error-property_bottom_overview"></div>			
 										</div>
 									</div>
+
+									<div class="">
+										<div class="form-group">
+											<label for="property_estate_id"><?php echo lang('property_page_id')?>:</label>
+											<?php echo form_dropdown('property_page_id', $property_pages, set_value('property_page_id', (isset($record->property_page_id)) ? $record->property_page_id : ''), 'id="property_page_id" class="form-control form-control-lg"'); ?>
+											<div id="error-property_page_id"></div>
+										</div>
+									</div>
 						        </div>
 						      </div>
 						    </div>
