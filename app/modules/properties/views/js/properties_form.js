@@ -1,4 +1,5 @@
 $(function() {
+	initMap();
 	
 	var map;
 	// handles the submit action

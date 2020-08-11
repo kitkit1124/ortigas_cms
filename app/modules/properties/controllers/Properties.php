@@ -230,6 +230,9 @@ class Properties extends MX_Controller {
 		$this->template->add_css(module_css('properties', 'amenities_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'amenities_index'), 'embed');
 
+		$this->template->add_css(module_css('properties', 'faq_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'faq_index'), 'embed');
+
 		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'properties_form'), 'embed');
 		$this->template->add_js(module_js('properties', 'properties_form'), 'embed');

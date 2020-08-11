@@ -6,7 +6,7 @@
         </a>
     	<div class="button_add_related">
         	<?php if ($this->acl->restrict('properties.related_links.add', 'return')): ?>
-				<a href="<?php echo site_url('properties/related_links/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"></span>Add Recommended Links</a>
+				<a href="<?php echo site_url('properties/related_links/form/add')?>" data-toggle="modal" data-target="#modal" class="btn btn-sm btn-primary btn-add" id="btn_add"><span class="fa fa-plus"> </span> Add Recommended Links</a>
 			<?php endif; ?>
 		</div>
       </div>
@@ -17,8 +17,8 @@
 					<tr>
 						<th class="none"><?php echo lang('index_id'); ?></th>
 						<th class="all" width="30%">Label</th>
-						<th class="min-desktop" width="45%">Link</th>
-						<th class="min-desktop" width="10%"><?php echo lang('index_status'); ?></th>
+						<th class="min-desktop" >Link</th>
+						<th class="min-desktop" width="15%"><?php echo lang('index_status'); ?></th>
 
 						<th class="none"><?php echo lang('index_created_on')?></th>
 						<th class="none"><?php echo lang('index_created_by')?></th>

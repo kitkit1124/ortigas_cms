@@ -323,6 +323,11 @@
 									<?php echo $this->load->view('properties/related_links_index', $data); ?>
 								</div>
 
+								<div id="faq_index">
+									<?php $data['property_id'] = $record->property_id; ?>
+									<?php echo $this->load->view('properties/faq_index', $data); ?>
+								</div>
+
 							<?php } ?>
 
 						</div>
@@ -419,4 +424,5 @@ var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 var featured_numrows = '<?php echo $featured_numrows ?>';
 var action = '<?php echo $action ?>';
+var property_id = '<?php echo isset($record->property_id) ? $record->property_id : 0 ; ?>'
 </script>
