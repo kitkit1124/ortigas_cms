@@ -199,6 +199,10 @@ class Properties extends MX_Controller {
 
 		$data['featured_numrows'] = $this->properties_model->count_by(array('property_status'=>'Active', 'property_deleted'=>0, 'property_is_featured'=>1));
 		
+		$this->load->model('property_pages_model');
+		$data['property_pages'] = $this->property_pages_model->get_active_property_pages();
+
+
 		if ($action == 'view')
 		{
 			$this->template->add_js('$(".tab-content :input").attr("disabled", true);', 'embed');
@@ -225,6 +229,9 @@ class Properties extends MX_Controller {
 
 		$this->template->add_css(module_css('properties', 'amenities_index'), 'embed');
 		$this->template->add_js(module_js('properties', 'amenities_index'), 'embed');
+
+		$this->template->add_css(module_css('properties', 'faq_index'), 'embed');
+		$this->template->add_js(module_js('properties', 'faq_index'), 'embed');
 
 		$this->template->add_css(module_css('website', 'banners_index'), 'embed');
 		$this->template->add_css(module_css('properties', 'properties_form'), 'embed');
@@ -514,9 +521,10 @@ class Properties extends MX_Controller {
 			'property_prop_type_id'		=> $this->input->post('property_prop_type_id'),
 			'property_is_featured'		=> $this->input->post('property_is_featured'),
 			'property_name'				=> $this->input->post('property_name'),
-			'property_overview'			=> $this->input->post('property_overview'),
-			'property_snippet_quote  '	=> $this->input->post('property_snippet_quote'),
-			'property_bottom_overview'	=> $this->input->post('property_bottom_overview'),
+			'property_overview'			=> utf8_encode($this->input->post('property_overview')),
+			'property_snippet_quote  '	=> utf8_encode($this->input->post('property_snippet_quote')),
+			'property_bottom_overview'	=> utf8_encode($this->input->post('property_bottom_overview')),
+			'property_page_id'			=> $this->input->post('property_page_id'),
 			'property_slug'				=> $slug,
 			'property_image'			=> $this->input->post('property_image'),
 			'property_alt_image'		=> $this->input->post('property_alt_image'),

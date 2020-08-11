@@ -398,7 +398,7 @@ class Posts extends MX_Controller
 			'post_title'		=> $this->input->post('post_title'),
 			'post_alt_image'	=> $this->input->post('post_alt_image'),
 			'post_slug'			=> $slug,
-			'post_content'		=> $this->input->post('post_content'),
+			'post_content'		=> utf8_encode($this->input->post('post_content')),
 			'post_image'		=> $this->input->post('post_image'),
 			'post_posted_on'	=> $this->input->post('post_posted_on'),
 			'post_layout'		=> $this->input->post('post_layout'),

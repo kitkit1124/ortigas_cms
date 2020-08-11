@@ -111,7 +111,7 @@
 						        	<div class="property_snippet_quote">
 										<div class="form-group">
 											<label for="property_snippet_quote"><?php echo lang('property_snippet_quote')?>:</label><span class="error_asterisk"> *</span>				
-											<?php echo form_textarea(array('id'=>'property_snippet_quote', 'name'=>'property_snippet_quote', 'rows'=>'2', 'value'=>set_value('property_snippet_quote', isset($record->property_snippet_quote) ? $record->property_snippet_quote : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_snippet_quote', 'name'=>'property_snippet_quote', 'rows'=>'2', 'value'=>set_value('property_snippet_quote', isset($record->property_snippet_quote) ? utf8_decode($record->property_snippet_quote) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_snippet_quote"></div>			
 										</div>
 									</div>
@@ -119,16 +119,24 @@
 									<div class="property_overview">
 										<div class="form-group">
 											<label for="property_overview"><?php echo lang('property_overview')?>:</label><span class="error_asterisk"> *</span>				
-											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? $record->property_overview : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_overview', 'name'=>'property_overview', 'rows'=>'3', 'value'=>set_value('property_overview', isset($record->property_overview) ? utf8_decode($record->property_overview) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_overview"></div>			
 										</div>
 									</div>
 
-									<div class="property_bottom_overview">
+									<div class="property_bottom_overview hidden hide">
 										<div class="form-group">
 											<label for="property_bottom_overview"><?php echo lang('property_bottom_overview')?>:</label>			
-											<?php echo form_textarea(array('id'=>'property_bottom_overview', 'name'=>'property_bottom_overview', 'rows'=>'3', 'value'=>set_value('property_bottom_overview', isset($record->property_bottom_overview) ? $record->property_bottom_overview : '', false), 'class'=>'form-control')); ?> 
+											<?php echo form_textarea(array('id'=>'property_bottom_overview', 'name'=>'property_bottom_overview', 'rows'=>'3', 'value'=>set_value('property_bottom_overview', isset($record->property_bottom_overview) ? utf8_decode($record->property_bottom_overview) : '', false), 'class'=>'form-control')); ?> 
 											<div id="error-property_bottom_overview"></div>			
+										</div>
+									</div>
+
+									<div class="">
+										<div class="form-group">
+											<label for="property_estate_id"><?php echo lang('property_page_id')?>:</label>
+											<?php echo form_dropdown('property_page_id', $property_pages, set_value('property_page_id', (isset($record->property_page_id)) ? $record->property_page_id : ''), 'id="property_page_id" class="form-control form-control-lg"'); ?>
+											<div id="error-property_page_id"></div>
 										</div>
 									</div>
 						        </div>
@@ -315,6 +323,11 @@
 									<?php echo $this->load->view('properties/related_links_index', $data); ?>
 								</div>
 
+								<div id="faq_index">
+									<?php $data['property_id'] = $record->property_id; ?>
+									<?php echo $this->load->view('properties/faq_index', $data); ?>
+								</div>
+
 							<?php } ?>
 
 						</div>
@@ -411,4 +424,5 @@ var post_url = '<?php echo current_url() ?>';
 var csrf_name = '<?php echo $this->security->get_csrf_token_name() ?>';
 var featured_numrows = '<?php echo $featured_numrows ?>';
 var action = '<?php echo $action ?>';
+var property_id = '<?php echo isset($record->property_id) ? $record->property_id : 0 ; ?>'
 </script>

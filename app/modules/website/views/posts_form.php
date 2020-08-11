@@ -45,7 +45,7 @@
 							<div id="post-content" class="grid-editor">
 								<?php //echo isset($record->post_content) ? $record->post_content : ''; ?>
 							</div>
-							<?php echo form_textarea(array('id'=>'post_content', 'name'=>'post_content', 'rows'=>'15', 'value'=>set_value('post_content', isset($record->post_content) ? $record->post_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<?php echo form_textarea(array('id'=>'post_content', 'name'=>'post_content', 'rows'=>'15', 'value'=>set_value('post_content', isset($record->post_content) ? utf8_decode($record->post_content) : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-post_content"></div>
 						</div>
 						<br>

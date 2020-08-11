@@ -65,7 +65,7 @@
 							<div id="my-grid" class="grid-editor">
 								<?php //echo isset($record->page_content) ? $record->page_content : ''; ?>
 							</div>										
-							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'10', 'value'=>set_value('page_content', isset($record->page_content) ? $record->page_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<?php echo form_textarea(array('id'=>'page_content', 'name'=>'page_content', 'rows'=>'10', 'value'=>set_value('page_content', isset($record->page_content) ? utf8_decode($record->page_content) : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_content"></div>
 						</div>
 						
@@ -75,7 +75,7 @@
 							<?php } else{ ?>
 								<label class="control-label" for="page_bottom_content"><?php echo lang('page_bottom_content'); ?>:</label>
 							<?php }?>
-							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? $record->page_bottom_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<?php echo form_textarea(array('id'=>'page_bottom_content', 'name'=>'page_bottom_content', 'rows'=>'10', 'value'=>set_value('page_bottom_content', isset($record->page_bottom_content) ? utf8_decode($record->page_bottom_content) : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_bottom_content"></div>
 						</div>
 
@@ -86,7 +86,7 @@
 						</div>
 						<div class="form-group <?php //echo isset($record->page_id) && $record->page_id <=2 ? "" : "hide"; ?>">
 							<label class="control-label" for="page_rear_content"><?php echo lang('page_rear_content'); ?>:</label>
-							<?php echo form_textarea(array('id'=>'page_rear_content', 'name'=>'page_rear_content', 'rows'=>'10', 'value'=>set_value('page_rear_content', isset($record->page_rear_content) ? $record->page_rear_content : '', FALSE), 'class'=>'form-control meta-description')); ?>
+							<?php echo form_textarea(array('id'=>'page_rear_content', 'name'=>'page_rear_content', 'rows'=>'10', 'value'=>set_value('page_rear_content', isset($record->page_rear_content) ? utf8_decode($record->page_rear_content) : '', FALSE), 'class'=>'form-control meta-description')); ?>
 							<div id="error-page_rear_content"></div>
 						</div>
 

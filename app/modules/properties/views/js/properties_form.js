@@ -1,4 +1,5 @@
 $(function() {
+	initMap();
 	
 	var map;
 	// handles the submit action
@@ -28,6 +29,7 @@ $(function() {
 			property_overview: tinyMCE.get('property_overview').getContent(),
 			property_snippet_quote: tinyMCE.get('property_snippet_quote').getContent(),
 			property_bottom_overview: tinyMCE.get('property_bottom_overview').getContent(),
+			property_page_id: $('#property_page_id').val(),
 			property_image: $('#property_image').val(),
 			property_alt_image: $('#property_alt_image').val(),
 			property_thumb: $('#property_thumb').val(),

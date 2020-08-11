@@ -44,6 +44,7 @@ $(function() {
 			{
 				"aTargets": [7],
 				"bSortable": false,
+				"width": "10%",
 				"mRender": function (data, type, full) {
 					html = '<a href="'+site_url+'properties/amenities/form/view/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="View" class="btn btn-sm btn-success"><span class="fa fa-eye"></span></a> ';
 					html += '<a href="'+site_url+'properties/amenities/form/edit/'+full[0]+'" data-toggle="modal" data-target="#modal" tooltip-toggle="tooltip" data-placement="top" title="Edit" class="btn btn-sm btn-warning"><span class="fa fa-pencil"></span></a> ';

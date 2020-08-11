@@ -58,13 +58,13 @@
 						<div class="row">
 							<div class="form-group col-sm-6 media1024">
 								<label for="career_req"><?php echo lang('career_req')?>:</label><span class="error_asterisk"> *</span>				
-								<?php echo form_textarea(array('id'=>'career_req', 'name'=>'career_req', 'rows'=>'3', 'value'=>set_value('career_req', isset($record->career_req) ? $record->career_req : '', false), 'class'=>'form-control')); ?>
+								<?php echo form_textarea(array('id'=>'career_req', 'name'=>'career_req', 'rows'=>'3', 'value'=>set_value('career_req', isset($record->career_req) ? utf8_decode($record->career_req) : '', false), 'class'=>'form-control')); ?>
 								<div id="error-career_req"></div>			
 							</div>
 
 							<div class="form-group col-sm-6 media1024">
 								<label for="career_res"><?php echo lang('career_res')?>:</label><span class="error_asterisk"> *</span>				
-								<?php echo form_textarea(array('id'=>'career_res', 'name'=>'career_res', 'rows'=>'3', 'value'=>set_value('career_res', isset($record->career_res) ? $record->career_res : '', false), 'class'=>'form-control')); ?>
+								<?php echo form_textarea(array('id'=>'career_res', 'name'=>'career_res', 'rows'=>'3', 'value'=>set_value('career_res', isset($record->career_res) ? utf8_decode($record->career_res) : '', false), 'class'=>'form-control')); ?>
 								<div id="error-career_res"></div>			
 							</div>
 						</div>
